@@ -14,7 +14,7 @@ const Footer = () => {
         </ul>
         <div className="footer-bottom">
           <div className="footer-bottom-left">
-            <span className="copywright">© 2024 WyoFile</span>   
+            <span className="copywright">© 2026 WyoFile</span>   
           </div>
           <div className="footer-bottom-right">
             <ul className="social-links-menu">

@@ -1,98 +1,86 @@
 [
   {
-    "displayName": "Ogden Driskill",
-    "district": "S01",
+    "displayName": "Brian Boner",
+    "office": "S02",
     "party": "REP",
-    "wyoleg": "https://www.wyoleg.gov/Legislators/2024/S/1972"
+    "wyoleg": "https://www.wyoleg.gov/Legislators/2026/S/2021"
   },
   {
-    "displayName": "Cheri Steinmetz",
-    "district": "S03",
+    "displayName": "Tara Nethercott",
+    "office": "S04",
     "party": "REP",
-    "wyoleg": "https://www.wyoleg.gov/Legislators/2024/S/2011"
+    "wyoleg": "https://www.wyoleg.gov/Legislators/2026/S/2029"
   },
   {
-    "displayName": "Lynn Hutchings",
-    "district": "S05",
+    "displayName": "Jared Olsen",
+    "office": "S08",
     "party": "REP",
-    "wyoleg": "https://www.wyoleg.gov/Legislators/2024/S/1997"
+    "wyoleg": "https://www.wyoleg.gov/Legislators/2026/S/2035"
   },
   {
-    "displayName": "Stephan Pappas",
-    "district": "S07",
+    "displayName": "Gary Crum",
+    "office": "S10",
     "party": "REP",
-    "wyoleg": "https://www.wyoleg.gov/Legislators/2024/S/2008"
+    "wyoleg": "https://www.wyoleg.gov/Legislators/2026/S/2144"
   },
   {
-    "displayName": "Chris Rothfuss",
-    "district": "S09",
-    "party": "DEM",
-    "wyoleg": "https://www.wyoleg.gov/Legislators/2024/S/1971"
-  },
-  {
-    "displayName": "Larry Hicks",
-    "district": "S11",
+    "displayName": "John Kolb",
+    "office": "S12",
     "party": "REP",
-    "wyoleg": "https://www.wyoleg.gov/Legislators/2024/S/1963"
+    "wyoleg": "https://www.wyoleg.gov/Legislators/2026/S/2066"
   },
   {
-    "displayName": "Stacy Jones",
-    "district": "S13",
+    "displayName": "Laura Pearson",
+    "office": "S14",
     "party": "REP",
-    "wyoleg": "https://www.wyoleg.gov/Legislators/2024/S/2088"
+    "wyoleg": "https://www.wyoleg.gov/Legislators/2026/S/2138"
   },
   {
-    "displayName": "Wendy Schuler",
-    "district": "S15",
+    "displayName": "Dan Dockstader",
+    "office": "S16",
     "party": "REP",
-    "wyoleg": "https://www.wyoleg.gov/Legislators/2024/S/2062"
+    "wyoleg": "https://www.wyoleg.gov/Legislators/2026/S/1048"
   },
   {
-    "displayName": "Mike Gierau",
-    "district": "S17",
-    "party": "DEM",
-    "wyoleg": "https://www.wyoleg.gov/Legislators/2024/S/2027"
-  },
-  {
-    "displayName": "Dan Laursen",
-    "district": "S19",
+    "displayName": "Tim French",
+    "office": "S18",
     "party": "REP",
-    "wyoleg": "https://www.wyoleg.gov/Legislators/2024/S/2006"
+    "wyoleg": "https://www.wyoleg.gov/Legislators/2026/S/2067"
   },
   {
-    "displayName": "Bo Biteman",
-    "district": "S21",
+    "displayName": "Ed Cooper",
+    "office": "S20",
     "party": "REP",
-    "wyoleg": "https://www.wyoleg.gov/Legislators/2024/S/2044"
+    "wyoleg": "https://www.wyoleg.gov/Legislators/2026/S/2068"
   },
   {
-    "displayName": "Eric Barlow",
-    "district": "S23",
+    "displayName": "Barry Crago",
+    "office": "S22",
     "party": "REP",
-    "wyoleg": "https://www.wyoleg.gov/Legislators/2024/S/1995"
+    "wyoleg": "https://www.wyoleg.gov/Legislators/2026/S/2078"
   },
   {
-    "displayName": "Cale Case",
-    "district": "S25",
+    "displayName": "Troy McKeown",
+    "office": "S24",
     "party": "REP",
-    "wyoleg": "https://www.wyoleg.gov/Legislators/2024/S/945"
+    "wyoleg": "https://www.wyoleg.gov/Legislators/2026/S/2069"
   },
   {
-    "displayName": "Bill Landen",
-    "district": "S27",
+    "displayName": "Tim Salazar",
+    "office": "S26",
     "party": "REP",
-    "wyoleg": "https://www.wyoleg.gov/Legislators/2024/S/434"
+    "wyoleg": "https://www.wyoleg.gov/Legislators/2026/S/2028"
   },
   {
-    "displayName": "Bob Ide",
-    "district": "S29",
+    "displayName": "Jim Anderson",
+    "office": "S28",
     "party": "REP",
-    "wyoleg": "https://www.wyoleg.gov/Legislators/2024/S/2089"
+    "wyoleg": "https://www.wyoleg.gov/Legislators/2026/S/1985"
   },
   {
-    "displayName": "Evie Brennan",
-    "district": "S31",
+    "displayName": "Charles Scott",
+    "office": "S30",
     "party": "REP",
-    "wyoleg": "https://www.wyoleg.gov/Legislators/2024/S/2090"
+    "wyoleg": "https://www.wyoleg.gov/Legislators/2026/S/294"
   }
 ]

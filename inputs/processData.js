@@ -3,7 +3,7 @@ const path = require('path')
 const { parse } = require('csv-parse/sync')
 
 const candidateTags = require('./candidate-tags.json')
-const generalResults = require('../src/data/general-results.json')
+// const generalResults = require('../src/data/general-results.json')
 
 const candidateDataPath = path.join(__dirname, './candidate-data.csv')
 // const candidateDataPath = path.join(__dirname, './mock-post-primary-candidate-data.csv')
@@ -38,7 +38,7 @@ const legResponsesData = parse(legResponsesString, {columns: true, bom: true})
 
 const canDataWithResponses = candidateData.map((candidate) => {
   let candidateResponses = null
-  if (candidate.district.slice(0,2) === 'us' && candidate.hasResponses){
+  if (candidate.office.slice(0,2) === 'us' && candidate.hasResponses){
     candidateResponses = fedResponsesData.find((response) => response.slug === candidate.slug)
   } else if (candidate.hasResponses) {
     candidateResponses = legResponsesData.find((response) => response.slug === candidate.slug)
@@ -48,21 +48,21 @@ const canDataWithResponses = candidateData.map((candidate) => {
     candidateResponses = Object.values(candidateResponses)
   }
 
-  const getTag = candidateTags.find(tag => candidate.slug === tag.slug)
+  // const getTag = candidateTags.find(tag => candidate.slug === tag.slug)
 
-  const getGeneralResults = generalResults.find(r => r.district === candidate.district) || null
-  if (candidate.status === 'active' && getGeneralResults) {
-    const raceWinner = getGeneralResults.candidates.find(c => c.winner) || null
-    if (raceWinner) {
-      if (raceWinner.slug === candidate.slug) {
-        candidate.status = 'won-general'
-      } else {
-        candidate.status = 'lost-general'
-      }
-    }
-  }
+  // const getGeneralResults = generalResults.find(r => r.district === candidate.district) || null
+  // if (candidate.status === 'active' && getGeneralResults) {
+  //   const raceWinner = getGeneralResults.candidates.find(c => c.winner) || null
+  //   if (raceWinner) {
+  //     if (raceWinner.slug === candidate.slug) {
+  //       candidate.status = 'won-general'
+  //     } else {
+  //       candidate.status = 'lost-general'
+  //     }
+  //   }
+  // }
 
-  return({ ...candidate, "responses": candidateResponses, "tagId": getTag.id})
+  return({ ...candidate, "responses": candidateResponses, "tagId": 99999})
 })
 
 fs.writeFileSync(outputFilePath,JSON.stringify(canDataWithResponses, null, 2))

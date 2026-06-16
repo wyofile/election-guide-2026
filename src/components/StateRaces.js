@@ -22,14 +22,14 @@ const StateRaces = ({ candidates }) => {
           <Suspense fallback={<div className="map-container">Loading...</div>}>
             <DistrictMap chamber='house' activeDistrict={activeHouseDistrict} setActiveDistrict={setActiveHouseDistrict} />
           </Suspense>
-          <RaceCandidates chamber='house' district={activeSenateDistrict} candidates={candidates.filter((candidate)=>candidate.district === `H${activeHouseDistrict.substring(1)}`)} />
+          <RaceCandidates chamber='house' district={activeSenateDistrict} candidates={candidates.filter((candidate)=>candidate.office === `H${activeHouseDistrict.substring(1)}`)} />
         </div>
         <div className={`chamber-container ${chamber ==='senate' && 'visible'}`}>
           <h3 className='race-header'>{activeSenateDistrict ? `State Senate District ${parseInt(activeSenateDistrict)}` : "Select a senate district to view candidates"}</h3>
           <Suspense fallback={<div className="map-container">Loading...</div>}>
             <DistrictMap chamber='senate' activeDistrict={activeSenateDistrict} setActiveDistrict={setActiveSenateDistrict} />
           </Suspense>
-          <RaceCandidates chamber='senate' district={activeSenateDistrict} candidates={candidates.filter((candidate)=> candidate.district === `S${activeSenateDistrict.substring(1)}`)} />
+          <RaceCandidates chamber='senate' district={activeSenateDistrict} candidates={candidates.filter((candidate)=> candidate.office === `S${activeSenateDistrict.substring(1)}`)} />
         </div>
       </div>
     </>

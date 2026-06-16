@@ -3,7 +3,7 @@ import { useStories } from '@/lib/dataHooks'
 import { formatDate } from '@/lib/utils'
 import he from 'he'
 
-const ELECTION_COVERAGE = 'https://wyofile.com/elections-2024/'
+const ELECTION_COVERAGE = 'https://wyofile.com/elections-2026/'
 
 const CandidateStories = ({slug, ballotName, tagId}) => {
   const {stories, isLoading, error} = useStories(tagId, 25)
@@ -21,7 +21,7 @@ const CandidateStories = ({slug, ballotName, tagId}) => {
                 <div className="election-coverage-story" style={{border: '1px solid #666'}}>
                   <div className="story-title">{he.decode(story.title.rendered)}</div>
                   <div className="story-date">{formatDate(new Date(story.date))}</div>
-                  <div className="fake-link">Read Story <img src="/election-guide-2024/external.svg"></img></div>
+                  <div className="fake-link">Read Story <img src="/election-guide-2026/external.svg"></img></div>
                 </div>
               </Link>
             )
@@ -29,7 +29,7 @@ const CandidateStories = ({slug, ballotName, tagId}) => {
         </div>
       </>
     }
-    <Link className='more-news-link' href={ELECTION_COVERAGE} target="_blank" >More election coverage on WyoFile.com <img src="/election-guide-2024/external.svg"></img></Link>
+    <Link className='more-news-link' href={ELECTION_COVERAGE} target="_blank" >More election coverage on WyoFile.com <img src="/election-guide-2026/external.svg"></img></Link>
     </div>
   )
 }

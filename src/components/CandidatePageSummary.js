@@ -6,7 +6,7 @@ import { formatRace, getPortraitPath } from '../lib/utils'
 
 const CandidatePageSummary = ({candidate}) => {
 
-  const {party, slug, ballotName, district, incumbent, hasPhoto, status} = candidate
+  const {party, slug, ballotName, office, isIncumbent, hasPhoto, status} = candidate
   const partyInfo = PARTIES.find(p => p.key === party)
   const statusInfo = STATUS.find(s => s.key === status)
 
@@ -28,10 +28,10 @@ const CandidatePageSummary = ({candidate}) => {
           <div className="summ-info-container">
               <div className="summ-intro-line">
                   <div>Wyoming <strong style={{ color: partyInfo.color }}>{partyInfo.adjective}</strong> candidate</div>
-                  <div> for <strong>{formatRace(district)}</strong></div>
+                  <div> for <strong>{formatRace(office)}</strong></div>
               </div>
               <h1 className="summ-name">{ballotName}</h1>
-              <div className="incum-line"><em>{incumbent ? "Incumbent • " : ""}</em>{ statusInfo.label }</div>
+              <div className="incum-line"><em>{isIncumbent ? "Incumbent • " : ""}</em>{ statusInfo.label }</div>
           </div>
       </div>
   </div>

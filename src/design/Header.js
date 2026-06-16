@@ -15,7 +15,7 @@ const Header = () => {
       <div className="header-center">
         <Link href="https://wyofile.com"><h1 className="site-title">WyoFile</h1></Link>
         <h1 className="election-guide-title"><Link href="/">
-          ELECTION GUIDE 2024
+          ELECTION GUIDE 2026
         </Link></h1>
         <h2 className="subtitle">{webSubtitle}</h2>
         
@@ -27,7 +27,7 @@ const Header = () => {
     </div>
     <div className='share-buttons'>
       <p className='share-label'>Share:</p>
-      <div className="a2a_kit a2a_kit_size_32 a2a_default_style" data-a2a-url="https://projects.wyofile.com/election-guide-2024">
+      <div className="a2a_kit a2a_kit_size_32 a2a_default_style" data-a2a-url="https://projects.wyofile.com/election-guide-2026">
         <a className="a2a_button_facebook"></a>
         <a className="a2a_button_bluesky"></a>
         <a className="a2a_button_whatsapp"></a>

@@ -12,11 +12,11 @@
 # node process/main.js
 
 # Build
-node ./inputs/processGeneralResults.mjs
+# node ./inputs/processGeneralResults.mjs
 node ./inputs/processData.js
 
 npm run build
 
 # Deploy
-aws s3 sync build s3://projects.wyofile.com/election-guide-2024 --profile wyofile --delete
-aws cloudfront create-invalidation --profile wyofile --distribution-id E1LSUP0GLMODKL --paths "/election-guide-2024/*"
+aws s3 sync build s3://projects.wyofile.com/election-guide-2026 --profile wyofile --delete
+aws cloudfront create-invalidation --profile wyofile --distribution-id E1LSUP0GLMODKL --paths "/election-guide-2026/*"

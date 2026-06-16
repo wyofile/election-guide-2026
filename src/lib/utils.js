@@ -13,15 +13,15 @@ export const usePath = (path) => {
   return `${useRouter().basePath}${path}`
 }
 
-export const formatRace = district => {
-  if (district === 'us-sen') {
+export const formatRace = office => {
+  if (office === 'us-sen') {
     return "U.S. Senate"
-  } else if (district === 'us-house') {
+  } else if (office === 'us-house') {
     return "U.S. House of Representatives"
-  } else if (district[0] === 'H') {
-    return `WY House District ${parseInt(district.substring(1))}`
-  } else if (district[0] === 'S') {
-    return `WY Senate District ${parseInt(district.substring(1))}`
+  } else if (office[0] === 'H') {
+    return `WY House District ${parseInt(office.substring(1))}`
+  } else if (office[0] === 'S') {
+    return `WY Senate District ${parseInt(office.substring(1))}`
   }
 }
 

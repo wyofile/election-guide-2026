@@ -6,7 +6,7 @@ import Image from 'next/image'
 import { getPortraitPath } from '@/lib/utils'
 import { useStories } from '@/lib/dataHooks'
 
-const Candidate = ({ slug, ballotName, status, party, color, hasPhoto, hasResponses, incumbent, tagId }) => {
+const Candidate = ({ slug, ballotName, status, party, color, hasPhoto, hasResponses, isIncumbent, tagId }) => {
 
   const portraitPath = getPortraitPath(hasPhoto, party, slug)
   const {stories, isLoading, error} = useStories(tagId, 25)
@@ -31,7 +31,7 @@ const Candidate = ({ slug, ballotName, status, party, color, hasPhoto, hasRespon
         </div>
         <div className="info-col">
           <div className="name">{ballotName}</div>
-          <div className="summary-line">{incumbent && 'Incumbent'}</div>
+          <div className="summary-line">{isIncumbent && 'Incumbent'}</div>
           <div className="tag-line">
             { hasResponses && <div className="tag">✏️ Candidate Q&A</div> }
             { !hasResponses && <div className="tag">🚫 No Q&A response</div> }

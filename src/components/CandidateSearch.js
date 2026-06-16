@@ -7,7 +7,7 @@ import { formatRace } from "@/lib/utils"
 
 const PLACEHOLDER = 'Enter candidate (e.g., John Barrasso)'
 
-const Candidate = ({slug, ballotName, party, status, incumbent, hasResponses, district, tagId}) => {
+const Candidate = ({slug, ballotName, party, status, isIncumbent, hasResponses, office, tagId}) => {
     const partyInfo = PARTIES.find(d => d.key === party)
     const statusInfo = STATUS.find(d => d.key === status)
     const {stories, isLoading, error} = useStories(tagId, 25)
@@ -19,8 +19,8 @@ const Candidate = ({slug, ballotName, party, status, incumbent, hasResponses, di
         <div className="search-info-col">
             <div>
                 <div className="search-name">{ballotName}</div>
-                <div className="search-position"><span style={{ color: partyInfo.color }}>{partyInfo.noun}</span> for {formatRace(district)}</div>
-                <div className="search-incum">{incumbent ? "Incumbent" : ""}</div>
+                <div className="search-position"><span style={{ color: partyInfo.color }}>{partyInfo.noun}</span> for {formatRace(office)}</div>
+                <div className="search-incum">{isIncumbent ? "Incumbent" : ""}</div>
                 <div className="search-status">{statusInfo.label}</div>
 
                 <div className="search-tag-line">
@@ -50,7 +50,7 @@ const CandidateSearch = ({candidates}) => {
     }
 
     return <div className="search-box">
-        <div className="search-title">Search 2024 Wyoming candidates by name</div>
+        <div className="search-title">Search 2026 Wyoming candidates by name</div>
         <div className="note">This guide includes federal and legislative candidates. County commissioners and other local positions are excluded.</div>
         <form onSubmit={e => { e.preventDefault(); }}>
             <input onChange={handleChange} type="text" value={searchText} placeholder={PLACEHOLDER} />

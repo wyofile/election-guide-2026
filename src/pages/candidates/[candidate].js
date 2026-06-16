@@ -2,8 +2,8 @@ import candidateData from '@/data/candidate-data.json'
 import textData from '../../data/static-text.json'
 import wyoLegQs from '../../data/wyo-leg-qs.json'
 import federalQs from '../../data/federal-qs.json'
-import primaryResults from '../../data/primary-results.json'
-import generalResults from '../../data/general-results.json'
+// import primaryResults from '../../data/primary-results.json'
+// import generalResults from '../../data/general-results.json'
 import updateTime from '@/data/update-time.json'
 
 import CandidateOpponents from '@/components/CandidateOpponents'
@@ -30,18 +30,18 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const candidate = candidateData.find(c => c.slug === params.candidate)
-  const candidatesInDistrict = candidateData.filter(c => (c.district === candidate.district))
-  const primaryRaceResults = primaryResults.find(r => r.district === candidate.district && r.party === candidate.party) || null
-  const generalRaceResults = generalResults.find(r => r.district === candidate.district && (candidate.status === 'active' || candidate.status === 'won-general' || candidate.status ==='lost-general')) || null
-  const questions = (candidate.district[0] === 'u' ? federalQs : wyoLegQs)
+  const candidatesInDistrict = candidateData.filter(c => (c.office === candidate.office))
+  // const primaryRaceResults = primaryResults.find(r => r.district === candidate.district && r.party === candidate.party) || null
+  // const generalRaceResults = generalResults.find(r => r.district === candidate.district && (candidate.status === 'active' || candidate.status === 'won-general' || candidate.status ==='lost-general')) || null
+  const questions = (candidate.office[0] === 'u' ? federalQs : wyoLegQs)
   const questionnaireIntro = textData.questionnaireIntro
   const aboutProject = textData.aboutProject
 
   return {
       props: {
         candidate,
-        primaryRaceResults,
-        generalRaceResults,
+        // primaryRaceResults,
+        // generalRaceResults,
         candidatesInDistrict,
         questions,
         questionnaireIntro,
@@ -50,24 +50,24 @@ export async function getStaticProps({ params }) {
   }
 }
 
-export default function CandidatePage({candidate, primaryRaceResults, generalRaceResults, questions, questionnaireIntro, aboutProject, candidatesInDistrict}) {
-  const pageDescription = `${candidate.ballotName} (${candidate.party}) is running as a candidate for ${formatRace(candidate.district)} in Wyoming's 2024 election. See biographic details, issue positions and information on how to vote.`
+export default function CandidatePage({candidate, questions, questionnaireIntro, aboutProject, candidatesInDistrict}) {
+  const pageDescription = `${candidate.ballotName} (${candidate.party}) is running as a candidate for ${formatRace(candidate.office)} in Wyoming's 2026 election. See biographic details, issue positions and information on how to vote.`
   
   return (
     <Layout 
       relativePath={candidate.slug}
-      pageTitle={`${candidate.ballotName} | ${formatRace(candidate.district)} | 2024 Wyoming Election Guide`}
+      pageTitle={`${candidate.ballotName} | ${formatRace(candidate.office)} | 2026 Wyoming Election Guide`}
       pageDescription={pageDescription}
-      siteSeoTitle={`${candidate.ballotName} | ${formatRace(candidate.district)} | WyoFile 2024 Election Guide`}
+      siteSeoTitle={`${candidate.ballotName} | ${formatRace(candidate.office)} | WyoFile 2026 Election Guide`}
       seoDescription={pageDescription}
-      socialTitle={`${candidate.ballotName} | The WyoFile 2024 Election Guide`}
-      socialDescription={`Candidate for ${formatRace(candidate.district)}`}
+      socialTitle={`${candidate.ballotName} | The WyoFile 2026 Election Guide`}
+      socialDescription={`Candidate for ${formatRace(candidate.office)}`}
     >
     <CandidatePageSummary candidate={candidate} />
 
     <CandidateLinks wyoleg={candidate.wyoleg} website={candidate.website} email={candidate.email}/>
 
-    <CandidateOpponents candidatesInDistrict={candidatesInDistrict} currentSlug={candidate.slug} race={formatRace(candidate.district)} />
+    <CandidateOpponents candidatesInDistrict={candidatesInDistrict} currentSlug={candidate.slug} race={formatRace(candidate.office)} />
 
     <section>
       <a className="link-anchor" id="questionnaire"></a>
@@ -88,7 +88,7 @@ export default function CandidatePage({candidate, primaryRaceResults, generalRac
       </div>
     </section>
 
-    <section>
+    {/* <section>
       <a className="link-anchor" id="results"></a>
       <h2 className='section-header'>Election Results</h2>
       {
@@ -98,7 +98,7 @@ export default function CandidatePage({candidate, primaryRaceResults, generalRac
         primaryRaceResults ? <RaceResults results={primaryRaceResults} voteType='Candidate' raceTitle={`August 20 Primary – ${PARTIES.find(d=> d.key === candidate.party).adjective} candidates${primaryRaceResults.candidates.length === 1 ? " (uncontested)" : "" }`} isUncontested={primaryRaceResults.candidates.length === 1} /> : <p> There are no primary results available for this candidate.</p>
       }
       <div className="results-source">Election results provided by the Associated Press. Last updated {formatDateTime(new Date(updateTime.updateTime))}</div>
-    </section>
+    </section> */}
 
     <section>
       <a className="link-anchor" id="coverage"></a>

@@ -20,7 +20,7 @@ export const MarkdownExternalLinks = ({children}) => {
   return (
     <Markdown components={{ a(props){
       const {node, ...rest} = props
-      return <a {...rest} target="blank">{node.children[0].value} <img src='/election-guide-2024/external.svg' style={{fill: 'var(--link)'}}/></a>
+      return <a {...rest} target="blank">{node.children[0].value} <img src='/election-guide-2026/external.svg' style={{fill: 'var(--link)'}}/></a>
     }}}>
       {children}
     </Markdown>

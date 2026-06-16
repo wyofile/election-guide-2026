@@ -9,14 +9,14 @@ import Candidate from './Candidate'
 
 // ELECTION_CYCLE Options:
 // primary, general, post-election
-const ELECTION_CYCLE = 'post-election'
+const ELECTION_CYCLE = 'primary'
 
 const OutOfCycleBox = ({holdover}) => {
   const holdoverPartyInfo = PARTIES.find(party => party.key === holdover.party)
   console.log(holdoverPartyInfo)
   return (
     <div className="out-of-cycle-note">
-      <div><strong>SD {parseInt(holdover.district.substring(1))}</strong> is out of cycle in 2024</div>
+      <div><strong>SD {parseInt(holdover.office.substring(1))}</strong> is out of cycle in 2026</div>
       <br />
       <div>
           <Link target="_blank" href={holdover.wyoleg} className="holdover" style={{ borderTop: `3px solid ${holdoverPartyInfo.color}` }}>
@@ -34,7 +34,7 @@ const OutOfCycleBox = ({holdover}) => {
   )
 }
 
-const RaceCandidates = ({district, candidates, chamber}) => {
+const RaceCandidates = ({office, candidates, chamber}) => {
 
   const activeCandidates = candidates.filter(c => c.status === 'active' || c.status === 'won-general' || c.status === 'lost-general' )
   const lostPrimaryCandidates = candidates.filter(c => c.status === 'lost-primary' )
@@ -67,8 +67,8 @@ const RaceCandidates = ({district, candidates, chamber}) => {
           }
       </div>
     }
-    {(district && candidates.length === 0 && chamber === 'senate') && 
-      <OutOfCycleBox holdover={senateHoldovers.find((holdover) => holdover.district === `S${district.substring(1)}`)} />
+    {(office && candidates.length === 0 && chamber === 'senate') && 
+      <OutOfCycleBox holdover={senateHoldovers.find((holdover) => holdover.office === `S${office.substring(1)}`)} />
     }
     { lostPrimaryCandidates.length > 0 && 
       <details>

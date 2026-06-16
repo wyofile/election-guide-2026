@@ -5,7 +5,7 @@ import he from 'he'
 
 import { formatDate } from '../lib/utils'
 
-const ELECTION_COVERAGE = 'https://wyofile.com/elections-2024/'
+const ELECTION_COVERAGE = 'https://wyofile.com/elections-2026/'
 const ELECTION_TAG_ID = '14174'
 const NUM_STORIES = 6
 

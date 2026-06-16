@@ -21,8 +21,8 @@ import { usePath } from '@/lib/utils'
 // decrease build index.html size
 const getCandidateDataNoResponses = () => {
   const candidates = candidateData.map(c => {
-    const { hasPhoto, hasResponses, ballotName, slug, status, district, party, incumbent, tagId } = c
-    return { hasPhoto, hasResponses, ballotName, slug, status, district, party, incumbent, tagId }
+    const { hasPhoto, hasResponses, ballotName, slug, status, office, party, isIncumbent, tagId } = c
+    return { hasPhoto, hasResponses, ballotName, slug, status, office, party, isIncumbent, tagId }
   })
   return candidates
 }
@@ -47,16 +47,16 @@ const Home = ({candidates, textContent, ballotPropositionResults}) => {
   return (
     <Layout 
       relativePath='/'
-      pageTitle={"Wyoming's 2024 Candidates | 2024 Wyoming Election Guide"}
+      pageTitle={"Wyoming's 2026 Candidates | 2026 Wyoming Election Guide"}
       pageDescription={pageDescription}
-      siteSeoTitle={"Wyoming's 2024 Candidates | WyoFile 2024 Election Guide"}
+      siteSeoTitle={"Wyoming's 2026 Candidates | WyoFile 2026 Election Guide"}
       seoDescription={pageDescription}
-      socialTitle={"The WyoFile 2024 Election Guide"}
-      socialDescription={"Federal and state candidates seeking Wyoming office in 2024."}
+      socialTitle={"The WyoFile 2026 Election Guide"}
+      socialDescription={"Federal and state candidates seeking Wyoming office in 2026."}
     >
 
     <section className="guide-intro">
-      <div className="election-day-note"><img src='/election-guide-2024/info.svg' /><span>For live general election results <a href="https://wyofile.com/wyoming-general-election-results-2024/">go here</a>. The election guide will be periodically updated with results after the polls close.</span></div>
+      <div className="election-day-note"><img src='/election-guide-2026/info.svg' /><span>For live general election results <a href="https://wyofile.com/wyoming-general-election-results-2026/">go here</a>. The election guide will be periodically updated with results after the polls close.</span></div>
       <MarkdownExternalLinks>{textContent.guideIntro}</MarkdownExternalLinks>
     </section>
 
@@ -67,11 +67,11 @@ const Home = ({candidates, textContent, ballotPropositionResults}) => {
       <h2 className='section-header'>Federal Delegation</h2>
       <h3 className="race-header">U.S. Senate</h3>
       <Markdown>{textContent.usSenateIntro}</Markdown>
-      <RaceCandidates district='us-sen' candidates={candidates.filter((candidate)=>candidate.district === 'us-sen')} />
+      <RaceCandidates district='us-sen' candidates={candidates.filter((candidate)=>candidate.office === 'us-sen')} />
       <br />
       <h3 className="race-header">U.S. House At-Large</h3>
       <Markdown>{textContent.usHouseIntro}</Markdown>
-      <RaceCandidates district='us-house' candidates={candidates.filter((candidate)=>candidate.district === 'us-house')} />
+      <RaceCandidates district='us-house' candidates={candidates.filter((candidate)=>candidate.office === 'us-house')} />
     </section>
 
     <section>
@@ -80,7 +80,7 @@ const Home = ({candidates, textContent, ballotPropositionResults}) => {
 
       <Markdown>{textContent.wyomingLegislatureIntro}</Markdown>
       
-      <StateRaces candidates={candidates.filter(candidate => candidate.district[0] != 'u' )}/>
+      <StateRaces candidates={candidates.filter(candidate => candidate.office[0] != 'u' )}/>
     </section>
 
     <ElectionStories />
