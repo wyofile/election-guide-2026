@@ -96,7 +96,7 @@ const Home = ({candidates, textContent, ballotPropositionResults}) => {
 
     <section>
       <a className="link-anchor" id="legislature"></a>
-      <h2 className='section-header'>Wyoming State Legislature</h2>
+      <h2 className='section-header-prominent'>Wyoming State Legislature</h2>
 
       <Markdown>{textContent.wyomingLegislatureIntro}</Markdown>
       
@@ -122,17 +122,17 @@ const Home = ({candidates, textContent, ballotPropositionResults}) => {
 
     <section>
       <a className="link-anchor" id="voter-faq"></a>
-      <h2 className='section-header'>Common Voting Questions</h2>
+      <h2 className='section-header-prominent'>Common Voting Questions</h2>
       {textContent.voterFAQ.map((faq, i) => (
           <div key={`faq-${i}`} className="faq-question">
-            <h3 className='race-header'>{faq.question}</h3>
+            <h3 className='faq-header'>{faq.question}</h3>
             <MarkdownExternalLinks>{faq.answer}</MarkdownExternalLinks>
           </div>
       ))}
     </section>
 
     <section>
-      <h2 className='section-header'>About this Project</h2>
+      <h2 className='section-header-prominent'>About this Project</h2>
       <Markdown>{textContent.aboutProject}</Markdown>
       <Link className='return-to' href='https://www.wyofile.com'>Return to WyoFile.com »</Link>
     </section>

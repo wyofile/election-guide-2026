@@ -74,7 +74,9 @@ const CandidateOpponents = ({candidatesInDistrict, race, currentSlug}) => {
           </div>
         })}
       </div><br />
-      <h4 className='opponents-title'>Inactive Candidates</h4>
+      { inactiveCandidates.length > 0 && (
+        <h4 className='opponents-title'>Inactive Candidates</h4>
+      )}
       <div className="opp-grid">
         { inactiveCandidates.map(c => {
           const party = PARTIES.find(p => p.key === c.party)

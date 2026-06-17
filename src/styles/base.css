@@ -13,6 +13,11 @@
     --tan: #c8b8a1;
     --black: #070707;
     --link: #237bcf;
+
+    /* Custom modifications for a cleaner text-hierarchy */
+    --deep-charcoal: #242423;    /* Softened contrast from pure black for clean text */
+    --darkened-tan: #655947;     /* A deep, elegant version of your tan for headers */
+    --soft-wheat-bg: #f5f0df;    /* An ultra-light, subtle version of your wheat for a soft backdrop */
 }
 
 
@@ -35,31 +40,117 @@ section {
     margin-bottom: 2em;
 }
 
+.section-header-prominent {
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #1e293b; /* Clean, deep slate instead of harsh pure black */
+  
+  /* Give it generous breathing room */
+  margin: 2.5rem 0 2rem 0;
+  padding-bottom: 0.75rem;
+  
+  /* Subtle bottom accent line using your brand wheat/gold mix */
+  border-bottom: 3px solid var(--goldenrod);
+  
+  /* Removed the negative margins and box-shadow to let it look crisp and open */
+}
+
 .section-header {
-    text-align: center;
-    padding: 0.3em 0.5em;
-    padding-bottom: 0.2em;
-    background-color: var(--wheat);
-    border-top: 4px solid var(--goldenrod);
-    font-weight: normal;
-    text-transform: uppercase;
-    margin-bottom: 1em;
-    margin-top: 1em;
-    margin-left: -1em;
-    margin-right: -1em;
-    font-weight:bold;
-    box-shadow: 2px 2px 3px #aaa;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--deep-charcoal);
+  
+  /* Generous breathing room to prevent clashing */
+  margin-top: 4.5rem;
+  margin-bottom: 2.5rem;
+  padding: 0;
+  
+  background-color: transparent;
+  box-shadow: none;
+  border: none;
+}
+
+/* Individual FAQ block containers */
+.faq-question {
+  margin-bottom: 2.25rem;
+}
+
+/* The sub-headers / individual questions */
+.faq-header {
+  text-align: left; /* Left-aligning makes long question strings much easier to read */
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #0f172a;
+  
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  
+  /* The "Pillar" look: a clean background with a solid left accent anchor */
+  background-color: #f8fafc; /* Crisp, ultra-light grey backdrop */
+  padding: 0.75rem 1rem;
+  border-left: 5px solid var(--goldenrod); 
+  border-radius: 0 4px 4px 0;
+  
+  /* Smooth transition for a high-quality feel if elements are interactive */
+  transition: all 0.2s ease;
+}
+
+/* Optional: If you want to use the muted sage variant (#77958f) for specific race blocks later, 
+   you can drop it into the border-left or swap the background entirely */
+
+/* Target the text rendering inside your Markdown components to fix readability */
+.faq-question p {
+  line-height: 1.6;
+  color: #334155;
+  font-size: 1rem;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  padding-left: 1rem; /* Slightly indents the answer to line up perfectly with the header text */
+}
+
+.faq-question ul, .faq-question ol {
+  padding-left: 2.25rem;
+  line-height: 1.6;
+  color: #334155;
 }
 
 .race-header {
-    text-align: center;
-    margin-top: 0.2em;
-    background-color: var(--goldenrod);
-    padding: 0.3em 0.5em;
-    color: black;
-    text-transform: uppercase;
-    font-weight:bold;
-    box-shadow: 2px 2px 3px #aaa;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  
+  /* Deep, authoritative text using the darkened tan */
+  color: var(--darkened-tan); 
+  
+  /* Soft background utilizing a lightened variant of your wheat */
+  background-color: var(--soft-wheat-bg); 
+  
+  /* Spacing framework to group candidates nicely underneath */
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+  padding: 0.75rem 1.5rem;
+  
+  /* High-contrast brand anchor line */
+  border-top: 3px solid var(--goldenrod); 
+  border-bottom: 1px solid rgba(210, 154, 48, 0.15); /* Very faint goldenrod tint border on bottom */
+  border-radius: 4px;
+  
+  /* Flat, modern look with no heavy shadows */
+  box-shadow: none;
 }
 
 .district-title {
@@ -94,7 +185,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Roboto Slab", serif;
+    font-family: "Roboto", serif;
     font-weight: 400;
     text-align:center;
     margin-bottom: 0.2em;

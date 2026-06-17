@@ -97,7 +97,7 @@
 /* ==========================================
    Desktop Layout (Automatic breakpoint)
    ========================================== */
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 875px) {
   .nav-container {
     padding: 0 1.5rem;
   }

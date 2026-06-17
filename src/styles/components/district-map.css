@@ -9,9 +9,9 @@
   cursor:pointer;
 }
 
-@media screen and (min-width: 575px) {
+@media screen and (min-width: 875px) {
   .map-container {
-    width: 60%;
+    width: 80%;
   }
 }
 
@@ -27,9 +27,9 @@
   margin-right: auto;
 }
 
-@media screen and (min-width: 575px) {
+@media screen and (min-width: 875px) {
   .map-note {
-    width: 60%;
+    width: 80%;
   }
 }
 

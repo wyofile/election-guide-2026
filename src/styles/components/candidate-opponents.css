@@ -18,7 +18,7 @@
   display: grid;
   grid-template-rows: auto;
   grid-auto-rows: auto;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
   gap: 10px;
 }
 
@@ -33,6 +33,37 @@
   text-align:left;
   font-weight: bold;
   text-transform:uppercase;
+}
+
+@media screen and (min-width: 517px) {
+  .opp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 8px 10px; /* Increased vertical gap slightly to give the labels breathing room */
+  }
+
+  .opp-tile {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /* Reserve structural space at the top of EVERY tile for a label */
+    padding-top: 1rem; 
+  }
+
+  .bucket-label {
+    margin: 0;
+    text-align: left;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.03em;
+    
+    /* Pull the label out of the normal text flow so it doesn't push the candidate tile down */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
 }
 .opponent-candidate a {
   background-color: #e5e3e2;

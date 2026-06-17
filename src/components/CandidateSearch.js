@@ -5,7 +5,7 @@ import { useCandidateStories } from "@/lib/dataHooks"
 import { PARTIES, STATUS } from "@/lib/styles"
 import { formatRace } from "@/lib/utils"
 
-const PLACEHOLDER = 'Enter candidate (e.g., John Barrasso)'
+const PLACEHOLDER = 'Enter candidate name (at least 3 characters)'
 
 const Candidate = ({slug, ballotName, party, status, isIncumbent, hasResponses, office, tagId}) => {
     const partyInfo = PARTIES.find(d => d.key === party)
@@ -51,7 +51,7 @@ const CandidateSearch = ({candidates}) => {
 
     return <div className="search-box">
         <div className="search-title">Search 2026 Wyoming candidates by name</div>
-        <div className="note">This guide includes federal and legislative candidates. County commissioners and other local positions are excluded.</div>
+        <div className="note">This guide includes federal, statewide, and legislative candidates. County commissioners and other local positions are excluded.</div>
         <form onSubmit={e => { e.preventDefault(); }}>
             <input onChange={handleChange} type="text" value={searchText} placeholder={PLACEHOLDER} />
         </form>

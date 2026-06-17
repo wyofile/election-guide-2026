@@ -1,16 +1,19 @@
 .state-race-container {
   border: 1px solid #666;
   padding: 20px;
+  padding-top:0;
   box-shadow: 2px 2px 3px #aaa;
 }
 
 .chamber-container {
   visibility:hidden;
-  max-height: 0;
+  max-height:0;
+  overflow:hidden;
+  
 }
 
 .visible {
-  visibility: visible;
+  visibility:visible;
   max-height:none;
 }
 
