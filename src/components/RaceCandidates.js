@@ -57,7 +57,7 @@ const RaceCandidates = ({district, candidates, chamber}) => {
                       <h4 style={{
                           color: party.color
                       }}>{pluralize(party.noun, candidatesInBucket.length)}</h4>
-                      {candidatesInBucket.length === 0 && <div className="party-note">No {party.adjective} candidates {ELECTION_CYCLE === 'post-election' ? 'ran' : 'are running'} in this district.</div>}
+                      {candidatesInBucket.length === 0 && <div className="party-note">No {party.adjective} candidates {ELECTION_CYCLE === 'post-election' ? 'ran' : 'are running'} for this office.</div>}
                       <div>{candidatesInBucket.map(candidate => <Candidate key={candidate.slug} color={party.color} {...candidate} />)}</div>
                       {(isUncontestedPrimary && ELECTION_CYCLE === 'primary') && <div className="party-note">This candidate is running uncontested in the {party.adjective} primary.</div>}
                       {(isUncontestedGeneral && ELECTION_CYCLE === 'general') && <div className="party-note">This candidate is running uncontested in the general election.</div>}

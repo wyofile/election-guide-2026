@@ -56,7 +56,7 @@ const Home = ({candidates, textContent, ballotPropositionResults}) => {
     >
 
     <section className="guide-intro">
-      <div className="election-day-note"><img src='/election-guide-2026/info.svg' /><span>For live general election results <a href="https://wyofile.com/wyoming-general-election-results-2026/">go here</a>. The election guide will be periodically updated with results after the polls close.</span></div>
+      {/* <div className="election-day-note"><img src='/election-guide-2026/info.svg' /><span>For live general election results <a href="https://wyofile.com/wyoming-general-election-results-2026/">go here</a>. The election guide will be periodically updated with results after the polls close.</span></div> */}
       <MarkdownExternalLinks>{textContent.guideIntro}</MarkdownExternalLinks>
     </section>
 
@@ -75,6 +75,26 @@ const Home = ({candidates, textContent, ballotPropositionResults}) => {
     </section>
 
     <section>
+      <a className="link-anchor" id="statewide"></a>
+      <h2 className='section-header'>Statewide Elections</h2>
+      <h3 className="race-header">Secretary of State</h3>
+      <Markdown>{textContent.sosIntro}</Markdown>
+      <RaceCandidates district='sos' candidates={candidates.filter((candidate)=>candidate.office === 'sos')} />
+      <br />
+      <h3 className="race-header">State Auditor</h3>
+      <Markdown>{textContent.audIntro}</Markdown>
+      <RaceCandidates district='aud' candidates={candidates.filter((candidate)=>candidate.office === 'aud')} />
+      <br />
+      <h3 className="race-header">State Treasurer</h3>
+      <Markdown>{textContent.treasIntro}</Markdown>
+      <RaceCandidates district='treas' candidates={candidates.filter((candidate)=>candidate.office === 'treas')} />
+      <br />
+      <h3 className="race-header">State Superintendent of Public Instruction</h3>
+      <Markdown>{textContent.supIntro}</Markdown>
+      <RaceCandidates district='sup' candidates={candidates.filter((candidate)=>candidate.office === 'sup')} />
+    </section>
+
+    <section>
       <a className="link-anchor" id="legislature"></a>
       <h2 className='section-header'>Wyoming State Legislature</h2>
 
@@ -85,20 +105,20 @@ const Home = ({candidates, textContent, ballotPropositionResults}) => {
 
     <ElectionStories />
     
-    <section>
+    {/* <section>
       <a className="link-anchor" id="ballot-proposition"></a>
       <h2 className='section-header'>Ballot Proposition</h2>
       <MarkdownExternalLinks>{textContent.ballotProposition}</MarkdownExternalLinks>
       <RaceResults results={ballotPropositionResults} raceTitle="Results - Constitutional Amendment A" isUncontested={false} voteType='Position'/>
       <div className="results-source">Election results provided by the Associated Press. Last updated {formatDateTime(new Date(updateTime.updateTime))}</div>
-    </section>
+    </section> */}
 
-    <section>
+    {/* <section>
       <a className="link-anchor" id="judge-retention"></a>
       <h2 className='section-header'>Judge Retention</h2>
       <MarkdownExternalLinks>{textContent.judgeRetentionIntro}</MarkdownExternalLinks>
       <JudgeList/>
-    </section>
+    </section> */}
 
     <section>
       <a className="link-anchor" id="voter-faq"></a>
