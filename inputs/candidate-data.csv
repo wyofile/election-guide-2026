@@ -1,4 +1,4 @@
-lastName,firstName,suffix,ballotName,office,status,party,slug,tag2024,caucus,hasPhoto,hasResponses,isIncumbent,tel,email,website,tagID
+lastName,firstName,suffix,ballotName,office,status,party,slug,tag2024,caucus,hasPhoto,hasResponses,isIncumbent,tel,email,website,tagId
 EDWARDS,JILL,,Jill M Edwards,us-sen,active,REP,edwards-jill,,,FALSE,FALSE,FALSE,307-243-8683,info@edwardsforus.com,https://www.edwardsforus.com/,15450
 HAGEMAN,HARRIET,,Harriet Hageman,us-sen,active,REP,hageman-harriet,harriet-hageman,na,FALSE,FALSE,FALSE,307-228-4886,info@hagemanforwyoming.com,https://hagemanforwyoming.com,8662
 HOLTZ,JOHN,,John Holtz,us-sen,active,REP,holtz-john,john-holtz,na,FALSE,FALSE,FALSE,307-745-6154,herrholtz@bresnan.net,,8829
@@ -48,7 +48,7 @@ BIRT,ROY,,Roy Birt,S06,active,REP,birt-roy,,,FALSE,FALSE,FALSE,307-331-0378,royj
 LOVE,TAFT,,Taft Love,S06,active,REP,love-taft,taft-love,na,FALSE,FALSE,FALSE,307-631-8707,taft@taftlove.com,https://taftlove.com,14375
 RINNE,MARK,,Mark Rinne,S07,active,REP,rinne-mark,,,FALSE,FALSE,FALSE,307-634-6275,rinneforwyomingsenate@gmail.com,,15487
 LEE,JAMES,,Jim Lee,S07,active,DEM,lee-jim,,dem,FALSE,FALSE,FALSE,307-274-8309,jml.ltc.aus@gmail.com,,15488
-ROTHFUSS,CHRIS,,Chris Rothfuss,S09,active,DEM,rothfuss-chris,,dem,FALSE,FALSE,TRUE,307-399-3556,rothfussforsenate@gmail.com,,15489
+ROTHFUSS,CHRIS,,Chris Rothfuss,S09,active,DEM,rothfuss-chris,,dem,FALSE,FALSE,TRUE,307-399-3556,rothfussforsenate@gmail.com,,1475
 DAVIS,ROBERT,,Bob Davis,S11,active,REP,davis-robert,bob-davis,freedom,FALSE,FALSE,FALSE,307-380-6457,davisconstruction83@yahoo.com,,14348
 WILSON,JIM,,Jim Wilson,S11,active,DEM,wilson-jim,james-wilson,dem,FALSE,FALSE,FALSE,307-371-4469,demjim24@gmail.com,https://wilsonforwyoming.com,14427
 JONES,STACY,,Stacy Jones,S13,active,REP,jones-stacy,,,FALSE,FALSE,TRUE,307-371-8182,jones4senate13@yahoo.com,https://jones4wyoming.com,15490

@@ -2,9 +2,6 @@ const fs = require('fs')
 const path = require('path')
 const { parse } = require('csv-parse/sync')
 
-const candidateTags = require('./candidate-tags.json')
-// const generalResults = require('../src/data/general-results.json')
-
 const candidateDataPath = path.join(__dirname, './candidate-data.csv')
 // const candidateDataPath = path.join(__dirname, './mock-post-primary-candidate-data.csv')
 
@@ -62,7 +59,7 @@ const canDataWithResponses = candidateData.map((candidate) => {
   //   }
   // }
 
-  return({ ...candidate, "responses": candidateResponses, "tagId": 99999})
+  return({ ...candidate, "responses": candidateResponses})
 })
 
 fs.writeFileSync(outputFilePath,JSON.stringify(canDataWithResponses, null, 2))

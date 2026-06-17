@@ -1,20 +1,18 @@
 import Link from 'next/link'
-import { useStories } from '@/lib/dataHooks'
+import { useElectionStories } from '@/lib/dataHooks'
 import he from 'he'
 
 
 import { formatDate } from '../lib/utils'
 
 const ELECTION_COVERAGE = 'https://wyofile.com/elections-2026/'
-const ELECTION_TAG_ID = '14174'
+const ELECTION_CATEGORY_ID = '14113'
 const NUM_STORIES = 6
 
 const ElectionStories = () => {
 
-  const {stories, isLoading, error} = useStories(ELECTION_TAG_ID, NUM_STORIES)
-  // const stories = []
-  // const error = null;
-  // const isLoading = false;
+  const {stories, isLoading, error} = useElectionStories(ELECTION_CATEGORY_ID, NUM_STORIES)
+
   return (
     <div className='election-coverage'>
       <div className='election-coverage-title'>Latest Election Coverage from WyoFile</div>

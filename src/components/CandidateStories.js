@@ -1,12 +1,12 @@
 import Link from 'next/link'
-import { useStories } from '@/lib/dataHooks'
+import { useCandidateStories } from '@/lib/dataHooks'
 import { formatDate } from '@/lib/utils'
 import he from 'he'
 
 const ELECTION_COVERAGE = 'https://wyofile.com/elections-2026/'
 
 const CandidateStories = ({slug, ballotName, tagId}) => {
-  const {stories, isLoading, error} = useStories(tagId, 25)
+  const {stories, isLoading, error} = useCandidateStories(tagId, 25)
   return(
     <div className='election-coverage-candidate'>
     {error && <div className="load-error">Unable to Load Stories</div>}

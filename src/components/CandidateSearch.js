@@ -1,6 +1,6 @@
 import { useState } from "react"
 import Link from "next/link"
-import { useStories } from "@/lib/dataHooks"
+import { useCandidateStories } from "@/lib/dataHooks"
 
 import { PARTIES, STATUS } from "@/lib/styles"
 import { formatRace } from "@/lib/utils"
@@ -10,7 +10,7 @@ const PLACEHOLDER = 'Enter candidate (e.g., John Barrasso)'
 const Candidate = ({slug, ballotName, party, status, isIncumbent, hasResponses, office, tagId}) => {
     const partyInfo = PARTIES.find(d => d.key === party)
     const statusInfo = STATUS.find(d => d.key === status)
-    const {stories, isLoading, error} = useStories(tagId, 25)
+    const {stories, isLoading, error} = useCandidateStories(tagId, 25)
 
     return <div className="search-candidate" style={{ borderTop: `3px solid ${partyInfo.color}` }}><Link href={`/candidates/${slug}`}>
         <div className="search-party-label" >

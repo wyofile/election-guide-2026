@@ -34,7 +34,7 @@ const OutOfCycleBox = ({holdover}) => {
   )
 }
 
-const RaceCandidates = ({office, candidates, chamber}) => {
+const RaceCandidates = ({district, candidates, chamber}) => {
 
   const activeCandidates = candidates.filter(c => c.status === 'active' || c.status === 'won-general' || c.status === 'lost-general' )
   const lostPrimaryCandidates = candidates.filter(c => c.status === 'lost-primary' )
@@ -67,8 +67,8 @@ const RaceCandidates = ({office, candidates, chamber}) => {
           }
       </div>
     }
-    {(office && candidates.length === 0 && chamber === 'senate') && 
-      <OutOfCycleBox holdover={senateHoldovers.find((holdover) => holdover.office === `S${office.substring(1)}`)} />
+    {(district && candidates.length === 0 && chamber === 'senate') && 
+      <OutOfCycleBox holdover={senateHoldovers.find((holdover) => holdover.office === `S${district.substring(1)}`)} />
     }
     { lostPrimaryCandidates.length > 0 && 
       <details>
