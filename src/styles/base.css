@@ -140,8 +140,8 @@ section {
   background-color: var(--soft-wheat-bg); 
   
   /* Spacing framework to group candidates nicely underneath */
-  margin-top: 1.5rem;
   margin-bottom: 2rem;
+  margin-top:0;
   padding: 0.75rem 1.5rem;
   
   /* High-contrast brand anchor line */
@@ -151,6 +151,10 @@ section {
   
   /* Flat, modern look with no heavy shadows */
   box-shadow: none;
+}
+
+.race-candidates-wrapper{
+    margin-bottom: 2.5rem;
 }
 
 .district-title {
@@ -224,15 +228,8 @@ h4 {
 .link-anchor {
     display: block;
     position: relative;
-    top: -3rem;
+    top: -5rem;
     visibility: hidden;
-}
-
-
-@media screen and (min-width: 768px) {
-    .link-anchor {
-        top: -3.5rem;
-    }
 }
 
 .note {
@@ -316,7 +313,7 @@ input {
 main {
     padding: 10px;
     padding-top: 0;
-    max-width: 1000px;
+    max-width: 1150px;
     margin: auto;
     width: 90%;
 }

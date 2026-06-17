@@ -68,7 +68,6 @@ const Home = ({candidates, textContent, ballotPropositionResults}) => {
       <h3 className="race-header">U.S. Senate</h3>
       <Markdown>{textContent.usSenateIntro}</Markdown>
       <RaceCandidates district='us-sen' candidates={candidates.filter((candidate)=>candidate.office === 'us-sen')} />
-      <br />
       <h3 className="race-header">U.S. House At-Large</h3>
       <Markdown>{textContent.usHouseIntro}</Markdown>
       <RaceCandidates district='us-house' candidates={candidates.filter((candidate)=>candidate.office === 'us-house')} />
@@ -80,15 +79,12 @@ const Home = ({candidates, textContent, ballotPropositionResults}) => {
       <h3 className="race-header">Secretary of State</h3>
       <Markdown>{textContent.sosIntro}</Markdown>
       <RaceCandidates district='sos' candidates={candidates.filter((candidate)=>candidate.office === 'sos')} />
-      <br />
       <h3 className="race-header">State Auditor</h3>
       <Markdown>{textContent.audIntro}</Markdown>
       <RaceCandidates district='aud' candidates={candidates.filter((candidate)=>candidate.office === 'aud')} />
-      <br />
       <h3 className="race-header">State Treasurer</h3>
       <Markdown>{textContent.treasIntro}</Markdown>
       <RaceCandidates district='treas' candidates={candidates.filter((candidate)=>candidate.office === 'treas')} />
-      <br />
       <h3 className="race-header">State Superintendent of Public Instruction</h3>
       <Markdown>{textContent.supIntro}</Markdown>
       <RaceCandidates district='sup' candidates={candidates.filter((candidate)=>candidate.office === 'sup')} />

@@ -1,104 +1,192 @@
-.election-coverage {
-  border: 1px solid var(--dimgray);
-  background-color: var(--dark-sea-green);
-  padding: 1em;
-  margin-bottom: 1em;
+/* --- THE MAIN WRAPPER --- */
+.modern-coverage-wrapper {
+  box-sizing: border-box;
+  background-color: var(--dark-sea-green, #8faea4); /* Falls back to a soft sage if variable is missing */
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 0 auto 2.5rem auto;
+  width: 100%;
+  max-width: 1000px; /* Gives it a nice wide banner feel */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-content: flex-start;
-  box-shadow: 2px 2px 3px #aaa;
-  margin-right: 0.5em;
-  margin-left: 0.5em;
 }
 
-.election-coverage-candidate {
-  margin-bottom: 1em;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-content: flex-start;
-  margin-right: 0.5em;
-  margin-left: 0.5em;  
+.modern-coverage-header {
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 0.75rem;
 }
 
-.election-coverage-title {
-  font-weight: bold;
+.modern-coverage-title {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 800;
   text-transform: uppercase;
-  margin-bottom: 20px;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
+  color: #0f172a;
+  margin: 0;
+  letter-spacing: 0.03em;
 }
 
-.election-coverage-stories {
+/* --- THE STORY GRID --- */
+.modern-coverage-grid {
   display: grid;
-  grid-template-rows: 1fr;
-  grid-auto-rows: 1fr;
-  grid-template-columns: repeat(auto-fill, minmax(125px, 1fr));
-  gap: 10px;
-  margin-bottom: 20px;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
 }
 
-.election-coverage-stories a {
-  display: flex;
-}
-
-.home-cov-stories > a:nth-child(n+3) {
+/* Mobile truncation: hide stories 3-6 on tiny screens to avoid a massive wall of text */
+.home-cov-stories > .modern-story-link:nth-child(n+3) {
   display: none;
 }
 
-@media screen and (min-width: 621px) {
-  .election-coverage-stories {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));    
+/* Tablet & Desktop Layouts */
+@media screen and (min-width: 600px) {
+  .home-cov-stories > .modern-story-link:nth-child(n+3) {
+    display: block; /* Reveal all stories */
+  }
+  .modern-coverage-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media screen and (min-width: 495px) {
-  .home-cov-stories > a:nth-child(n+3) {
-    display: flex;
+@media screen and (min-width: 900px) {
+  .modern-coverage-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
-.election-coverage-stories a:hover {
-  opacity: 0.85;
-  text-decoration: none;
-  color: #666;
+/* --- THE STORY CARDS --- */
+.modern-story-link {
+  display: block;
+  text-decoration: none !important;
+  height: 100%;
 }
 
-.election-coverage-story {
-  margin: 0;
-  box-shadow: 2px 2px 3px #222;
+.modern-story-card {
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 1.25rem;
+  height: 100%;
   display: flex;
-  align-items: stretch;
-  background-color: #eeeeee;
-  color: black;
-  padding: 10px;
-  flex-direction:column;
+  flex-direction: column;
   justify-content: space-between;
-  flex-grow: 1;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 0.2s ease-in-out;
 }
 
-.story-date {
-  margin-bottom: 10px;
+.modern-story-link:hover .modern-story-card {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+  border-color: #cbd5e1;
 }
 
-.story-title {
-  font-weight: 500;
+.story-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.modern-story-title {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
   font-size: 1.1rem;
-  flex-grow: 1;
-  margin-bottom: 10px;
-  hyphens: auto;
-  /* hyphenate-limit-chars: 10; */
+  line-height: 1.4;
+  color: #0f172a;
+  margin: 0;
 }
 
-.fake-link {
-  align-self:flex-end;
-  font-style: italic;
-  font-size: 0.9rem;
-  color: #666;
+.modern-story-date {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #64748b;
+  order: -1; /* Flips the date to sit nicely above the title visually */
 }
 
-.more-news-link {
-  color: black;
+/* --- ACTION LINKS --- */
+.modern-story-action {
   align-self: flex-end;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #475569;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.2s;
 }
 
+.modern-story-link:hover .modern-story-action {
+  color: #0f172a;
+}
+
+.external-arrow {
+  font-size: 1.1rem;
+  line-height: 1;
+  transition: transform 0.2s;
+}
+
+.modern-story-link:hover .external-arrow,
+.modern-more-link:hover .external-arrow {
+  transform: translate(2px, -2px); /* Creates a slick diagonal pop animation */
+}
+
+/* --- FOOTER & LOADING STATES --- */
+.modern-coverage-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.modern-more-link {
+  color: #0f172a;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: opacity 0.2s;
+}
+
+.modern-more-link:hover {
+  opacity: 0.7;
+}
+
+.modern-coverage-alert {
+  background-color: #fee2e2;
+  color: #991b1b;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.modern-coverage-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 2rem;
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.pulse-dot {
+  width: 10px;
+  height: 10px;
+  background-color: #0f172a;
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.8); opacity: 0.5; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(0.8); opacity: 0.5; }
+}

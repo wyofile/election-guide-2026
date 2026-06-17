@@ -1,102 +1,235 @@
-.search-box {
-    border: 1px solid var(--dimgray);
-    background-color: var(--dark-sea-green);
-    padding: 1em;
-    margin-bottom: 1em;
-    box-shadow: 2px 2px 3px #aaa;
-    margin-right: 0.5em;
-    margin-left: 0.5em;
+/* --- THE BOX WRAPPER --- */
+.modern-search-box {
+  box-sizing: border-box; /* Fixes mobile overflow */
+  background-color: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 1.5rem 1rem; /* Slightly reduced padding for narrow screens */
+  margin: 0 auto 2rem auto;
+  width: 100%; 
+  max-width: 800px; 
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  text-align: center; 
 }
 
-.search-title {
-    font-weight: bold;
-    text-transform: uppercase;
+.modern-search-title {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 1.25rem;
+  color: #0f172a;
+  margin: 0 0 0.5rem 0;
 }
 
-.search-box form {
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 0.5em;
-    margin-bottom: 1em;
-    
+.modern-search-note {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #475569;
+  margin: 0 auto 1.5rem auto;
+  max-width: 600px;
 }
 
-.search-box input {
-    margin: -1px;
-    flex: 4 1 15rem;
-    height: 2em;
-    padding: 0.25em;
+/* --- THE FLOATING FIELD INTERFACE --- */
+.search-field-wrapper {
+  box-sizing: border-box; /* Fixes mobile overflow */
+  position: relative; 
+  width: 100%;
+  max-width: 600px; 
+  margin: 0 auto; 
 }
 
-.search-candidate {
-    margin: 0.5em auto;
-    margin-top: 0.5em;
-    box-shadow: 2px 2px 3px #222;
-    max-width: 400px;
+.search-field-wrapper form {
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
-.search-candidate a {
-    min-height: 40px;
-    display: flex;
-    align-items: stretch;
-    background-color: #eeeeee;
-    color: black;
+.search-input-container {
+  box-sizing: border-box; /* Fixes mobile overflow */
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid #94a3b8;
+  border-radius: 8px;
+  width: 100%; 
+  overflow: hidden;
 }
 
-.search-candidate a:hover {
-    opacity: 0.85;
-    text-decoration: none;
-    color: #666;
+.search-inline-icon {
+  position: absolute;
+  left: 14px;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
 }
 
-
-.search-party-text {
-    width: 40px;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2em;
-    color: white;
+/* Optional: In case you still need to shrink the magnifying glass via CSS */
+.search-inline-icon svg {
+  width: 18px;
+  height: 18px;
 }
 
-.search-info-col {
-    flex: 1 1 100px;
-    padding: 0.5em 0.5em;
-    position: relative;
-    
-    display: flex;
-    align-items: center;
+.modern-search-input {
+  box-sizing: border-box; /* Fixes mobile overflow */
+  flex: 1;
+  width: 100%;
+  padding: 14px 40px 14px 42px;
+  border: none !important; 
+  outline: none;
+  font-size: 1rem;
+  font-family: 'Roboto', sans-serif;
+  color: #0f172a;
+  background: transparent;
+  margin: 0;
 }
 
-.search-name {
-    font-size: 1.2em;
-    margin-bottom: 0;
-    font-weight: bold;
-    text-transform: uppercase;
+.search-inline-clear {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 2px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.search-tag-line {
-    font-size: 0.8em;
-    margin-top: 0.2em;
+.search-inline-clear:hover { color: #0f172a; }
+
+/* --- THE AUTOCOMPLETE OVERLAY PANEL --- */
+.search-results-dropdown {
+  box-sizing: border-box; /* CRITICAL: Prevent absolute padding from blowing out screen width */
+  position: absolute;
+  top: calc(100% + 4px); 
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 0.5rem;
+  text-align: left; 
 }
 
-.search-status {
-    /* color: white; */
-    margin: 0.3em 0;
-    padding: 0.5em 0.5em;
-    width: 100%
+.search-dropdown-status {
+  padding: 1rem;
+  margin: 0;
+  font-size: 0.95rem;
+  color: #64748b;
+  font-style: italic;
+  text-align: center;
 }
 
-.search-incum {
-    font-style: italic;
-    font-size: 0.9em;
-    min-height: 1em;
+.dropdown-results-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
-.search-fakelink {
-    position: absolute;
-    bottom: 3px;
-    right: 8px;
-    color: #666;
+/* --- SLEEK COMPACT LIST ITEMS --- */
+.search-result-row {
+  display: block;
+  text-decoration: none !important;
+  border-radius: 6px;
+  background-color: transparent;
+  transition: background-color 0.15s;
+}
+
+.search-result-row:hover {
+  background-color: #f1f5f9;
+}
+
+.search-result-inner {
+  box-sizing: border-box; /* Fixes layout padding */
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  gap: 1rem;
+  border-left: 4px solid transparent;
+  border-radius: 4px;
+}
+
+/* Tiny Avatar */
+.search-avatar-tiny {
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  border: 1px solid rgba(0,0,0,0.08);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+/* Compact Info */
+.search-info-compact {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0; /* CRITICAL: Prevents long text from breaking flex container width */
+}
+
+.search-primary-info {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  flex-wrap: wrap; /* Allows party label to wrap gracefully on very thin screens */
+}
+
+.search-name-compact {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0f172a;
+  white-space: normal;
+  word-wrap: break-word; /* Safety for extremely long names */
+}
+
+.search-party-compact {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.search-secondary-info {
+  font-size: 0.85rem;
+  color: #64748b;
+  white-space: normal;
+}
+
+.incumbent-dot {
+  font-weight: 600;
+  color: #475569;
+  white-space: nowrap;
+}
+
+/* Minimal Badges */
+.search-badges-compact {
+  display: flex;
+  align-items: center;
+  padding-right: 0.5rem;
+}
+
+.tiny-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.text-success { color: #166534; }
+.text-neutral { color: #94a3b8; font-style: italic; }
+
+@media screen and (max-width: 600px) {
+  .search-badges-compact {
+    display: none;
+  }
 }

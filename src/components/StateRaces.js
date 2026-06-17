@@ -72,7 +72,7 @@ const StateRaces = ({ candidates }) => {
       setSearchStatus('Error looking up address.')
     }
   }
-  
+
   return (
     <div className="legislature-dashboard">
       
@@ -130,7 +130,7 @@ const StateRaces = ({ candidates }) => {
             </Suspense>
           </div>
           <div className="candidates-column">
-            <h3 className='race-header-modern'>
+            <h3 className='race-header'>
               {activeHouseDistrict ? `House District ${parseInt(activeHouseDistrict.substring(1))}` : "Select a House district"}
             </h3>
             <RaceCandidates chamber='house' district={activeHouseDistrict} candidates={candidates.filter((candidate) => candidate.office === `H${activeHouseDistrict.substring(1)}`)} />
@@ -147,7 +147,7 @@ const StateRaces = ({ candidates }) => {
             </Suspense>
           </div>
           <div className="candidates-column">
-            <h3 className='race-header-modern'>
+            <h3 className='race-header'>
               {activeSenateDistrict ? `Senate District ${parseInt(activeSenateDistrict)}` : "Select a Senate district"}
             </h3>
             <RaceCandidates chamber='senate' district={activeSenateDistrict} candidates={candidates.filter((candidate) => candidate.office === `S${activeSenateDistrict.substring(1)}`)} />

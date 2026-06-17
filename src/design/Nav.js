@@ -4,7 +4,6 @@ import { useState } from 'react'
 import Link from 'next/link'
 
 const PAGE_LINKS = [
-  { path: 'https://www.wyofile.com', label: 'WyoFile Home' },
   { path: '/', label: 'All Races' },
   { path: '/#federal-delegation', label: 'Federal Races' },
   { path: '/#statewide', label: 'Statewide Races' },
