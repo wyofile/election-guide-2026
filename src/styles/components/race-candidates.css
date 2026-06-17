@@ -1,212 +1,333 @@
-.party-buckets {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content:space-around;
-  margin-top: 0.5em;
-}
-
-.party-bucket {
-  padding: 0 0.5em;
-  border-left: 3px solid gray;    
-  margin-bottom: 1em;
-  flex: 1 1 0px;
-  max-width: 350px;
-  h4 {
-      margin: 0;
-      text-transform: uppercase;
-      font-weight: bold;
-      text-align: left;
-  }
+/* --- PARTY BUCKETS LAYOUT --- */
+.modern-party-buckets {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
 }
 
 @media screen and (min-width: 850px) {
-    .party-buckets {
-        margin-left: 1.5em;
-        margin-right: 1.5em;
-        gap: 1.5em;
-    }
+  .modern-party-buckets {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 3rem;
+  }
 }
 
-.candidate {
-  margin-top: 0.5em;
-  min-width: 250px;
-  max-width: 366px;
+.party-bucket-col {
+  display: flex;
+  flex-direction: column;
 }
 
-details .candidate {
-  min-width: 235px;
+.party-bucket-title {
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  margin: 0 0 1.25rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid #cbd5e1; /* Replaces the long vertical line with a clean underline */
 }
 
-.candidate a {
-
-    display: flex;
-    align-items: stretch;
-    background-color: #eeeeee;
-    box-shadow: 2px 2px 3px #aaa;
-    color: black;
+.candidate-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
 }
 
-.candidate a:hover {
-    opacity: 0.85;
-    text-decoration: none;
-    color: #666;
+/* --- THE MODERN CANDIDATE CARD --- */
+.modern-candidate-card {
+  display: block;
+  text-decoration: none;
+  background-color: #ffffff;
+  border-radius: 8px;
+  
+  border-left: 6px solid var(--party-color); 
+  
+  /* Make these borders slightly darker so they frame the white card */
+  border-top: 1px solid #cbd5e1; 
+  border-right: 1px solid #cbd5e1;
+  border-bottom: 1px solid #cbd5e1;
+  
+  /* Give it a slightly deeper, more defined shadow */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  
+  transition: all 0.2s ease-in-out;
+  overflow: hidden;
 }
 
-.portrait-col {
-    flex: 0 0 100px;
-    position: relative;
+.modern-candidate-card:hover {
+  transform: translateY(-3px);
+  /* A stronger hover shadow to emphasize the 3D lift */
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.12), 0 4px 6px -4px rgba(0,0,0,0.08);
 }
 
-.portrait-container {
-    width: 100px;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-
+.modern-candidate-card,
+.modern-candidate-card:hover {
+  text-decoration: none !important; 
 }
 
-.winner-label {
-  position:absolute;
-  bottom: -9px;
-  left: 15px;
-  text-align: center;
-  font-size: 12px;
-  color: #f3f3f3;
-  border-radius: 15px;
-  border: 2px solid #e8e8e8;
-  padding: 4px;
-  padding-left: 8px;
-  padding-right: 8px;
-  box-shadow: 2px 2px 3px -2px #aaa;
-  z-index: 10;
+.modern-candidate-card:hover .candidate-name {
+  text-decoration: underline;
+  text-decoration-color: var(--party-color); /* Adds a nice touch by making the underline match the party */
+  text-underline-offset: 3px; /* Drops the underline slightly so it looks cleaner */
 }
 
-.winner-label-text {
-  font-style: italic;
-  font-weight: 500;
+
+.candidate-card-inner {
+  display: flex;
+  padding: 1rem;
+  gap: 1.25rem; /* Slightly increased gap to let the square image breathe */
 }
 
-.winner-checkmark {
-  color: #f3f3f3;
+/* --- AVATAR / PORTRAIT --- */
+.candidate-avatar-col {
+  flex: 0 0 84px; /* Matched the new square dimension */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar-rounded {
+  width: 84px;
+  height: 84px;
+  border-radius: 12px; /* Creates the soft "squircle" look */
+  border: 1px solid rgba(0,0,0,0.1); /* Subtle dark inner line to ground the gradient */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end; /* Anchors the portrait to the bottom of the square */
+}
+
+.winner-badge {
+  position: absolute;
+  bottom: -12px; /* Dropped slightly to straddle the bottom of the square */
+  background-color: var(--party-color);
+  color: #ffffff;
+  font-size: 0.7rem;
   font-weight: 700;
-  overflow: visible;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 12px;
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  white-space: nowrap;
 }
 
-.info-col {
-    flex: 1 1 200px;
-    padding: 0.5em 0.5em;
-    position: relative;
-    display: block;
+.winner-icon {
+  font-weight: 900;
+  margin-right: 2px;
 }
 
-.name {
-    font-weight: bold;
-    font-size: 1.0em;
+/* --- INFO COLUMN --- */
+.candidate-info-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.tag-line {
-    font-size: 0.8em;
-    margin-top: 0.3em;
+.candidate-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  margin-bottom: 0.5rem;
 }
 
-.tag {
-    margin-right: 0.5em;
-    margin-bottom: 0.25em;
+.candidate-name {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+  line-height: 1.2;
 }
 
-.summary-line {
-    font-style: italic;
-    font-size: 0.65em;
-    height: 1em;
-    margin-bottom: 8px;
+.incumbent-pill {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #64748b;
+  background-color: #f1f5f9;
+  padding: 2px 6px;
+  border-radius: 4px;
 }
 
-@media screen and (min-width: 468px) {
-    .name{
-        font-size: 1.2em;
-    }
+/* --- MODERN PILL BADGES --- */
+.candidate-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 1rem;
 }
 
-.fakelink {
-    position: absolute;
-    bottom: 3px;
-    right: 8px;
-    color: #666;
-    font-size: 0.8em;
+.ui-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
 }
 
-.out-of-cycle-note {
-    background-color: #eeeeee;
-    box-shadow: 2px 2px 3px #aaa;
-    color: black;
-    max-width: 350px;
-    margin: 0 auto;
-    padding: 1em;
-    font-size: 1.1em;
-    text-align: center;
-    border: 1px solid black;
+.badge-success { background-color: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
+.badge-neutral { background-color: #f1f5f9; color: #64748b; border: 1px solid #e2e8f0; }
+.badge-news { background-color: #e0f2fe; color: #075985; border: 1px solid #bae6fd; }
+.badge-loading { background-color: #fef9c3; color: #854d0e; border: 1px solid #fef08a; }
+
+/* --- INTERACTIVE ACTION LINK --- */
+.candidate-action {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--link);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.2s;
 }
 
-.holdover {
-    display: inline-block;
-    box-shadow: 2px 2px 3px #aaa;
-    margin-bottom: 0.5em;
-    color: black;
-    display: flex;
-    border: 1px solid black;
+.modern-candidate-card:hover .candidate-action {
+  color: #0f172a;
 }
 
-.holdover:hover {
-    opacity: 0.85;
-    text-decoration: none;
-    color: #666;
+.action-arrow {
+  transition: transform 0.2s ease-in-out;
 }
 
-.holdover-party-icon {
-    align-self:stretch;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    width: 40px;
-    font-size: 1.1em;
-    margin-right: 0.5em;
-    position: relative;
+.modern-candidate-card:hover .action-arrow {
+  transform: translateX(4px); /* Arrow slides right when the card is hovered */
+}
+
+/* --- NOTES & ALERTS --- */
+.modern-party-note {
+  font-size: 0.85rem;
+  color: #64748b;
+  font-style: italic;
+  line-height: 1.4;
+  margin-top: 0.5rem;
+}
+
+.alert-note {
+  background-color: #f8fafc;
+  padding: 0.75rem;
+  border-radius: 6px;
+  border-left: 3px solid #cbd5e1;
+  margin-top: 1rem;
+}
+
+/* --- OUT OF CYCLE HOLDER BOX --- */
+.modern-out-of-cycle {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  max-width: 500px;
+  margin: 2rem auto;
+}
+
+.ooc-header {
+  font-size: 1.1rem;
+  color: #1e293b;
+  margin-bottom: 1.25rem;
+}
+
+.holdover-card {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  border: 1px solid #e2e8f0;
+  border-left: 5px solid var(--party-color);
+  transition: all 0.2s;
+  margin-bottom: 1rem;
+}
+
+.holdover-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px -2px rgba(0,0,0,0.1);
+}
+
+.holdover-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 800;
+  font-size: 1.2rem;
+  margin-right: 1rem;
 }
 
 .holdover-info {
-    position: relative;
-    height: 4em;
-    flex-grow: 1;
-    display: flex;
-    justify-content: flex-start;
-    align-items:center;
+  text-align: left;
 }
 
 .holdover-name {
-    font-size: 1.1em;
-    text-transform: uppercase; 
-    height: 100%;
-    display: flex;
-    align-items: center;
-
+  margin: 0;
+  font-size: 1.1rem;
+  color: #0f172a;
 }
 
-.wyoleg-note {
-    position: absolute;
-    bottom: 1px;
-    right: 1px;
-    font-size: 0.85rem;
-    color: #666;
+.holdover-link-text {
+  font-size: 0.8rem;
+  color: #64748b;
+  font-weight: 500;
 }
 
-.party-note {
-    font-size: 0.8em;
-    line-height: 1.2em;
-    font-style: italic;
-    color: #666;
-    margin-top: 0.6em;
-    min-width: 235px;
+.holdover-card:hover .holdover-link-text {
+  color: var(--link);
+}
+
+.ooc-footer {
+  font-size: 0.95rem;
+  color: #475569;
+}
+
+/* --- DETAILS / ACCORDION UI --- */
+.modern-details-accordion {
+  margin-top: 3rem;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.modern-details-accordion summary {
+  padding: 1rem 1.5rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #1e293b;
+  background-color: #f8fafc;
+  cursor: pointer;
+  list-style: none; /* Hide default arrow */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modern-details-accordion summary::-webkit-details-marker {
+  display: none;
+}
+
+.modern-details-accordion summary::after {
+  content: "▼";
+  font-size: 0.8rem;
+  color: #64748b;
+  transition: transform 0.2s;
+}
+
+.modern-details-accordion[open] summary::after {
+  transform: rotate(180deg);
+}
+
+.accordion-inner {
+  padding: 1.5rem;
+  border-top: 1px solid #e2e8f0;
 }

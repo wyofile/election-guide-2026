@@ -1,5 +1,3 @@
-
-
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -12,38 +10,59 @@ const Candidate = ({ slug, ballotName, status, party, color, hasPhoto, hasRespon
   const {stories, isLoading, error} = useCandidateStories(tagId, 25)
 
   return (
-    <div className="candidate" style={{ borderTop: `5px solid ${color}` }}>
-      <Link href={`/candidates/${slug}`}>
-        <div className="portrait-col" >
-          <div className="portrait-container" style={{background: `linear-gradient(5deg, #eeeeee 0%, #e5e3e2 6%, ${color} 92%)`}}>
-              <Image
-                  alt={ballotName}
-                  src={portraitPath}
-                  width={100}
-                  height={100}
-                  style={{
-                      width: '100%',
-                      height: 'auto',
-                  }}
-              />
+    <Link href={`/candidates/${slug}`} className="modern-candidate-card" style={{ '--party-color': color }}>
+      <div className="candidate-card-inner">
+        
+        {/* Avatar Column */}
+        <div className="candidate-avatar-col">
+          {/* FIX 2 & 3: Re-added the gradient background and changed to a rounded square */}
+          <div 
+            className="avatar-rounded" 
+            style={{ background: `linear-gradient(5deg, #eeeeee 0%, #e5e3e2 6%, ${color} 92%)` }}
+          >
+            <Image
+              alt={ballotName}
+              src={portraitPath}
+              width={84}
+              height={84}
+              style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
+            />
           </div>
-          { status === 'won-general' && <div className='winner-label' style={{backgroundColor: color}}><span className='winner-checkmark'>✓ </span><span className='winner-label-text'>Winner</span></div>}
+          {status === 'won-general' && (
+            <div className="winner-badge" style={{ backgroundColor: color }}>
+              <span className="winner-icon">✓</span> Winner
+            </div>
+          )}
         </div>
-        <div className="info-col">
-          <div className="name">{ballotName}</div>
-          <div className="summary-line">{isIncumbent && 'Incumbent'}</div>
-          <div className="tag-line">
-            { hasResponses && <div className="tag">✏️ Candidate Q&A</div> }
-            { !hasResponses && <div className="tag">🚫 No Q&A response</div> }
-            { isLoading && <div className='tag'>⏳</div> }
-            { (!isLoading && !error && stories.length > 0) && <div className="tag">📰 <strong>{stories.length >= 25 ? '25+' : stories.length}</strong> {(stories.length === 1) ? 'article' : 'articles'}</div>}
+
+        {/* Info Column */}
+        <div className="candidate-info-col">
+          <div className="candidate-header">
+            <h4 className="candidate-name">{ballotName}</h4>
+            {isIncumbent && <span className="incumbent-pill">Incumbent</span>}
           </div>
-          <div className="fakelink">
-            <span>See more »</span>
+          
+          <div className="candidate-badges">
+            {hasResponses ? (
+              <span className="ui-badge badge-success">Q&A Response</span>
+            ) : (
+              <span className="ui-badge badge-neutral">No Q&A</span>
+            )}
+            
+            {(!isLoading && !error && stories.length > 0) && (
+              <span className="ui-badge badge-news">
+                <strong>{stories.length >= 25 ? '25+' : stories.length}</strong> {stories.length === 1 ? 'Article' : 'Articles'}
+              </span>
+            )}
+          </div>
+
+          <div className="candidate-action">
+            View Profile <span className="action-arrow">&rarr;</span>
           </div>
         </div>
-      </Link>
-    </div>
+
+      </div>
+    </Link>
   )
 }
 
