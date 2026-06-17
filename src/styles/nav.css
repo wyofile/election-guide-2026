@@ -1,44 +1,135 @@
-
-.nav {
-  background-color: #f3f2f1;
-  top: 0px;
-  position:sticky;
-  z-index: 10;
-  box-shadow: 0px 5px 5px -5px #666;
+/* Base container & sticky position */
+.nav-container {
+  background-color: var(--darker-sea-green);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 
+              0 2px 4px -2px rgba(0, 0, 0, 0.05);
 }
 
-.nav-menu {
-  list-style-type: none;
+/* Header strip visible ONLY on mobile screens */
+.nav-mobile-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+}
+
+.nav-brand {
+  font-weight: 600;
+  color: #1e293b;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Minimalist CSS Hamburger Button */
+.nav-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 24px;
+  height: 18px;
   padding: 0;
-  margin: 1px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
 }
 
-@media screen and (min-width: 525px) {
-  .nav-menu {
-    grid-template-columns: repeat(3, 1fr);
-  }
+.hamburger-line {
+  width: 24px;
+  height: 2px;
+  background-color: #334155;
+  transition: all 0.2s ease-in-out;
 }
 
-@media screen and (min-width: 1000px) {
-  .nav-menu {
-    grid-template-columns: repeat(6, 1fr);
-  }
+/* Simple transformation turns the lines into an 'X' when open */
+.nav-toggle.is-active .hamburger-line:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
 }
-.nav-menu a {
+.nav-toggle.is-active .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle.is-active .hamburger-line:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* The Menu List - Collapsed by default on mobile */
+.nav-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: none; /* Hidden on mobile until toggled */
+  flex-direction: column;
+  border-top: 1px solid #f1f5f9;
+  background-color: var(--darker-sea-green);
+}
+
+/* When state class .is-open is appended, show menu */
+.nav-menu.is-open {
+  display: flex;
+}
+
+.nav-item {
+  width: 100%;
+}
+
+
+
+
+.nav-link {
+  display: block;
   text-decoration: none;
-  font-weight: 500;
-  color: #000;
-  font-family: 'Roboto', 'sans-serif';
-
-  background-color: var(--wheat);
-  margin: 1px;
-  padding-left: 5px;
-  padding-right: 5px;
-  text-align: center;
+  font-weight: 600;
+  color: #000000;
+  font-size: 1rem;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid #f8fafc;
 }
 
-.nav-menu a:hover {
-  text-decoration: underline;
+.nav-link:hover {
+  color: #333333;
+  text-decoration: none;
+}
+
+/* ==========================================
+   Desktop Layout (Automatic breakpoint)
+   ========================================== */
+@media screen and (min-width: 768px) {
+  .nav-container {
+    padding: 0 1.5rem;
+  }
+
+  /* Hide the top bar entirely on desktop */
+  .nav-mobile-bar {
+    display: none;
+  }
+
+  /* Force display as a clean horizontal line */
+  .nav-menu {
+    display: flex !important; 
+    flex-direction: row;
+    justify-content: center;
+    gap: 1.5rem;
+    border-top: none;
+  }
+
+  .nav-item {
+    width: auto;
+  }
+
+  .nav-link {
+    padding: 0.75rem 0.5rem;
+    font-size: 1rem;
+    border-bottom: 2px solid transparent;
+  }
+
+  /* Desktop hover indicator line */
+  .nav-link:hover {
+    background-color: transparent;
+    color: #333333;
+    border-bottom: 2px solid #333333;
+  }
 }

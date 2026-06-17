@@ -13,7 +13,7 @@ const Header = () => {
   return <div className="header">
     <div className="header-interior">
       <div className="header-center">
-        <Link href="https://wyofile.com"><h1 className="site-title">WyoFile</h1></Link>
+        <h1 className="site-title">WyoFile</h1>
         <h1 className="election-guide-title"><Link href="/">
           ELECTION GUIDE 2026
         </Link></h1>

@@ -9,6 +9,7 @@
     --wheat: #e9dcae;
     --dimgray: #517e64;
     --dark-sea-green: #89a6a0;
+    --darker-sea-green: #77958f;
     --tan: #c8b8a1;
     --black: #070707;
     --link: #237bcf;
@@ -132,19 +133,14 @@ h4 {
 .link-anchor {
     display: block;
     position: relative;
-    top: -90px;
+    top: -3rem;
     visibility: hidden;
 }
 
-@media screen and (min-width: 525px) {
-    .link-anchor {
-        top: -65px;
-    }
-}
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 768px) {
     .link-anchor {
-        top: -40px;
+        top: -3.5rem;
     }
 }
 

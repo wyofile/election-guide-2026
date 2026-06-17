@@ -22,7 +22,16 @@ export const formatRace = office => {
     return `WY House District ${parseInt(office.substring(1))}`
   } else if (office[0] === 'S') {
     return `WY Senate District ${parseInt(office.substring(1))}`
+  } else if (office === 'sos') {
+    return "Secretary of State"
+  } else if (office === 'aud') {
+    return "State Auditor"
+  } else if (office === 'treas') {
+    return "State Treasurer"
+  } else if (office === 'sup') {
+    return "State Superintendent of Public Instruction"
   }
+  
 }
 
 export const getPortraitPath = (hasPhoto, party, slug) => {
