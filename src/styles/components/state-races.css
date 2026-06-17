@@ -1,50 +1,300 @@
-.state-race-container {
-  border: 1px solid #666;
-  padding: 20px;
-  padding-top:0;
-  box-shadow: 2px 2px 3px #aaa;
+/* --- THE DASHBOARD CONTAINER --- */
+.legislature-dashboard {
+  background-color: #ffffff;
+  border-radius: 12px;
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 3rem;
 }
 
-.chamber-container {
-  visibility:hidden;
-  max-height:0;
-  overflow:hidden;
-  
-}
-
-.visible {
-  visibility:visible;
-  max-height:none;
-}
-
-.chamber-selector {
+/* --- THE UNIFIED TOP CONTROL BAR --- */
+.dashboard-controls {
   display: flex;
-  justify-content: center;
-
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f8fafc;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 2rem;
+  gap: 1rem;
 }
 
-.selector {
-  margin: 5px;
-  margin-bottom: 20px;
-  border: 1px solid #666;
-  padding: 10px 1.5em;
+@media screen and (min-width: 800px) {
+  .dashboard-controls {
+    flex-direction: row;
+    gap: 0;
+  }
+}
+
+/* --- SEAMLESS SEARCH BAR --- */
+.search-widget {
+  display: flex;
+  flex-direction: column; /* Stacks the search bar and status message vertically on mobile */
+  align-items: stretch;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+@media screen and (min-width: 800px) {
+  .search-widget { 
+    flex-direction: row; 
+    align-items: center;
+    
+    /* Make the search bar stretch to fill the empty space */
+    flex: 1; 
+    
+    /* Optional: Add a max-width so it doesn't look comically long on ultra-wide 4K monitors */
+    max-width: 600px; 
+    
+    /* Keep a nice gap between the search bar and the toggle buttons */
+    margin-right: 2rem; 
+  }
+}
+
+.address-form-inline {
+  display: flex;
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #cbd5e1;
+}
+
+.input-wrapper {
+  display: flex;
+  flex: 1;
+  position: relative;
+  min-width: 0; /* Prevents the flex child from overflowing on narrow mobile screens */
+}
+
+.dashboard-search-input {
+  flex: 1;
+  padding: 10px 36px 10px 16px;
+  border: none;
+  outline: none;
+  font-size: 0.95rem;
+  width: 100%;
+  min-width: 0;
+  
+  /* Adds graceful fading if text is too long */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; 
+}
+
+.dashboard-search-input::placeholder {
+  font-size: 0.85rem;
+}
+
+@media screen and (min-width: 800px) {
+  .dashboard-search-input::placeholder {
+    font-size: 0.95rem;
+  }
+}
+
+.dashboard-search-btn {
+  background-color: var(--dark-sea-green);
+  color: var(--black);
+  border: none;
+  padding: 0 1.25rem;
+  font-weight: bold;
   cursor: pointer;
-  box-shadow: 2px 2px 3px #aaa;
-  border-radius: 3px;
-  background-color: #e5e3e2;
-  font-family: "Roboto Slab", serif;
-  font-weight: 400;
+  transition: background-color 0.2s;
+  flex-shrink: 0; /* Forces the button to keep its full padding/width on mobile */
+}
+
+.dashboard-search-btn:hover { 
+  background-color: var(--darker-sea-green); 
+}
+
+.clear-address-btn {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 4px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+
+.clear-address-btn:hover {
+  color: #0f172a;
+}
+
+.search-status-inline {
+  font-size: 0.85rem;
+  color: var(--dimgray);
+  font-weight: 500;
+  text-align: center; /* Centers the text nicely under the bar on mobile */
+}
+
+@media screen and (min-width: 800px) {
+  .search-status-inline {
+    text-align: left;
+    white-space: nowrap; /* Prevents awkward text wrapping when side-by-side on desktop */
+  }
+}
+
+/* --- MODERN SEGMENTED PILL TOGGLE --- */
+.chamber-toggle-pill {
+  display: flex;
+  background-color: #e2e8f0;
+  padding: 4px;
+  border-radius: 8px;
+  width: 100%;
+}
+
+@media screen and (min-width: 800px) {
+  .chamber-toggle-pill { width: auto; }
+}
+
+.pill-btn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.pill-btn.active {
+  background-color: #ffffff;
+  color: #0f172a;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* --- SAFELY HIDING MAPS (Preserves OpenLayers Size) --- */
+.chamber-pane {
+  visibility: hidden;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.chamber-pane.is-active {
+  visibility: visible;
+  max-height: none;
+  overflow: visible;
+  opacity: 1;
+}
+
+/* --- THE DESKTOP SPLIT VIEW (Map Left, Candidates Right) --- */
+.dashboard-split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media screen and (min-width: 950px) {
+  .dashboard-split {
+    grid-template-columns: 1fr 1fr; /* Exact 50/50 split */
+    gap: 3rem;
+  }
+  .map-column { /* Map stays in view while scrolling candidates on the right */
+    top: 100px; 
+  }
+}
+
+/* --- POLISHED MAP CARD & CONTROLS --- */
+.map-ui-card {
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+.map-ui-header {
+  display: flex;
+  background-color: #ffffff;
+  border-bottom: 1px solid #cbd5e1;
+}
+
+.map-ui-dropdown {
+  flex: 1;
+  border: none;
+  border-left: 1px solid #cbd5e1;
+  border-right: 1px solid #cbd5e1;
+  padding: 12px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1e293b;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  background: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e") no-repeat right 16px center;
+  background-size: 16px;
+}
+
+.map-arrow-btn {
+  background: #f8fafc;
+  border: none;
+  padding: 0 1.5rem;
+  font-size: 1.25rem;
+  color: #475569;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.map-arrow-btn:hover { background: #e2e8f0; color: #000; }
+
+.map-ui-canvas {
+  width: 100%;
+  aspect-ratio: 587 / 460; 
+  background-color: #e5e5e5;
+  cursor: pointer;
+}
+
+.map-ui-footer {
+  background: #f8fafc;
+  padding: 8px 12px;
+  font-size: 0.8rem;
+  color: #64748b;
+  border-top: 1px solid #cbd5e1;
+  text-align: center;
+}
+
+/* OpenLayers Buttons Overrides */
+.reset-map { bottom: 0.75rem; left: 0.75rem; }
+.reset-map button {
+  background: white !important;
+  color: #0f172a !important;
+  border-radius: 6px !important;
+  padding: 8px 14px !important;
+  font-family: "Roboto", sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 0.9rem !important;
+  line-height: normal !important;
+  width: auto !important; 
+  height: auto !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+  cursor: pointer !important;
+}
+
+/* --- CANDIDATE COLUMN HEADER --- */
+.race-header-modern {
+  margin-top: 0;
+  padding-bottom: 0.75rem;
+  border-bottom: 3px solid var(--goldenrod);
+  font-size: 1.5rem;
   text-transform: uppercase;
-  font-size: 1.2rem;
-  text-align:center;
-
-}
-
-.selector:active {
-  box-shadow: none;
-}
-
-.active {
-  background-color: var(--wheat);
-  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 1.5rem;
 }
