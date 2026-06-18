@@ -66,16 +66,95 @@ section {
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--deep-charcoal);
   
-  /* Generous breathing room to prevent clashing */
-  margin-top: 4.5rem;
-  margin-bottom: 2.5rem;
-  padding: 0;
+  /* Deep, authoritative text using the darkened tan */
+  color: var(--darkened-tan); 
   
-  background-color: transparent;
+  /* Soft background utilizing a lightened variant of your wheat */
+  background-color: var(--soft-wheat-bg); 
+  
+  /* Spacing framework to group candidates nicely underneath */
+  padding: 0.75rem 1.5rem;
+  
+  /* High-contrast brand anchor line */
+  border-top: 3px solid var(--goldenrod); 
+  border-bottom: 1px solid rgba(210, 154, 48, 0.15); /* Very faint goldenrod tint border on bottom */
+  border-radius: 4px;
+  
+  /* Flat, modern look with no heavy shadows */
   box-shadow: none;
-  border: none;
+}
+
+/* --- MINIMAL JUMP LINKS --- */
+.elegant-jump-links {
+  margin-top: 0.5rem;
+  margin-bottom: 2.5rem;
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+.elegant-jump-links .jump-label {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #94a3b8; /* Very subtle gray so it doesn't distract */
+  margin-right: 0.75rem;
+}
+
+.elegant-jump-links a {
+  color: var(--link, #237bcf);
+  text-decoration: none;
+  font-weight: 500;
+  margin-right: 0.6rem;
+}
+
+.elegant-jump-links a:hover {
+  text-decoration: underline;
+  color: #0f172a;
+}
+
+/* Adds a subtle dot between links automatically */
+.elegant-jump-links a:not(:last-child)::after {
+  content: "•";
+  color: #cbd5e1;
+  margin-left: 0.6rem;
+  display: inline-block;
+  text-decoration: none;
+}
+
+/* --- ELEGANT RACE HEADER --- */
+.race-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--goldenrod, #d8a032);
+  
+  /* Larger and bolder to stand out naturally */
+  font-size: 1.75rem; 
+  font-weight: 800; 
+  text-transform: uppercase;
+  color: #0f172a;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.5rem;
+}
+
+/* --- SUBTLE BACK TO TOP --- */
+.back-to-top {
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: none;
+  color: #94a3b8; /* Very subtle gray so it recedes into the background */
+  text-decoration: none;
+  letter-spacing: normal;
+  transition: color 0.2s ease;
+}
+
+.back-to-top:hover {
+  color: var(--goldenrod, #d8a032);
 }
 
 /* Individual FAQ block containers */
@@ -125,36 +204,10 @@ section {
   color: #334155;
 }
 
-.race-header {
-  text-align: center;
-  font-family: 'Roboto', sans-serif;
-  font-size: 1.1rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  
-  /* Deep, authoritative text using the darkened tan */
-  color: var(--darkened-tan); 
-  
-  /* Soft background utilizing a lightened variant of your wheat */
-  background-color: var(--soft-wheat-bg); 
-  
-  /* Spacing framework to group candidates nicely underneath */
-  margin-bottom: 2rem;
-  margin-top:0;
-  padding: 0.75rem 1.5rem;
-  
-  /* High-contrast brand anchor line */
-  border-top: 3px solid var(--goldenrod); 
-  border-bottom: 1px solid rgba(210, 154, 48, 0.15); /* Very faint goldenrod tint border on bottom */
-  border-radius: 4px;
-  
-  /* Flat, modern look with no heavy shadows */
-  box-shadow: none;
-}
+
 
 .race-candidates-wrapper{
-    margin-bottom: 2.5rem;
+    margin-bottom: 5rem;
 }
 
 .district-title {

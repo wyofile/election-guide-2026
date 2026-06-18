@@ -288,16 +288,6 @@
   cursor: pointer !important;
 }
 
-/* --- CANDIDATE COLUMN HEADER --- */
-.race-header {
-  margin-top: 0;
-  padding-bottom: 0.75rem;
-  border-bottom: 3px solid var(--goldenrod, #d8a032);
-  font-size: 1.5rem;
-  text-transform: uppercase;
-  color: #0f172a;
-  margin-bottom: 1.5rem;
-}
 
 /* --- EMPTY STATE PROMPT --- */
 .empty-district-prompt {

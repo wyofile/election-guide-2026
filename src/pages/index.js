@@ -65,10 +65,26 @@ const Home = ({candidates, textContent, ballotPropositionResults}) => {
     <section>
       <a className="link-anchor" id="federal-delegation"></a>
       <h2 className='section-header'>Federal Delegation</h2>
-      <h3 className="race-header">U.S. Senate</h3>
+      
+      <div className="elegant-jump-links">
+        <span className="jump-label">Jump to:</span>
+        <a href="#us-senate">U.S. Senate</a>
+        <a href="#us-house">U.S. House</a>
+      </div>
+
+      <a className="link-anchor" id="us-senate"></a>
+      <h3 className="race-header">
+        U.S. Senate
+        <a href="#federal-delegation" className="back-to-top">↑ Top</a>
+      </h3>
       <Markdown>{textContent.usSenateIntro}</Markdown>
       <RaceCandidates district='us-sen' candidates={candidates.filter((candidate)=>candidate.office === 'us-sen')} />
-      <h3 className="race-header">U.S. House At-Large</h3>
+      
+      <a className="link-anchor" id="us-house"></a>
+      <h3 className="race-header">
+        U.S. House At-Large
+        <a href="#federal-delegation" className="back-to-top">↑ Top</a>
+      </h3>
       <Markdown>{textContent.usHouseIntro}</Markdown>
       <RaceCandidates district='us-house' candidates={candidates.filter((candidate)=>candidate.office === 'us-house')} />
     </section>
@@ -77,31 +93,59 @@ const Home = ({candidates, textContent, ballotPropositionResults}) => {
       <a className="link-anchor" id="statewide"></a>
       <h2 className='section-header'>Statewide Elections</h2>
 
-      <h3 className="race-header">Governor</h3>
+      <div className="elegant-jump-links">
+        <span className="jump-label">Jump to:</span>
+        <a href="#governor">Governor</a>
+        <a href="#sec-of-state">Sec. of State</a>
+        <a href="#superintendent">Superintendent</a>
+        <a href="#treasurer">Treasurer</a>
+        <a href="#auditor">Auditor</a>
+      </div>
+
+      <a className="link-anchor" id="governor"></a>
+      <h3 className="race-header">
+        Governor
+        <a href="#statewide" className="back-to-top">↑ Top</a>
+      </h3>
       <Markdown>{textContent.govIntro}</Markdown>
       <RaceCandidates district='gov' candidates={candidates.filter((candidate)=>candidate.office === 'gov')} />
 
-      <h3 className="race-header">Secretary of State</h3>
+      <a className="link-anchor" id="sec-of-state"></a>
+      <h3 className="race-header">
+        Secretary of State
+        <a href="#statewide" className="back-to-top">↑ Top</a>
+      </h3>
       <Markdown>{textContent.sosIntro}</Markdown>
       <RaceCandidates district='sos' candidates={candidates.filter((candidate)=>candidate.office === 'sos')} />
 
-      <h3 className="race-header">State Superintendent of Public Instruction</h3>
+      <a className="link-anchor" id="superintendent"></a>
+      <h3 className="race-header">
+        State Superintendent of Public Instruction
+        <a href="#statewide" className="back-to-top">↑ Top</a>
+      </h3>
       <Markdown>{textContent.supIntro}</Markdown>
       <RaceCandidates district='sup' candidates={candidates.filter((candidate)=>candidate.office === 'sup')} />
 
-      <h3 className="race-header">State Treasurer</h3>
+      <a className="link-anchor" id="treasurer"></a>
+      <h3 className="race-header">
+        State Treasurer
+        <a href="#statewide" className="back-to-top">↑ Top</a>
+      </h3>
       <Markdown>{textContent.treasIntro}</Markdown>
       <RaceCandidates district='treas' candidates={candidates.filter((candidate)=>candidate.office === 'treas')} />
 
-      <h3 className="race-header">State Auditor</h3>
+      <a className="link-anchor" id="auditor"></a>
+      <h3 className="race-header">
+        State Auditor
+        <a href="#statewide" className="back-to-top">↑ Top</a>
+      </h3>
       <Markdown>{textContent.audIntro}</Markdown>
       <RaceCandidates district='aud' candidates={candidates.filter((candidate)=>candidate.office === 'aud')} />
-
     </section>
 
     <section>
       <a className="link-anchor" id="legislature"></a>
-      <h2 className='section-header-prominent'>Wyoming State Legislature</h2>
+      <h2 className='section-header'>Wyoming State Legislature</h2>
 
       <Markdown>{textContent.wyomingLegislatureIntro}</Markdown>
       
@@ -127,7 +171,7 @@ const Home = ({candidates, textContent, ballotPropositionResults}) => {
 
     <section>
       <a className="link-anchor" id="voter-faq"></a>
-      <h2 className='section-header-prominent'>Common Voting Questions</h2>
+      <h2 className='section-header'>Common Voting Questions</h2>
       {textContent.voterFAQ.map((faq, i) => (
           <div key={`faq-${i}`} className="faq-question">
             <h3 className='faq-header'>{faq.question}</h3>
