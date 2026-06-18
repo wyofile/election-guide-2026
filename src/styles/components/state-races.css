@@ -36,40 +36,10 @@
   padding-bottom: 0.5rem;
 }
 
-.master-ui-dropdown {
-  flex: 1;
-  min-width: 0; /* Crucial: allows the flex child to shrink */
-  border: none;
-  background: transparent;
-  /* Add heavy right padding so text never touches the chevron */
-  padding: 0.5rem 1.75rem 0.5rem 0.5rem; 
-  text-align: center;
-  font-family: 'Roboto', sans-serif;
-  font-size: 1.15rem; /* Scaled down for mobile */
-  font-weight: 800;
-  text-transform: uppercase;
-  color: #0f172a;
-  cursor: pointer;
-  outline: none;
-  appearance: none;
-  
-  /* Graceful truncation on super tiny phones (like iPhone SE) */
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  
-  background: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e") no-repeat right 4px center;
-  background-size: 16px;
-}
+
 
 /* --- FIX FOR THE MASSIVE NATIVE OS DROPDOWN MENU --- */
-.master-ui-dropdown option {
-  font-size: 1rem; /* Shrinks the list text back to normal size */
-  font-weight: 500; /* Removes the heavy boldness */
-  text-transform: none; /* Standard capitalization is easier to read in a long list */
-  color: #0f172a;
-  background-color: #ffffff;
-}
+
 
 .master-arrow-btn {
   background: transparent;

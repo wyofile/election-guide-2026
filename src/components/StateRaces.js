@@ -1,5 +1,6 @@
 import React, { useState, Suspense } from 'react'
 import RaceCandidates from '@/components/RaceCandidates'
+import Select from 'react-select' // NEW: Import react-select
 const DistrictMap = React.lazy(() => import('@/components/DistrictMap'))
 
 const StateRaces = ({ candidates }) => {
@@ -11,16 +12,104 @@ const StateRaces = ({ candidates }) => {
   const [houseOptions, setHouseOptions] = useState([])
   const [senateOptions, setSenateOptions] = useState([])
   
-  // Unified Search State (Persists across chamber toggles)
+  // Unified Search State
   const [address, setAddress] = useState('')
   const [searchStatus, setSearchStatus] = useState('')
   const [targetCoords, setTargetCoords] = useState(null)
 
-  // Derived active properties based on selected chamber
   const currentOptions = chamber === 'house' ? houseOptions : senateOptions
   const activeDistrict = chamber === 'house' ? activeHouseDistrict : activeSenateDistrict
   const setActiveDistrict = chamber === 'house' ? setActiveHouseDistrict : setActiveSenateDistrict
   const labelPrefix = chamber === 'house' ? 'House District ' : 'Senate District '
+
+  // --- REACT-SELECT OPTIONS & STYLES ---
+  // Build the options array required by react-select
+  const selectOptions = [
+    { value: '', label: `Select a ${chamber === 'house' ? 'House' : 'Senate'} District` },
+    ...currentOptions.map(d => ({
+      value: d,
+      label: `${labelPrefix}${parseInt(d.substring(1))}`
+    }))
+  ]
+
+  // Find the current active object to feed to react-select
+  const currentSelectValue = selectOptions.find(opt => opt.value === activeDistrict) || selectOptions[0]
+
+  // Custom styling to make the control look like a header, and the menu look normal
+  const customSelectStyles = {
+    control: (base) => ({
+      ...base,
+      background: 'transparent',
+      border: 'none',
+      boxShadow: 'none',
+      cursor: 'pointer',
+      minHeight: 'auto',
+      flex: 1
+    }),
+    valueContainer: (base) => ({
+      ...base,
+      padding: '0 8px',
+      justifyContent: 'center', // Centers the text
+    }),
+    singleValue: (base) => ({
+      ...base,
+      fontFamily: '"Roboto", sans-serif',
+      fontWeight: 800,
+      textTransform: 'uppercase', // Keeps the header strictly uppercase
+      color: '#0f172a',
+      fontSize: '1.15rem', // Mobile size
+      '@media (min-width: 800px)': { fontSize: '1.5rem' }, // Desktop size
+    }),
+    dropdownIndicator: (base) => ({
+      ...base,
+      color: '#475569',
+      padding: '4px',
+      cursor: 'pointer',
+      '&:hover': { color: '#0f172a' }
+    }),
+    indicatorSeparator: () => ({ display: 'none' }), // Removes the default vertical line
+    menu: (base) => ({
+      ...base,
+      width: '260px', // Constrains the width so it doesn't match the massive header
+      left: '50%',
+      transform: 'translateX(-50%)', // Centers the dropdown box perfectly under the title
+      zIndex: 1000,
+      borderRadius: '8px',
+      overflow: 'hidden',
+      boxShadow: '0 4px 12px rgba(0,0,0,0.15)'
+    }),
+    menuList: (base) => ({
+      ...base,
+      maxHeight: '280px', // Stops the list from hitting the bottom of the screen
+    }),
+    option: (base, state) => ({
+      ...base,
+      fontFamily: '"Roboto", sans-serif',
+      fontSize: '1rem',
+      fontWeight: 500,
+      color: state.isSelected ? '#ffffff' : '#0f172a',
+      backgroundColor: state.isSelected 
+        ? '#d8a032' // Highlights the active selection in goldenrod
+        : state.isFocused 
+          ? '#f1f5f9' 
+          : '#ffffff',
+      cursor: 'pointer',
+      padding: '10px 16px',
+      '&:active': { backgroundColor: '#b07d20' }
+    })
+  }
+
+  // --- ACTIONS ---
+  const handleClearAddress = () => {
+    setAddress('')
+    setSearchStatus('')
+    setTargetCoords(null)
+  }
+
+  const handleManualDistrictChange = (districtToSet) => {
+    setActiveDistrict(districtToSet)
+    handleClearAddress()
+  }
 
   const handleAddressSearch = async (e) => {
     e.preventDefault()
@@ -29,7 +118,6 @@ const StateRaces = ({ candidates }) => {
     
     try {
       let searchQuery = address.trim()
-      // Append Wyoming to help guide the initial search
       if (!/wyoming|wy\b/i.test(searchQuery)) searchQuery += ', Wyoming'
 
       const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(searchQuery)}&limit=1&addressdetails=1`)
@@ -40,13 +128,9 @@ const StateRaces = ({ candidates }) => {
         const stateName = addrDetails?.state || ''
         const displayName = data[0].display_name || ''
         
-        // SECURITY CHECK: Ensure the geocoder actually returned a location in Wyoming
-        if (
-          (addrDetails && !stateName.toLowerCase().includes('wyoming')) || 
-          (!addrDetails && !displayName.toLowerCase().includes('wyoming'))
-        ) {
+        if ((addrDetails && !stateName.toLowerCase().includes('wyoming')) || (!addrDetails && !displayName.toLowerCase().includes('wyoming'))) {
           setSearchStatus('Please enter a valid Wyoming address.')
-          return // Stop processing so we don't drop a pin in another state
+          return 
         }
 
         const lon = parseFloat(data[0].lon)
@@ -80,20 +164,6 @@ const StateRaces = ({ candidates }) => {
     }
   }
 
-  // Master Control Arrows
-  const handleClearAddress = () => {
-    setAddress('')
-    setSearchStatus('')
-    setTargetCoords(null)
-  }
-
-  // NEW: Wrapper that clears the address form when they manually change districts
-  const handleManualDistrictChange = (districtToSet) => {
-    setActiveDistrict(districtToSet)
-    handleClearAddress()
-  }
-
-  // Master Control Arrows (Now using the wrapper)
   const handlePrevDistrict = () => {
     if (!currentOptions.length) return
     let idx = activeDistrict ? currentOptions.indexOf(activeDistrict) : 0
@@ -108,9 +178,7 @@ const StateRaces = ({ candidates }) => {
     handleManualDistrictChange(currentOptions[nextIdx])
   }
 
-  const mapSearchProps = {
-    address, setAddress, handleAddressSearch, handleClearAddress, searchStatus, targetCoords
-  }
+  const mapSearchProps = { address, setAddress, handleAddressSearch, handleClearAddress, searchStatus, targetCoords }
 
   return (
     <div className="legislature-dashboard">
@@ -121,32 +189,25 @@ const StateRaces = ({ candidates }) => {
         <div className="master-district-selector">
           <button className='master-arrow-btn' onClick={handlePrevDistrict}>&larr;</button>
           
-          {/* Dropdown now uses the wrapper */}
-          <select 
-            className="master-ui-dropdown" 
-            onChange={(e) => handleManualDistrictChange(e.target.value)} 
-            value={activeDistrict || ''}
-          >
-            <option value=''>All {chamber === 'house' ? 'House' : 'Senate'} Districts</option>
-            {currentOptions.map(d => <option key={d} value={d}>{labelPrefix + parseInt(d.substring(1))}</option>)}
-          </select>
+          <div style={{ flex: 1, position: 'relative' }}>
+            {/* REACT-SELECT COMPONENT */}
+            <Select 
+              value={currentSelectValue}
+              onChange={(selectedOption) => handleManualDistrictChange(selectedOption.value)}
+              options={selectOptions}
+              styles={customSelectStyles}
+              isSearchable={false} // CRITICAL for mobile: prevents the keyboard from popping up
+              blurInputOnSelect={true}
+              instanceId="district-selector"
+            />
+          </div>
           
           <button className='master-arrow-btn' onClick={handleNextDistrict}>&rarr;</button>
         </div>
 
         <div className="chamber-toggle-pill">
-          <button 
-            className={`pill-btn ${chamber === 'house' ? 'active' : ''}`} 
-            onClick={() => setChamber('house')}
-          >
-            State House
-          </button>
-          <button 
-            className={`pill-btn ${chamber === 'senate' ? 'active' : ''}`} 
-            onClick={() => setChamber('senate')}
-          >
-            State Senate
-          </button>
+          <button className={`pill-btn ${chamber === 'house' ? 'active' : ''}`} onClick={() => setChamber('house')}>State House</button>
+          <button className={`pill-btn ${chamber === 'senate' ? 'active' : ''}`} onClick={() => setChamber('senate')}>State Senate</button>
         </div>
         
       </div>
@@ -157,13 +218,7 @@ const StateRaces = ({ candidates }) => {
         <div className="dashboard-split">
           <div className="map-column">
             <Suspense fallback={<div className="map-skeleton">Loading Map...</div>}>
-              <DistrictMap 
-                chamber='house' 
-                activeDistrict={activeHouseDistrict} 
-                setActiveDistrict={setActiveHouseDistrict} 
-                setDistrictOptions={setHouseOptions}
-                {...mapSearchProps}
-              />
+              <DistrictMap chamber='house' activeDistrict={activeHouseDistrict} setActiveDistrict={setActiveHouseDistrict} setDistrictOptions={setHouseOptions} {...mapSearchProps} />
             </Suspense>
           </div>
           <div className="candidates-column">
@@ -171,10 +226,7 @@ const StateRaces = ({ candidates }) => {
               <RaceCandidates chamber='house' district={activeHouseDistrict} candidates={candidates.filter((candidate) => candidate.office === `H${activeHouseDistrict.substring(1)}`)} />
             ) : (
               <div className="empty-district-prompt">
-                <svg className="empty-state-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                  <circle cx="12" cy="10" r="3"></circle>
-                </svg>
+                <svg className="empty-state-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                 <h4>Find Your Candidates</h4>
                 <p>Select a district from the map, use the dropdown menu, or enter your address to view the candidates running in your area.</p>
               </div>
@@ -188,13 +240,7 @@ const StateRaces = ({ candidates }) => {
         <div className="dashboard-split">
           <div className="map-column">
             <Suspense fallback={<div className="map-skeleton">Loading Map...</div>}>
-              <DistrictMap 
-                chamber='senate' 
-                activeDistrict={activeSenateDistrict} 
-                setActiveDistrict={setActiveSenateDistrict}
-                setDistrictOptions={setSenateOptions} 
-                {...mapSearchProps}
-              />
+              <DistrictMap chamber='senate' activeDistrict={activeSenateDistrict} setActiveDistrict={setActiveSenateDistrict} setDistrictOptions={setSenateOptions} {...mapSearchProps} />
             </Suspense>
           </div>
           <div className="candidates-column">
@@ -202,10 +248,7 @@ const StateRaces = ({ candidates }) => {
               <RaceCandidates chamber='senate' district={activeSenateDistrict} candidates={candidates.filter((candidate) => candidate.office === `S${activeSenateDistrict.substring(1)}`)} />
             ) : (
               <div className="empty-district-prompt">
-                <svg className="empty-state-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                  <circle cx="12" cy="10" r="3"></circle>
-                </svg>
+                <svg className="empty-state-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                 <h4>Find Your Candidates</h4>
                 <p>Select a district from the map, use the dropdown menu, or enter your address to view the candidates running in your area.</p>
               </div>
