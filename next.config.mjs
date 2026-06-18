@@ -3,7 +3,7 @@ const isProd = process.env.NODE_ENV === 'production'
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     output: 'export',
-    distDir: 'build',
+    distDir: 'docs',
     assetPrefix: isProd ? 'https://projects.wyofile.com/election-guide-2026/' : undefined,
     basePath: '/election-guide-2026',
     trailingSlash: true,

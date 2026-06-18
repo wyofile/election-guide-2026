@@ -8,5 +8,9 @@ export const metaData = {
   webSubtitle: 'Wyoming\'s candidates for federal and legislative offices.',
 
   // SEO
-  siteSeoTitle: '2026 WyoFile Election Guide'
+  siteSeoTitle: '2026 WyoFile Election Guide',
+  robots: {
+        index: false,
+        follow: false,
+  },
 }
