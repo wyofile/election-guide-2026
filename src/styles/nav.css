@@ -85,14 +85,14 @@
   display: block;
   text-decoration: none;
   font-weight: 600;
-  color: #000000;
+  color: #FFFFFF;
   font-size: 1rem;
   padding: 1rem 1.25rem;
   border-bottom: 1px solid #f8fafc;
 }
 
 .nav-link:hover {
-  color: #333333;
+  color: #EEEEEE;
   text-decoration: none;
 }
 
@@ -131,7 +131,7 @@
   /* Desktop hover indicator line */
   .nav-link:hover {
     background-color: transparent;
-    color: #333333;
-    border-bottom: 2px solid #333333;
+    color: #EEEEEE;
+    border-bottom: 2px solid #EEEEEE;
   }
 }
