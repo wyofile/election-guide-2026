@@ -76,18 +76,27 @@ const Home = ({candidates, textContent, ballotPropositionResults}) => {
     <section>
       <a className="link-anchor" id="statewide"></a>
       <h2 className='section-header'>Statewide Elections</h2>
+
+      <h3 className="race-header">Governor</h3>
+      <Markdown>{textContent.govIntro}</Markdown>
+      <RaceCandidates district='gov' candidates={candidates.filter((candidate)=>candidate.office === 'gov')} />
+
       <h3 className="race-header">Secretary of State</h3>
       <Markdown>{textContent.sosIntro}</Markdown>
       <RaceCandidates district='sos' candidates={candidates.filter((candidate)=>candidate.office === 'sos')} />
-      <h3 className="race-header">State Auditor</h3>
-      <Markdown>{textContent.audIntro}</Markdown>
-      <RaceCandidates district='aud' candidates={candidates.filter((candidate)=>candidate.office === 'aud')} />
-      <h3 className="race-header">State Treasurer</h3>
-      <Markdown>{textContent.treasIntro}</Markdown>
-      <RaceCandidates district='treas' candidates={candidates.filter((candidate)=>candidate.office === 'treas')} />
+
       <h3 className="race-header">State Superintendent of Public Instruction</h3>
       <Markdown>{textContent.supIntro}</Markdown>
       <RaceCandidates district='sup' candidates={candidates.filter((candidate)=>candidate.office === 'sup')} />
+
+      <h3 className="race-header">State Treasurer</h3>
+      <Markdown>{textContent.treasIntro}</Markdown>
+      <RaceCandidates district='treas' candidates={candidates.filter((candidate)=>candidate.office === 'treas')} />
+
+      <h3 className="race-header">State Auditor</h3>
+      <Markdown>{textContent.audIntro}</Markdown>
+      <RaceCandidates district='aud' candidates={candidates.filter((candidate)=>candidate.office === 'aud')} />
+
     </section>
 
     <section>

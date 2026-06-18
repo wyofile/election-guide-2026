@@ -30,6 +30,8 @@ export const formatRace = office => {
     return "State Treasurer"
   } else if (office === 'sup') {
     return "State Superintendent of Public Instruction"
+  } else if (office === 'gov') {
+    return "Governor"
   }
   
 }
