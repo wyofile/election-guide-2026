@@ -8,8 +8,6 @@ import '@/styles/candidate.css'
 import '@/styles/footer.css'
 import "@/styles/header.css"
 import '@/styles/nav.css'
-
-import '@/styles/components/district-map.css'
 import '@/styles/components/candidate-search.css'
 import '@/styles/components/election-coverage.css'
 import '@/styles/components/race-candidates.css'
