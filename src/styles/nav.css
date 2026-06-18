@@ -2,11 +2,13 @@
 .nav-container {
   background-color: var(--darker-sea-green);
   position: sticky;
-  top: 0;
+  
+  /* --- STICKY STACKING LOGIC --- */
+  top: 52px; /* Docks perfectly under the 52px eyebrow */
+  
   z-index: 100;
   border-bottom: 1px solid #e2e8f0;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 
-              0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
 }
 
 /* Header strip visible ONLY on mobile screens */

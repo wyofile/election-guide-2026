@@ -8,10 +8,7 @@ const PAGE_LINKS = [
   { path: '/#federal-delegation', label: 'Federal Races' },
   { path: '/#statewide', label: 'Statewide Races' },
   { path: '/#legislature', label: 'Legislative Races' },
-  // { path: '/#ballot-proposition', label: 'Ballot Proposition' },
-  // { path: '/#judge-retention', label: 'Judge Retention'},
   { path: '/#voter-faq', label: 'Voting Info' }
-
 ]
 
 const Nav = () => {

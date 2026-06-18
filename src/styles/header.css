@@ -1,16 +1,134 @@
+/* ==========================================
+   Global Eyebrow Styles
+   ========================================== */
+.eyebrow-bar {
+  box-sizing: border-box; /* CRITICAL FIX: Keeps the padding inside the screen bounds */
+  background-color: #070707; 
+  color: #ffffff;
+  padding: 0 1rem;
+  width: 100%;
+  
+  /* --- STICKY STACKING LOGIC --- */
+  height: 52px; 
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 105; 
+}
 
+.eyebrow-interior {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.eyebrow-brand {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* Hide the large serif logo on mobile */
+.brand-desktop {
+  display: none; 
+  font-family: "Roboto Slab", serif;
+  font-size: 1.75rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+/* Show the brand logo variant on mobile with matching font */
+.brand-mobile {
+  display: inline-flex;
+  align-items: baseline; /* CRITICAL FIX: Aligns the bottom baselines of both text sizes perfectly */
+  gap: 6px; /* Slightly increased gap for a clean breathing room layout */
+}
+
+/* The subtle "← Return to" action utility string */
+.brand-mobile-arrow {
+  font-family: "Roboto", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #94a3b8; 
+}
+
+/* The prominent, official branding signature */
+.brand-mobile-text {
+  font-family: "Roboto Slab", serif;
+  font-size: 1.4rem; 
+  font-weight: 400;
+  color: #ffffff; 
+  letter-spacing: 0.01em;
+}
+
+.eyebrow-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.eyebrow-text-link {
+  display: none; 
+  color: #d1d5db;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.eyebrow-text-link:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.eyebrow-btn-donate {
+  background-color: #d8a032; 
+  color: #ffffff;
+  font-weight: 800;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.9rem;
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  text-decoration: none !important;
+  display: inline-flex;
+  align-items: center;
+  transition: opacity 0.2s;
+}
+
+.eyebrow-btn-donate:hover {
+  opacity: 0.85;
+}
+
+/* ==========================================
+   Desktop Layout Breakpoints
+   ========================================== */
+@media screen and (min-width: 875px) {
+  .eyebrow-text-link { display: block; } 
+  
+  /* Swap the brand texts on desktop */
+  .brand-mobile { display: none; }
+  .brand-desktop { display: inline-block; }
+}
+/* ==========================================
+   Main Hero Styles
+   ========================================== */
 .header {
   background-color: var(--dark-sea-green);
   padding: 15px;
   padding-top: 40px;
-  display:block;
+  padding-bottom: 30px;
+  display: block;
   background-image: url('/election-guide-2026/flag.png');
   background-repeat: no-repeat;
   background-size: auto 100%;
-  /* background-attachment: fixed; */
-  /* background-position:left bottom; */
-  position:relative;
-
+  position: relative;
 }
 
 .header a {
@@ -21,60 +139,31 @@
   width: 100%;
   max-width: 1280px;
   margin: auto;
-
-}
-
-.header-center{
-  display: flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  margin: auto;
-  position:relative;
-}
-
-h1 h2 {
-  margin: 0;
-  margin-top: 0px !important;
 }
 
 .site-title {
   color: white;
   font-size: 3rem;
-  margin: 0;
-  margin-top: 0px !important;
+  margin: 0 0 0.25rem 0 !important; /* Small gap to keep it tight to the guide text */
   text-shadow: 0 3px 6px rgba(0,0,0, 0.25);
   font-family: "Roboto Slab", serif;
   font-weight: 400;
+  line-height: 1; 
 }
 
-.button {
-  font-family: "Roboto Slab", serif;
-  font-size: 0.8rem;
-  font-weight: bold;
-  color: white;
-  text-decoration: none;
-  text-shadow: 0 3px 6px rgba(0,0,0, 0.25);
-  padding: 10px 30px;
-  border-radius: 10px;
-  cursor: pointer;
-  margin: 15px;
-  text-align: center;
-  display:inline-block;
-  background-color: #4575b4;
-  box-shadow: 0 3px 6px rgba(0,0,0, 0.3);
-
+.header-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  position: relative;
+  gap: 0.75rem; /* Clean, consistent spacing between elements */
 }
 
-.button:hover {
-  box-shadow: none;
-}
-
-
-
-.header-buttons {
-  color: #FFF;
-  margin-top: 15px;
+h1 h2 {
+  margin: 0;
+  margin-top: 0px !important;
 }
 
 .subtitle {
@@ -86,14 +175,13 @@ h1 h2 {
   padding-left: 20px;
 }
 
-.election-guide-title{
-  text-align:center;
+.election-guide-title {
+  text-align: center;
   margin: 0;
-
 }
 
 .election-guide-title a {
-  text-align:center;
+  text-align: center;
   text-decoration: none;
   color: white;
   font-weight: 800;
@@ -101,54 +189,13 @@ h1 h2 {
   text-shadow: 0 3px 6px rgba(0,0,0, 0.25);
 }
 
-.election-guide-title a:hover {
-  text-decoration: underline;
-}
-
 .update {
   color: #fff;
   text-align: center;
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   font-family: "Roboto", sans-serif;
   font-style: italic;
-}
-
-/* .share-buttons {
-  margin-top: 10px;
-  left: 5px;
-  bottom: 5px;
-  display: flex;
-  flex-direction: row;
-  gap: 4px;
-  justify-content: center;
-  align-items: center;
-  z-index: 11;
-}
-
-.share-buttons * {
-  margin: 0;
-  padding: 0;
-}
-
-.share-label {
-  font-size: 0.65rem;
-  font-style:oblique;
-  color: black;
-  padding: 0;
-  margin: 0;
-  margin-bottom: 2px;
-  align-self: flex-end;
-}
-
-@media screen and (min-width: 575px) {
-  .share-buttons {
-    flex-direction: column;
-    position: fixed;
-  }
-} */
-
-.share-buttons {
-
+  margin-top: 1rem;
 }
 
 .a2a_kit {
@@ -172,16 +219,15 @@ h1 h2 {
     position: fixed;
     bottom: 10px;
     left: 10px;
+    z-index: 50;
   }
   
   .a2a_kit {
     flex-direction: column;
     gap: 3px;
-
   }
 
   .share-label {
     color: black;
   }
 }
-
