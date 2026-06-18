@@ -1,116 +1,133 @@
-.opponents-container {
-  border: 1px solid #666;
-  padding: 1em;
-  margin-bottom: 0.5em;
-  box-shadow: 2px 2px 3px #aaa;
+.modern-opponents-section {
+  box-sizing: border-box;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 0 0.5em 2.5rem 0.5em;
 }
 
-.opponents-title {
-  font-family: "Roboto", sans-serif;
+.opponents-meta-title {
+  font-family: 'Roboto', sans-serif;
   text-align: left;
-  font-weight:bold;
-  margin-top: 0;
-  font-size: 1.2rem;
-  margin-bottom: 0.5em;
-}
-
-.opp-grid {
-  display: grid;
-  grid-template-rows: auto;
-  grid-auto-rows: auto;
-  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-  gap: 10px;
-}
-
-.opp-tile{
-  display:flex;
-  flex-direction:column;
-  justify-content: flex-end;
-}
-
-.bucket-label {
-  margin: 0;
-  text-align:left;
-  font-weight: bold;
-  text-transform:uppercase;
-}
-
-@media screen and (min-width: 517px) {
-  .opp-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-    gap: 8px 10px; /* Increased vertical gap slightly to give the labels breathing room */
-  }
-
-  .opp-tile {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    /* Reserve structural space at the top of EVERY tile for a label */
-    padding-top: 1rem; 
-  }
-
-  .bucket-label {
-    margin: 0;
-    text-align: left;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    letter-spacing: 0.03em;
-    
-    /* Pull the label out of the normal text flow so it doesn't push the candidate tile down */
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-  }
-}
-.opponent-candidate a {
-  background-color: #e5e3e2;
-  height: 40px;
-  display: flex;
-  align-items: stretch;
-  box-shadow: 2px 2px 3px #aaa;
-  color: black;
-}
-
-
-.opponent-candidate a:hover {
-  opacity: 0.8;
-  text-decoration: none;
-  /* border: 2px solid black; */
-  box-shadow: none;
-
-}
-.opp-portrait-col {
-  flex: 0 0 40px;
-}
-.opp-portrait-container {
-  width: 40px;
-  height: 40px;
-  background-color: #666;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-}
-
-.active-opp a {
   font-weight: 800;
-  background-color: var(--wheat)
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748b;
+  margin: 0 0 1.25rem 0;
 }
 
-.opp-info-col {
-  flex: 1 1 120px;
-  padding: 0.5em 0.5em;
-  position: relative;
+.race-text-highlight {
+  color: #0f172a;
+}
 
+.opponents-flex-stack {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.5rem 1rem; /* Tightened the vertical gap considerably */
+}
+
+/* Forces the party headers to span across the entire row so the grid doesn't break */
+.modern-bucket-heading {
+  grid-column: 1 / -1; 
+  margin: 1rem 0 0.25rem 0; 
+  text-align: left;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+/* Removes top margin if the heading is the very first item in the list */
+.modern-bucket-heading:first-child {
+  margin-top: 0;
+}
+
+/* --- OPPONENT INDEX ROWS --- */
+.modern-opp-row {
+  width: 100%;
+}
+
+.modern-opp-row {
+  width: 100%;
+}
+
+.modern-opp-link {
+  box-sizing: border-box;
   display: flex;
   align-items: center;
+  gap: 0.75rem;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-left: 3px solid var(--party-color); /* Thin line for everyone */
+  border-radius: 8px;
+  padding: 0.35rem 0.5rem;
+  height: 46px;
+  text-decoration: none !important;
+  color: #334155;
+  transition: all 0.15s ease-in-out;
 }
 
-.opp-name {
-  font-size: 1em;
-  margin-bottom: 0;
-  width: 100%;
+.modern-opp-link:hover {
+  border-color: #cbd5e1;
+  border-left-color: var(--party-color); /* Prevents hover from overwriting the party color */
+  background-color: #f1f5f9;
+  color: #0f172a;
+}
+
+.modern-opp-avatar-frame {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  flex-shrink: 0;
+}
+
+.modern-opp-name {
+  font-size: 0.95rem;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* --- ACTIVE HIGHLIGHT OVERRIDES --- */
+.active-opp .modern-opp-link {
+  background-color: #ffffff; /* Crisp white instead of gray */
+  border-color: #cbd5e1;
+  border-left: 6px solid var(--party-color); /* Thick, bold line for the active page */
+  color: #0f172a;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.05); /* Subtle pop */
+}
+
+/* Bumps the font weight of the active candidate so they stand out more */
+.active-opp .modern-opp-name {
+  font-weight: 700;
+}
+
+.current-label-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  background-color: #f1f5f9;
+  color: #475569;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: auto;
+  border: 1px solid #e2e8f0;
+}
+
+.inactive-wrapper-zone {
+  margin-top: 2rem;
+  border-top: 1px dashed #e2e8f0;
+  padding-top: 1.5rem;
+}
+
+.inactive-title {
+  margin-bottom: 0.5rem;
 }

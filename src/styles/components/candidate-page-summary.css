@@ -1,57 +1,129 @@
-.candidate-summary {
-  border: 1px solid #666;
-  margin-top: 0.5em;
+.page-header-summary {
+  box-sizing: border-box;
+  margin: 1.5rem 0.5em 1.5rem 0.5em;
+  padding: 0 0 1.5rem 0;
+  border-bottom: 2px solid var(--goldenrod);
+}
+
+.header-summary-grid {
   display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .header-summary-grid {
+    flex-direction: row;
+    align-items: flex-end; /* Aligns the text to the bottom so it sits closer to the links */
+    text-align: left;
+    gap: 2rem;
+  }
+}
+
+/* --- PORTRAIT --- */
+.header-portrait-zone {
+  flex: 0 0 160px;
+}
+
+.header-portrait-frame {
+  width: 160px;
+  height: 160px;
+  border-radius: 16px; /* Soft, modern rounded square */
+  overflow: hidden;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+  border: 4px solid; /* Color applied inline based on Party */
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+/* --- TYPOGRAPHY --- */
+.header-meta-zone {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.header-breadcrumbs {
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748b;
+  margin-bottom: 0.5rem;
+}
+
+.party-accent-text {
+  font-weight: 800;
+}
+
+.breadcrumb-divider {
+  margin: 0 0.5rem;
+  color: #cbd5e1;
+}
+
+.header-name {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 900;
+  font-size: 2.75rem;
+  line-height: 1.1;
+  color: #0f172a;
+  margin: 0 0 1rem 0;
+  letter-spacing: -0.02em;
+
+}
+
+@media screen and (min-width: 768px) {
+  .header-name {
+    font-size: 3.5rem; /* Huge, commanding header for desktop */
+    text-align:left;
+  }
+}
+
+/* --- STATUS PILLS --- */
+.header-status-row {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
-  justify-content: center;
-  align-items: stretch;
-  background-color: #eeeeee;
-  box-shadow: 2px 2px 4px #aaa;
-  color: black;
 }
 
-.summ-portrait-col {
-  flex-grow:1;
+@media screen and (min-width: 768px) {
+  .header-status-row {
+    justify-content: flex-start;
+  }
 }
 
-.summ-portrait-container {
-  max-height: 200px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-}
-
-.summ-info-col {
-  flex-grow: 1000;
-  padding: 0.5em 1em;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.summ-intro-line {
-  margin-top: 0.5em;
-  font-size: 1.1em;
+.header-status-pill {
+  font-size: 0.85rem;
+  font-weight: 700;
   text-transform: uppercase;
-  text-align: center;
+  letter-spacing: 0.03em;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
-.summ-position-line {
-  font-size: 1.3em;
-  text-transform: uppercase;
-  text-align: center;
+.status-label {
+  color: #64748b;
+  font-weight: 600;
+  font-size: 0.75rem;
 }
 
-.summ-name {
-  font-weight: bold;
-  font-size: 3em;
-  text-align: center;
+.header-status-pill.incumbent {
+  background-color: #fef3c7;
+  color: #92400e;
+  border-color: #fde68a;
 }
 
-.incum-line {
-  font-size: 1.3em;
-  text-align: center;
+.header-status-pill.state-status {
+  background-color: #f1f5f9;
+  color: #334155;
+  border-color: #cbd5e1;
 }

@@ -1,25 +1,58 @@
-
-
-.question-header {
-  font-family: "Roboto", sans-serif;
-  text-align:left;
-  margin-top: 0.4em;
-  margin-bottom: 0;
-  background-color: var(--wheat);
-  padding: 0.3em 0.5em;
-  color: black;
-  font-weight:bold;
-}
-
+/* --- QUESTIONNAIRE BLOCK GRID --- */
 .questionnaire-intro {
   font-size: 1.1rem;
+  line-height: 1.6;
+  color: #334155;
+  margin-bottom: 2.5rem;
+  padding: 0 0.5em;
+}
+
+.on-the-issues {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem; /* Generous separation gaps between issues */
+  padding: 0 0.5em;
+}
+
+.question-header {
+  font-family: 'Roboto', sans-serif;
+  text-align: left;
+  font-weight: 800;
+  font-size: 1.2rem;
+  color: #0f172a;
+  margin: 0 0 1rem 0;
+  line-height: 1.4;
+  padding: 0 0 0.5rem 0;
+  border-bottom: 2px solid #e2e8f0; /* Simple elegant accent boundary */
 }
 
 .answer {
-  border-left: 5px solid var(--wheat);
   margin: 0;
-  padding: 10px;
-  margin-bottom: 20px;
+  padding: 0 0 0 1rem; /* Indents text block beautifully */
+  border-left: 3px solid #cbd5e1; /* Replaces chunky background with a clean tracking rail */
 }
 
+.answer p {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: #334155;
+  margin: 0 0 1rem 0;
+}
 
+.answer p:last-child {
+  margin-bottom: 0;
+}
+
+/* Base link cleanup utility styles */
+.return-to {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 1.5rem;
+  font-weight: 600;
+  color: var(--link);
+  text-decoration: none !important;
+}
+
+.return-to:hover {
+  text-decoration: underline !important;
+}

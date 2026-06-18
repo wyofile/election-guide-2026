@@ -2,16 +2,35 @@ import Link from 'next/link'
 import { usePath } from '@/lib/utils'
 
 const CandidateLinks = ({ wyoleg, website, email }) => {
-
-  return(
-    <ul className='candidate-links'>
-      <li className='candidate-link'><Link href="#questionnaire">On The Issues</Link></li>
-      <li className='candidate-link'><Link href="#coverage">WyoFile Coverage</Link></li>
-      {/* <li className='candidate-link'><Link href="#results">Election Results</Link></li> */}
-      { wyoleg && <li className='candidate-link'><Link href={ wyoleg } target="_blank">WyoLeg Profile <img src={ usePath('/external.svg') }></img></Link></li> }
-      { website && <li className='candidate-link'><Link href={ website } target="_blank">Candidate Website <img src={ usePath('/external.svg') }></img></Link></li> }
-      { email && <li className='candidate-link'><Link href={ `mailto:${email}` } target="_blank">Campaign Contact</Link> 📧</li> }
-    </ul>
+  return (
+    <div className="modern-links-bar">
+      <ul className="modern-links-list">
+        <li><Link href="#questionnaire" className="modern-btn-link anchor-link">On The Issues</Link></li>
+        <li><Link href="#coverage" className="modern-btn-link anchor-link">WyoFile Coverage</Link></li>
+        
+        {wyoleg && (
+          <li>
+            <Link href={wyoleg} target="_blank" className="modern-btn-link external-link">
+              WyoLeg Profile <span className="link-icon">&#8599;</span>
+            </Link>
+          </li>
+        )}
+        {website && (
+          <li>
+            <Link href={website} target="_blank" className="modern-btn-link external-link">
+              Candidate Website <span className="link-icon">&#8599;</span>
+            </Link>
+          </li>
+        )}
+        {email && (
+          <li>
+            <Link href={`mailto:${email}`} target="_blank" className="modern-btn-link contact-link">
+              Campaign Contact <span className="link-icon">✉</span>
+            </Link>
+          </li>
+        )}
+      </ul>
+    </div>
   )
 }
 

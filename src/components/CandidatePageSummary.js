@@ -1,40 +1,57 @@
-import Image from "next/image";
-import { css } from "@emotion/react";
-
+import Image from "next/image"
 import { PARTIES, STATUS } from '../lib/styles'
 import { formatRace, getPortraitPath } from '../lib/utils'
 
-const CandidatePageSummary = ({candidate}) => {
-
-  const {party, slug, ballotName, office, isIncumbent, hasPhoto, status} = candidate
+const CandidatePageSummary = ({ candidate }) => {
+  const { party, slug, ballotName, office, isIncumbent, hasPhoto, status } = candidate
   const partyInfo = PARTIES.find(p => p.key === party)
   const statusInfo = STATUS.find(s => s.key === status)
-
   const portraitPath = getPortraitPath(hasPhoto, party, slug)
 
-  return <div className="candidate-summary" style={{ borderTop: `5px solid ${partyInfo.color}` }}>
+  return (
+    <header className="page-header-summary">
+      <div className="header-summary-grid">
+        
+        {/* Native Page Portrait */}
+        <div className="header-portrait-zone">
+          <div 
+            className="header-portrait-frame" 
+            style={{ 
+              background: `linear-gradient(5deg, #eeeeee 0%, #e5e3e2 6%, ${partyInfo.color} 92%)`,
+              borderColor: partyInfo.color 
+            }}
+          >
+            <Image
+              alt={ballotName}
+              src={portraitPath}
+              width={180}
+              height={180}
+              priority
+              style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
+            />
+          </div>
+        </div>
 
-      <div className="summ-portrait-col">
-          <div className="summ-portrait-container" style={{background: `linear-gradient(5deg, #eeeeee 0%, #e5e3e2 6%, ${partyInfo.color} 92%)`}}>
-              <Image
-                  alt={`${ballotName}`}
-                  src={portraitPath}
-                  width={200}
-                  height={200}
-              />
+        {/* Editorial Typography Zone */}
+        <div className="header-meta-zone">
+          <div className="header-breadcrumbs">
+            Wyoming <span className="party-accent-text" style={{ color: partyInfo.color }}>{partyInfo.adjective}</span> Candidate 
+            <span className="breadcrumb-divider">/</span> <strong>{formatRace(office)}</strong>
           </div>
-      </div>
-      <div className="summ-info-col">
-          <div className="summ-info-container">
-              <div className="summ-intro-line">
-                  <div>Wyoming <strong style={{ color: partyInfo.color }}>{partyInfo.adjective}</strong> candidate</div>
-                  <div> for <strong>{formatRace(office)}</strong></div>
-              </div>
-              <h1 className="summ-name">{ballotName}</h1>
-              <div className="incum-line"><em>{isIncumbent ? "Incumbent • " : ""}</em>{ statusInfo.label }</div>
+          
+          <h1 className="header-name">{ballotName}</h1>
+          
+          <div className="header-status-row">
+            {isIncumbent && <span className="header-status-pill incumbent">Incumbent</span>}
+            <span className="header-status-pill state-status">
+              <span className="status-label">Candidate Status:</span> {statusInfo.label}
+            </span>
           </div>
+        </div>
+
       </div>
-  </div>
+    </header>
+  )
 }
 
 export default CandidatePageSummary
