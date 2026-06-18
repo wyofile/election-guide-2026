@@ -3,7 +3,9 @@ import { Collection, Map, View } from 'ol'
 import GeoJSON from 'ol/format/GeoJSON.js'
 import { Tile as TileLayer, Vector as VectorLayer } from 'ol/layer.js'
 import { OSM, Vector as VectorSource } from 'ol/source.js'
-import { Fill, Stroke, Style, Text } from 'ol/style.js'
+import { Fill, Stroke, Style, Text, Circle as CircleStyle } from 'ol/style.js'
+import Feature from 'ol/Feature.js'
+import Point from 'ol/geom/Point.js'
 
 import Select from 'ol/interaction/Select.js'
 import { click, noModifierKeys } from 'ol/events/condition.js'
@@ -13,11 +15,7 @@ import { usePath } from '@/lib/utils'
 
 const MAP_CENTER = [-11971873.22771757, 5311971.846945472]
 const CONSTRAINTS = [-12417689.197989667, 4975536.361069247, -11527133.271643478, 5660965.110251664]
-const WYOMING_EXTENT = transformExtent(
-  [-111.056888, 40.994746, -104.05216, 45.005904], 
-  'EPSG:4326', 
-  'EPSG:3857'
-)
+const WYOMING_EXTENT = transformExtent([-111.056888, 40.994746, -104.05216, 45.005904], 'EPSG:4326', 'EPSG:3857')
 
 class ResetControl extends Control {
   constructor(opt_options) {
@@ -31,34 +29,34 @@ class ResetControl extends Control {
     button.addEventListener('click', this.handleReset.bind(this), false)
   }
   handleReset() {
-    // FIX 3: Force the map to fit the exact Wyoming bounding box coordinates
     this.getMap().getView().fit(CONSTRAINTS, { padding: [10, 10, 10, 10], duration: 500 })
   }
 }
 
-const DistrictMap = ({ chamber, activeDistrict, setActiveDistrict, targetCoords }) => {
+const DistrictMap = ({ 
+  chamber, activeDistrict, setActiveDistrict, setDistrictOptions, 
+  address, setAddress, handleAddressSearch, handleClearAddress, searchStatus, targetCoords 
+}) => {
+  
   let districtNumberIdentifier = chamber === 'house' ? 'SLDLST' : 'SLDUST'
   let districtPrefix = chamber === 'house' ? 'HD ' : 'SD '
-  let labelPrefix = chamber === 'house' ? 'House District ' : 'Senate District '
 
   const selectedFeatures = useRef(new Collection())
+  const markerFeature = useRef(new Feature())
   const districtsVectorSource = useRef(new VectorSource({ format: new GeoJSON(), url: usePath(`/wyo-${chamber}-districts.json`) }))
-
-  const [districtOptions, setDistrictOptions] = useState([])
-  const [isLoadingFeatures, setIsLoadingFeatures] = useState(true)
-
   const mapView = useRef(new View({ center: MAP_CENTER, extent: CONSTRAINTS, zoom: 0 }))
+  const [isLoadingFeatures, setIsLoadingFeatures] = useState(true)
 
   useEffect(() => {   
     districtsVectorSource.current.on('featuresloadend', (e) => {
-      setDistrictOptions(e.features.map(feat => feat.getProperties()[districtNumberIdentifier]).sort())
+      const options = e.features.map(feat => feat.getProperties()[districtNumberIdentifier]).sort()
+      setDistrictOptions(options)
       setIsLoadingFeatures(false)
     })
   
-    // High-End Map Styling (Crisp lines, translucent fills)
     const districtsLayer = new VectorLayer({
       source: districtsVectorSource.current,
-      declutter: true, // <--- 1. Turn on the automatic decluttering engine
+      declutter: true,
       style: (feature) => new Style({
         stroke: new Stroke({ color: '#517e64', width: 1 }), 
         fill: new Fill({ color: 'rgba(81, 126, 100, 0.05)' }),
@@ -67,26 +65,36 @@ const DistrictMap = ({ chamber, activeDistrict, setActiveDistrict, targetCoords 
           fill: new Fill({color: '#1e293b'}),
           stroke: new Stroke({color: '#ffffff', width: 3.5}), 
           font: '700 0.8rem "Roboto", sans-serif',
-          // <--- 2. REMOVE the "overflow: true" line from here
         }),
       }),
     })
   
-    // High-Contrast Active State
     const selectStyle = (feature) => new Style({
       fill: new Fill({ color: 'rgba(210, 154, 48, 0.2)' }), 
       stroke: new Stroke({ color: '#d29a30', width: 2.5 }),
       text: new Text({
         text: districtPrefix + parseInt(feature.get(districtNumberIdentifier)),
         fill: new Fill({color: '#ffffff'}),
-        // FIX 1: Golden halo for the active text to keep it highly visible
         stroke: new Stroke({color: '#b07d20', width: 4}), 
         font: '900 0.9rem "Roboto", sans-serif',
-        overflow:true
+        overflow: true
       }),
       zIndex: 100
     })
     
+    // User Location Marker Layer
+    const markerLayer = new VectorLayer({
+      source: new VectorSource({ features: [markerFeature.current] }),
+      zIndex: 200,
+      style: new Style({
+        image: new CircleStyle({
+          radius: 8,
+          fill: new Fill({ color: '#e11d48' }), // Bold red marker
+          stroke: new Stroke({ color: '#ffffff', width: 2 })
+        })
+      })
+    })
+
     const osmLayer = new TileLayer({ source: new OSM(), extent: WYOMING_EXTENT })
     const selectDistrict = new Select({
       condition: (ev) => click(ev) && noModifierKeys(ev),
@@ -97,23 +105,51 @@ const DistrictMap = ({ chamber, activeDistrict, setActiveDistrict, targetCoords 
     const map = new Map({
       target: `${chamber}-map`,
       controls: defaultControls().extend([new ResetControl()]),
-      layers: [osmLayer, districtsLayer],
+      layers: [osmLayer, districtsLayer, markerLayer],
       view: mapView.current
     })
 
     map.addInteraction(selectDistrict)
 
     selectDistrict.on('select', (e) => {
-      if(e.selected[0]) setActiveDistrict(e.selected[0].get(districtNumberIdentifier))
-      else setActiveDistrict('')
+      // 1. Set the active district based on the clicked map feature
+      if(e.selected[0]) {
+        setActiveDistrict(e.selected[0].get(districtNumberIdentifier))
+      } else {
+        setActiveDistrict('')
+      }
+      
+      // 2. Clear the address search form because the user clicked manually
+      if (handleClearAddress) {
+        handleClearAddress()
+      }
     })
 
     return () => map.setTarget(null)
-  }, [chamber])
+  }, [chamber, setDistrictOptions])
 
-  // Address lookup resolver
+  // Single Source of Truth Map Pan: Responds to parent changes
+  useEffect(() => {
+    if (!isLoadingFeatures) {
+      selectedFeatures.current.clear()
+      if (activeDistrict !== '') {
+        const mapFeature = districtsVectorSource.current.getFeatures().find(feat => feat.getProperties()[districtNumberIdentifier] === activeDistrict)
+        if (mapFeature) {
+          selectedFeatures.current.push(mapFeature)
+          mapView.current.fit(mapFeature.getGeometry(), {padding: [40,40,30,30], duration: 500})
+        }
+      } else {
+        mapView.current.setCenter(MAP_CENTER)
+        mapView.current.setZoom(0)
+      }
+    }
+  }, [activeDistrict, isLoadingFeatures])
+
+  // Target Location Resolver & Marker Placement
   useEffect(() => {
     if (targetCoords && districtsVectorSource.current) {
+      markerFeature.current.setGeometry(new Point(fromLonLat(targetCoords)))
+      
       const selectMatchingDistrict = () => {
         const features = districtsVectorSource.current.getFeatures()
         if (features.length === 0) return
@@ -122,60 +158,52 @@ const DistrictMap = ({ chamber, activeDistrict, setActiveDistrict, targetCoords 
 
         if (match) {
           const districtToSet = match.get(districtNumberIdentifier)
-          selectedFeatures.current.clear()
-          mapView.current.fit(match.getGeometry(), {padding: [40,40,30,30], duration: 800})
-          selectedFeatures.current.push(match)
           setActiveDistrict(districtToSet)
         }
       }
       if (!isLoadingFeatures) selectMatchingDistrict()
       else districtsVectorSource.current.once('featuresloadend', selectMatchingDistrict)
-    }
-  }, [targetCoords, isLoadingFeatures, setActiveDistrict, districtNumberIdentifier])
-
-
-  const handleManualDistrict = (districtToSet) => {
-    selectedFeatures.current.clear()
-    if (districtToSet !== '') {
-      const mapFeature = districtsVectorSource.current.getFeatures().find(feat => feat.getProperties()[districtNumberIdentifier] === districtToSet)
-      if (mapFeature) {
-        mapView.current.fit(mapFeature.getGeometry(), {padding: [40,40,30,30], duration: 500})
-        selectedFeatures.current.push(mapFeature)
-      }
     } else {
-      mapView.current.setCenter(MAP_CENTER)
-      mapView.current.setZoom(0)
+      markerFeature.current.setGeometry(null)
     }
-    setActiveDistrict(districtToSet)
-  }
-
-  const handlePrevDistrict = () => {
-    if (districtOptions.length === 0) return
-    let idx = activeDistrict ? districtOptions.indexOf(activeDistrict) : 0
-    let prevIdx = (idx - 1 + districtOptions.length) % districtOptions.length
-    handleManualDistrict(districtOptions[prevIdx])
-  }
-
-  const handleNextDistrict = () => {
-    if (districtOptions.length === 0) return
-    let idx = activeDistrict ? districtOptions.indexOf(activeDistrict) : -1
-    let nextIdx = (idx + 1) % districtOptions.length
-    handleManualDistrict(districtOptions[nextIdx])
-  }
+  }, [targetCoords, isLoadingFeatures, setActiveDistrict])
 
   return (
     <div className="map-ui-card">
-      {/* Toolbar integrated directly into the map card */}
-      <div className="map-ui-header">
-        <button className='map-arrow-btn' onClick={handlePrevDistrict}>&larr;</button>
-        <select className="map-ui-dropdown" onChange={(e) => handleManualDistrict(e.target.value)} value={activeDistrict || ''}>
-          <option value=''>Choose {chamber === 'house' ? 'House' : 'Senate'} District</option>
-          {districtOptions.map(d => <option key={d} value={d}>{labelPrefix + parseInt(d.substring(1))}</option>)}
-        </select>
-        <button className='map-arrow-btn' onClick={handleNextDistrict}>&rarr;</button>
+      
+      {/* 1. Dedicated Header for the Search Box */}
+      <div className="map-search-header">
+        <form onSubmit={handleAddressSearch} className="address-form-inline">
+          <div className="input-wrapper">
+            <input 
+              type="text" 
+              placeholder="Enter your address..." 
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              className="dashboard-search-input"
+            />
+            {address && (
+              <button type="button" className="clear-address-btn" onClick={handleClearAddress}>
+                &times;
+              </button>
+            )}
+          </div>
+          <button type="submit" className="dashboard-search-btn">Search</button>
+        </form>
       </div>
 
-      <div id={`${chamber}-map`} className="map-ui-canvas" />
+      <div className="map-ui-canvas-wrapper">
+        {/* Permanent Bottom-Right Notification */}
+        {searchStatus && (
+          <div className="map-overlay-status">
+            {searchStatus}
+          </div>
+        )}
+
+        {/* 2. The Map Canvas */}
+        <div id={`${chamber}-map`} className="map-ui-canvas" />
+      </div>
+
       <div className="map-ui-footer">Note: Zoom in manually to view smaller districts clearly.</div>
     </div>
   )
