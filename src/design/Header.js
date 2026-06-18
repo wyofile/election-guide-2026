@@ -14,7 +14,7 @@ const Header = () => {
       {/* Global Eyebrow Bar (Sits at the absolute top of the page) */}
       <div className="eyebrow-bar">
         <div className="eyebrow-interior">
-          <Link href="https://wyofile.com" className="eyebrow-brand" target="_blank">
+          <Link href="https://wyofile.com" className="eyebrow-brand">
             <span className="brand-desktop">WyoFile</span>
             <span className="brand-mobile">
               <span className="brand-mobile-arrow">← Return to </span>
@@ -22,7 +22,7 @@ const Header = () => {
             </span>
           </Link>
           <div className="eyebrow-actions">
-            <Link href="https://wyofile.com" className="eyebrow-text-link" target="_blank">Return to Main Site ↗</Link>
+            <Link href="https://wyofile.com" className="eyebrow-text-link">Return to Main Site ↗</Link>
             <Link href={DONATE_LINK} target="_blank" className="eyebrow-btn-donate">
               Donate 💖
             </Link>
