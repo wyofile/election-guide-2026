@@ -4,7 +4,7 @@ import { formatDateTime } from '../lib/utils'
 import { metaData } from '../config'
 import Script from 'next/script'
 
-const DONATE_LINK = 'https://wyofile.fundjournalism.org/donate/?campaign=701Pl00000HAVgjIAH'
+const DONATE_LINK = 'https://wyofile.fundjournalism.org/donate/?campaign=701Pl00001eHzE2IAK'
 
 const Header = () => {
   const { webSubtitle } = metaData
@@ -24,7 +24,7 @@ const Header = () => {
           <div className="eyebrow-actions">
             <Link href="https://wyofile.com" className="eyebrow-text-link">Return to Main Site ↗</Link>
             <Link href={DONATE_LINK} target="_blank" className="eyebrow-btn-donate">
-              Donate 💖
+              Support this work 💖
             </Link>
           </div>
         </div>
