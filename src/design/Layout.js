@@ -48,7 +48,7 @@ const Layout = ({
         <meta content="width=device-width, initial-scale=1" name="viewport" />
       </Head>
 
-      <Script async src="https://www.googletagmanager.com/gtag/js?id=G-306KYTFJD8"></Script>
+      {/* <Script async src="https://www.googletagmanager.com/gtag/js?id=G-306KYTFJD8"></Script>
       <Script id="ga">
         {`
         window.dataLayer = window.dataLayer || [];
@@ -57,7 +57,7 @@ const Layout = ({
 
         gtag('config', 'G-306KYTFJD8');
       `}
-      </Script>
+      </Script> */}
 
       <Header />
       <Nav />
