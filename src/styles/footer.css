@@ -1,75 +1,145 @@
-footer {
-  background-color: #070707;
-  padding: 30px;
-  padding-top: 10px;
-  display:block;
+/* ==========================================================================
+   WyoFile Custom Footer Styles (Desktop & Mobile Responsive)
+   ========================================================================== */
+
+.site-footer {
+  background-color: #000000;
+  color: #ffffff;
+  font-family: 'Roboto Slab', 'Georgia', serif;
+  padding: 20px 20px; /* Significantly reduced vertical padding */
 }
 
-.footer-interior {
-  margin: auto;
+.site-footer .wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
   width: 100%;
-  max-width: 1100px;
 }
 
-.footer-menu {
-  list-style-type: none;
+/* Upper Navigation Widget Area */
+.site-footer .widget_nav_menu {
+  border-bottom: 1px solid #333333; /* Horizontal divider */
+  padding-bottom: 15px; /* Reduced spacing */
+  margin-bottom: 15px; /* Reduced spacing */
+}
+
+.site-footer ul.menu {
+  list-style: none;
   padding: 0;
   margin: 0;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start; /* Centers the links like in the image */
+  gap: 10px 25px;
 }
 
-.footer-menu-item {
-  display: inline-block;
-  margin-right: 15px;
-  text-align: center;
-}
-
-.footer-menu a {
+.site-footer ul.menu li a {
+  color: #ffffff;
   text-decoration: none;
-  color: #fff;
-  font-size: 1rem;
-  font-family: 'Roboto Slab', 'serif';
+  font-size: 15px;
+  font-weight: 400;
+  font-family: 'Roboto Slab', 'Georgia', serif !important;
+  transition: color 0.2s ease;
 }
 
-.footer-menu a:hover {
+.site-footer ul.menu li a:hover {
+  color: #c8c8c8;
   text-decoration: underline;
 }
 
-.footer-bottom {
-  margin-top: 30px;
+/* Lower Info & Social Links Area */
+.site-info-contain {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex-direction: row;
+  justify-content: space-between; /* Pushes copyright left, icons right */
+  align-items: center;
+  font-size: 14px;
+  color: #ffffff;
 }
 
-.footer-bottom-left {
-  color:#fff;
-  padding-right: 15px;
-}
-
-.copywright {
-  margin-right: 15px;
-}
-
-.social-links-menu {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.social-menu-item {
+.site-info-contain .copyright {
   display: inline-block;
-  margin-right: 2px;
 }
 
-.svg-icon {
-  color: #fff;
-  fill: #fff;
-  width: 24px;
-  height: 24px;
+/* Social Media Block */
+.social-navigation ul.social-links-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
-.svg-icon:hover {
-  fill: #c8c8c8
+.social-navigation .svg-icon {
+  fill: #ffffff;
+  color: #ffffff;
+  width: 20px; /* Slightly smaller icons to match the compact look */
+  height: 20px;
+  display: block;
+  transition: fill 0.2s ease;
+}
+
+.social-navigation .svg-icon:hover {
+  fill: #c8c8c8;
+}
+
+/* Screen reader absolute utility hidden text */
+.screen-reader-text {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+}
+
+/* Mobile Responsive Rules */
+@media (max-width: 650px) {
+  .site-footer {
+    padding: 25px 20px;
+  }
+
+  .site-footer .widget_nav_menu {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+
+  .site-footer ul.menu {
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+
+  .site-footer ul.menu li a {
+    font-size: 16px;
+    display: block;
+  }
+
+  .site-info-contain {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .site-info-contain .copyright {
+    display: block;
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .social-navigation {
+    width: 100%;
+    margin-top: 5px;
+  }
+
+  .social-navigation ul.social-links-menu {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
 }
