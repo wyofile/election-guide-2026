@@ -109,7 +109,6 @@ export default function CandidatePage({candidate, questions, questionnaireIntro,
     <section>
       <h2 className='section-header-prominent'>About this Project</h2>
       <Markdown>{aboutProject}</Markdown>
-      <Link className='return-to' href='https://www.wyofile.com'>Return to WyoFile.com »</Link>
     </section>
 
     </Layout>
