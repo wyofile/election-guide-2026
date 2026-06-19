@@ -5,7 +5,7 @@ import Nav from './Nav'
 import Footer from './Footer'
 
 import { metaData } from "@/config";
-import Script from 'next/script';
+
 
 
 const Layout = ({

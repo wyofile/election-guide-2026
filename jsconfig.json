@@ -6,5 +6,5 @@
     "module": "CommonJS",
     "target": "ES6"
   },
-  "exclude": ["node_modules", "build", ".next", "inputs", "public"]
+  "exclude": ["node_modules", "build", ".next", "inputs", "public", "docs"]
 }
