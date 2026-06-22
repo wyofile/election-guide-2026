@@ -1,4 +1,3 @@
-"use client";
 import React, { useState } from 'react';
 import dynamic from 'next/dynamic';
 import countyLinks from '@/data/county-clerks-links.json';
