@@ -9,7 +9,7 @@ import RaceCandidates from '@/components/RaceCandidates'
 import ElectionStories from '@/components/ElectionStories';
 import JudgeList from '@/components/JudgeList'
 import RaceResults from '@/components/RaceResults'
-import CountyClerkDropdown from '@/components/CountyClerkDropdown';
+import CountyClerkLocator from '@/components/CountyClerkLocator';
 
 import textData from '@/data/static-text.json'
 import candidateData from '@/data/candidate-data.json'
@@ -174,19 +174,17 @@ const Home = ({candidates, textContent, ballotPropositionResults}) => {
       <a className="link-anchor" id="voter-faq"></a>
       <h2 className='section-header'>Common Voting Questions</h2>
       {textContent.voterFAQ.map((faq, i) => {
-        const isLocalElectionFaq = faq.question.includes("LOCAL AND MUNICIPAL");
-
         return (
           <div key={`faq-${i}`} className="faq-question">
             <h3 className='faq-header'>{faq.question}</h3>
             <MarkdownExternalLinks>{faq.answer}</MarkdownExternalLinks>
-            
-            {/* Clean conditional rendering using the new sub-component */}
-            {isLocalElectionFaq && <CountyClerkDropdown />}
           </div>
         );
       })}
     </section>
+
+    <a className="link-anchor" id="clerk-locator"></a>
+    <CountyClerkLocator/>
 
     <section>
       <h2 className='section-header-prominent'>About this Project</h2>

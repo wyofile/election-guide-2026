@@ -19,6 +19,7 @@ import '@/styles/components/election-coverage.css'
 import '@/styles/components/race-results.css'
 import '@/styles/components/judge-list.css'
 import '@/styles/components/candidate-stories.css'
+import '@/styles/components/county-locator.css'
 
 export default function App({ Component, pageProps }) {
     return <Component {...pageProps} />;

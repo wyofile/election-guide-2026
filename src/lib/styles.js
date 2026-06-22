@@ -1,4 +1,5 @@
 import Markdown from "react-markdown"
+import Link from "next/link"
 
 export const PARTIES = [
   { key: 'REP', noun: 'Republican', adjective: 'Republican', color: '#d73027', gradient: 'linear-gradient(to top, #fefefe 0%,#fcfefe 6%, #d73027 98%)'},
@@ -16,13 +17,51 @@ export const STATUS = [
   { key: 'dropout', label: '❌ Withdrawn'}
 ]
 
-export const MarkdownExternalLinks = ({children}) => {
+export const MarkdownExternalLinks = ({ children }) => {
   return (
-    <Markdown components={{ a(props){
-      const {node, ...rest} = props
-      return <a {...rest} target="blank">{node.children[0].value} <img src='/election-guide-2026/external.svg' style={{fill: 'var(--link)'}}/></a>
-    }}}>
+    <Markdown 
+      components={{ 
+        a(props) {
+          // Destructure href and children out of props
+          const { node, href, children: linkContent, ...rest } = props;
+          
+          // Determine if the link is external
+          const isExternal = href && (href.startsWith('http') || href.startsWith('mailto:'));
+
+          if (isExternal) {
+            return (
+              <a 
+                href={href} 
+                target="_blank" 
+                rel="noopener noreferrer" // Security best practice for _blank links
+                {...rest}
+              >
+                {linkContent}
+                <img 
+                  src='/election-guide-2026/external.svg' 
+                  alt=""
+                  style={{ 
+                    fill: 'var(--link)', 
+                    display: 'inline-block', 
+                    marginLeft: '4px', 
+                    width: '0.85em' // Scales with the surrounding text size
+                  }} 
+                />
+              </a>
+            );
+          }
+
+          // If it's an internal link (e.g., "/candidates/john-doe" or "#voter-faq"),
+          // use the Next.js Link component for lightning-fast SPA routing.
+          return (
+            <Link href={href || '#'} {...rest}>
+              {linkContent} ↓
+            </Link>
+          );
+        }
+      }}
+    >
       {children}
     </Markdown>
-  )
+  );
 }

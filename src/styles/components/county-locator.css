@@ -1,0 +1,104 @@
+/* --- THE LOCATOR BOX WRAPPER --- */
+.clerk-locator-box {
+  box-sizing: border-box;
+  background-color: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 1.5rem 1rem;
+  margin: 5rem auto 5rem auto;
+  width: 100%; 
+  max-width: 800px; 
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  text-align: center; 
+}
+
+.clerk-locator-title {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 1.25rem;
+  color: #0f172a;
+  margin: 0 0 0.5rem 0;
+}
+
+.clerk-locator-note {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #475569;
+  margin: 0 auto 1.5rem auto;
+  max-width: 600px;
+}
+
+/* --- UNIFIED DROPDOWN & BUTTON CONTAINER --- */
+.clerk-field-wrapper {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 400px; /* Kept tight so the dropdown doesn't stretch too wide */
+  margin: 0 auto; 
+}
+
+.clerk-input-container {
+  box-sizing: border-box;
+  display: flex;
+  align-items: stretch;
+  background-color: #ffffff;
+  border: 1px solid #94a3b8;
+  border-radius: 8px;
+  width: 100%; 
+  /* REMOVED: overflow: hidden; (This was trapping the dropdown menu!) */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Ensure the react-select container fills the remaining space */
+.clerk-react-select-container {
+  flex: 1;
+  min-width: 0;
+}
+
+/* --- THE SUBMIT BUTTON --- */
+
+.clerk-submit-btn {
+  border: none;
+  border-left: 1px solid #cbd5e1;
+  padding: 0 1.25rem;
+  font-weight: 600;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  
+  /* ADDED: Apply the border-radius directly to the button so it still fits the wrapper */
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
+}
+
+.clerk-submit-btn:disabled {
+  background-color: #e2e8f0;
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+
+.clerk-submit-btn:disabled svg path {
+  fill: #94a3b8;
+}
+
+.clerk-submit-btn:not(:disabled) {
+  background-color: var(--dark-sea-green, #89a6a0);
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.clerk-submit-btn:not(:disabled) svg path {
+  fill: #ffffff;
+}
+
+.clerk-submit-btn:not(:disabled):hover {
+  background-color: var(--darker-sea-green, #77958f);
+}
+
+.clerk-external-arrow {
+  font-size: 1.1em;
+  line-height: 1;
+}

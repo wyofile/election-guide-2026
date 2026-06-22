@@ -23,11 +23,11 @@
     },
     {
       "question": "HOW DO I REGISTER TO VOTE?",
-      "answer": "You can register to vote at your polling place on election day. You must bring [documents to prove](https://sos.wyo.gov/Forms/Elections/General/VoterRegistrationForm.pdf) you're eligible to register and vote in Wyoming.\n\nYou can also register in person at your [county clerk's office](https://sos.wyo.gov/Elections/Docs/WYCountyClerks.pdf).\n\nRegistering by mail is also an option. For more information, check out the [voter registration application](https://sos.wyo.gov/Forms/Elections/General/VoterRegistrationForm.pdf)."
+      "answer": "You can register to vote at your polling place on election day. You must bring [documents to prove](https://sos.wyo.gov/Forms/Elections/General/VoterRegistrationForm.pdf) you're eligible to register and vote in Wyoming.\n\nYou can also register in person at your [county clerk's office](#clerk-locator).\n\nRegistering by mail is also an option. For more information, check out the [voter registration application](https://sos.wyo.gov/Forms/Elections/General/VoterRegistrationForm.pdf)."
     },
     {
-      "question": "HOW DO I FIND INFORMATION ABOUT LOCAL AND MUNICIPAL ELECTIONS?",
-      "answer": "To find information regarding your local elections, you can select your specific county from the dropdown menu below. Visiting your county clerk's official election website will allow you to view the candidates running for local county and municipal offices in your area."
+      "question": "HOW DO I FIND INFORMATION ABOUT COUNTY, MUNICIPAL, OR OTHER LOCAL ELECTIONS?",
+      "answer": "Use the dropdown below to access official candidate rosters and voting details directly from your [county clerk's website](#clerk-locator)."
     },
     {
       "question": "DOES WYOMING HAVE VOTER ID REQUIREMENTS?",
@@ -39,7 +39,7 @@
     },
     {
       "question": "CAN I VOTE BY MAIL?",
-      "answer": "Yes, the mail-in and in-person absentee voting period for most voters is 28 days before the primary and general elections. However, Wyomingites covered by the Uniformed and Overseas Citizens Absentee Voting Act can vote by mail as early as 45 days before the election.\n\nYou can return your ballot by mail or in person, but your county clerk's office must receive it no later than 7 p.m. on Election Day to be counted.\n\nFor more information or to request an absentee ballot, [contact your county clerk](https://sos.wyo.gov/Elections/Docs/WYCountyClerks.pdf)."
+      "answer": "Yes, the mail-in and in-person absentee voting period for most voters is 28 days before the primary and general elections. However, Wyomingites covered by the Uniformed and Overseas Citizens Absentee Voting Act can vote by mail as early as 45 days before the election.\n\nYou can return your ballot by mail or in person, but your county clerk's office must receive it no later than 7 p.m. on Election Day to be counted.\n\nFor more information or to request an absentee ballot, [contact your county clerk](#clerk-locator)."
     },
     {
       "question": "HOW DO I VOTE IN PERSON?",
