@@ -45,11 +45,11 @@
   },
   {
     "county": "Lincoln",
-    "link": "https://lincolncountywy.gov/government/clerk/elections.php"
+    "link": "https://www.lincolncountywy.gov/government/clerk/elections_voting_information/index.php"
   },
   {
     "county": "Natrona",
-    "link": "https://www.natronacounty-wy.gov/117/Elections"
+    "link": "https://www.natronacounty-wy.gov/128/Elections"
   },
   {
     "county": "Niobrara",
@@ -65,11 +65,11 @@
   },
   {
     "county": "Sheridan",
-    "link": "https://www.sheridancountywy.gov/elected_officials/clerk/elections/"
+    "link": "https://www.sheridancountywy.gov/departments/elections/index.php"
   },
   {
     "county": "Sublette",
-    "link": "https://www.sublettewyo.com/166/Elections"
+    "link": "https://www.sublettecountywy.gov/110/Election-Information"
   },
   {
     "county": "Sweetwater",
@@ -77,18 +77,17 @@
   },
   {
     "county": "Teton",
-    "link": "https://www.tetoncountywy.gov/1691/Elections"
+    "link": "https://www.tetoncountywy.gov/2470/2026-Candidates"
   },
   {
     "county": "Uinta",
-    "link": "https://www.uintacounty.com/162/Elections"
+    "link": "https://www.uintacountywy.gov/26/Elections"
   },
   {
     "county": "Washakie",
-    "link": "https://www.washakiecounty.net/elections"
-  },
+    "link": "https://www.washakiecountywy.gov/196/Elections"
   {
     "county": "Weston",
-    "link": "https://westongov.com/elections/"
+    "link": "https://www.westongov.com/county-clerk/elections/"
   }
 ]
