@@ -115,53 +115,98 @@ const StateRaces = ({ candidates }) => {
     e.preventDefault()
     if (!address.trim()) return
     setSearchStatus('Searching...')
-    
+
     try {
       let searchQuery = address.trim()
       if (!/wyoming|wy\b/i.test(searchQuery)) searchQuery += ', Wyoming'
-
-      const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(searchQuery)}&limit=1&addressdetails=1`)
+      // Replace this URL with your deployed AWS API Gateway endpoint
+      const proxyEndpoint = `https://awe1jjtpmj.execute-api.us-east-1.amazonaws.com//geocode?address=${encodeURIComponent(searchQuery)}`
+      
+      const response = await fetch(proxyEndpoint)
       const data = await response.json()
 
-      if (data && data.length > 0) {
-        const addrDetails = data[0].address
-        const stateName = addrDetails?.state || ''
-        const displayName = data[0].display_name || ''
+      if (data.results && data.results.length > 0) {
+        const result = data.results[0]
+        const coords = result.geometry.location
         
-        if ((addrDetails && !stateName.toLowerCase().includes('wyoming')) || (!addrDetails && !displayName.toLowerCase().includes('wyoming'))) {
+        let streetNum = '', route = '', city = '', state = '', zip = ''
+
+        // Parse Google's dynamic address components array
+        result.address_components.forEach(comp => {
+          const types = comp.types
+          if (types.includes('street_number')) streetNum = comp.long_name
+          if (types.includes('route')) route = comp.short_name
+          if (types.includes('locality') || types.includes('sublocality')) city = comp.long_name
+          if (types.includes('administrative_area_level_1')) state = comp.short_name
+          if (types.includes('postal_code')) zip = comp.long_name
+        });
+
+        // Verification check (defense in depth, though the Lambda filter should catch this)
+        if (state !== 'WY' && state !== 'Wyoming') {
           setSearchStatus('Please enter a valid Wyoming address.')
-          return 
+          return;
         }
 
-        const lon = parseFloat(data[0].lon)
-        const lat = parseFloat(data[0].lat)
+        // Reconstruct the address cleanly
+        const street = `${streetNum} ${route}`.trim()
+        let formatted = []
         
-        if (addrDetails) {
-          const street = `${addrDetails.house_number || ''} ${addrDetails.road || ''}`.trim()
-          const city = addrDetails.city || addrDetails.town || addrDetails.village || ''
-          const zip = addrDetails.postcode || ''
-
-          let formatted = []
-          if (street) formatted.push(street)
-          if (city) formatted.push(city)
-          
-          let finalAddress = formatted.join(', ')
-          if (stateName) finalAddress += `, ${stateName}`
-          if (zip) finalAddress += ` ${zip}`
-
-          setAddress(finalAddress)
-        } else {
-          setAddress(displayName) 
-        }
+        if (street) formatted.push(street)
+        if (city) formatted.push(city)
         
-        setTargetCoords([lon, lat])
+        let finalAddress = formatted.join(', ')
+        if (state) finalAddress += `, ${state}`
+        if (zip) finalAddress += ` ${zip}`
+
+        // Fallback to Google's pre-formatted string if component parsing misses something
+        setAddress(finalAddress || result.formatted_address)
+        
+        // Google returns { lat, lng }. Nominatim returns [lon, lat]. 
+        // Maintained your array order [longitude, latitude] here assuming you are feeding Mapbox/MapLibre.
+        setTargetCoords([coords.lng, coords.lat]);
+        
         setSearchStatus('Address mapped successfully.')
       } else {
-        setSearchStatus('Address not found.')
+        setSearchStatus('Address not found. Please try adding a city or zip code.')
       }
     } catch (err) {
+      console.error('Search error:', err)
       setSearchStatus('Error looking up address.')
     }
+  }
+
+  const handleCurrentLocation = () => {
+    if (!navigator.geolocation) {
+      setSearchStatus('Geolocation is not supported by your browser.')
+      return
+    }
+
+    setSearchStatus('Locating...')
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const lat = position.coords.latitude
+        const lon = position.coords.longitude
+
+        // --- INSTANT MATHEMATICAL BOUNDARY CHECK ---
+        // Wyoming Bounding Box: Lat [41, 45], Lon [-111.05, -104.05]
+        const isInsideWyoming = lat >= 41.0 && lat <= 45.0 && lon >= -111.05 && lon <= -104.05;
+
+        if (!isInsideWyoming) {
+          setSearchStatus('Current location is outside Wyoming.')
+          return
+        }
+
+        setAddress('Current Location')
+        setTargetCoords([lon, lat])
+        setSearchStatus('Location mapped successfully.')
+      },
+      (error) => {
+        console.error('Geolocation error:', error)
+        setSearchStatus('Unable to retrieve location. Please check browser permissions.')
+      },
+      { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+    )
   }
 
   const handlePrevDistrict = () => {
@@ -178,7 +223,7 @@ const StateRaces = ({ candidates }) => {
     handleManualDistrictChange(currentOptions[nextIdx])
   }
 
-  const mapSearchProps = { address, setAddress, handleAddressSearch, handleClearAddress, searchStatus, targetCoords }
+  const mapSearchProps = { address, setAddress, handleAddressSearch, handleCurrentLocation, handleClearAddress, searchStatus, targetCoords }
 
   return (
     <div className="legislature-dashboard">
