@@ -75,7 +75,7 @@ const Home = ({candidates, textContent, ballotPropositionResults}) => {
 
       <a className="link-anchor" id="us-senate"></a>
       <h3 className="race-header">
-        U.S. Senate
+        <span>U.S. Senate</span>
         <a href="#federal-delegation" className="back-to-top">↑ Top</a>
       </h3>
       <Markdown>{textContent.usSenateIntro}</Markdown>
@@ -83,7 +83,7 @@ const Home = ({candidates, textContent, ballotPropositionResults}) => {
       
       <a className="link-anchor" id="us-house"></a>
       <h3 className="race-header">
-        U.S. House At-Large
+        <span>U.S. House At-Large</span>
         <a href="#federal-delegation" className="back-to-top">↑ Top</a>
       </h3>
       <Markdown>{textContent.usHouseIntro}</Markdown>
@@ -105,7 +105,7 @@ const Home = ({candidates, textContent, ballotPropositionResults}) => {
 
       <a className="link-anchor" id="governor"></a>
       <h3 className="race-header">
-        Governor
+        <span>Governor</span>
         <a href="#statewide" className="back-to-top">↑ Top</a>
       </h3>
       <Markdown>{textContent.govIntro}</Markdown>
@@ -113,7 +113,7 @@ const Home = ({candidates, textContent, ballotPropositionResults}) => {
 
       <a className="link-anchor" id="sec-of-state"></a>
       <h3 className="race-header">
-        Secretary of State
+        <span>Secretary of State</span>
         <a href="#statewide" className="back-to-top">↑ Top</a>
       </h3>
       <Markdown>{textContent.sosIntro}</Markdown>
@@ -121,7 +121,7 @@ const Home = ({candidates, textContent, ballotPropositionResults}) => {
 
       <a className="link-anchor" id="superintendent"></a>
       <h3 className="race-header">
-        State Superintendent of Public Instruction
+        <span>Superintendent of Public Instruction</span>
         <a href="#statewide" className="back-to-top">↑ Top</a>
       </h3>
       <Markdown>{textContent.supIntro}</Markdown>
@@ -129,7 +129,7 @@ const Home = ({candidates, textContent, ballotPropositionResults}) => {
 
       <a className="link-anchor" id="treasurer"></a>
       <h3 className="race-header">
-        State Treasurer
+        <span>State Treasurer</span>
         <a href="#statewide" className="back-to-top">↑ Top</a>
       </h3>
       <Markdown>{textContent.treasIntro}</Markdown>
@@ -137,7 +137,7 @@ const Home = ({candidates, textContent, ballotPropositionResults}) => {
 
       <a className="link-anchor" id="auditor"></a>
       <h3 className="race-header">
-        State Auditor
+        <span>State Auditor</span>
         <a href="#statewide" className="back-to-top">↑ Top</a>
       </h3>
       <Markdown>{textContent.audIntro}</Markdown>
