@@ -37,7 +37,7 @@ body {
 section {
     display: block;
     padding: 0 0.5em;
-    margin-bottom: 5em;
+    margin-bottom: 4em;
 }
 
 .section-header-prominent {
@@ -207,7 +207,7 @@ section {
 
 
 .race-candidates-wrapper{
-    margin-bottom: 5rem;
+    margin-bottom:4rem;
 }
 
 .district-title {
