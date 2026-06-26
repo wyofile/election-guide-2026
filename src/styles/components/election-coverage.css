@@ -4,7 +4,7 @@
   background-color: var(--dark-sea-green, #8faea4); /* Falls back to a soft sage if variable is missing */
   border-radius: 12px;
   padding: 2rem;
-  margin: 0 auto 2.5rem auto;
+  margin: 0 auto 4rem auto;
   width: 100%;
   max-width: 1000px; /* Gives it a nice wide banner feel */
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.05);

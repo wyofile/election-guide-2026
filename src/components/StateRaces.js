@@ -1,6 +1,6 @@
 import React, { useState, Suspense } from 'react'
 import RaceCandidates from '@/components/RaceCandidates'
-import Select from 'react-select' // NEW: Import react-select
+import Select from 'react-select'
 const DistrictMap = React.lazy(() => import('@/components/DistrictMap'))
 
 const StateRaces = ({ candidates }) => {
@@ -12,8 +12,11 @@ const StateRaces = ({ candidates }) => {
   const [houseOptions, setHouseOptions] = useState([])
   const [senateOptions, setSenateOptions] = useState([])
   
-  // Unified Search State
-  const [address, setAddress] = useState('')
+  // Unified Search State (Expanded to distinct fields)
+  const [street, setStreet] = useState('')
+  const [city, setCity] = useState('')
+  const [zip, setZip] = useState('')
+  
   const [searchStatus, setSearchStatus] = useState('')
   const [targetCoords, setTargetCoords] = useState(null)
 
@@ -23,7 +26,6 @@ const StateRaces = ({ candidates }) => {
   const labelPrefix = chamber === 'house' ? 'House District ' : 'Senate District '
 
   // --- REACT-SELECT OPTIONS & STYLES ---
-  // Build the options array required by react-select
   const selectOptions = [
     { value: '', label: `Select a ${chamber === 'house' ? 'House' : 'Senate'} District` },
     ...currentOptions.map(d => ({
@@ -32,10 +34,8 @@ const StateRaces = ({ candidates }) => {
     }))
   ]
 
-  // Find the current active object to feed to react-select
   const currentSelectValue = selectOptions.find(opt => opt.value === activeDistrict) || selectOptions[0]
 
-  // Custom styling to make the control look like a header, and the menu look normal
   const customSelectStyles = {
     control: (base) => ({
       ...base,
@@ -49,16 +49,16 @@ const StateRaces = ({ candidates }) => {
     valueContainer: (base) => ({
       ...base,
       padding: '0 8px',
-      justifyContent: 'center', // Centers the text
+      justifyContent: 'center',
     }),
     singleValue: (base) => ({
       ...base,
       fontFamily: '"Roboto", sans-serif',
       fontWeight: 800,
-      textTransform: 'uppercase', // Keeps the header strictly uppercase
+      textTransform: 'uppercase',
       color: '#0f172a',
-      fontSize: '1.15rem', // Mobile size
-      '@media (min-width: 800px)': { fontSize: '1.5rem' }, // Desktop size
+      fontSize: '1.15rem',
+      '@media (min-width: 800px)': { fontSize: '1.5rem' },
     }),
     dropdownIndicator: (base) => ({
       ...base,
@@ -67,12 +67,12 @@ const StateRaces = ({ candidates }) => {
       cursor: 'pointer',
       '&:hover': { color: '#0f172a' }
     }),
-    indicatorSeparator: () => ({ display: 'none' }), // Removes the default vertical line
+    indicatorSeparator: () => ({ display: 'none' }),
     menu: (base) => ({
       ...base,
-      width: '260px', // Constrains the width so it doesn't match the massive header
+      width: '260px',
       left: '50%',
-      transform: 'translateX(-50%)', // Centers the dropdown box perfectly under the title
+      transform: 'translateX(-50%)',
       zIndex: 1000,
       borderRadius: '8px',
       overflow: 'hidden',
@@ -80,7 +80,7 @@ const StateRaces = ({ candidates }) => {
     }),
     menuList: (base) => ({
       ...base,
-      maxHeight: '280px', // Stops the list from hitting the bottom of the screen
+      maxHeight: '280px',
     }),
     option: (base, state) => ({
       ...base,
@@ -89,7 +89,7 @@ const StateRaces = ({ candidates }) => {
       fontWeight: 500,
       color: state.isSelected ? '#ffffff' : '#0f172a',
       backgroundColor: state.isSelected 
-        ? '#d8a032' // Highlights the active selection in goldenrod
+        ? '#d8a032' 
         : state.isFocused 
           ? '#f1f5f9' 
           : '#ffffff',
@@ -101,7 +101,9 @@ const StateRaces = ({ candidates }) => {
 
   // --- ACTIONS ---
   const handleClearAddress = () => {
-    setAddress('')
+    setStreet('')
+    setCity('')
+    setZip('')
     setSearchStatus('')
     setTargetCoords(null)
   }
@@ -113,13 +115,13 @@ const StateRaces = ({ candidates }) => {
 
   const handleAddressSearch = async (e) => {
     e.preventDefault()
-    if (!address.trim()) return
+    if (!street.trim() && !city.trim() && !zip.trim()) return
     setSearchStatus('Searching...')
 
     try {
-      let searchQuery = address.trim()
-      if (!/wyoming|wy\b/i.test(searchQuery)) searchQuery += ', Wyoming'
-      // Replace this URL with your deployed AWS API Gateway endpoint
+      // Assemble the parts and force Wyoming
+      const searchQuery = `${street.trim()} ${city.trim()} ${zip.trim()}, Wyoming`.trim()
+      
       const proxyEndpoint = `https://awe1jjtpmj.execute-api.us-east-1.amazonaws.com//geocode?address=${encodeURIComponent(searchQuery)}`
       
       const response = await fetch(proxyEndpoint)
@@ -129,45 +131,38 @@ const StateRaces = ({ candidates }) => {
         const result = data.results[0]
         const coords = result.geometry.location
         
-        let streetNum = '', route = '', city = '', state = '', zip = ''
+        let resStreetNum = '', resRoute = '', resCity = '', resState = '', resZip = ''
 
-        // Parse Google's dynamic address components array
         result.address_components.forEach(comp => {
           const types = comp.types
-          if (types.includes('street_number')) streetNum = comp.long_name
-          if (types.includes('route')) route = comp.short_name
-          if (types.includes('locality') || types.includes('sublocality')) city = comp.long_name
-          if (types.includes('administrative_area_level_1')) state = comp.short_name
-          if (types.includes('postal_code')) zip = comp.long_name
+          if (types.includes('street_number')) resStreetNum = comp.long_name
+          if (types.includes('route')) resRoute = comp.short_name
+          if (types.includes('locality') || types.includes('sublocality')) resCity = comp.long_name
+          if (types.includes('administrative_area_level_1')) resState = comp.short_name
+          if (types.includes('postal_code')) resZip = comp.long_name
         });
 
-        // Verification check (defense in depth, though the Lambda filter should catch this)
-        if (state !== 'WY' && state !== 'Wyoming') {
+        // 1. Boundary check
+        if (resState !== 'WY' && resState !== 'Wyoming') {
           setSearchStatus('Please enter a valid Wyoming address.')
           return;
         }
 
-        // Reconstruct the address cleanly
-        const street = `${streetNum} ${route}`.trim()
-        let formatted = []
-        
-        if (street) formatted.push(street)
-        if (city) formatted.push(city)
-        
-        let finalAddress = formatted.join(', ')
-        if (state) finalAddress += `, ${state}`
-        if (zip) finalAddress += ` ${zip}`
+        // 2. Vague Address Check (If Google only matched the state)
+        if (!resRoute && !resCity && !resZip) {
+          setSearchStatus('Address not found. Please try adding more details.')
+          return;
+        }
 
-        // Fallback to Google's pre-formatted string if component parsing misses something
-        setAddress(finalAddress || result.formatted_address)
+        // Populate the input fields cleanly based on Google's matched data
+        setStreet(`${resStreetNum} ${resRoute}`.trim())
+        setCity(resCity)
+        setZip(resZip)
         
-        // Google returns { lat, lng }. Nominatim returns [lon, lat]. 
-        // Maintained your array order [longitude, latitude] here assuming you are feeding Mapbox/MapLibre.
         setTargetCoords([coords.lng, coords.lat]);
-        
         setSearchStatus('Address mapped successfully.')
       } else {
-        setSearchStatus('Address not found. Please try adding a city or zip code.')
+        setSearchStatus('Unable to map it.')
       }
     } catch (err) {
       console.error('Search error:', err)
@@ -188,8 +183,7 @@ const StateRaces = ({ candidates }) => {
         const lat = position.coords.latitude
         const lon = position.coords.longitude
 
-        // --- INSTANT MATHEMATICAL BOUNDARY CHECK ---
-        // Wyoming Bounding Box: Lat [41, 45], Lon [-111.05, -104.05]
+        // Instant mathematical boundary check
         const isInsideWyoming = lat >= 41.0 && lat <= 45.0 && lon >= -111.05 && lon <= -104.05;
 
         if (!isInsideWyoming) {
@@ -197,7 +191,9 @@ const StateRaces = ({ candidates }) => {
           return
         }
 
-        setAddress('Current Location')
+        setStreet('Current Location')
+        setCity('')
+        setZip('')
         setTargetCoords([lon, lat])
         setSearchStatus('Location mapped successfully.')
       },
@@ -223,7 +219,13 @@ const StateRaces = ({ candidates }) => {
     handleManualDistrictChange(currentOptions[nextIdx])
   }
 
-  const mapSearchProps = { address, setAddress, handleAddressSearch, handleCurrentLocation, handleClearAddress, searchStatus, targetCoords }
+  // Pass all individual states down
+  const mapSearchProps = { 
+    street, setStreet, 
+    city, setCity, 
+    zip, setZip, 
+    handleAddressSearch, handleCurrentLocation, handleClearAddress, searchStatus, targetCoords 
+  }
 
   return (
     <div className="legislature-dashboard">
@@ -235,13 +237,12 @@ const StateRaces = ({ candidates }) => {
           <button className='master-arrow-btn' onClick={handlePrevDistrict}>&larr;</button>
           
           <div style={{ flex: 1, position: 'relative' }}>
-            {/* REACT-SELECT COMPONENT */}
             <Select 
               value={currentSelectValue}
               onChange={(selectedOption) => handleManualDistrictChange(selectedOption.value)}
               options={selectOptions}
               styles={customSelectStyles}
-              isSearchable={false} // CRITICAL for mobile: prevents the keyboard from popping up
+              isSearchable={false}
               blurInputOnSelect={true}
               instanceId="district-selector"
             />

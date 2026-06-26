@@ -37,7 +37,7 @@ body {
 section {
     display: block;
     padding: 0 0.5em;
-    margin-bottom: 5em;
+    margin-bottom: 4em;
 }
 
 .section-header-prominent {
@@ -122,12 +122,11 @@ section {
   text-decoration: none;
 }
 
-/* --- ELEGANT RACE HEADER --- */
 .race-header {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
-  flex-wrap: wrap;
+  align-items: flex-end; /* Changed: Anchors the link to the bottom border */
+  flex-wrap: nowrap;     /* Changed: Forces them to stay on the same row */
   gap: 1rem;
   margin-top: 0;
   padding-bottom: 0.5rem;
@@ -144,6 +143,9 @@ section {
 
 /* --- SUBTLE BACK TO TOP --- */
 .back-to-top {
+  flex-shrink: 0;        /* NEW: Prevents the link from being crushed */
+  white-space: nowrap;   /* NEW: Keeps the arrow and text on one line */
+  
   font-size: 0.85rem;
   font-weight: 500;
   text-transform: none;
@@ -151,6 +153,9 @@ section {
   text-decoration: none;
   letter-spacing: normal;
   transition: color 0.2s ease;
+  
+  /* Minor adjustment to align perfectly with the text baseline */
+  margin-bottom: 0.25rem; 
 }
 
 .back-to-top:hover {
@@ -207,7 +212,7 @@ section {
 
 
 .race-candidates-wrapper{
-    margin-bottom: 5rem;
+    margin-bottom:4rem;
 }
 
 .district-title {

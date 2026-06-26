@@ -35,7 +35,8 @@ class ResetControl extends Control {
 
 const DistrictMap = ({ 
   chamber, activeDistrict, setActiveDistrict, setDistrictOptions, 
-  address, setAddress, handleAddressSearch, handleCurrentLocation, handleClearAddress, searchStatus, targetCoords 
+  street, setStreet, city, setCity, zip, setZip, 
+  handleAddressSearch, handleCurrentLocation, handleClearAddress, searchStatus, targetCoords 
 }) => {
   
   let districtNumberIdentifier = chamber === 'house' ? 'SLDLST' : 'SLDUST'
@@ -171,34 +172,9 @@ const DistrictMap = ({
   return (
     <div className="map-ui-card">
       
-      {/* 1. Dedicated Header for the Search Box */}
-      <div className="map-search-header">
-        <form onSubmit={handleAddressSearch} className="address-form-inline">
-          <div className="input-wrapper">
-            <input 
-              type="text" 
-              placeholder="Enter your address..." 
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-              className="dashboard-search-input"
-            />
-            {address && (
-              <button type="button" className="clear-address-btn" onClick={handleClearAddress}>
-                &times;
-              </button>
-            )}
-          </div>
-          <button 
-            type="button" 
-            className="current-location-btn" 
-            onClick={handleCurrentLocation} 
-            title="Use Current Location"
-          >
-        <svg xmlns="http://www.w3.org/2000/svg" fill="#000000" width="24px" height="24px" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M13 4.069V2h-2v2.069A8.01 8.01 0 0 0 4.069 11H2v2h2.069A8.008 8.008 0 0 0 11 19.931V22h2v-2.069A8.007 8.007 0 0 0 19.931 13H22v-2h-2.069A8.008 8.008 0 0 0 13 4.069zM12 18c-3.309 0-6-2.691-6-6s2.691-6 6-6 6 2.691 6 6-2.691 6-6 6z"/></svg>
-          </button>
-          <button type="submit" className="dashboard-search-btn">Search</button>
-        </form>
-
+      {/* 1. Dedicated Header for the Map Note */}
+      <div className="map-ui-note-top">
+        Note: Zoom in manually to view smaller districts clearly.
       </div>
 
       <div className="map-ui-canvas-wrapper">
@@ -213,7 +189,76 @@ const DistrictMap = ({
         <div id={`${chamber}-map`} className="map-ui-canvas" />
       </div>
 
-      <div className="map-ui-footer">Note: Zoom in manually to view smaller districts clearly.</div>
+      {/* 3. Address Search Form at the Bottom */}
+      <div className="map-search-panel">
+        <h4 className="search-header-title">Search Address</h4>
+        
+        <form onSubmit={handleAddressSearch} className="multi-field-form">
+          
+          <div className="form-row">
+            <input 
+              id={`street-${chamber}`}
+              type="text" 
+              placeholder="Street Address (e.g. 123 Main St)" 
+              aria-label="Street Address"
+              value={street}
+              onChange={(e) => setStreet(e.target.value)}
+              className="form-input"
+            />
+          </div>
+
+          <div className="form-row split-row">
+            <div className="input-group">
+              <input 
+                id={`city-${chamber}`}
+                type="text" 
+                placeholder="City" 
+                aria-label="City"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+                className="form-input"
+              />
+            </div>
+            <div className="input-group zip-group">
+              <input 
+                id={`zip-${chamber}`}
+                type="text" 
+                placeholder="Zip Code" 
+                aria-label="Zip Code"
+                value={zip}
+                onChange={(e) => setZip(e.target.value)}
+                className="form-input"
+              />
+            </div>
+          </div>
+
+          <div className="form-actions">
+            <button 
+              type="button" 
+              className="action-btn location-btn" 
+              onClick={handleCurrentLocation} 
+              title="Use Current Location"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="7" />
+                <circle cx="12" cy="12" r="3" fill="currentColor" stroke="none" />
+                <path d="M12 3v2M12 19v2M3 12h2M19 12h2" />
+              </svg>
+              <span>Locate Me</span>
+            </button>
+
+            <div className="right-actions">
+              {(street || city || zip) && (
+                <button type="button" className="action-btn clear-btn" onClick={handleClearAddress}>
+                  Clear
+                </button>
+              )}
+              <button type="submit" className="action-btn search-btn">Search</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
     </div>
   )
 }
