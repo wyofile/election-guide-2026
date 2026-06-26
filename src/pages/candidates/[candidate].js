@@ -75,7 +75,7 @@ export default function CandidatePage({candidate, questions, questionnaireIntro,
       <Markdown className='questionnaire-intro'>{questionnaireIntro}</Markdown>
       <div className="on-the-issues">
         {questions.map((q, i) => {
-          const answer = candidate.hasResponses ? candidate.responses[i] : '_No candidate response._'
+          const answer = candidate.responses ? candidate.responses[i] : '_No candidate response._'
           return(
             <div key={`question-${i}`}>
               <h3 className="question-header">{q}</h3>

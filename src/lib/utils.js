@@ -38,7 +38,7 @@ export const formatRace = office => {
 
 export const getPortraitPath = (hasPhoto, party, slug) => {
   if (hasPhoto) {
-    return usePath(`/portraits-t/${slug}.png`)
+    return usePath(`/portraits-t/${slug}.webp`)
   } else {
     return usePath('/portraits-t/non-participant.png')
   }

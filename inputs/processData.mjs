@@ -56,16 +56,16 @@ const legResponsesData = parse(legResponsesString, { columns: true, bom: true })
 const canDataWithResponses = candidateData.map((candidate) => {
   let candidateResponses = null;
   
-  if (candidate.office.slice(0, 2) === 'us' && candidate.hasResponses) {
-    candidateResponses = fedResponsesData.find((response) => response.slug === candidate.slug);
-  } else if (candidate.hasResponses) {
-    candidateResponses = legResponsesData.find((response) => response.slug === candidate.slug);
-  }
+  // if (candidate.office.slice(0, 2) === 'us' && candidate.hasResponses) {
+  //   candidateResponses = fedResponsesData.find((response) => response.slug === candidate.slug);
+  // } else if (candidate.hasResponses) {
+  //   candidateResponses = legResponsesData.find((response) => response.slug === candidate.slug);
+  // }
   
-  if (candidateResponses) {
-    delete candidateResponses.slug;
-    candidateResponses = Object.values(candidateResponses);
-  }
+  // if (candidateResponses) {
+  //   delete candidateResponses.slug;
+  //   candidateResponses = Object.values(candidateResponses);
+  // }
 
   // const getGeneralResults = generalResults.find(r => r.district === candidate.district) || null
   // if (candidate.status === 'active' && getGeneralResults) {
