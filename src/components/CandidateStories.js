@@ -1,12 +1,13 @@
 import Link from 'next/link'
-import { useCandidateStories } from '@/lib/dataHooks'
+import { useSearchStories } from '@/lib/dataHooks'
 import { formatDate } from '@/lib/utils'
 import he from 'he'
 
 const ELECTION_COVERAGE = 'https://wyofile.com/elections-2026/'
+const ELECTION_CATEGORY_ID = '14113'
 
 const CandidateStories = ({ slug, ballotName, tagId }) => {
-  const { stories, isLoading, error } = useCandidateStories(tagId, 25)
+  const { stories, isLoading, error } = useSearchStories(ballotName, 25, ELECTION_CATEGORY_ID)
 
   return (
     <div className="cs-section">

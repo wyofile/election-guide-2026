@@ -4,12 +4,14 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 import { getPortraitPath } from '@/lib/utils'
-import { useCandidateStories } from '@/lib/dataHooks'
+import { useSearchStories } from '@/lib/dataHooks'
+
+const ELECTION_CATEGORY_ID = '14113'
 
 const CandidateCard = ({ slug, ballotName, party, color, hasPhoto, hasResponses, isIncumbent, tagId }) => {
 
   const portraitPath = getPortraitPath(hasPhoto, party, slug)
-  const {stories, isLoading, error} = useCandidateStories(tagId, 25)
+  const {stories, isLoading, error} = useSearchStories(ballotName, 25, ELECTION_CATEGORY_ID)
 
   return (
     <div className="candidate" style={{ borderTop: `5px solid ${color}` }}>

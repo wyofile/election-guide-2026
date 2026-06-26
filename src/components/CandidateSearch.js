@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { useCandidateStories } from "@/lib/dataHooks"
 import { PARTIES, STATUS } from "@/lib/styles"
 import { formatRace, getPortraitPath } from "@/lib/utils"
 
