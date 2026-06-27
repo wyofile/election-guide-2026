@@ -1,23 +1,27 @@
 import candidateData from '@/data/candidate-data.json'
-import textData from '../../data/static-text.json'
-import wyoLegQs from '../../data/wyo-leg-qs.json'
-import federalQs from '../../data/federal-qs.json'
+import textData from '@/data/static-text.json'
+
+import usSenQs from '@/data/us-sen-qs.json'
+import usHouseQs from '@/data/us-house-qs.json'
+import govQs from '@/data/gov-qs.json'
+import sosQs from '@/data/sos-qs.json'
+import supQs from '@/data/sup-qs.json'
+import treasQs from '@/data/treas-qs.json'
+import audQs from '@/data/aud-qs.json'
+import legQs from '@/data/leg-qs.json'
+
 // import primaryResults from '../../data/primary-results.json'
 // import generalResults from '../../data/general-results.json'
-import updateTime from '@/data/update-time.json'
 
 import CandidateOpponents from '@/components/CandidateOpponents'
 import CandidatePageSummary from '@/components/CandidatePageSummary'
 import CandidateStories from '@/components/CandidateStories'
 import CandidateLinks from '@/components/CandidateLinks'
-import RaceResults from '@/components/RaceResults'
+// import RaceResults from '@/components/RaceResults'
 import Layout from '@/design/Layout'
 import { formatRace } from '@/lib/utils'
-import { PARTIES } from '@/lib/styles'
-import { formatDateTime } from '@/lib/utils'
 
 import Markdown from 'react-markdown'
-import Link from 'next/link'
 
 export async function getStaticPaths() {
   // Define routes that should be used for /[candidate] pages
@@ -33,7 +37,26 @@ export async function getStaticProps({ params }) {
   const candidatesInDistrict = candidateData.filter(c => (c.office === candidate.office))
   // const primaryRaceResults = primaryResults.find(r => r.district === candidate.district && r.party === candidate.party) || null
   // const generalRaceResults = generalResults.find(r => r.district === candidate.district && (candidate.status === 'active' || candidate.status === 'won-general' || candidate.status ==='lost-general')) || null
-  const questions = (candidate.office[0] === 'u' ? federalQs : wyoLegQs)
+  // const questions = (candidate.office[0] === 'u' ? federalQs : wyoLegQs)
+  let questions
+  if (candidate.office ==='us-sen') { 
+    questions = usSenQs 
+  } else if (candidate.office === 'us-house') {
+    questions = usHouseQs
+  } else if (candidate.office === 'gov') {
+    questions = govQs
+  } else if (candidate.office === 'sos') {
+    questions = sosQs
+  } else if (candidate.office === 'sup') {
+    questions = supQs
+  } else if (candidate.office === 'treas') {
+    questions = treasQs
+  } else if (candidate.office === 'aud') {
+    questions = audQs
+  } else if (/^[HS]\d{2}$/.test(candidate.office)) {
+    questions = legQs
+  }
+
   const questionnaireIntro = textData.questionnaireIntro
   const aboutProject = textData.aboutProject
 
