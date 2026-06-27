@@ -9,9 +9,22 @@
   box-shadow: 0 8px 25px rgba(15, 23, 42, 0.05); /* Soft drop shadow lifts the whole tool */
 }
 
+@media screen and (max-width: 799px) {
+  .legislature-dashboard {
+    margin-left: -0.5em;
+    margin-right: -0.5em;
+    padding: 0.55rem;
+    border-radius: 8px;
+  }
+
+  .dashboard-split {
+    gap: 1rem;
+  }
+}
+
 @media screen and (min-width: 800px) {
   .legislature-dashboard {
-    padding: 2.25rem; /* Extra breathing room on desktop */
+    padding: 2.25rem;
   }
 }
 
