@@ -70,7 +70,7 @@
   font-weight: 600;
   font-size: 0.9rem;
   letter-spacing: 0.02em;
-  padding: 0.7rem 1.1rem;
+  padding: 0.9rem 1.1rem;
   transition: background-color 0.2s ease;
 }
 .smart-nav-trigger:hover,
@@ -79,29 +79,28 @@
   outline: none;
 }
 
-/* goldenrod dot signalling "you are here" */
-.smart-nav-trigger-label {
-  display: inline-flex;
+.smart-nav-trigger-left {
+  display: flex;
   align-items: center;
   gap: 0.55rem;
 }
-.smart-nav-trigger-label::before {
-  content: '';
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--goldenrod, #d8a032);
+
+.smart-nav-hamburger-icon {
+  width: 22px;
+  height: 22px;
   flex-shrink: 0;
 }
 
-.smart-nav-chevron {
-  width: 18px;
-  height: 18px;
-  flex-shrink: 0;
-  transition: transform 0.25s ease;
+.smart-nav-menu-label {
+  font-size: 0.9rem;
 }
-.smart-nav-mobile.is-open .smart-nav-chevron {
-  transform: rotate(180deg);
+
+.smart-nav-section-indicator {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.65);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 /* the panel */

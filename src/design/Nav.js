@@ -128,12 +128,24 @@ const Nav = () => {
             className="smart-nav-trigger"
             aria-haspopup="true"
             aria-expanded={isOpen}
+            aria-label={isOpen ? 'Close menu' : 'Open menu'}
             onClick={() => setIsOpen((o) => !o)}
           >
-            <span className="smart-nav-trigger-label">{currentLabel}</span>
-            <svg className="smart-nav-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+            <span className="smart-nav-trigger-left">
+              <svg className="smart-nav-hamburger-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                {isOpen ? (
+                  <path d="M6 6l12 12M6 18L18 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                ) : (
+                  <>
+                    <line x1="3" y1="6" x2="21" y2="6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                    <line x1="3" y1="12" x2="21" y2="12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                    <line x1="3" y1="18" x2="21" y2="18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                  </>
+                )}
+              </svg>
+              <span className="smart-nav-menu-label">{isOpen ? 'Close' : 'Menu'}</span>
+            </span>
+            <span className="smart-nav-section-indicator">{currentLabel}</span>
           </button>
 
           <ul className="smart-nav-panel" role="menu">
