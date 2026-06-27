@@ -24,7 +24,8 @@ const Header = () => {
           <div className="eyebrow-actions">
             <Link href="https://wyofile.com" className="eyebrow-text-link">Return to Main Site ↗</Link>
             <Link href={DONATE_LINK} target="_blank" className="eyebrow-btn-donate">
-              Support this work 💖
+              <span className="donate-label-full">Support this work 💖</span>
+              <span className="donate-label-short">Donate 💖</span>
             </Link>
           </div>
         </div>

@@ -157,6 +157,55 @@
   border-left-color: var(--goldenrod, #d8a032);
   background-color: rgba(0, 0, 0, 0.12);
 }
+.smart-nav-panel-sublink.is-active {
+  color: rgba(255, 255, 255, 0.9);
+  border-left-color: rgba(210, 154, 48, 0.45);
+  background-color: rgba(0, 0, 0, 0.06);
+}
+
+.smart-nav-panel-parent {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  border-left: 3px solid transparent; /* restore left border so is-active can show goldenrod */
+  font-family: inherit;
+  cursor: pointer;
+  justify-content: space-between;
+}
+
+.smart-nav-chevron {
+  flex-shrink: 0;
+  opacity: 0.6;
+  transition: transform 0.2s ease;
+}
+.smart-nav-chevron.is-expanded {
+  transform: rotate(180deg);
+}
+
+.smart-nav-panel-sublink {
+  padding-left: 2.25rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
+  border-left-color: rgba(255, 255, 255, 0.12);
+}
+.smart-nav-panel-sublink:hover,
+.smart-nav-panel-sublink:focus-visible {
+  color: rgba(255, 255, 255, 0.9);
+  border-left-color: rgba(255, 255, 255, 0.3);
+}
+
+.smart-nav-panel-sublink--all {
+  color: rgba(255, 255, 255, 0.85);
+  font-style: italic;
+  font-weight: 600;
+  border-left-color: rgba(255, 255, 255, 0.25);
+}
+.smart-nav-panel-sublink--all:hover,
+.smart-nav-panel-sublink--all:focus-visible {
+  color: #ffffff;
+  border-left-color: rgba(255, 255, 255, 0.5);
+}
 
 /* ==========================================
    DESKTOP (>= 875px): show bar, hide dropdown

@@ -21,6 +21,10 @@
 }
 
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
     font-family: "Roboto", sans-serif;
     font-size: 1rem;
@@ -59,67 +63,53 @@ section {
   /* Removed the negative margins and box-shadow to let it look crisp and open */
 }
 
+/* --- INTEGRATED SECTION HEADER --- */
 .section-header {
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+
+  border-bottom: 3px solid var(--goldenrod);
+  padding-bottom: 0.6rem;
+  margin: 2rem 0 1.5rem;
+}
+
+.section-header__title {
   font-family: 'Roboto', sans-serif;
-  font-size: 2rem;
+  font-size: 2.25rem;
   font-weight: 800;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  
-  /* Deep, authoritative text using the darkened tan */
-  color: var(--darkened-tan); 
-  
-  /* Soft background utilizing a lightened variant of your wheat */
-  background-color: var(--soft-wheat-bg); 
-  
-  /* Spacing framework to group candidates nicely underneath */
-  padding: 0.75rem 1.5rem;
-  
-  /* High-contrast brand anchor line */
-  border-top: 3px solid var(--goldenrod); 
-  border-bottom: 1px solid rgba(210, 154, 48, 0.15); /* Very faint goldenrod tint border on bottom */
-  border-radius: 4px;
-  
-  /* Flat, modern look with no heavy shadows */
-  box-shadow: none;
+  color: var(--darkened-tan);
+  margin: 0;
+  line-height: 1.1;
 }
 
-/* --- MINIMAL JUMP LINKS --- */
-.elegant-jump-links {
-  margin-top: 0.5rem;
-  margin-bottom: 2.5rem;
-  font-size: 0.95rem;
-  line-height: 1.8;
+.section-header__links {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  font-size: 0.875rem;
+  font-weight: 500;
 }
 
-.elegant-jump-links .jump-label {
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #94a3b8; /* Very subtle gray so it doesn't distract */
-  margin-right: 0.75rem;
-}
-
-.elegant-jump-links a {
+.section-header__links a {
   color: var(--link, #237bcf);
   text-decoration: none;
-  font-weight: 500;
-  margin-right: 0.6rem;
+  white-space: nowrap;
 }
 
-.elegant-jump-links a:hover {
+.section-header__links a:hover {
   text-decoration: underline;
-  color: #0f172a;
 }
 
-/* Adds a subtle dot between links automatically */
-.elegant-jump-links a:not(:last-child)::after {
-  content: "•";
-  color: #cbd5e1;
-  margin-left: 0.6rem;
+.section-header__links a:not(:last-child)::after {
+  content: "·";
+  color: #94a3b8;
+  margin: 0 0.5rem;
   display: inline-block;
-  text-decoration: none;
 }
 
 .race-header {
@@ -160,6 +150,11 @@ section {
 
 .back-to-top:hover {
   color: var(--goldenrod, #d8a032);
+}
+
+@media (max-width: 874px) {
+  .back-to-top { display: none; }
+  .section-header__links { display: none; }
 }
 
 /* Individual FAQ block containers */

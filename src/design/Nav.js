@@ -1,20 +1,49 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, Fragment } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 const PAGE_LINKS = [
-  { id: 'federal-delegation', label: 'Federal', path: '/#federal-delegation' },
-  { id: 'statewide', label: 'Statewide', path: '/#statewide' },
+  {
+    id: 'federal-delegation', label: 'Federal', path: '/#federal-delegation',
+    children: [
+      { id: 'us-senate', label: 'U.S. Senate', path: '/#us-senate' },
+      { id: 'us-house', label: 'U.S. House', path: '/#us-house' },
+    ]
+  },
+  {
+    id: 'statewide', label: 'Statewide', path: '/#statewide',
+    children: [
+      { id: 'governor', label: 'Governor', path: '/#governor' },
+      { id: 'sec-of-state', label: 'Sec. of State', path: '/#sec-of-state' },
+      { id: 'superintendent', label: 'Superintendent', path: '/#superintendent' },
+      { id: 'treasurer', label: 'Treasurer', path: '/#treasurer' },
+      { id: 'auditor', label: 'Auditor', path: '/#auditor' },
+    ]
+  },
   { id: 'legislature', label: 'Legislature', path: '/#legislature' },
   { id: 'voter-faq', label: 'Voting Info', path: '/#voter-faq' }
 ]
 
+const RACE_ABBREVS = { superintendent: 'Supt.' }
+
+const ALL_ANCHORS = PAGE_LINKS.flatMap(link => [
+  { id: link.id, section: link.id, label: link.label, raceLabel: null },
+  ...(link.children || []).map(child => ({
+    id: child.id, section: link.id, label: link.label,
+    raceLabel: RACE_ABBREVS[child.id] || child.label
+  }))
+])
+
 const Nav = () => {
   const router = useRouter()
   const [activeSection, setActiveSection] = useState('top')
+  const [activeAnchor, setActiveAnchor] = useState(null)
   const [isOpen, setIsOpen] = useState(false)
+  const [expandedSection, setExpandedSection] = useState(null)
   const mobileRef = useRef(null)
   const triggerRef = useRef(null)
+
+  const toggleSection = (id) => setExpandedSection(prev => prev === id ? null : id)
 
   const isHomePage = router.pathname === '/'
   const isCandidatePage = router.pathname.startsWith('/candidates')
@@ -23,25 +52,28 @@ const Nav = () => {
   useEffect(() => {
     if (!isHomePage) {
       setActiveSection('')
+      setActiveAnchor(null)
       return
     }
 
     const handleScroll = () => {
       const triggerLine = 250
-      let current = 'top'
+      let currentSection = 'top'
+      let currentAnchor = null
 
-      for (const link of PAGE_LINKS) {
-        if (link.id === 'top') continue
-        const element = document.getElementById(link.id)
+      for (const anchor of ALL_ANCHORS) {
+        const element = document.getElementById(anchor.id)
         if (element) {
           const rect = element.getBoundingClientRect()
           if (rect.top <= triggerLine) {
-            current = link.id
+            currentSection = anchor.section
+            currentAnchor = anchor
           }
         }
       }
 
-      setActiveSection(current)
+      setActiveSection(currentSection)
+      setActiveAnchor(currentAnchor)
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })
@@ -75,6 +107,11 @@ const Nav = () => {
       document.removeEventListener('touchstart', onPointerDown)
       document.removeEventListener('keydown', onKey)
     }
+  }, [isOpen])
+
+  // Reset accordion when dropdown closes
+  useEffect(() => {
+    if (!isOpen) setExpandedSection(null)
   }, [isOpen])
 
   // Close dropdown after navigating to a new page
@@ -114,7 +151,9 @@ const Nav = () => {
 
   const currentLabel = isCandidatePage
     ? 'Candidate'
-    : (mobileItems.find((i) => i.id === activeMobileId)?.label ?? mobileItems[0].label)
+    : activeAnchor?.raceLabel
+      ? `${activeAnchor.label}: ${activeAnchor.raceLabel}`
+      : (activeAnchor?.label ?? mobileItems[0].label)
 
   return (
     <nav className="smart-nav-container">
@@ -129,7 +168,13 @@ const Nav = () => {
             aria-haspopup="true"
             aria-expanded={isOpen}
             aria-label={isOpen ? 'Close menu' : 'Open menu'}
-            onClick={() => setIsOpen((o) => !o)}
+            onClick={() => {
+              if (!isOpen) {
+                const inSection = PAGE_LINKS.find(l => l.id === activeSection && l.children)
+                if (inSection) setExpandedSection(activeSection)
+              }
+              setIsOpen(o => !o)
+            }}
           >
             <span className="smart-nav-trigger-left">
               <svg className="smart-nav-hamburger-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -151,18 +196,68 @@ const Nav = () => {
           <ul className="smart-nav-panel" role="menu">
             {mobileItems.map((link) => {
               const active = link.id === activeMobileId
+              const isExpanded = expandedSection === link.id
               return (
-                <li key={link.id} className="smart-nav-panel-item" role="none">
-                  <Link
-                    href={link.path}
-                    role="menuitem"
-                    aria-current={active ? 'true' : undefined}
-                    className={`smart-nav-panel-link ${active ? 'is-active' : ''}`}
-                    onClick={(e) => handleMobileSelect(e, link)}
-                  >
-                    {link.label}
-                  </Link>
-                </li>
+                <Fragment key={link.id}>
+                  <li className="smart-nav-panel-item" role="none">
+                    {link.children ? (
+                      <button
+                        className={`smart-nav-panel-link smart-nav-panel-parent ${active ? 'is-active' : ''}`}
+                        aria-expanded={isExpanded}
+                        onClick={() => toggleSection(link.id)}
+                      >
+                        <span>{link.label}</span>
+                        <svg
+                          className={`smart-nav-chevron ${isExpanded ? 'is-expanded' : ''}`}
+                          width="14" height="14" viewBox="0 0 24 24" fill="none"
+                          aria-hidden="true"
+                        >
+                          <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </button>
+                    ) : (
+                      <Link
+                        href={link.path}
+                        role="menuitem"
+                        aria-current={active ? 'true' : undefined}
+                        className={`smart-nav-panel-link ${active ? 'is-active' : ''}`}
+                        onClick={(e) => handleMobileSelect(e, link)}
+                      >
+                        {link.label}
+                      </Link>
+                    )}
+                  </li>
+                  {isExpanded && (
+                    <>
+                      <li className="smart-nav-panel-item" role="none">
+                        <Link
+                          href={link.path}
+                          role="menuitem"
+                          className="smart-nav-panel-link smart-nav-panel-sublink smart-nav-panel-sublink--all"
+                          onClick={(e) => handleMobileSelect(e, link)}
+                        >
+                          ↑ All {link.label}
+                        </Link>
+                      </li>
+                      {link.children.map(child => {
+                        const childActive = child.id === activeAnchor?.id
+                        return (
+                          <li key={child.id} className="smart-nav-panel-item" role="none">
+                            <Link
+                              href={child.path}
+                              role="menuitem"
+                              aria-current={childActive ? 'true' : undefined}
+                              className={`smart-nav-panel-link smart-nav-panel-sublink ${childActive ? 'is-active' : ''}`}
+                              onClick={(e) => handleMobileSelect(e, child)}
+                            >
+                              {child.label}
+                            </Link>
+                          </li>
+                        )
+                      })}
+                    </>
+                  )}
+                </Fragment>
               )
             })}
           </ul>

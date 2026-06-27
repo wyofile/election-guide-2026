@@ -109,6 +109,13 @@
 /* ==========================================
    Desktop Layout Breakpoints
    ========================================== */
+.donate-label-short { display: none; }
+
+@media screen and (max-width: 460px) {
+  .donate-label-full { display: none; }
+  .donate-label-short { display: inline; }
+}
+
 @media screen and (min-width: 875px) {
   .eyebrow-text-link { display: block; } 
   
