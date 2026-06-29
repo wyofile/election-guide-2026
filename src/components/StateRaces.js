@@ -1,9 +1,10 @@
 import React, { useState, Suspense } from 'react'
+import Markdown from 'react-markdown'
 import RaceCandidates from '@/components/RaceCandidates'
 import Select from 'react-select'
 const DistrictMap = React.lazy(() => import('@/components/DistrictMap'))
 
-const StateRaces = ({ candidates }) => {
+const StateRaces = ({ candidates, intro }) => {
   const [chamber, setChamber] = useState('house')
   
   // District State & Options
@@ -229,7 +230,9 @@ const StateRaces = ({ candidates }) => {
 
   return (
     <div className="legislature-dashboard">
-      
+
+      {intro && <div className="legislature-intro"><Markdown>{intro}</Markdown></div>}
+
       {/* 1. MASTER TITLE & CONTROL BAR */}
       <div className="dashboard-controls-modern">
         

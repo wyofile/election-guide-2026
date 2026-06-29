@@ -70,21 +70,25 @@ const Home = ({candidates, textContent, ballotPropositionResults}) => {
         </div>
       </div>
 
-      <a className="link-anchor" id="us-senate"></a>
-      <h3 className="race-header">
-        <span>U.S. Senate</span>
-        <a href="#federal-delegation" className="back-to-top">↑ Federal</a>
-      </h3>
-      <Markdown>{textContent.usSenateIntro}</Markdown>
-      <RaceCandidates district='us-sen' candidates={candidates.filter((candidate)=>candidate.office === 'us-sen')} />
-      
-      <a className="link-anchor" id="us-house"></a>
-      <h3 className="race-header">
-        <span>U.S. House At-Large</span>
-        <a href="#federal-delegation" className="back-to-top">↑ Federal</a>
-      </h3>
-      <Markdown>{textContent.usHouseIntro}</Markdown>
-      <RaceCandidates district='us-house' candidates={candidates.filter((candidate)=>candidate.office === 'us-house')} />
+      <div className="race-group">
+        <a className="link-anchor" id="us-senate"></a>
+        <h3 className="race-header">
+          <span>U.S. Senate</span>
+          <a href="#federal-delegation" className="back-to-top">↑ Federal</a>
+        </h3>
+        <Markdown>{textContent.usSenateIntro}</Markdown>
+        <RaceCandidates district='us-sen' candidates={candidates.filter((candidate)=>candidate.office === 'us-sen')} />
+      </div>
+
+      <div className="race-group">
+        <a className="link-anchor" id="us-house"></a>
+        <h3 className="race-header">
+          <span>U.S. House At-Large</span>
+          <a href="#federal-delegation" className="back-to-top">↑ Federal</a>
+        </h3>
+        <Markdown>{textContent.usHouseIntro}</Markdown>
+        <RaceCandidates district='us-house' candidates={candidates.filter((candidate)=>candidate.office === 'us-house')} />
+      </div>
     </section>
 
     <section>
@@ -100,45 +104,55 @@ const Home = ({candidates, textContent, ballotPropositionResults}) => {
         </div>
       </div>
 
-      <a className="link-anchor" id="governor"></a>
-      <h3 className="race-header">
-        <span>Governor</span>
-        <a href="#statewide" className="back-to-top">↑ Statewide</a>
-      </h3>
-      <Markdown>{textContent.govIntro}</Markdown>
-      <RaceCandidates district='gov' candidates={candidates.filter((candidate)=>candidate.office === 'gov')} />
+      <div className="race-group">
+        <a className="link-anchor" id="governor"></a>
+        <h3 className="race-header">
+          <span>Governor</span>
+          <a href="#statewide" className="back-to-top">↑ Statewide</a>
+        </h3>
+        <Markdown>{textContent.govIntro}</Markdown>
+        <RaceCandidates district='gov' candidates={candidates.filter((candidate)=>candidate.office === 'gov')} />
+      </div>
 
-      <a className="link-anchor" id="sec-of-state"></a>
-      <h3 className="race-header">
-        <span>Secretary of State</span>
-        <a href="#statewide" className="back-to-top">↑ Statewide</a>
-      </h3>
-      <Markdown>{textContent.sosIntro}</Markdown>
-      <RaceCandidates district='sos' candidates={candidates.filter((candidate)=>candidate.office === 'sos')} />
+      <div className="race-group">
+        <a className="link-anchor" id="sec-of-state"></a>
+        <h3 className="race-header">
+          <span>Secretary of State</span>
+          <a href="#statewide" className="back-to-top">↑ Statewide</a>
+        </h3>
+        <Markdown>{textContent.sosIntro}</Markdown>
+        <RaceCandidates district='sos' candidates={candidates.filter((candidate)=>candidate.office === 'sos')} />
+      </div>
 
-      <a className="link-anchor" id="superintendent"></a>
-      <h3 className="race-header">
-        <span>Superintendent of Public Instruction</span>
-        <a href="#statewide" className="back-to-top">↑ Statewide</a>
-      </h3>
-      <Markdown>{textContent.supIntro}</Markdown>
-      <RaceCandidates district='sup' candidates={candidates.filter((candidate)=>candidate.office === 'sup')} />
+      <div className="race-group">
+        <a className="link-anchor" id="superintendent"></a>
+        <h3 className="race-header">
+          <span>Superintendent of Public Instruction</span>
+          <a href="#statewide" className="back-to-top">↑ Statewide</a>
+        </h3>
+        <Markdown>{textContent.supIntro}</Markdown>
+        <RaceCandidates district='sup' candidates={candidates.filter((candidate)=>candidate.office === 'sup')} />
+      </div>
 
-      <a className="link-anchor" id="treasurer"></a>
-      <h3 className="race-header">
-        <span>State Treasurer</span>
-        <a href="#statewide" className="back-to-top">↑ Statewide</a>
-      </h3>
-      <Markdown>{textContent.treasIntro}</Markdown>
-      <RaceCandidates district='treas' candidates={candidates.filter((candidate)=>candidate.office === 'treas')} />
+      <div className="race-group">
+        <a className="link-anchor" id="treasurer"></a>
+        <h3 className="race-header">
+          <span>State Treasurer</span>
+          <a href="#statewide" className="back-to-top">↑ Statewide</a>
+        </h3>
+        <Markdown>{textContent.treasIntro}</Markdown>
+        <RaceCandidates district='treas' candidates={candidates.filter((candidate)=>candidate.office === 'treas')} />
+      </div>
 
-      <a className="link-anchor" id="auditor"></a>
-      <h3 className="race-header">
-        <span>State Auditor</span>
-        <a href="#statewide" className="back-to-top">↑ Statewide</a>
-      </h3>
-      <Markdown>{textContent.audIntro}</Markdown>
-      <RaceCandidates district='aud' candidates={candidates.filter((candidate)=>candidate.office === 'aud')} />
+      <div className="race-group">
+        <a className="link-anchor" id="auditor"></a>
+        <h3 className="race-header">
+          <span>State Auditor</span>
+          <a href="#statewide" className="back-to-top">↑ Statewide</a>
+        </h3>
+        <Markdown>{textContent.audIntro}</Markdown>
+        <RaceCandidates district='aud' candidates={candidates.filter((candidate)=>candidate.office === 'aud')} />
+      </div>
     </section>
 
     <section>
@@ -147,9 +161,7 @@ const Home = ({candidates, textContent, ballotPropositionResults}) => {
         <h2 className="section-header__title">Wyoming State Legislature</h2>
       </div>
 
-      <Markdown>{textContent.wyomingLegislatureIntro}</Markdown>
-      
-      <StateRaces candidates={candidates.filter(candidate => candidate.office[0] != 'u' )}/>
+      <StateRaces intro={textContent.wyomingLegislatureIntro} candidates={candidates.filter(candidate => candidate.office[0] != 'u' )}/>
     </section>
 
     <ElectionStories />
