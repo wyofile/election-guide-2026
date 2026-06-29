@@ -15,6 +15,7 @@ const Layout = ({
   socialTitle,
   socialDescription,
   relativePath,
+  candidateName,
   children,
 }) => {
   const { baseUrl } = metaData
@@ -60,7 +61,7 @@ const Layout = ({
       </Script> */}
 
       <Header />
-      <Nav />
+      <Nav candidateName={candidateName} />
       <main>{children}</main>
       <Footer />
     </>

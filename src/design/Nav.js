@@ -34,7 +34,7 @@ const ALL_ANCHORS = PAGE_LINKS.flatMap(link => [
   }))
 ])
 
-const Nav = () => {
+const Nav = ({ candidateName }) => {
   const router = useRouter()
   const [activeSection, setActiveSection] = useState('top')
   const [activeAnchor, setActiveAnchor] = useState(null)
@@ -151,7 +151,7 @@ const Nav = () => {
   const activeMobileId = isHomePage ? (activeSection || 'top') : null
 
   const currentLabel = isCandidatePage
-    ? 'Candidate'
+    ? (candidateName || 'Candidate')
     : activeAnchor?.raceLabel
       ? `${activeAnchor.label}: ${activeAnchor.raceLabel}`
       : (activeAnchor?.label ?? mobileItems[0].label)
@@ -305,7 +305,7 @@ const Nav = () => {
 
           {isCandidatePage && (
             <li className="smart-nav-item candidate-nav-indicator">
-              <span className="smart-nav-link is-active">Candidate</span>
+              <span className="smart-nav-link is-active">{candidateName || 'Candidate'}</span>
             </li>
           )}
         </ul>

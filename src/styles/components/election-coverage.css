@@ -186,15 +186,13 @@
   fill: var(--link, #237bcf);
 }
 
-/* ---- Footer: "View all" link — mobile only, header handles desktop ---- */
 .stories-footer {
-  display: flex;
-  justify-content: flex-end;
-  padding-top: 0.75rem;
+  display: none;
 }
 
-@media screen and (min-width: 875px) {
-  .stories-footer { display: none; }
+@media (max-width: 874px) {
+  .section-header .stories-teaser-all { display: none; }
+  .stories-footer { display: flex; }
 }
 
 .stories-all-link {

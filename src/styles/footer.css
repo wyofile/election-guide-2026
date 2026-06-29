@@ -6,7 +6,7 @@
   background-color: #000000;
   color: #ffffff;
   font-family: 'Roboto Slab', 'Georgia', serif;
-  padding: 20px 20px; /* Significantly reduced vertical padding */
+  padding: 12px 20px;
 }
 
 .site-footer .wrapper {
@@ -17,9 +17,9 @@
 
 /* Upper Navigation Widget Area */
 .site-footer .widget_nav_menu {
-  border-bottom: 1px solid #333333; /* Horizontal divider */
-  padding-bottom: 15px; /* Reduced spacing */
-  margin-bottom: 15px; /* Reduced spacing */
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+  border-bottom: none;
 }
 
 .site-footer ul.menu {
@@ -28,22 +28,20 @@
   margin: 0;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start; /* Centers the links like in the image */
-  gap: 10px 25px;
+  justify-content: flex-start;
+  gap: 2px 20px;
 }
 
 .site-footer ul.menu li a {
   color: #ffffff;
   text-decoration: none;
-  font-size: 0.9375rem;
+  font-size: 0.9rem;
   font-weight: 400;
   font-family: 'Roboto Slab', 'Georgia', serif !important;
   transition: color 0.2s ease;
-  display: inline-block;
-  padding: 0.25rem 0;
-  min-height: 44px;
   display: flex;
   align-items: center;
+  padding: 2px 0;
 }
 
 .site-footer ul.menu li a:hover {
@@ -72,22 +70,20 @@
   margin: 0;
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 10px;
 }
 
 .social-navigation ul.social-links-menu li a {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 44px;
-  min-height: 44px;
 }
 
 .social-navigation .svg-icon {
   fill: #ffffff;
   color: #ffffff;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.2rem;
+  height: 1.2rem;
   display: block;
   transition: fill 0.2s ease;
 }
@@ -113,46 +109,41 @@
 /* Mobile Responsive Rules */
 @media (max-width: 650px) {
   .site-footer {
-    padding: 25px 20px;
+    padding: 12px 20px;
   }
 
   .site-footer .widget_nav_menu {
     border-bottom: none;
     padding-bottom: 0;
-    margin-bottom: 0;
+    margin-bottom: 6px;
   }
 
   .site-footer ul.menu {
     flex-direction: column;
-    gap: 15px;
-    margin-bottom: 20px;
+    gap: 0;
+    margin-bottom: 8px;
   }
 
   .site-footer ul.menu li a {
-    font-size: 16px;
-    display: block;
+    font-size: 0.9rem;
+    padding: 3px 0;
   }
 
   .site-info-contain {
     flex-direction: column;
     align-items: flex-start;
-    gap: 15px;
+    gap: 6px;
   }
 
   .site-info-contain .copyright {
     display: block;
     width: 100%;
-    font-size: 0.875rem;
-  }
-
-  .social-navigation {
-    width: 100%;
-    margin-top: 5px;
+    font-size: 0.8rem;
   }
 
   .social-navigation ul.social-links-menu {
     justify-content: flex-start;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 10px;
   }
 }

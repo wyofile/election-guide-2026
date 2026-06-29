@@ -78,7 +78,7 @@ export default function CandidatePage({candidate, questions, questionnaireIntro,
   const pageDescription = `${candidate.ballotName} (${candidate.party}) is running as a candidate for ${formatRace(candidate.office)} in Wyoming's 2026 election. See biographic details, issue positions and information on how to vote.`
   
   return (
-    <Layout 
+    <Layout
       relativePath={candidate.slug}
       pageTitle={`${candidate.ballotName} | ${formatRace(candidate.office)} | 2026 Wyoming Election Guide`}
       pageDescription={pageDescription}
@@ -86,6 +86,7 @@ export default function CandidatePage({candidate, questions, questionnaireIntro,
       seoDescription={pageDescription}
       socialTitle={`${candidate.ballotName} | The WyoFile 2026 Election Guide`}
       socialDescription={`Candidate for ${formatRace(candidate.office)}`}
+      candidateName={candidate.ballotName}
     >
     <CandidatePageSummary candidate={candidate} />
 
