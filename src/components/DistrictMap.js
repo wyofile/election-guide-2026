@@ -171,21 +171,26 @@ const DistrictMap = ({
 
   return (
     <div className="map-ui-card">
-      
+      <a className="link-anchor" id={`${chamber}-map-anchor`}></a>
+
       {/* 1. Dedicated Header for the Map Note */}
       <div className="map-ui-note-top">
         Note: Zoom in manually to view smaller districts clearly.
       </div>
 
       <div className="map-ui-canvas-wrapper">
-        {/* Permanent Bottom-Right Notification */}
         {searchStatus && (
-          <div className="map-overlay-status">
-            {searchStatus}
-          </div>
+          <div className="map-overlay-status">{searchStatus}</div>
         )}
-
-        {/* 2. The Map Canvas */}
+        {activeDistrict && (
+          <button
+            key={activeDistrict}
+            className="map-overlay-candidates"
+            onClick={() => document.getElementById(`${chamber}-candidates-anchor`)?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+          >
+            Candidates ↓
+          </button>
+        )}
         <div id={`${chamber}-map`} className="map-ui-canvas" />
       </div>
 

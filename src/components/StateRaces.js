@@ -1,4 +1,4 @@
-import React, { useState, Suspense } from 'react'
+import React, { useState, Suspense, useRef, useEffect } from 'react'
 import Markdown from 'react-markdown'
 import RaceCandidates from '@/components/RaceCandidates'
 import Select from 'react-select'
@@ -100,6 +100,19 @@ const StateRaces = ({ candidates, intro }) => {
     })
   }
 
+  const statusTimerRef = useRef(null)
+  const setTimedStatus = (msg, delay = 4000) => {
+    if (statusTimerRef.current) clearTimeout(statusTimerRef.current)
+    setSearchStatus(msg)
+    statusTimerRef.current = setTimeout(() => setSearchStatus(''), delay)
+  }
+  useEffect(() => () => clearTimeout(statusTimerRef.current), [])
+
+  const scrollToMap = () => {
+    if (window.innerWidth >= 875) return
+    document.getElementById(`${chamber}-map-anchor`)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
   // --- ACTIONS ---
   const handleClearAddress = () => {
     setStreet('')
@@ -117,6 +130,7 @@ const StateRaces = ({ candidates, intro }) => {
   const handleAddressSearch = async (e) => {
     e.preventDefault()
     if (!street.trim() && !city.trim() && !zip.trim()) return
+    scrollToMap()
     setSearchStatus('Searching...')
 
     try {
@@ -145,13 +159,13 @@ const StateRaces = ({ candidates, intro }) => {
 
         // 1. Boundary check
         if (resState !== 'WY' && resState !== 'Wyoming') {
-          setSearchStatus('Please enter a valid Wyoming address.')
+          setTimedStatus('Not a WY address.')
           return;
         }
 
         // 2. Vague Address Check (If Google only matched the state)
         if (!resRoute && !resCity && !resZip) {
-          setSearchStatus('Address not found. Please try adding more details.')
+          setTimedStatus('Address not found.')
           return;
         }
 
@@ -161,22 +175,23 @@ const StateRaces = ({ candidates, intro }) => {
         setZip(resZip)
         
         setTargetCoords([coords.lng, coords.lat]);
-        setSearchStatus('Address mapped successfully.')
+        setTimedStatus('Address mapped!')
       } else {
-        setSearchStatus('Unable to map it.')
+        setTimedStatus('Could not map.')
       }
     } catch (err) {
       console.error('Search error:', err)
-      setSearchStatus('Error looking up address.')
+      setTimedStatus('Search error.')
     }
   }
 
   const handleCurrentLocation = () => {
     if (!navigator.geolocation) {
-      setSearchStatus('Geolocation is not supported by your browser.')
+      setTimedStatus('Not supported.')
       return
     }
 
+    scrollToMap()
     setSearchStatus('Locating...')
 
     navigator.geolocation.getCurrentPosition(
@@ -188,7 +203,7 @@ const StateRaces = ({ candidates, intro }) => {
         const isInsideWyoming = lat >= 41.0 && lat <= 45.0 && lon >= -111.05 && lon <= -104.05;
 
         if (!isInsideWyoming) {
-          setSearchStatus('Current location is outside Wyoming.')
+          setTimedStatus('Outside Wyoming.')
           return
         }
 
@@ -196,11 +211,11 @@ const StateRaces = ({ candidates, intro }) => {
         setCity('')
         setZip('')
         setTargetCoords([lon, lat])
-        setSearchStatus('Location mapped successfully.')
+        setTimedStatus('Location mapped!')
       },
       (error) => {
         console.error('Geolocation error:', error)
-        setSearchStatus('Unable to retrieve location. Please check browser permissions.')
+        setTimedStatus('Location unavailable.')
       },
       { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
     )
@@ -271,6 +286,7 @@ const StateRaces = ({ candidates, intro }) => {
             </Suspense>
           </div>
           <div className="candidates-column">
+            <a className="link-anchor" id="house-candidates-anchor"></a>
             {activeHouseDistrict ? (
               <RaceCandidates chamber='house' district={activeHouseDistrict} candidates={candidates.filter((candidate) => candidate.office === `H${activeHouseDistrict.substring(1)}`)} />
             ) : (
@@ -293,6 +309,7 @@ const StateRaces = ({ candidates, intro }) => {
             </Suspense>
           </div>
           <div className="candidates-column">
+            <a className="link-anchor" id="senate-candidates-anchor"></a>
             {activeSenateDistrict ? (
               <RaceCandidates chamber='senate' district={activeSenateDistrict} candidates={candidates.filter((candidate) => candidate.office === `S${activeSenateDistrict.substring(1)}`)} />
             ) : (

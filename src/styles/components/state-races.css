@@ -6,15 +6,16 @@
   border-radius: 0 0 10px 10px;
   padding: 1.25rem;
   font-family: 'Roboto', sans-serif;
-  margin-bottom: 3rem;
+  margin-bottom: 1.75rem;
   box-shadow: 0 2px 10px rgba(15, 23, 42, 0.06);
 }
 
 @media screen and (max-width: 799px) {
+  /* Outer card: matches race-group padding, goes full-bleed */
   .legislature-dashboard {
     margin-left: -0.5em;
     margin-right: -0.5em;
-    padding: 0.55rem;
+    padding: 1.5rem 1.5rem 1.25rem;
     border-radius: 0 0 8px 8px;
   }
 
@@ -27,6 +28,40 @@
   .legislature-dashboard {
     padding: 2.25rem;
   }
+}
+
+/* --- MAP OVERLAY: CANDIDATES SCROLL BUTTON --- */
+@keyframes bounce-down {
+  0%, 100% { transform: translateY(0); }
+  40%       { transform: translateY(4px); }
+}
+
+.map-overlay-candidates {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 0.75rem;
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--link, #237bcf);
+  cursor: pointer;
+  font-family: inherit;
+  backdrop-filter: blur(4px);
+  animation: bounce-down 0.7s ease 0.2s 3;
+}
+
+.map-overlay-candidates:hover {
+  background-color: #ffffff;
+  border-color: var(--link, #237bcf);
+}
+
+@media screen and (min-width: 950px) {
+  .map-overlay-candidates { display: none; }
 }
 
 /* --- SECTION INTRO TEXT --- */
@@ -212,6 +247,37 @@
   letter-spacing: 0.03em;
 }
 
+@media screen and (max-width: 799px) {
+  /* Strip inner map card — must come after base .map-ui-card definition */
+  .map-ui-card {
+    border: none;
+    border-radius: 0;
+    overflow: visible;
+    box-shadow: none;
+    background-color: transparent;
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+  }
+
+  .map-ui-note-top {
+    background: transparent;
+    border-bottom: none;
+    padding: 0.35rem 1.5rem 0.5rem;
+    font-size: 0.75rem;
+    color: #94a3b8;
+  }
+
+  .map-search-panel {
+    background-color: transparent;
+    border-top: 1px solid #e8ecf0;
+    padding: 1rem 1.5rem 0.25rem;
+  }
+
+  .search-header-title {
+    display: none;
+  }
+}
+
 .multi-field-form {
   display: flex;
   flex-direction: column;
@@ -358,11 +424,11 @@
 
 .map-overlay-status {
   position: absolute;
-  bottom: 12px;
-  right: 12px;
+  bottom: 0.75rem;
+  right: 0.75rem;
   z-index: 10;
   background-color: rgba(255, 255, 255, 0.95);
-  padding: 8px 12px;
+  padding: 0.4rem 0.75rem;
   border-radius: 6px;
   border: 1px solid #cbd5e1;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -380,9 +446,9 @@
 }
 
 /* --- OPENLAYERS CONTROLS OVERRIDES --- */
-.reset-map { 
-  bottom: 0.75rem; 
-  left: 0.75rem; 
+.reset-map {
+  top: 0.75rem;
+  right: 0.75rem;
 }
 
 .reset-map button {

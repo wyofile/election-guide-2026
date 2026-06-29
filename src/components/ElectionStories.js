@@ -20,6 +20,14 @@ const StoryCard = ({ story }) => (
     rel="noopener noreferrer"
     className="story-card"
   >
+    {story.jetpack_featured_media_url && (
+      <img
+        src={story.jetpack_featured_media_url}
+        alt=""
+        className="story-card-img"
+        loading="lazy"
+      />
+    )}
     <article>
       <time className="story-date">{formatDate(new Date(story.date))}</time>
       <h3 className="story-headline">{he.decode(story.title.rendered)}</h3>
@@ -41,7 +49,7 @@ export const ElectionStoriesTeaser = () => {
       <div className="stories-teaser-header">
         <span className="stories-teaser-label">From WyoFile's Newsroom</span>
         <Link href={ELECTION_COVERAGE} target="_blank" rel="noopener noreferrer" className="stories-teaser-all">
-          All coverage <ExternalArrow />
+          All election coverage <ExternalArrow />
         </Link>
       </div>
       <div className="stories-teaser-grid">
@@ -62,6 +70,9 @@ const ElectionStories = () => {
 
       <div className="section-header">
         <h2 className="section-header__title">Latest Election Coverage</h2>
+        <Link href={ELECTION_COVERAGE} target="_blank" rel="noopener noreferrer" className="stories-teaser-all">
+          All election coverage <ExternalArrow />
+        </Link>
       </div>
 
       {error && (

@@ -117,6 +117,8 @@
   background: var(--darker-sea-green, #7a9c91);
   border-top: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.18);
+  max-height: calc(100dvh - 115px);
+  overflow-y: auto;
 
   /* Scroll when content is taller than the remaining screen.
      3.5rem ≈ the trigger button height; dvh accounts for mobile browser chrome. */

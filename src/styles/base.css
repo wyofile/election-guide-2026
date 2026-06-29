@@ -90,6 +90,7 @@ section {
   color: var(--darkened-tan);
   margin: 0;
   line-height: 1.1;
+  text-align: left;
 }
 
 .section-header__links {
@@ -129,6 +130,7 @@ section {
   font-size: clamp(1.15rem, 4vw, 1.75rem);
   font-weight: 800;
   text-transform: uppercase;
+  text-align: left;
   color: #0f172a;
   letter-spacing: -0.01em;
   margin-bottom: 1.5rem;

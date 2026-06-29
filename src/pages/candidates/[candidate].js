@@ -15,7 +15,8 @@ import legQs from '@/data/leg-qs.json'
 
 import CandidateOpponents from '@/components/CandidateOpponents'
 import CandidatePageSummary from '@/components/CandidatePageSummary'
-import CandidateStories from '@/components/CandidateStories'
+import CandidateStories, { ELECTION_COVERAGE, ExternalArrow } from '@/components/CandidateStories'
+import Link from 'next/link'
 import CandidateLinks from '@/components/CandidateLinks'
 // import RaceResults from '@/components/RaceResults'
 import Layout from '@/design/Layout'
@@ -129,6 +130,9 @@ export default function CandidatePage({candidate, questions, questionnaireIntro,
       <a className="link-anchor" id="coverage"></a>
       <div className="section-header">
         <h2 className="section-header__title">WyoFile Coverage of {candidate.lastName}</h2>
+        <Link href={ELECTION_COVERAGE} target="_blank" rel="noopener noreferrer" className="stories-teaser-all">
+          All election coverage <ExternalArrow />
+        </Link>
       </div>
       <CandidateStories tagId={candidate.tagId} slug={candidate.slug} ballotName={candidate.ballotName} />
     </section>

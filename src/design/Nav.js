@@ -40,6 +40,7 @@ const Nav = () => {
   const [activeAnchor, setActiveAnchor] = useState(null)
   const [isOpen, setIsOpen] = useState(false)
   const [expandedSection, setExpandedSection] = useState(null)
+  const navRef = useRef(null)
   const mobileRef = useRef(null)
   const triggerRef = useRef(null)
 
@@ -156,7 +157,7 @@ const Nav = () => {
       : (activeAnchor?.label ?? mobileItems[0].label)
 
   return (
-    <nav className="smart-nav-container">
+    <nav className="smart-nav-container" ref={navRef}>
       <div className="smart-nav-wrapper">
 
         {/* ===== MOBILE: dropdown ===== */}
@@ -172,6 +173,11 @@ const Nav = () => {
               if (!isOpen) {
                 const inSection = PAGE_LINKS.find(l => l.id === activeSection && l.children)
                 if (inSection) setExpandedSection(activeSection)
+                if (navRef.current) {
+                  const eyebrowHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--eyebrow-height')) || 56
+                  const navTop = window.scrollY + navRef.current.getBoundingClientRect().top - eyebrowHeight
+                  window.scrollTo({ top: Math.max(0, navTop), behavior: 'smooth' })
+                }
               }
               setIsOpen(o => !o)
             }}
