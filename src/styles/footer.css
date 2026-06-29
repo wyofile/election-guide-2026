@@ -35,10 +35,15 @@
 .site-footer ul.menu li a {
   color: #ffffff;
   text-decoration: none;
-  font-size: 15px;
+  font-size: 0.9375rem;
   font-weight: 400;
   font-family: 'Roboto Slab', 'Georgia', serif !important;
   transition: color 0.2s ease;
+  display: inline-block;
+  padding: 0.25rem 0;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
 }
 
 .site-footer ul.menu li a:hover {
@@ -50,9 +55,9 @@
 .site-info-contain {
   display: flex;
   flex-direction: row;
-  justify-content: space-between; /* Pushes copyright left, icons right */
+  justify-content: space-between;
   align-items: center;
-  font-size: 14px;
+  font-size: 0.875rem;
   color: #ffffff;
 }
 
@@ -70,11 +75,19 @@
   gap: 16px;
 }
 
+.social-navigation ul.social-links-menu li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+}
+
 .social-navigation .svg-icon {
   fill: #ffffff;
   color: #ffffff;
-  width: 20px; /* Slightly smaller icons to match the compact look */
-  height: 20px;
+  width: 1.5rem;
+  height: 1.5rem;
   display: block;
   transition: fill 0.2s ease;
 }
@@ -129,7 +142,7 @@
   .site-info-contain .copyright {
     display: block;
     width: 100%;
-    font-size: 14px;
+    font-size: 0.875rem;
   }
 
   .social-navigation {

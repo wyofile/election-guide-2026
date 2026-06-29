@@ -15,14 +15,23 @@
     --link: #237bcf;
 
     /* Custom modifications for a cleaner text-hierarchy */
-    --deep-charcoal: #242423;    /* Softened contrast from pure black for clean text */
-    --darkened-tan: #655947;     /* A deep, elegant version of your tan for headers */
-    --soft-wheat-bg: #f5f0df;    /* An ultra-light, subtle version of your wheat for a soft backdrop */
+    --deep-charcoal: #242423;
+    --darkened-tan: #655947;
+    --soft-wheat-bg: #f5f0df;
+
+    /* Sticky header stacking: eyebrow height is fixed so the nav top always syncs */
+    --eyebrow-height: 56px;
 }
 
 
 html {
   scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 body {
@@ -47,20 +56,14 @@ section {
 .section-header-prominent {
   text-align: center;
   font-family: 'Roboto', sans-serif;
-  font-size: 1.75rem;
+  font-size: clamp(1.15rem, 4vw, 1.75rem);
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: #1e293b; /* Clean, deep slate instead of harsh pure black */
-  
-  /* Give it generous breathing room */
+  color: #1e293b;
   margin: 2.5rem 0 2rem 0;
   padding-bottom: 0.75rem;
-  
-  /* Subtle bottom accent line using your brand wheat/gold mix */
   border-bottom: 3px solid var(--goldenrod);
-  
-  /* Removed the negative margins and box-shadow to let it look crisp and open */
 }
 
 /* --- INTEGRATED SECTION HEADER --- */
@@ -78,7 +81,7 @@ section {
 
 .section-header__title {
   font-family: 'Roboto', sans-serif;
-  font-size: 2.25rem;
+  font-size: clamp(1.35rem, 5vw, 2.25rem);
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -115,16 +118,14 @@ section {
 .race-header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end; /* Changed: Anchors the link to the bottom border */
-  flex-wrap: nowrap;     /* Changed: Forces them to stay on the same row */
-  gap: 1rem;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
   margin-top: 0;
   padding-bottom: 0.5rem;
   border-bottom: 2px solid var(--goldenrod, #d8a032);
-  
-  /* Larger and bolder to stand out naturally */
-  font-size: 1.75rem; 
-  font-weight: 800; 
+  font-size: clamp(1.15rem, 4vw, 1.75rem);
+  font-weight: 800;
   text-transform: uppercase;
   color: #0f172a;
   letter-spacing: -0.01em;
@@ -296,12 +297,12 @@ h4 {
 
 table {
     border-collapse: collapse;
-    font-size: 14px;
+    font-size: 0.875rem;
 }
 
 @media screen and (max-width: 468px) {
     table {
-        font-size: 13px;
+        font-size: 0.8125rem;
     }
 }
 
@@ -343,7 +344,7 @@ details>summary {
 
 table {
     border-collapse: collapse;
-    font-size: 14px;
+    font-size: 0.875rem;
 }
 
 

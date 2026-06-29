@@ -1,227 +1,32 @@
-/* --- SECTION LAYOUT (No restrictive boxes!) --- */
+/* =============================================
+   Candidate Stories Section
+   Card/grid/loading/footer styles live in
+   election-coverage.css and are shared.
+   This file only handles the section wrapper,
+   header row, and empty state.
+   ============================================= */
+
 .cs-section {
-  margin-top: 3rem;
-  margin-bottom: 2rem;
-  width: 100%;
+  margin: 3rem 0.5em 2rem 0.5em;
 }
 
-.cs-header-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  border-bottom: 2px solid #e2e8f0;
-  padding-bottom: 0.75rem;
-  margin-bottom: 1.5rem;
-}
-
-.cs-title {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 800;
-  text-transform: uppercase;
-  font-size: 1.35rem;
-  color: #0f172a;
-  margin: 0;
-}
-
-.cs-view-all {
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: #64748b;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  transition: color 0.2s;
-}
-
-.cs-view-all:hover {
-  color: #0f172a;
-}
-
-/* --- THE ENGAGING EMPTY STATE --- */
+/* Empty state — same dimensions as a story card, dashed to signal placeholder */
 .cs-empty-state {
-  background-color: #f8fafc;
-  border: 1px dashed #cbd5e1;
-  border-radius: 12px;
-  padding: 3rem 1.5rem;
-  text-align: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
-}
-
-.cs-empty-icon {
-  width: 48px;
-  height: 48px;
-  color: #94a3b8;
-  margin-bottom: 1rem;
-}
-
-.cs-empty-icon svg {
-  width: 100%;
-  height: 100%;
-}
-
-.cs-empty-title {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #334155;
-  margin: 0 0 0.5rem 0;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.25rem;
+  background-color: #ffffff;
+  border: 1px dashed #cbd5e1;
+  border-top: 3px dashed var(--goldenrod, #d29a30);
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
 }
 
 .cs-empty-text {
   font-size: 0.95rem;
   color: #64748b;
-  max-width: 500px;
-  margin: 0 auto 1.5rem auto;
-  line-height: 1.5;
-}
-
-.cs-empty-btn {
-  background-color: #ffffff;
-  color: #0f172a;
-  font-weight: 600;
-  font-size: 0.95rem;
-  padding: 0.5rem 1rem;
-  border: 1px solid #cbd5e1;
-  border-radius: 6px;
-  text-decoration: none;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-  transition: all 0.2s;
-}
-
-.cs-empty-btn:hover {
-  background-color: #f1f5f9;
-  border-color: #94a3b8;
-  transform: translateY(-1px);
-}
-
-/* --- THE STORY GRID --- */
-.cs-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 1.25rem;
-}
-
-@media screen and (min-width: 700px) {
-  .cs-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-
-@media screen and (min-width: 1000px) {
-  .cs-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-}
-
-/* --- THE CLEAN STORY CARDS --- */
-.cs-story-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  padding: 1.25rem;
-  text-decoration: none !important;
-  box-shadow: 0 2px 4px -2px rgba(0,0,0,0.05);
-  transition: all 0.2s ease;
-  min-width: 0;
-}
-
-.cs-story-card:hover {
-  border-color: #cbd5e1;
-  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.08);
-  transform: translateY(-3px);
-}
-
-.cs-story-content {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.cs-story-headline {
-  font-family: 'Roboto', sans-serif;
-  font-size: 1.05rem;
-  font-weight: 700;
-  line-height: 1.4;
-  color: #0f172a;
+  line-height: 1.65;
   margin: 0;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-}
-
-.cs-story-date {
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  color: #64748b;
-  order: -1;
-}
-
-/* --- ACTIONS & UTILS --- */
-.cs-story-action {
-  align-self: flex-end;
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: #475569;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.cs-story-card:hover .cs-story-action {
-  color: var(--link, #237bcf);
-}
-
-.cs-arrow {
-  font-size: 1.1rem;
-  transition: transform 0.2s;
-}
-
-.cs-story-card:hover .cs-arrow,
-.cs-view-all:hover .cs-arrow {
-  transform: translate(2px, -2px);
-}
-
-.cs-alert {
-  background-color: #fee2e2;
-  color: #991b1b;
-  padding: 1rem;
-  border-radius: 8px;
-  text-align: center;
-}
-
-.cs-loading {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 2rem;
-  color: #64748b;
-  font-weight: 600;
-}
-
-.cs-pulse {
-  width: 10px;
-  height: 10px;
-  background-color: #64748b;
-  border-radius: 50%;
-  animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-  0% { transform: scale(0.8); opacity: 0.5; }
-  50% { transform: scale(1.2); opacity: 1; }
-  100% { transform: scale(0.8); opacity: 0.5; }
-}
-
-.cs-footer-link-wrapper {
-  display: flex;
-  justify-content: flex-end; /* Defaults populated results to the bottom-right */
-  margin-top: 1.5rem;
-}
-
-/* Overrides alignment to match the bottom-left when no stories are available */
-.cs-left-align {
-  justify-content: flex-end;
 }

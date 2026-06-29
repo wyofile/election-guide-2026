@@ -1,133 +1,141 @@
-.modern-opponents-section {
+/* =============================================
+   Candidate Opponents Component
+   ============================================= */
+
+.opp-section {
   box-sizing: border-box;
-  background-color: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 1.5rem;
   margin: 0 0.5em 2.5rem 0.5em;
 }
 
-.opponents-meta-title {
+/* "Active candidates for U.S. Senate" label */
+.opp-meta-title {
   font-family: 'Roboto', sans-serif;
-  text-align: left;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #94a3b8;
+  margin: 0 0 1rem 0;
+}
+
+.opp-race-name {
+  color: #334155;
   font-weight: 800;
-  font-size: 0.9rem;
+}
+
+/* ---- Party group ---- */
+.opp-party-group {
+  margin-bottom: 1.25rem;
+}
+
+.opp-party-label {
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #64748b;
-  margin: 0 0 1.25rem 0;
-}
-
-.race-text-highlight {
-  color: #0f172a;
-}
-
-.opponents-flex-stack {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 0.5rem 1rem; /* Tightened the vertical gap considerably */
-}
-
-/* Forces the party headers to span across the entire row so the grid doesn't break */
-.modern-bucket-heading {
-  grid-column: 1 / -1; 
-  margin: 1rem 0 0.25rem 0; 
+  letter-spacing: 0.08em;
+  margin: 0 0 0.5rem 0;
   text-align: left;
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 0.75rem;
-  letter-spacing: 0.05em;
+  padding-bottom: 0.35rem;
+  border-bottom: 2px solid currentColor;
+  opacity: 0.85;
 }
 
-/* Removes top margin if the heading is the very first item in the list */
-.modern-bucket-heading:first-child {
-  margin-top: 0;
+/* Auto-fill grid — chips never force the container taller */
+.opp-chip-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.4rem;
 }
 
-/* --- OPPONENT INDEX ROWS --- */
-.modern-opp-row {
-  width: 100%;
+/* ---- Individual chip ---- */
+.opp-chip-row {
+  min-width: 0;
 }
 
-.modern-opp-row {
-  width: 100%;
-}
-
-.modern-opp-link {
+.opp-chip {
   box-sizing: border-box;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.5rem;
+  height: 40px;          /* fixed — never grows */
+  overflow: hidden;
+  padding: 0 0.6rem 0 0.4rem;
   background-color: #ffffff;
   border: 1px solid #e2e8f0;
-  border-left: 3px solid var(--party-color); /* Thin line for everyone */
-  border-radius: 8px;
-  padding: 0.35rem 0.5rem;
-  height: 46px;
-  text-decoration: none !important;
-  color: #334155;
-  transition: all 0.15s ease-in-out;
-}
-
-.modern-opp-link:hover {
-  border-color: #cbd5e1;
-  border-left-color: var(--party-color); /* Prevents hover from overwriting the party color */
-  background-color: #f1f5f9;
-  color: #0f172a;
-}
-
-.modern-opp-avatar-frame {
-  width: 32px;
-  height: 32px;
+  border-left: 3px solid var(--party-color);
   border-radius: 6px;
+  text-decoration: none !important;
+  color: #475569;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background-color 0.15s, color 0.15s, box-shadow 0.15s;
+  width: 100%;
+}
+
+.opp-chip:hover {
+  background-color: #f8fafc;
+  color: #0f172a;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  text-decoration: none !important;
+}
+
+.opp-chip-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
   overflow: hidden;
+  flex-shrink: 0;
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  flex-shrink: 0;
 }
 
-.modern-opp-name {
-  font-size: 0.95rem;
-  font-weight: 500;
+/* Truncates name — chip height never grows */
+.opp-chip-name {
+  flex: 1;
+  min-width: 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-/* --- ACTIVE HIGHLIGHT OVERRIDES --- */
-.active-opp .modern-opp-link {
-  background-color: #ffffff; /* Crisp white instead of gray */
-  border-color: #cbd5e1;
-  border-left: 6px solid var(--party-color); /* Thick, bold line for the active page */
-  color: #0f172a;
-  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.05); /* Subtle pop */
+.opp-chip:hover .opp-chip-name {
+  text-decoration: underline;
+  text-decoration-color: var(--party-color);
+  text-underline-offset: 2px;
 }
 
-/* Bumps the font weight of the active candidate so they stand out more */
-.active-opp .modern-opp-name {
-  font-weight: 700;
-}
-
-.current-label-badge {
-  font-size: 0.65rem;
+/* "Viewing" badge — right side, never wraps */
+.opp-chip-viewing {
+  flex-shrink: 0;
+  font-size: 0.6rem;
   font-weight: 700;
   text-transform: uppercase;
+  letter-spacing: 0.06em;
   background-color: #f1f5f9;
   color: #475569;
   padding: 2px 6px;
   border-radius: 4px;
-  margin-left: auto;
   border: 1px solid #e2e8f0;
 }
 
-.inactive-wrapper-zone {
-  margin-top: 2rem;
-  border-top: 1px dashed #e2e8f0;
-  padding-top: 1.5rem;
+/* ---- Active (currently viewing) ---- */
+.opp-chip-active .opp-chip {
+  background-color: #ffffff;
+  border-color: #cbd5e1;
+  border-left: 5px solid var(--party-color);
+  color: #0f172a;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
-.inactive-title {
-  margin-bottom: 0.5rem;
+.opp-chip-active .opp-chip-name {
+  font-weight: 700;
+}
+
+/* ---- Inactive section ---- */
+.opp-inactive-zone {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px dashed #e2e8f0;
 }

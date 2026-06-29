@@ -1,20 +1,23 @@
 /* ==========================================
-   Global Eyebrow Styles
+   Eyebrow Bar
+   Fixed height = --eyebrow-height so the sticky
+   nav below it (top: var(--eyebrow-height)) never
+   overlaps. Both values live in :root in base.css.
    ========================================== */
+
 .eyebrow-bar {
-  box-sizing: border-box; /* CRITICAL FIX: Keeps the padding inside the screen bounds */
-  background-color: #070707; 
-  color: #ffffff;
-  padding: 0 1rem;
+  box-sizing: border-box;
+  background-color: #111111;
   width: 100%;
-  
-  /* --- STICKY STACKING LOGIC --- */
-  height: 52px; 
+  height: var(--eyebrow-height, 56px);
+  padding: 0 1.25rem;
   display: flex;
   align-items: center;
   position: sticky;
   top: 0;
-  z-index: 105; 
+  z-index: 105;
+  /* Goldenrod bottom line anchors the bar to the rest of the page */
+  border-bottom: 2px solid var(--goldenrod, #d29a30);
 }
 
 .eyebrow-interior {
@@ -24,104 +27,125 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 1rem;
 }
 
+/* ---- Brand (left) ---- */
 .eyebrow-brand {
-  color: #ffffff;
-  text-decoration: none;
-}
-
-/* Hide the large serif logo on mobile */
-.brand-desktop {
-  display: none; 
-  font-family: "Roboto Slab", serif;
-  font-size: 1.75rem;
-  font-weight: 400;
-  letter-spacing: 0.02em;
-}
-
-/* Show the brand logo variant on mobile with matching font */
-.brand-mobile {
-  display: inline-flex;
-  align-items: baseline; /* CRITICAL FIX: Aligns the bottom baselines of both text sizes perfectly */
-  gap: 6px; /* Slightly increased gap for a clean breathing room layout */
-}
-
-/* The subtle "← Return to" action utility string */
-.brand-mobile-arrow {
-  font-family: "Roboto", sans-serif;
-  font-size: 0.85rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #94a3b8; 
-}
-
-/* The prominent, official branding signature */
-.brand-mobile-text {
-  font-family: "Roboto Slab", serif;
-  font-size: 1.4rem; 
-  font-weight: 400;
-  color: #ffffff; 
-  letter-spacing: 0.01em;
-}
-
-.eyebrow-actions {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
-}
-
-.eyebrow-text-link {
-  display: none; 
-  color: #d1d5db;
   text-decoration: none;
-  font-size: 0.8rem;
-  font-weight: 600;
-  font-family: "Roboto", sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.eyebrow-text-link:hover {
+  flex-shrink: 0;
+  line-height: 1;
   color: #ffffff;
-  text-decoration: underline;
 }
+.eyebrow-brand:hover { text-decoration: none; color: #ffffff; }
 
-.eyebrow-btn-donate {
-  background-color: #d8a032; 
+/* Wraps just the wordmark link so only "WyoFile" is clickable */
+.eyebrow-wordmark-link {
+  text-decoration: none;
   color: #ffffff;
-  font-weight: 800;
-  font-family: "Roboto", sans-serif;
-  font-size: 0.9rem;
-  padding: 0.4rem 1rem;
-  border-radius: 6px;
-  text-decoration: none !important;
-  display: inline-flex;
-  align-items: center;
-  transition: opacity 0.2s;
 }
-
-.eyebrow-btn-donate:hover {
+.eyebrow-wordmark-link:hover {
+  text-decoration: none;
+  color: #ffffff;
   opacity: 0.85;
 }
 
-/* ==========================================
-   Desktop Layout Breakpoints
-   ========================================== */
+/* "WyoFile" wordmark in the publication's slab serif */
+.eyebrow-wordmark {
+  font-family: "Roboto Slab", serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #ffffff;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+/* Thin vertical rule between wordmark and project label — desktop only */
+.eyebrow-pipe {
+  display: none;
+  width: 1px;
+  height: 1rem;
+  background-color: #444;
+  margin: 0 0.75rem;
+  flex-shrink: 0;
+}
+
+/* "Election Guide" label — desktop only */
+.eyebrow-project {
+  display: none;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--goldenrod, #d29a30);
+  white-space: nowrap;
+}
+
+/* ---- Actions (right) ---- */
+.eyebrow-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+/* "wyofile.com ↗" — desktop only, subtle */
+.eyebrow-site-link {
+  display: none;
+  color: #9ca3af;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: color 0.15s;
+  white-space: nowrap;
+}
+.eyebrow-site-link:hover { color: #ffffff; text-decoration: none; }
+
+/* Donate button — goldenrod, dark text, uppercase, compact */
+.eyebrow-btn-donate {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--goldenrod, #d29a30);
+  color: #000000;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.45rem 0.9rem;
+  margin: 0.4rem 0;
+  border-radius: .6rem;
+  text-decoration: none !important;
+  white-space: nowrap;
+  transition: background-color 0.15s;
+}
+.eyebrow-btn-donate:hover {
+  background-color: #b8841c;
+  color: #000000;
+  text-decoration: none !important;
+}
+
+/* Donate label length variants */
 .donate-label-short { display: none; }
 
-@media screen and (max-width: 460px) {
+@media screen and (max-width: 600px) {
   .donate-label-full { display: none; }
   .donate-label-short { display: inline; }
 }
 
+/* ---- Desktop ---- */
 @media screen and (min-width: 875px) {
-  .eyebrow-text-link { display: block; } 
-  
-  /* Swap the brand texts on desktop */
-  .brand-mobile { display: none; }
-  .brand-desktop { display: inline-block; }
+  .eyebrow-bar { padding: 0 2rem; }
+  .eyebrow-wordmark { font-size: 1.35rem; font-weight: 400; }
+  .eyebrow-pipe { display: inline-block; }
+  .eyebrow-project { display: inline; }
+  .eyebrow-site-link { display: inline; }
+  .eyebrow-actions { gap: 1.25rem; }
 }
 /* ==========================================
    Main Hero Styles
@@ -150,12 +174,12 @@
 
 .site-title {
   color: white;
-  font-size: 3rem;
-  margin: 0 0 0.25rem 0 !important; /* Small gap to keep it tight to the guide text */
+  font-size: clamp(1.75rem, 7vw, 3rem);
+  margin: 0 0 0.25rem 0 !important;
   text-shadow: 0 3px 6px rgba(0,0,0, 0.25);
   font-family: "Roboto Slab", serif;
   font-weight: 400;
-  line-height: 1; 
+  line-height: 1;
 }
 
 .header-center {
@@ -192,7 +216,7 @@ h1 h2 {
   text-decoration: none;
   color: white;
   font-weight: 800;
-  font-size: 3.5rem;
+  font-size: clamp(2rem, 8vw, 3.5rem);
   text-shadow: 0 3px 6px rgba(0,0,0, 0.25);
 }
 

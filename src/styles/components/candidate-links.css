@@ -1,70 +1,72 @@
-.modern-links-bar {
-  box-sizing: border-box;
-  margin: 0 0.5em 2rem 0.5em;
-  padding: 0;
-}
+/* =============================================
+   Candidate Links Bar
+   Two groups: anchor (jump-to) and external.
+   ============================================= */
 
-.modern-links-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.cand-links-bar {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  align-items: center;
+  gap: 0.5rem 1.5rem;
+  margin: 0 0.5em 2rem 0.5em;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e2e8f0;
 }
 
-.modern-btn-link {
-  box-sizing: border-box;
+/* Each group sits on the same row, groups are separated by the gap */
+.cand-links-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 1rem;
+}
+
+/* ---- Jump-to links (internal anchors) ---- */
+/* Styled like the section-header__links: small, understated, goldenrod on hover */
+.cand-link-anchor {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  text-decoration: none !important;
-  font-size: 0.95rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.875rem;
   font-weight: 600;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  transition: all 0.15s ease-in-out;
-  border: 1px solid #cbd5e1;
+  color: #64748b;
+  text-decoration: none;
+  padding: 0.25rem 0;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+  white-space: nowrap;
 }
 
-.modern-btn-link.anchor-link {
-  background-color: #f8fafc;
-  color: #334155;
+.cand-link-anchor:hover {
+  color: var(--darkened-tan, #655947);
+  border-bottom-color: var(--goldenrod, #d29a30);
+  text-decoration: none;
 }
 
-.modern-btn-link.external-link {
-  background-color: #ffffff;
+/* ---- External links ---- */
+.cand-link-external {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
   color: var(--link, #237bcf);
-  border-color: #bae6fd;
-}
-
-.modern-btn-link.contact-link {
-  background-color: #ffffff;
-  color: #0f172a;
-}
-
-/* Hover Mechanics */
-.modern-btn-link:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-}
-
-.modern-btn-link.anchor-link:hover {
-  background-color: #f1f5f9;
-  border-color: #94a3b8;
-}
-
-.modern-btn-link.external-link:hover {
+  text-decoration: none;
+  padding: 0.3rem 0.75rem;
+  border: 1px solid #bae6fd;
+  border-radius: 6px;
   background-color: #f0f9ff;
+  white-space: nowrap;
+  transition: background-color 0.15s, border-color 0.15s;
+}
+
+.cand-link-external:hover {
+  background-color: #e0f2fe;
   border-color: #7dd3fc;
+  text-decoration: none;
 }
 
-.modern-btn-link.contact-link:hover {
-  background-color: #f8fafc;
-  border-color: #94a3b8;
-}
-
-.link-icon {
-  font-size: 1rem;
-  line-height: 1;
+.cand-link-external svg {
+  fill: currentColor;
 }

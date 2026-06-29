@@ -3,84 +3,78 @@ import { pluralize, getPortraitPath } from '@/lib/utils'
 import Link from 'next/link'
 import Image from 'next/image'
 
-const Candidate = ({ slug, ballotName, party, hasPhoto, isCurrentPage }) => {
+const CandidateChip = ({ slug, ballotName, party, hasPhoto, isCurrentPage }) => {
   const partyInfo = PARTIES.find(d => d.key === party)
   const portraitPath = getPortraitPath(hasPhoto, party, slug)
 
   return (
-    <div className={`modern-opp-row ${isCurrentPage ? 'active-opp' : ''}`} style={{ '--party-color': partyInfo.color }}>
-      <Link href={slug} scroll={false} className="modern-opp-link">
-        <div className="modern-opp-avatar-frame" style={{ background: `linear-gradient(5deg, #eeeeee 0%, #e5e3e2 6%, ${partyInfo.color} 92%)` }}>
+    <div className={`opp-chip-row ${isCurrentPage ? 'opp-chip-active' : ''}`} style={{ '--party-color': partyInfo.color }}>
+      <Link href={slug} scroll={false} className="opp-chip">
+        <div
+          className="opp-chip-avatar"
+          style={{ background: `linear-gradient(5deg, #eeeeee 0%, #e5e3e2 6%, ${partyInfo.color} 92%)` }}
+        >
           <Image
             alt={ballotName}
             src={portraitPath}
-            width={36}
-            height={36}
+            width={28}
+            height={28}
             style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
           />
         </div>
-        <span className="modern-opp-name">{ballotName}</span>
-        {isCurrentPage && <span className="current-label-badge">Viewing</span>}
+        <span className="opp-chip-name">{ballotName}</span>
+        {isCurrentPage && <span className="opp-chip-viewing">Viewing</span>}
       </Link>
     </div>
   )
 }
 
 const CandidateOpponents = ({ candidatesInDistrict, race, currentSlug }) => {
-  const order = { "REP": 1, "DEM": 2, "LBR": 3, "CTR": 4, "IND": 5 }
+  const order = { REP: 1, DEM: 2, LBR: 3, CTR: 4, IND: 5 }
 
-  const processGridGroup = (list) => {
-    const sorted = [...list]
+  const sortCandidates = (list) =>
+    [...list]
       .sort((a, b) => a.lastName.localeCompare(b.lastName))
       .sort((a, b) => order[a.party] - order[b.party])
-    
-    let prevParty
-    return sorted.map(c => {
-      const showLabel = c.party !== prevParty
-      prevParty = c.party
-      return { ...c, showLabel }
+
+  const activeCandidates   = sortCandidates(candidatesInDistrict.filter(c => ['active','won-general','lost-general'].includes(c.status)))
+  const inactiveCandidates = sortCandidates(candidatesInDistrict.filter(c => !['active','won-general','lost-general'].includes(c.status)))
+
+  const renderPartyGroups = (list) => {
+    const groups = {}
+    list.forEach(c => {
+      if (!groups[c.party]) groups[c.party] = []
+      groups[c.party].push(c)
     })
-  }
-
-  const activeCandidates = processGridGroup(candidatesInDistrict.filter(c => ['active', 'won-general', 'lost-general'].includes(c.status)))
-  const inactiveCandidates = processGridGroup(candidatesInDistrict.filter(c => !['active', 'won-general', 'lost-general'].includes(c.status)))
-
-  // Helper function to render grid items sequentially to fix mobile spacing
-  const renderGrid = (candidates) => {
-    return candidates.map(c => {
-      const party = PARTIES.find(p => p.key === c.party)
-      const partyCount = candidates.filter(opp => opp.party === c.party).length
-      const nodes = []
-
-      // If it's the first candidate of a party, insert the heading element first
-      if (c.showLabel) {
-        nodes.push(
-          <h4 key={`header-${c.party}`} className="modern-bucket-heading" style={{ color: party.color }}>
-            {pluralize(party.noun, partyCount)}
+    return Object.entries(groups).map(([partyKey, members]) => {
+      const partyInfo = PARTIES.find(p => p.key === partyKey)
+      return (
+        <div key={partyKey} className="opp-party-group">
+          <h4 className="opp-party-label" style={{ color: partyInfo.color }}>
+            {pluralize(partyInfo.noun, members.length)}
           </h4>
-        )
-      }
-
-      // Then insert the candidate card
-      nodes.push(<Candidate key={c.slug} isCurrentPage={c.slug === currentSlug} {...c} />)
-      return nodes
+          <div className="opp-chip-grid">
+            {members.map(c => (
+              <CandidateChip key={c.slug} isCurrentPage={c.slug === currentSlug} {...c} />
+            ))}
+          </div>
+        </div>
+      )
     })
   }
 
   return (
-    <div className="modern-opponents-section">
-      <h3 className="opponents-meta-title">ACTIVE CANDIDATES FOR <span className="race-text-highlight">{race}</span></h3>
-      
-      <div className="opponents-flex-stack">
-        {renderGrid(activeCandidates)}
-      </div>
+    <div className="opp-section">
+      <p className="opp-meta-title">
+        Active candidates for <span className="opp-race-name">{race}</span>
+      </p>
+
+      {renderPartyGroups(activeCandidates)}
 
       {inactiveCandidates.length > 0 && (
-        <div className="inactive-wrapper-zone">
-          <h4 className="opponents-meta-title inactive-title">Inactive Candidates</h4>
-          <div className="opponents-flex-stack">
-            {renderGrid(inactiveCandidates)}
-          </div>
+        <div className="opp-inactive-zone">
+          <p className="opp-meta-title">Inactive candidates</p>
+          {renderPartyGroups(inactiveCandidates)}
         </div>
       )}
     </div>

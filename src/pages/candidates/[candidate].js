@@ -94,7 +94,9 @@ export default function CandidatePage({candidate, questions, questionnaireIntro,
 
     <section>
       <a className="link-anchor" id="questionnaire"></a>
-      <h2 className='section-header-prominent'>On the Issues</h2>
+      <div className="section-header">
+        <h2 className="section-header__title">On the Issues</h2>
+      </div>
       <Markdown className='questionnaire-intro'>{questionnaireIntro}</Markdown>
       <div className="on-the-issues">
         {questions.map((q, i) => {
@@ -125,12 +127,16 @@ export default function CandidatePage({candidate, questions, questionnaireIntro,
 
     <section>
       <a className="link-anchor" id="coverage"></a>
-      <h2 className='section-header-prominent'>WyoFile Coverage of {candidate.lastName}</h2>
+      <div className="section-header">
+        <h2 className="section-header__title">WyoFile Coverage of {candidate.lastName}</h2>
+      </div>
       <CandidateStories tagId={candidate.tagId} slug={candidate.slug} ballotName={candidate.ballotName} />
     </section>
 
     <section>
-      <h2 className='section-header-prominent'>About this Project</h2>
+      <div className="section-header">
+        <h2 className="section-header__title">About this Project</h2>
+      </div>
       <Markdown>{aboutProject}</Markdown>
     </section>
 

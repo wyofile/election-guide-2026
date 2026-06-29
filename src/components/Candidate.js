@@ -53,7 +53,7 @@ const Candidate = ({ slug, ballotName, status, party, color, hasPhoto, hasRespon
             
             {(!isLoading && !error && stories.length > 0) && (
               <span className="ui-badge badge-news">
-                <strong>{stories.length >= 25 ? '25+' : stories.length}</strong> {stories.length === 1 ? 'Article' : 'Articles'}
+                {`${stories.length >= 25 ? '25+' : stories.length} ${stories.length === 1 ? 'Article' : 'Articles'}`}
               </span>
             )}
           </div>

@@ -62,14 +62,13 @@
   border-left: 1px solid #cbd5e1;
   padding: 0 1.25rem;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 0.875rem;
+  min-height: 44px;
   font-family: 'Roboto', sans-serif;
   transition: all 0.2s ease;
   display: flex;
   align-items: center;
   gap: 4px;
-  
-  /* ADDED: Apply the border-radius directly to the button so it still fits the wrapper */
   border-top-right-radius: 7px;
   border-bottom-right-radius: 7px;
 }

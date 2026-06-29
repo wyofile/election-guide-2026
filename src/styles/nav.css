@@ -2,7 +2,7 @@
 .smart-nav-container {
   background-color: var(--darker-sea-green, #7a9c91);
   position: sticky;
-  top: 52px;
+  top: var(--eyebrow-height, 56px);
   z-index: 100;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   width: 100%;
@@ -101,6 +101,7 @@
   color: rgba(255, 255, 255, 0.65);
   letter-spacing: 0.04em;
   text-transform: uppercase;
+  text-align: right;
 }
 
 /* the panel */
@@ -116,6 +117,12 @@
   background: var(--darker-sea-green, #7a9c91);
   border-top: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.18);
+
+  /* Scroll when content is taller than the remaining screen.
+     3.5rem ≈ the trigger button height; dvh accounts for mobile browser chrome. */
+  max-height: calc(100dvh - var(--eyebrow-height, 56px) - 3.5rem);
+  overflow-y: auto;
+  overscroll-behavior: contain; /* stop page from scrolling when panel hits bottom */
 
   /* closed state + animation. visibility:hidden also removes
      the links from tab order + screen readers while collapsed */
@@ -143,6 +150,7 @@
   font-size: 0.9rem;
   letter-spacing: 0.02em;
   padding: 0.7rem 1.1rem;
+  min-height: 44px;
   border-left: 3px solid transparent;
   transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }

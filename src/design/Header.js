@@ -11,23 +11,29 @@ const Header = () => {
   
   return (
     <>
-      {/* Global Eyebrow Bar (Sits at the absolute top of the page) */}
+      {/* Global Eyebrow Bar */}
       <div className="eyebrow-bar">
         <div className="eyebrow-interior">
-          <Link href="https://wyofile.com" className="eyebrow-brand">
-            <span className="brand-desktop">WyoFile</span>
-            <span className="brand-mobile">
-              <span className="brand-mobile-arrow">← Return to </span>
-              <span className="brand-mobile-text">WyoFile</span>
-            </span>
-          </Link>
+
+          {/* Brand — only the wordmark links back to wyofile.com */}
+          <div className="eyebrow-brand">
+            <Link href="https://wyofile.com" className="eyebrow-wordmark-link" aria-label="Return to WyoFile main site">
+              <span className="eyebrow-wordmark">WyoFile</span>
+            </Link>
+            <span className="eyebrow-pipe" aria-hidden="true" />
+            <span className="eyebrow-project">Election Guide</span>
+          </div>
+
           <div className="eyebrow-actions">
-            <Link href="https://wyofile.com" className="eyebrow-text-link">Return to Main Site ↗</Link>
-            <Link href={DONATE_LINK} target="_blank" className="eyebrow-btn-donate">
-              <span className="donate-label-full">Support this work 💖</span>
-              <span className="donate-label-short">Donate 💖</span>
+            <Link href="https://wyofile.com" className="eyebrow-site-link">
+              wyofile.com&nbsp;↗
+            </Link>
+            <Link href={DONATE_LINK} target="_blank" rel="noopener noreferrer" className="eyebrow-btn-donate">
+              <span className="donate-label-full">Support this work ❤️</span>
+              <span className="donate-label-short">Donate ❤️</span>
             </Link>
           </div>
+
         </div>
       </div>
 

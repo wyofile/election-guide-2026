@@ -18,10 +18,11 @@ thead > .result-row {
 
 .result-row {
   display: flex;
-  /* padding: 4px 0; */
-  font-size: 12px;
-  height: 25px;
+  font-size: 0.8rem;
+  min-height: 2rem;
+  height: auto;
   border: 0px;
+  align-items: center;
 }
 
 .result_row > th {
@@ -35,14 +36,15 @@ thead > .result-row {
   font-weight: bold;
   display: flex;
   align-items: center;
-  height: 100%;
-  padding:0 8px;
+  align-self: stretch;
+  padding: 0 8px;
   margin-right: 5px;
   margin-left: -4px;
 }
 
 .result-row-name {
-  flex: 0 0 12em;
+  flex: 1 1 auto;
+  min-width: 0;
   display: flex;
   align-items: center;
   color: #000000;
@@ -50,6 +52,9 @@ thead > .result-row {
   padding: 0;
   margin-right: 0.5em;
   padding-left: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .result-row-percent {
@@ -57,13 +62,20 @@ thead > .result-row {
   display: flex;
   align-items: center;
   margin-right: 0.5em;
-  justify-content:flex-end;
+  justify-content: flex-end;
 }
 
 .result-row-bar {
   flex: 0 0 auto;
   display: flex;
   align-items: center;
+}
+
+/* On very narrow screens hide the bar chart to prevent overflow */
+@media screen and (max-width: 420px) {
+  .result-row-bar {
+    display: none;
+  }
 }
 
 .results-source {

@@ -1,192 +1,185 @@
-/* --- THE MAIN WRAPPER --- */
-.modern-coverage-wrapper {
-  box-sizing: border-box;
-  background-color: var(--dark-sea-green, #8faea4); /* Falls back to a soft sage if variable is missing */
-  border-radius: 12px;
-  padding: 2rem;
-  margin: 0 auto 4rem auto;
-  width: 100%;
-  max-width: 1000px; /* Gives it a nice wide banner feel */
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
-  display: flex;
-  flex-direction: column;
+/* =============================================
+   Election Stories Section
+   Flows like any other page section — uses the
+   shared .section-header at the top so it feels
+   native, not bolted-on.
+   ============================================= */
+
+.election-stories-section {
+  padding: 0 0.5em;
+  margin-bottom: 4rem;
 }
 
-.modern-coverage-header {
-  margin-bottom: 1.5rem;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
-  padding-bottom: 0.75rem;
-}
-
-.modern-coverage-title {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 800;
-  text-transform: uppercase;
-  font-size: 1.4rem;
-  color: #0f172a;
-  margin: 0;
-  letter-spacing: 0.03em;
-}
-
-/* --- THE STORY GRID --- */
-.modern-coverage-grid {
+/* ---- Story grid ---- */
+.stories-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.25rem;
-  margin-bottom: 1.5rem;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
 }
 
-/* Mobile truncation: hide stories 3-6 on tiny screens to avoid a massive wall of text */
-.home-cov-stories > .modern-story-link:nth-child(n+3) {
-  display: none;
-}
-
-/* Tablet & Desktop Layouts */
 @media screen and (min-width: 600px) {
-  .home-cov-stories > .modern-story-link:nth-child(n+3) {
-    display: block; /* Reveal all stories */
-  }
-  .modern-coverage-grid {
+  .stories-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media screen and (min-width: 900px) {
-  .modern-coverage-grid {
+  .stories-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-/* --- THE STORY CARDS --- */
-.modern-story-link {
-  display: block;
+/* On mobile show only first 2 cards to avoid a wall of text */
+@media screen and (max-width: 599px) {
+  .story-card:nth-child(n+3) {
+    display: none;
+  }
+}
+
+/* ---- Individual story card ---- */
+.story-card {
+  display: flex;
+  flex-direction: column;
   text-decoration: none !important;
-  height: 100%;
-}
-
-.modern-story-card {
-  box-sizing: border-box;
   background-color: #ffffff;
-  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  border-top: 3px solid var(--goldenrod, #d29a30);
+  border-radius: 6px;
   padding: 1.25rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-top-color 0.2s ease;
+}
+
+.story-card article {
+  display: flex;
+  flex-direction: column;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  transition: all 0.2s ease-in-out;
 }
 
-.modern-story-link:hover .modern-story-card {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
-  border-color: #cbd5e1;
+.story-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  border-top-color: var(--darker-sea-green, #77958f);
+  text-decoration: none !important;
 }
 
-.story-content {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.modern-story-title {
+/* Date stamp */
+.story-date {
+  display: block;
   font-family: 'Roboto', sans-serif;
+  font-size: 0.7rem;
   font-weight: 700;
-  font-size: 1.1rem;
-  line-height: 1.4;
-  color: #0f172a;
-  margin: 0;
-}
-
-.modern-story-date {
-  font-size: 0.8rem;
-  font-weight: 600;
   text-transform: uppercase;
-  color: #64748b;
-  order: -1; /* Flips the date to sit nicely above the title visually */
+  letter-spacing: 0.08em;
+  color: #94a3b8;
+  margin-bottom: 0.6rem;
 }
 
-/* --- ACTION LINKS --- */
-.modern-story-action {
-  align-self: flex-end;
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: #475569;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  transition: color 0.2s;
-}
-
-.modern-story-link:hover .modern-story-action {
+/* Headline — Roboto Slab gives it an editorial news feel */
+.story-headline {
+  font-family: 'Roboto Slab', serif;
+  font-size: 1rem;
+  font-weight: 600;
   color: #0f172a;
+  line-height: 1.45;
+  margin: 0 0 1rem 0;
+  text-align: left;
+  flex: 1;
 }
 
-.external-arrow {
-  font-size: 1.1rem;
-  line-height: 1;
-  transition: transform 0.2s;
+.story-card:hover .story-headline {
+  color: var(--link, #237bcf);
 }
 
-.modern-story-link:hover .external-arrow,
-.modern-more-link:hover .external-arrow {
-  transform: translate(2px, -2px); /* Creates a slick diagonal pop animation */
+/* "Read Story →" action */
+.story-read-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--link, #237bcf);
+  margin-top: auto;
+  transition: gap 0.2s ease;
 }
 
-/* --- FOOTER & LOADING STATES --- */
-.modern-coverage-footer {
+.story-card:hover .story-read-link {
+  gap: 8px;
+}
+
+.story-read-link svg {
+  fill: var(--link, #237bcf);
+}
+
+/* ---- Footer: "View all" link ---- */
+.stories-footer {
   display: flex;
   justify-content: flex-end;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding-top: 0.75rem;
+  border-top: 1px solid #e2e8f0;
 }
 
-.modern-more-link {
-  color: #0f172a;
-  font-weight: 700;
-  font-size: 0.95rem;
+.stories-all-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #64748b;
   text-decoration: none;
+  transition: color 0.15s;
+}
+
+.stories-all-link svg {
+  fill: currentColor;
+}
+
+.stories-all-link:hover {
+  color: var(--link, #237bcf);
+  text-decoration: none;
+}
+
+/* ---- Loading & error states ---- */
+.stories-loading {
   display: flex;
   align-items: center;
-  gap: 6px;
-  transition: opacity 0.2s;
+  gap: 10px;
+  padding: 2rem 0;
+  color: #64748b;
+  font-weight: 600;
+  font-family: 'Roboto', sans-serif;
 }
 
-.modern-more-link:hover {
-  opacity: 0.7;
+.stories-pulse {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background-color: var(--goldenrod, #d29a30);
+  border-radius: 50%;
+  flex-shrink: 0;
+  animation: stories-pulse 1.5s infinite;
 }
 
-.modern-coverage-alert {
+@keyframes stories-pulse {
+  0%   { transform: scale(0.8); opacity: 0.5; }
+  50%  { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(0.8); opacity: 0.5; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stories-pulse { animation: none; }
+}
+
+.stories-alert {
   background-color: #fee2e2;
   color: #991b1b;
   padding: 1rem;
-  border-radius: 8px;
+  border-radius: 6px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
   text-align: center;
-  font-weight: 600;
-}
-
-.modern-coverage-loading {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 2rem;
-  color: #0f172a;
-  font-weight: 600;
-}
-
-.pulse-dot {
-  width: 10px;
-  height: 10px;
-  background-color: #0f172a;
-  border-radius: 50%;
-  animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-  0% { transform: scale(0.8); opacity: 0.5; }
-  50% { transform: scale(1.2); opacity: 1; }
-  100% { transform: scale(0.8); opacity: 0.5; }
+  margin-bottom: 1rem;
 }

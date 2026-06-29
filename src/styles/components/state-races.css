@@ -66,12 +66,14 @@
 .master-arrow-btn {
   background: transparent;
   border: none;
-  padding: 0 0.25rem; 
-  font-size: 1.5rem;  
+  padding: 0 0.25rem;
+  font-size: 1.5rem;
+  min-height: 44px;
+  min-width: 44px;
   color: #64748b;
   cursor: pointer;
   transition: color 0.2s;
-  flex-shrink: 0; 
+  flex-shrink: 0;
 }
 
 .master-arrow-btn:hover { 
@@ -109,6 +111,7 @@
   background: transparent;
   border: none;
   padding: 8px 16px;
+  min-height: 44px;
   border-radius: 6px;
   font-weight: 600;
   font-size: 0.95rem;
@@ -173,7 +176,7 @@
 .map-ui-note-top {
   background: #f8fafc;
   padding: 8px 12px;
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   color: #64748b;
   border-bottom: 1px solid #cbd5e1;
   text-align: center;
@@ -273,15 +276,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem 0.75rem; /* Slightly tighter padding for mobile */
-  font-size: 0.85rem; /* Slightly smaller text for mobile */
+  padding: 0.5rem 0.75rem;
+  min-height: 44px;
+  font-size: 0.85rem;
   font-weight: 700;
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s ease;
   border: none;
   font-family: inherit;
-  white-space: nowrap; /* Prevents button text from breaking into two lines */
+  white-space: nowrap;
 }
 
 @media screen and (min-width: 800px) {
