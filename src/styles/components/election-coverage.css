@@ -1,13 +1,76 @@
 /* =============================================
    Election Stories Section
-   Flows like any other page section — uses the
-   shared .section-header at the top so it feels
-   native, not bolted-on.
    ============================================= */
 
+/* ---- Option A: Compact teaser strip ---- */
+.stories-teaser {
+  margin: 0 0 2rem 0;
+  padding: 0 0.5em;
+}
+
+.stories-teaser-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.stories-teaser-label {
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #94a3b8;
+}
+
+.stories-teaser-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--link, #237bcf);
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.stories-teaser-all svg {
+  fill: currentColor;
+}
+
+.stories-teaser-all:hover {
+  text-decoration: underline;
+}
+
+/* Teaser grid: 1 col → 3 col. Hide 3rd card below 600px. */
+.stories-teaser-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+@media screen and (min-width: 600px) {
+  .stories-teaser-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 599px) {
+  .stories-teaser-grid .story-card:nth-child(n+2) {
+    display: none;
+  }
+}
+
+/* ---- Full section ---- */
 .election-stories-section {
   padding: 0 0.5em;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
 }
 
 /* ---- Story grid ---- */

@@ -13,6 +13,47 @@ const ExternalArrow = () => (
   </svg>
 )
 
+const StoryCard = ({ story }) => (
+  <Link
+    href={story.link}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="story-card"
+  >
+    <article>
+      <time className="story-date">{formatDate(new Date(story.date))}</time>
+      <h3 className="story-headline">{he.decode(story.title.rendered)}</h3>
+      <span className="story-read-link">
+        Read Story <ExternalArrow />
+      </span>
+    </article>
+  </Link>
+)
+
+/* ---- Compact teaser strip (Option A) ---- */
+export const ElectionStoriesTeaser = () => {
+  const { stories, isLoading, error } = useElectionStories(ELECTION_CATEGORY_ID, NUM_STORIES)
+
+  if (isLoading || error || !stories?.length) return null
+
+  return (
+    <div className="stories-teaser">
+      <div className="stories-teaser-header">
+        <span className="stories-teaser-label">From WyoFile's Newsroom</span>
+        <Link href={ELECTION_COVERAGE} target="_blank" rel="noopener noreferrer" className="stories-teaser-all">
+          All coverage <ExternalArrow />
+        </Link>
+      </div>
+      <div className="stories-teaser-grid">
+        {stories.slice(0, 3).map(story => (
+          <StoryCard key={`teaser-${story.id}`} story={story} />
+        ))}
+      </div>
+    </div>
+  )
+}
+
+/* ---- Full editorial break section (Option B) ---- */
 const ElectionStories = () => {
   const { stories, isLoading, error } = useElectionStories(ELECTION_CATEGORY_ID, NUM_STORIES)
 
@@ -37,21 +78,7 @@ const ElectionStories = () => {
       {(!isLoading && !error && stories) && (
         <div className="stories-grid">
           {stories.map(story => (
-            <Link
-              key={`story-${story.id}`}
-              href={story.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="story-card"
-            >
-              <article>
-                <time className="story-date">{formatDate(new Date(story.date))}</time>
-                <h3 className="story-headline">{he.decode(story.title.rendered)}</h3>
-                <span className="story-read-link">
-                  Read Story <ExternalArrow />
-                </span>
-              </article>
-            </Link>
+            <StoryCard key={`story-${story.id}`} story={story} />
           ))}
         </div>
       )}

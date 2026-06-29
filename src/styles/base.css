@@ -50,7 +50,7 @@ body {
 section {
     display: block;
     padding: 0 0.5em;
-    margin-bottom: 4em;
+    margin-bottom: 3rem;
 }
 
 .section-header-prominent {
@@ -61,7 +61,7 @@ section {
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: #1e293b;
-  margin: 2.5rem 0 2rem 0;
+  margin: 1rem 0 1.5rem 0;
   padding-bottom: 0.75rem;
   border-bottom: 3px solid var(--goldenrod);
 }
@@ -76,7 +76,7 @@ section {
 
   border-bottom: 3px solid var(--goldenrod);
   padding-bottom: 0.6rem;
-  margin: 2rem 0 1.5rem;
+  margin: 1rem 0 1.5rem;
 }
 
 .section-header__title {
@@ -207,8 +207,8 @@ section {
 
 
 
-.race-candidates-wrapper{
-    margin-bottom:4rem;
+.race-candidates-wrapper {
+    margin-bottom: 2.5rem;
 }
 
 .district-title {

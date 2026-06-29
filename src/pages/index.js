@@ -5,7 +5,7 @@ import Layout from '@/design/Layout'
 import CandidateSearch from '@/components/CandidateSearch'
 import StateRaces from '@/components/StateRaces'
 import RaceCandidates from '@/components/RaceCandidates'
-import ElectionStories from '@/components/ElectionStories';
+import ElectionStories, { ElectionStoriesTeaser } from '@/components/ElectionStories';
 // import JudgeList from '@/components/JudgeList'
 // import RaceResults from '@/components/RaceResults'
 import CountyClerkLocator from '@/components/CountyClerkLocator';
@@ -57,6 +57,8 @@ const Home = ({candidates, textContent, ballotPropositionResults}) => {
     </section>
 
     <CandidateSearch candidates={candidates} />
+
+    <ElectionStoriesTeaser />
 
     <section>
       <a className="link-anchor" id="federal-delegation"></a>
