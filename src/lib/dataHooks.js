@@ -45,7 +45,7 @@ export const useElectionStories = (categoryId, count) => {
 
 export const useSearchStories = (candidateName, count, categoryId) => {
   const cleanedName = cleanNameForSearch(candidateName)
-  console.log(cleanedName)
+  
   const key = `${API_BASE_PATH}/posts?search=${encodeURIComponent(cleanedName)}&per_page=${count}&categories=${categoryId}&categories_exclude=${EXCLUDED_CATEGORY_IDS}&after=${AFTER_DATE}&_fields=${REQUEST_FIELDS}`
 
   const {data: stories, isLoading, error} = useSWRImmutable(key, fetcher)
