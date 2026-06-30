@@ -1,7 +1,7 @@
 import { PARTIES } from '@/lib/styles'
 import { pluralize, getPortraitPath } from '@/lib/utils'
 import Link from 'next/link'
-import Image from 'next/image'
+import PortraitImage from './PortraitImage'
 
 const CandidateChip = ({ slug, ballotName, party, hasPhoto, isCurrentPage }) => {
   const partyInfo = PARTIES.find(d => d.key === party)
@@ -10,18 +10,14 @@ const CandidateChip = ({ slug, ballotName, party, hasPhoto, isCurrentPage }) => 
   return (
     <div className={`opp-chip-row ${isCurrentPage ? 'opp-chip-active' : ''}`} style={{ '--party-color': partyInfo.color }}>
       <Link href={slug} scroll={false} className="opp-chip">
-        <div
+        <PortraitImage
+          alt={ballotName}
+          src={portraitPath}
+          width={28}
+          height={28}
           className="opp-chip-avatar"
           style={{ background: `linear-gradient(5deg, #eeeeee 0%, #e5e3e2 6%, ${partyInfo.color} 92%)` }}
-        >
-          <Image
-            alt={ballotName}
-            src={portraitPath}
-            width={28}
-            height={28}
-            style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
-          />
-        </div>
+        />
         <span className="opp-chip-name">{ballotName}</span>
         {isCurrentPage && <span className="opp-chip-viewing">Viewing</span>}
       </Link>

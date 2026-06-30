@@ -53,7 +53,7 @@
   gap: 0.75rem;
 }
 
-.stories-teaser-grid .story-card-img {
+.stories-teaser-grid .story-card-img-frame {
   display: none;
 }
 
@@ -143,9 +143,15 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-top-color 0.2s ease;
 }
 
-.story-card-img {
+.story-card-img-frame {
   width: 100%;
   aspect-ratio: 16 / 9;
+  display: block;
+}
+
+.story-card-img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   display: block;
 }

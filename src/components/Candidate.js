@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import Image from 'next/image'
 
+import PortraitImage from './PortraitImage'
 import { getPortraitPath } from '@/lib/utils'
 import { useCachedStories } from '@/lib/dataHooks'
 
@@ -16,18 +16,14 @@ const Candidate = ({ slug, ballotName, status, party, color, hasPhoto, hasRespon
         {/* Avatar Column */}
         <div className="candidate-avatar-col">
           {/* FIX 2 & 3: Re-added the gradient background and changed to a rounded square */}
-          <div 
-            className="avatar-rounded" 
+          <PortraitImage
+            alt={ballotName}
+            src={portraitPath}
+            width={84}
+            height={84}
+            className="avatar-rounded"
             style={{ background: `linear-gradient(5deg, #eeeeee 0%, #e5e3e2 6%, ${color} 92%)` }}
-          >
-            <Image
-              alt={ballotName}
-              src={portraitPath}
-              width={84}
-              height={84}
-              style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
-            />
-          </div>
+          />
           {status === 'won-general' && (
             <div className="winner-badge" style={{ backgroundColor: color }}>
               <span className="winner-icon">✓</span> Winner

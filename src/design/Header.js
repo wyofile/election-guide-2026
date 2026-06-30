@@ -50,13 +50,13 @@ const Header = () => {
               <Link href="/">ELECTION GUIDE 2026</Link>
             </h1>
             <h2 className="subtitle">{webSubtitle}</h2>
-            
-            <div className="update">
-              Last update: {formatDateTime(new Date(updateTime.updateTime))}
-            </div>
           </div>
         </div>
-        
+
+        <div className="update">
+          Last update: {formatDateTime(new Date(updateTime.updateTime))}
+        </div>
+
         <div className='share-buttons'>
           <p className='share-label'>Share:</p>
             <div className='a2a-kit'>

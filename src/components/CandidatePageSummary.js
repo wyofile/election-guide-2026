@@ -1,4 +1,4 @@
-import Image from "next/image"
+import PortraitImage from './PortraitImage'
 import { PARTIES, STATUS } from '../lib/styles'
 import { formatRace, getPortraitPath } from '../lib/utils'
 
@@ -14,22 +14,18 @@ const CandidatePageSummary = ({ candidate }) => {
         
         {/* Native Page Portrait */}
         <div className="header-portrait-zone">
-          <div 
-            className="header-portrait-frame" 
-            style={{ 
+          <PortraitImage
+            alt={ballotName}
+            src={portraitPath}
+            width={180}
+            height={180}
+            priority
+            className="header-portrait-frame"
+            style={{
               background: `linear-gradient(5deg, #eeeeee 0%, #e5e3e2 6%, ${partyInfo.color} 92%)`,
-              borderColor: partyInfo.color 
+              borderColor: partyInfo.color
             }}
-          >
-            <Image
-              alt={ballotName}
-              src={portraitPath}
-              width={180}
-              height={180}
-              priority
-              style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
-            />
-          </div>
+          />
         </div>
 
         {/* Editorial Typography Zone */}

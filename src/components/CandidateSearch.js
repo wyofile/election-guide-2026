@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
-import Image from "next/image"
+import PortraitImage from './PortraitImage'
 import { PARTIES, STATUS } from "@/lib/styles"
 import { formatRace, getPortraitPath } from "@/lib/utils"
 
@@ -17,15 +17,14 @@ const Candidate = ({ slug, ballotName, party, status, isIncumbent, hasResponses,
       <div className="search-result-inner" style={{ borderLeftColor: partyInfo.color }}>
         
         {/* Tiny Avatar */}
-        <div className="search-avatar-tiny" style={{ background: `linear-gradient(5deg, #eeeeee 0%, #e5e3e2 6%, ${partyInfo.color} 92%)` }}>
-          <Image
-            alt={ballotName}
-            src={portraitPath}
-            width={40}
-            height={40}
-            style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
-          />
-        </div>
+        <PortraitImage
+          alt={ballotName}
+          src={portraitPath}
+          width={40}
+          height={40}
+          className="search-avatar-tiny"
+          style={{ background: `linear-gradient(5deg, #eeeeee 0%, #e5e3e2 6%, ${partyInfo.color} 92%)` }}
+        />
 
         {/* Compact Info Row */}
         <div className="search-info-compact">

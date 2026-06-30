@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { useCachedElectionStories } from '@/lib/dataHooks'
 import he from 'he'
 import { formatDate } from '../lib/utils'
+import StoryImage from './StoryImage'
 
 const ELECTION_COVERAGE = 'https://wyofile.com/elections-2026/'
 
@@ -20,12 +21,7 @@ const StoryCard = ({ story }) => (
     className="story-card"
   >
     {story.jetpack_featured_media_url && (
-      <img
-        src={story.jetpack_featured_media_url}
-        alt=""
-        className="story-card-img"
-        loading="lazy"
-      />
+      <StoryImage src={story.jetpack_featured_media_url} alt={he.decode(story.title.rendered)} />
     )}
     <article>
       <time className="story-date">{formatDate(new Date(story.date))}</time>

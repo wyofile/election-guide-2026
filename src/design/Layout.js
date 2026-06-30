@@ -21,8 +21,8 @@ const Layout = ({
   const { baseUrl } = metaData
 
   const pageUrl = relativePath === '/' ? `${baseUrl}/` : `${baseUrl}/${relativePath}/`
-  const featureImage = `${baseUrl}/banner-fb.png`
-  const featureX = `${baseUrl}/banner-x.png`
+  const featureImage = `${baseUrl}/banner-fb.jpg`
+  const featureX = `${baseUrl}/banner-x.jpg`
   return (
     <>
       <Head>
@@ -36,12 +36,14 @@ const Layout = ({
         <meta property="og:locale" content="en_US" />
         <meta property="og:site_name" content="WyoFile" />
         <meta property="og:title" content={socialTitle} />
+        <meta property="og:description" content={socialDescription} />
         <meta property="og:image" content={featureImage} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:type" content="website" />
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@wyofile" />
         <meta name="twitter:creator" content="@wyofile" />
         <meta name="twitter:title" content={socialTitle} />
         <meta name="twitter:image" content={featureX} />
