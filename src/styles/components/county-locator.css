@@ -1,40 +1,104 @@
-/* --- THE LOCATOR BOX WRAPPER --- */
-.clerk-locator-box {
-  box-sizing: border-box;
-  background-color: #f8fafc;
-  border: 1px solid #cbd5e1;
-  border-radius: 12px;
-  padding: 1.5rem 1rem;
-  margin: 2rem auto;
-  width: 100%; 
-  max-width: 800px; 
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-  text-align: center; 
+/* ---- Overlay ---- */
+.clerk-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: clerk-overlay-in 0.18s ease;
 }
 
+@keyframes clerk-overlay-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ---- Modal panel — desktop centered ---- */
+.clerk-modal-panel {
+  position: relative;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 2rem 1.5rem 1.75rem;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+  animation: clerk-panel-in 0.22s ease;
+  text-align: center;
+}
+
+@keyframes clerk-panel-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---- Mobile: bottom drawer ---- */
+@media screen and (max-width: 600px) {
+  .clerk-modal-overlay {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .clerk-modal-panel {
+    max-width: 100%;
+    border-radius: 18px 18px 0 0;
+    padding: 1.75rem 1.25rem 2rem;
+    animation: clerk-drawer-in 0.28s cubic-bezier(0.32, 0.72, 0, 1);
+  }
+
+  @keyframes clerk-drawer-in {
+    from { transform: translateY(100%); }
+    to   { transform: translateY(0); }
+  }
+}
+
+/* ---- Close button ---- */
+.clerk-modal-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  padding: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s, color 0.15s;
+}
+.clerk-modal-close:hover {
+  background-color: #f1f5f9;
+  color: #0f172a;
+}
+
+/* ---- Modal inner content ---- */
 .clerk-locator-title {
   font-family: 'Roboto', sans-serif;
   font-weight: 800;
   text-transform: uppercase;
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   color: #0f172a;
   margin: 0 0 0.5rem 0;
 }
 
 .clerk-locator-note {
-  font-size: 0.95rem;
-  line-height: 1.4;
+  font-size: 0.9rem;
+  line-height: 1.5;
   color: #475569;
   margin: 0 auto 1.5rem auto;
-  max-width: 600px;
+  max-width: 380px;
 }
 
-/* --- UNIFIED DROPDOWN & BUTTON CONTAINER --- */
+/* ---- Dropdown + button row ---- */
 .clerk-field-wrapper {
   box-sizing: border-box;
   width: 100%;
-  max-width: 400px; /* Kept tight so the dropdown doesn't stretch too wide */
-  margin: 0 auto; 
+  max-width: 400px;
+  margin: 0 auto;
 }
 
 .clerk-input-container {
@@ -44,19 +108,16 @@
   background-color: #ffffff;
   border: 1px solid #94a3b8;
   border-radius: 8px;
-  width: 100%; 
-  /* REMOVED: overflow: hidden; (This was trapping the dropdown menu!) */
+  width: 100%;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-/* Ensure the react-select container fills the remaining space */
 .clerk-react-select-container {
   flex: 1;
   min-width: 0;
 }
 
-/* --- THE SUBMIT BUTTON --- */
-
+/* ---- Submit button ---- */
 .clerk-submit-btn {
   border: none;
   border-left: 1px solid #cbd5e1;
@@ -78,26 +139,17 @@
   color: #94a3b8;
   cursor: not-allowed;
 }
-
 .clerk-submit-btn:disabled svg path {
   fill: #94a3b8;
 }
-
 .clerk-submit-btn:not(:disabled) {
   background-color: var(--dark-sea-green, #89a6a0);
   color: #ffffff;
   cursor: pointer;
 }
-
 .clerk-submit-btn:not(:disabled) svg path {
   fill: #ffffff;
 }
-
 .clerk-submit-btn:not(:disabled):hover {
   background-color: var(--darker-sea-green, #77958f);
-}
-
-.clerk-external-arrow {
-  font-size: 1.1em;
-  line-height: 1;
 }

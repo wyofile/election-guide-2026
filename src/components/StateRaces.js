@@ -62,7 +62,7 @@ const StateRaces = ({ candidates, intro }) => {
       fontWeight: 800,
       textTransform: 'uppercase',
       color: '#0f172a',
-      fontSize: '1.15rem',
+      fontSize: '1rem',
       '@media (min-width: 800px)': { fontSize: '1.5rem' },
     }),
     dropdownIndicator: (base) => ({
@@ -256,7 +256,9 @@ const StateRaces = ({ candidates, intro }) => {
       <div className="dashboard-controls-modern">
         
         <div className="master-district-selector">
-          <button className='master-arrow-btn' onClick={handlePrevDistrict}>&larr;</button>
+          <button className='master-arrow-btn' onClick={handlePrevDistrict}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" width="18" height="18"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
           
           <div style={{ flex: 1, position: 'relative' }}>
             <Select 
@@ -270,7 +272,9 @@ const StateRaces = ({ candidates, intro }) => {
             />
           </div>
           
-          <button className='master-arrow-btn' onClick={handleNextDistrict}>&rarr;</button>
+          <button className='master-arrow-btn' onClick={handleNextDistrict}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" width="18" height="18"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
         </div>
 
         <div className="chamber-toggle-pill">

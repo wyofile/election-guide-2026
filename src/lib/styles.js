@@ -51,6 +51,20 @@ export const MarkdownExternalLinks = ({ children }) => {
             );
           }
 
+          // County clerk links open the modal instead of scrolling to an anchor.
+          if (href === '#clerk-locator') {
+            return (
+              <button
+                type="button"
+                className="markdown-inline-btn"
+                onClick={() => window.dispatchEvent(new CustomEvent('open-clerk-modal'))}
+                {...rest}
+              >
+                {linkContent}
+              </button>
+            );
+          }
+
           // If it's an internal link (e.g., "/candidates/john-doe" or "#voter-faq"),
           // use the Next.js Link component for lightning-fast SPA routing.
           return (

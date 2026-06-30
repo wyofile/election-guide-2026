@@ -9,7 +9,7 @@ import Point from 'ol/geom/Point.js'
 
 import Select from 'ol/interaction/Select.js'
 import { click, noModifierKeys } from 'ol/events/condition.js'
-import { Control, defaults as defaultControls } from 'ol/control.js'
+import { Attribution, Control, defaults as defaultControls } from 'ol/control.js'
 import { fromLonLat, transformExtent } from 'ol/proj.js'
 import { usePath } from '@/lib/utils'
 
@@ -47,6 +47,7 @@ const DistrictMap = ({
   const districtsVectorSource = useRef(new VectorSource({ format: new GeoJSON(), url: usePath(`/wyo-${chamber}-districts.json`) }))
   const mapView = useRef(new View({ center: MAP_CENTER, extent: CONSTRAINTS, zoom: 0 }))
   const [isLoadingFeatures, setIsLoadingFeatures] = useState(true)
+  const [searchOpen, setSearchOpen] = useState(false)
 
   useEffect(() => {   
     districtsVectorSource.current.on('featuresloadend', (e) => {
@@ -105,7 +106,10 @@ const DistrictMap = ({
 
     const map = new Map({
       target: `${chamber}-map`,
-      controls: defaultControls().extend([new ResetControl()]),
+      controls: defaultControls({ attribution: false }).extend([
+        new Attribution({ collapsible: true, collapsed: true }),
+        new ResetControl()
+      ]),
       layers: [osmLayer, districtsLayer, markerLayer],
       view: mapView.current
     })
@@ -196,8 +200,27 @@ const DistrictMap = ({
 
       {/* 3. Address Search Form at the Bottom */}
       <div className="map-search-panel">
-        <h4 className="search-header-title">Search Address</h4>
-        
+        <h4 className="search-header-title">Find My District</h4>
+
+        {/* Mobile-only toggle — always visible, collapses form below */}
+        <button
+          type="button"
+          className="search-panel-toggle"
+          onClick={() => setSearchOpen(o => !o)}
+          aria-expanded={searchOpen}
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="7" />
+            <circle cx="12" cy="12" r="3" fill="currentColor" stroke="none" />
+            <path d="M12 3v2M12 19v2M3 12h2M19 12h2" />
+          </svg>
+          Find My District by Address
+          <svg className={`toggle-chevron${searchOpen ? ' is-open' : ''}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" aria-hidden="true">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </button>
+
+        <div className={`search-form-collapse${searchOpen ? ' is-open' : ''}`}>
         <form onSubmit={handleAddressSearch} className="multi-field-form">
           
           <div className="form-row">
@@ -262,6 +285,7 @@ const DistrictMap = ({
             </div>
           </div>
         </form>
+        </div>
       </div>
 
     </div>

@@ -407,6 +407,21 @@ a:hover {
     text-decoration: underline;
 }
 
+/* Inline button that looks and behaves like a text link (e.g. clerk-locator trigger in FAQ) */
+.markdown-inline-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: var(--link);
+    cursor: pointer;
+    text-decoration: none;
+}
+.markdown-inline-btn:hover {
+    text-decoration: underline;
+}
+
 select {
   -webkit-appearance: none;
   -moz-appearance: none;

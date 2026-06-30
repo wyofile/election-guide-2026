@@ -115,18 +115,20 @@
 .master-arrow-btn {
   background: transparent;
   border: none;
-  padding: 0 0.25rem;
-  font-size: 1.5rem;
+  padding: 0 0.1rem;
   min-height: 44px;
-  min-width: 44px;
+  min-width: 28px;
   color: #64748b;
   cursor: pointer;
   transition: color 0.2s;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.master-arrow-btn:hover { 
-  color: var(--goldenrod, #d8a032); 
+.master-arrow-btn:hover {
+  color: var(--goldenrod, #d8a032);
 }
 
 @media screen and (min-width: 800px) {
@@ -136,7 +138,11 @@
   }
   .master-arrow-btn {
     padding: 0 0.5rem;
-    font-size: 1.75rem;
+    min-width: 44px;
+  }
+  .master-arrow-btn svg {
+    width: 22px;
+    height: 22px;
   }
 }
 
@@ -196,7 +202,7 @@
 .dashboard-split {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
+  gap: 1.25rem;
   align-items: start;
 }
 
@@ -269,12 +275,86 @@
 
   .map-search-panel {
     background-color: transparent;
-    border-top: 1px solid #e8ecf0;
-    padding: 1rem 1.5rem 0.25rem;
+    border-top: none;
+    padding: 0.35rem 1.5rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .search-header-title {
     display: none;
+  }
+}
+
+/* ---- Mobile search toggle ---- */
+.search-panel-toggle {
+  display: none; /* hidden on desktop — form always visible */
+}
+
+@media screen and (max-width: 799px) {
+  .search-panel-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: none;
+    border: none;
+    padding: 0.25rem 0;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #64748b;
+    cursor: pointer;
+  }
+
+  .search-panel-toggle:hover {
+    color: #334155;
+  }
+
+  .search-panel-toggle svg:first-child {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    color: var(--dark-sea-green, #89a6a0);
+  }
+
+  .toggle-chevron {
+    width: 13px;
+    height: 13px;
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
+  }
+
+  .toggle-chevron.is-open {
+    transform: rotate(180deg);
+  }
+
+  /* Collapsible form wrapper */
+  .search-form-collapse {
+    display: none;
+  }
+
+  .search-form-collapse.is-open {
+    display: block;
+    animation: search-slide-in 0.22s ease;
+  }
+
+  @keyframes search-slide-in {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .search-form-collapse > form {
+    padding-top: 0.75rem;
+  }
+}
+
+/* On desktop the collapse wrapper is transparent — form always shown */
+@media screen and (min-width: 800px) {
+  .search-form-collapse {
+    display: contents;
   }
 }
 
@@ -441,11 +521,22 @@
 .map-ui-canvas {
   width: 100%;
   aspect-ratio: 587 / 460; 
-  background-color: #e5e5e5;
+  background-color: #ffffff;
   cursor: pointer;
 }
 
 /* --- OPENLAYERS CONTROLS OVERRIDES --- */
+.ol-attribution button {
+  width: 16px !important;
+  height: 16px !important;
+  font-size: 0.6rem !important;
+  line-height: 16px !important;
+  padding: 0 !important;
+  opacity: 0.5;
+}
+.ol-attribution button:hover {
+  opacity: 1;
+}
 .reset-map {
   top: 0.75rem;
   right: 0.75rem;

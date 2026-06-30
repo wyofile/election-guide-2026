@@ -196,7 +196,6 @@ const Home = ({candidates, textContent, ballotPropositionResults}) => {
       })}
     </section>
 
-    <a className="link-anchor" id="clerk-locator"></a>
     <CountyClerkLocator/>
 
     <section>
