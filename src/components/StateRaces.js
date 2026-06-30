@@ -2,14 +2,18 @@ import React, { useState, Suspense, useRef, useEffect } from 'react'
 import Markdown from 'react-markdown'
 import RaceCandidates from '@/components/RaceCandidates'
 import Select from 'react-select'
+import { useDistrict } from '@/lib/DistrictContext'
 const DistrictMap = React.lazy(() => import('@/components/DistrictMap'))
 
 const StateRaces = ({ candidates, intro }) => {
-  const [chamber, setChamber] = useState('house')
-  
-  // District State & Options
-  const [activeHouseDistrict, setActiveHouseDistrict] = useState('')
-  const [activeSenateDistrict, setActiveSenateDistrict] = useState('')
+  // Lifted to context (in _app.js) so the selected district survives
+  // navigating to a candidate page and back.
+  const {
+    chamber, setChamber,
+    activeHouseDistrict, setActiveHouseDistrict,
+    activeSenateDistrict, setActiveSenateDistrict
+  } = useDistrict()
+
   const [houseOptions, setHouseOptions] = useState([])
   const [senateOptions, setSenateOptions] = useState([])
   

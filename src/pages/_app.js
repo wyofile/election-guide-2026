@@ -1,4 +1,6 @@
 
+import { DistrictProvider } from '@/lib/DistrictContext'
+
 import "@/styles/base.css"
 import 'ol/ol.css';
 
@@ -22,5 +24,9 @@ import '@/styles/components/candidate-stories.css'
 import '@/styles/components/county-locator.css'
 
 export default function App({ Component, pageProps }) {
-    return <Component {...pageProps} />;
+    return (
+        <DistrictProvider>
+            <Component {...pageProps} />
+        </DistrictProvider>
+    );
 }
