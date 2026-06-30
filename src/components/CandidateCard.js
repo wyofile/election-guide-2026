@@ -4,14 +4,12 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 import { getPortraitPath } from '@/lib/utils'
-import { useSearchStories } from '@/lib/dataHooks'
-
-const ELECTION_CATEGORY_ID = '14113'
+import { useCachedStories } from '@/lib/dataHooks'
 
 const CandidateCard = ({ slug, ballotName, party, color, hasPhoto, hasResponses, isIncumbent, tagId }) => {
 
   const portraitPath = getPortraitPath(hasPhoto, party, slug)
-  const {stories, isLoading, error} = useSearchStories(ballotName, 12, ELECTION_CATEGORY_ID)
+  const {stories, isLoading, error} = useCachedStories(slug)
 
   return (
     <div className="candidate" style={{ borderTop: `5px solid ${color}` }}>
@@ -37,7 +35,7 @@ const CandidateCard = ({ slug, ballotName, party, color, hasPhoto, hasResponses,
             { hasResponses && <div className="tag">✏️ Candidate Q&A</div> }
             { !hasResponses && <div className="tag">🚫 No Q&A response</div> }
             { isLoading && <div className='tag'>⏳</div> }
-            { (!isLoading && !error && stories.length > 0) && <div className="tag">📰 <strong>{stories.length >= 12 ? '12+' : stories.length}</strong> {(stories.length === 1) ? 'article' : 'articles'}</div>}
+            { (!isLoading && !error && stories.count > 0) && <div className="tag">📰 <strong>{stories.count >= 12 ? '12+' : stories.count}</strong> {(stories.count === 1) ? 'article' : 'articles'}</div>}
           </div>
           <div className="fakelink">
             <span>See more »</span>

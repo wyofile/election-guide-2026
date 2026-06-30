@@ -2,14 +2,12 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 import { getPortraitPath } from '@/lib/utils'
-import { useSearchStories } from '@/lib/dataHooks'
-
-const ELECTION_CATEGORY_ID = '14113'
+import { useCachedStories } from '@/lib/dataHooks'
 
 const Candidate = ({ slug, ballotName, status, party, color, hasPhoto, hasResponses, isIncumbent, tagId }) => {
 
   const portraitPath = getPortraitPath(hasPhoto, party, slug)
-  const {stories, isLoading, error} = useSearchStories(ballotName, 12, ELECTION_CATEGORY_ID)
+  const {stories, isLoading, error} = useCachedStories(slug)
 
   return (
     <Link href={`/candidates/${slug}`} className="modern-candidate-card" style={{ '--party-color': color }}>
@@ -51,9 +49,9 @@ const Candidate = ({ slug, ballotName, status, party, color, hasPhoto, hasRespon
               <span className="ui-badge badge-neutral">No Q&A</span>
             )}
             
-            {(!isLoading && !error && stories.length > 0) && (
+            {(!isLoading && !error && stories.count > 0) && (
               <span className="ui-badge badge-news">
-                {`${stories.length >= 12 ? '12+' : stories.length} ${stories.length === 1 ? 'Article' : 'Articles'}`}
+                {`${stories.count >= 12 ? '12+' : stories.count} ${stories.count === 1 ? 'Article' : 'Articles'}`}
               </span>
             )}
           </div>

@@ -43,6 +43,8 @@
 
 /* Wraps just the wordmark link so only "WyoFile" is clickable */
 .eyebrow-wordmark-link {
+  display: inline-flex;
+  align-items: center;
   text-decoration: none;
   color: #ffffff;
 }
@@ -117,6 +119,7 @@
 .eyebrow-btn-donate {
   display: inline-flex;
   align-items: center;
+  line-height: 1;
   background-color: var(--goldenrod, #d29a30);
   color: #000000;
   font-family: "Roboto", sans-serif;

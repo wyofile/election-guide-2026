@@ -141,7 +141,7 @@ const StateRaces = ({ candidates, intro }) => {
       // Assemble the parts and force Wyoming
       const searchQuery = `${street.trim()} ${city.trim()} ${zip.trim()}, Wyoming`.trim()
       
-      const proxyEndpoint = `https://awe1jjtpmj.execute-api.us-east-1.amazonaws.com//geocode?address=${encodeURIComponent(searchQuery)}`
+      const proxyEndpoint = `https://dcwz18kjn5.execute-api.us-east-2.amazonaws.com/geocode?address=${encodeURIComponent(searchQuery)}`
       
       const response = await fetch(proxyEndpoint)
       const data = await response.json()

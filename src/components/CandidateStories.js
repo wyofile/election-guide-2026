@@ -1,11 +1,10 @@
 import { useState } from 'react'
 import Link from 'next/link'
-import { useSearchStories } from '@/lib/dataHooks'
+import { useCachedStories } from '@/lib/dataHooks'
 import { formatDate } from '@/lib/utils'
 import he from 'he'
 
 export const ELECTION_COVERAGE = 'https://wyofile.com/elections-2026/'
-const ELECTION_CATEGORY_ID = '14113'
 
 export const ExternalArrow = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 48 48" aria-hidden="true" style={{ flexShrink: 0 }}>
@@ -13,8 +12,8 @@ export const ExternalArrow = () => (
   </svg>
 )
 
-const CandidateStories = ({ ballotName }) => {
-  const { stories, isLoading, error } = useSearchStories(ballotName, 12, ELECTION_CATEGORY_ID)
+const CandidateStories = ({ slug, ballotName }) => {
+  const { stories, isLoading, error } = useCachedStories(slug)
   const [expanded, setExpanded] = useState(false)
 
   return (
@@ -33,7 +32,7 @@ const CandidateStories = ({ ballotName }) => {
 
       {(!isLoading && !error && stories) && (
         <>
-          {stories.length === 0 ? (
+          {stories.count === 0 ? (
 
             /* Empty state */
             <div className="cs-empty-state">
@@ -50,7 +49,7 @@ const CandidateStories = ({ ballotName }) => {
             /* Story grid — reuses shared story-card styles from election-coverage.css */
             <>
               <div className={`stories-grid ${expanded ? 'is-expanded' : ''}`}>
-                {stories.map(story => (
+                {stories.stories.map(story => (
                   <Link
                     key={`story-${story.id}`}
                     href={story.link}
@@ -77,7 +76,7 @@ const CandidateStories = ({ ballotName }) => {
                 ))}
               </div>
 
-              {!expanded && stories.length > 3 && (
+              {!expanded && stories.count > 3 && (
                 <button
                   type="button"
                   className="stories-load-more"

@@ -1,12 +1,10 @@
 import { useState } from 'react'
 import Link from 'next/link'
-import { useElectionStories } from '@/lib/dataHooks'
+import { useCachedElectionStories } from '@/lib/dataHooks'
 import he from 'he'
 import { formatDate } from '../lib/utils'
 
 const ELECTION_COVERAGE = 'https://wyofile.com/elections-2026/'
-const ELECTION_CATEGORY_ID = '14113'
-const NUM_STORIES = 6
 
 const ExternalArrow = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 48 48" aria-hidden="true" style={{ flexShrink: 0 }}>
@@ -41,7 +39,7 @@ const StoryCard = ({ story }) => (
 
 /* ---- Compact teaser strip (Option A) ---- */
 export const ElectionStoriesTeaser = () => {
-  const { stories, isLoading, error } = useElectionStories(ELECTION_CATEGORY_ID, NUM_STORIES)
+  const { stories, isLoading, error } = useCachedElectionStories()
 
   if (isLoading || error || !stories?.length) return null
 
@@ -64,7 +62,7 @@ export const ElectionStoriesTeaser = () => {
 
 /* ---- Full editorial break section (Option B) ---- */
 const ElectionStories = () => {
-  const { stories, isLoading, error } = useElectionStories(ELECTION_CATEGORY_ID, NUM_STORIES)
+  const { stories, isLoading, error } = useCachedElectionStories()
   const [expanded, setExpanded] = useState(false)
 
   return (
