@@ -4,6 +4,7 @@ const fetcher = (...args) => fetch(...args).then(res => res.json())
 
 const API_BASE_PATH = 'https://wyofile-cache.tmusselman.workers.dev/wp-json/wp/v2'
 const EXCLUDED_CATEGORY_IDS = [9251] //exclude opinion category
+const EXCLUDED_TAG_IDS = [15647] //exclude exclude-election-guide tag
 const AFTER_DATE = '2025-01-01T00:00:00Z'
 const REQUEST_FIELDS = ['id', 'date', 'link', 'title', 'jetpack_featured_media_url']
 
@@ -46,7 +47,7 @@ export const useElectionStories = (categoryId, count) => {
 export const useSearchStories = (candidateName, count, categoryId) => {
   const cleanedName = cleanNameForSearch(candidateName)
 
-  const key = `${API_BASE_PATH}/posts?search=${encodeURIComponent(cleanedName)}&per_page=${count}&categories_exclude=${EXCLUDED_CATEGORY_IDS}&after=${AFTER_DATE}&_fields=${REQUEST_FIELDS}`
+  const key = `${API_BASE_PATH}/posts?search=${encodeURIComponent(cleanedName)}&per_page=${count}&categories_exclude=${EXCLUDED_CATEGORY_IDS}&tags_exclude=${EXCLUDED_TAG_IDS}&after=${AFTER_DATE}&_fields=${REQUEST_FIELDS}`
 
   const {data: stories, isLoading, error} = useSWRImmutable(key, fetcher)
 
@@ -60,7 +61,7 @@ export const useSearchStories = (candidateName, count, categoryId) => {
 export const useSearchStoriesWithCategoryId = (candidateName, count, categoryId) => {
   const cleanedName = cleanNameForSearch(candidateName)
 
-  const key = `${API_BASE_PATH}/posts?search=${encodeURIComponent(cleanedName)}&per_page=${count}&categories=${categoryId}&categories_exclude=${EXCLUDED_CATEGORY_IDS}&after=${AFTER_DATE}&_fields=${REQUEST_FIELDS}`
+  const key = `${API_BASE_PATH}/posts?search=${encodeURIComponent(cleanedName)}&per_page=${count}&categories=${categoryId}&categories_exclude=${EXCLUDED_CATEGORY_IDS}&tags_exclude=${EXCLUDED_TAG_IDS}&after=${AFTER_DATE}&_fields=${REQUEST_FIELDS}`
 
   const {data: stories, isLoading, error} = useSWRImmutable(key, fetcher)
 
