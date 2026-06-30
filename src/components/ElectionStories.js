@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Link from 'next/link'
 import { useElectionStories } from '@/lib/dataHooks'
 import he from 'he'
@@ -64,6 +65,7 @@ export const ElectionStoriesTeaser = () => {
 /* ---- Full editorial break section (Option B) ---- */
 const ElectionStories = () => {
   const { stories, isLoading, error } = useElectionStories(ELECTION_CATEGORY_ID, NUM_STORIES)
+  const [expanded, setExpanded] = useState(false)
 
   return (
     <section className="election-stories-section">
@@ -87,11 +89,23 @@ const ElectionStories = () => {
       )}
 
       {(!isLoading && !error && stories) && (
-        <div className="stories-grid">
-          {stories.map(story => (
-            <StoryCard key={`story-${story.id}`} story={story} />
-          ))}
-        </div>
+        <>
+          <div className={`stories-grid ${expanded ? 'is-expanded' : ''}`}>
+            {stories.map(story => (
+              <StoryCard key={`story-${story.id}`} story={story} />
+            ))}
+          </div>
+
+          {!expanded && stories.length > 3 && (
+            <button
+              type="button"
+              className="stories-load-more"
+              onClick={() => setExpanded(true)}
+            >
+              Load more stories…
+            </button>
+          )}
+        </>
       )}
 
       <div className="stories-footer">

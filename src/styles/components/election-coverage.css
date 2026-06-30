@@ -94,9 +94,36 @@
   }
 }
 
-/* On mobile show only first 2 cards to avoid a wall of text */
+/* On mobile show only first 3 cards to avoid a wall of text */
 @media screen and (max-width: 599px) {
-  .story-card:nth-child(n+3) {
+  .story-card:nth-child(n+4) {
+    display: none;
+  }
+  .stories-grid.is-expanded .story-card:nth-child(n+4) {
+    display: flex;
+  }
+}
+
+/* "Load more stories" — mobile only, hidden once expanded by the components themselves */
+.stories-load-more {
+  display: block;
+  margin: 0 auto 1.25rem;
+  padding: 0;
+  background: none;
+  border: none;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #94a3b8;
+  cursor: pointer;
+}
+
+.stories-load-more:hover {
+  color: #64748b;
+}
+
+@media screen and (min-width: 600px) {
+  .stories-load-more {
     display: none;
   }
 }

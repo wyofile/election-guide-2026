@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Link from 'next/link'
 import { useSearchStories } from '@/lib/dataHooks'
 import { formatDate } from '@/lib/utils'
@@ -14,6 +15,7 @@ export const ExternalArrow = () => (
 
 const CandidateStories = ({ ballotName }) => {
   const { stories, isLoading, error } = useSearchStories(ballotName, 12, ELECTION_CATEGORY_ID)
+  const [expanded, setExpanded] = useState(false)
 
   return (
     <div className="cs-section">
@@ -47,7 +49,7 @@ const CandidateStories = ({ ballotName }) => {
 
             /* Story grid — reuses shared story-card styles from election-coverage.css */
             <>
-              <div className="stories-grid">
+              <div className={`stories-grid ${expanded ? 'is-expanded' : ''}`}>
                 {stories.map(story => (
                   <Link
                     key={`story-${story.id}`}
@@ -74,6 +76,16 @@ const CandidateStories = ({ ballotName }) => {
                   </Link>
                 ))}
               </div>
+
+              {!expanded && stories.length > 3 && (
+                <button
+                  type="button"
+                  className="stories-load-more"
+                  onClick={() => setExpanded(true)}
+                >
+                  Load more stories…
+                </button>
+              )}
 
               <div className="stories-footer">
                 <Link className="stories-all-link" href={ELECTION_COVERAGE} target="_blank" rel="noopener noreferrer">

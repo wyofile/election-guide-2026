@@ -52,6 +52,13 @@
   opacity: 0.85;
 }
 
+/* Hints that "WyoFile" links out — mobile only, desktop has its own "wyofile.com ↗" link */
+.eyebrow-wordmark-arrow {
+  font-size: 1.2rem;
+  margin-left: 0.2rem;
+  color: #9ca3af;
+}
+
 /* "WyoFile" wordmark in the publication's slab serif */
 .eyebrow-wordmark {
   font-family: "Roboto Slab", serif;
@@ -146,6 +153,7 @@
   .eyebrow-project { display: inline; }
   .eyebrow-site-link { display: inline; }
   .eyebrow-actions { gap: 1.25rem; }
+  .eyebrow-wordmark-arrow { display: none; }
 }
 /* ==========================================
    Main Hero Styles

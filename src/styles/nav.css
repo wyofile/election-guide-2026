@@ -144,6 +144,10 @@
   display: block;
 }
 .smart-nav-panel-link {
+  /* Buttons (the Federal/Statewide triggers) default to border-box while
+     links default to content-box — pin both so padding + min-height
+     produce the same rendered height for links and buttons alike. */
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -152,7 +156,7 @@
   font-size: 0.9rem;
   letter-spacing: 0.02em;
   padding: 0.7rem 1.1rem;
-  min-height: 44px;
+  min-height: 50px;
   border-left: 3px solid transparent;
   transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
@@ -193,11 +197,23 @@
 }
 
 .smart-nav-panel-sublink {
-  padding-left: 2.25rem;
+  position: relative;
+  padding-left: 2.5rem;
   font-size: 0.8rem;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(0, 0, 0, 0.07);
   border-left-color: rgba(255, 255, 255, 0.12);
+}
+/* Small tree-branch tick to read as "nested under the parent above" */
+.smart-nav-panel-sublink::before {
+  content: '';
+  position: absolute;
+  left: 1.4rem;
+  top: 50%;
+  width: 6px;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.35);
 }
 .smart-nav-panel-sublink:hover,
 .smart-nav-panel-sublink:focus-visible {

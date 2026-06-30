@@ -19,6 +19,7 @@ const Header = () => {
           <div className="eyebrow-brand">
             <Link href="https://wyofile.com" className="eyebrow-wordmark-link" aria-label="Return to WyoFile main site">
               <span className="eyebrow-wordmark">WyoFile</span>
+              <span className="eyebrow-wordmark-arrow" aria-hidden="true">↗</span>
             </Link>
             <span className="eyebrow-pipe" aria-hidden="true" />
             <span className="eyebrow-project">Election Guide</span>
