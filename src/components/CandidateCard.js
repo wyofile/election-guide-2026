@@ -11,7 +11,7 @@ const ELECTION_CATEGORY_ID = '14113'
 const CandidateCard = ({ slug, ballotName, party, color, hasPhoto, hasResponses, isIncumbent, tagId }) => {
 
   const portraitPath = getPortraitPath(hasPhoto, party, slug)
-  const {stories, isLoading, error} = useSearchStories(ballotName, 25, ELECTION_CATEGORY_ID)
+  const {stories, isLoading, error} = useSearchStories(ballotName, 12, ELECTION_CATEGORY_ID)
 
   return (
     <div className="candidate" style={{ borderTop: `5px solid ${color}` }}>
@@ -37,7 +37,7 @@ const CandidateCard = ({ slug, ballotName, party, color, hasPhoto, hasResponses,
             { hasResponses && <div className="tag">✏️ Candidate Q&A</div> }
             { !hasResponses && <div className="tag">🚫 No Q&A response</div> }
             { isLoading && <div className='tag'>⏳</div> }
-            { (!isLoading && !error && stories.length > 0) && <div className="tag">📰 <strong>{stories.length >= 25 ? '25+' : stories.length}</strong> {(stories.length === 1) ? 'article' : 'articles'}</div>}
+            { (!isLoading && !error && stories.length > 0) && <div className="tag">📰 <strong>{stories.length >= 12 ? '12+' : stories.length}</strong> {(stories.length === 1) ? 'article' : 'articles'}</div>}
           </div>
           <div className="fakelink">
             <span>See more »</span>

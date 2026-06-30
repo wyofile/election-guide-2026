@@ -9,7 +9,7 @@ const ELECTION_CATEGORY_ID = '14113'
 const Candidate = ({ slug, ballotName, status, party, color, hasPhoto, hasResponses, isIncumbent, tagId }) => {
 
   const portraitPath = getPortraitPath(hasPhoto, party, slug)
-  const {stories, isLoading, error} = useSearchStories(ballotName, 25, ELECTION_CATEGORY_ID)
+  const {stories, isLoading, error} = useSearchStories(ballotName, 12, ELECTION_CATEGORY_ID)
 
   return (
     <Link href={`/candidates/${slug}`} className="modern-candidate-card" style={{ '--party-color': color }}>
@@ -53,7 +53,7 @@ const Candidate = ({ slug, ballotName, status, party, color, hasPhoto, hasRespon
             
             {(!isLoading && !error && stories.length > 0) && (
               <span className="ui-badge badge-news">
-                {`${stories.length >= 25 ? '25+' : stories.length} ${stories.length === 1 ? 'Article' : 'Articles'}`}
+                {`${stories.length >= 12 ? '12+' : stories.length} ${stories.length === 1 ? 'Article' : 'Articles'}`}
               </span>
             )}
           </div>

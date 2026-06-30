@@ -13,7 +13,7 @@ export const ExternalArrow = () => (
 )
 
 const CandidateStories = ({ ballotName }) => {
-  const { stories, isLoading, error } = useSearchStories(ballotName, 25, ELECTION_CATEGORY_ID)
+  const { stories, isLoading, error } = useSearchStories(ballotName, 12, ELECTION_CATEGORY_ID)
 
   return (
     <div className="cs-section">
