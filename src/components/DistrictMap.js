@@ -150,6 +150,11 @@ const DistrictMap = ({
     }
   }, [activeDistrict, isLoadingFeatures])
 
+  // Collapse mobile search panel on successful locate
+  useEffect(() => {
+    if (targetCoords) setSearchOpen(false)
+  }, [targetCoords])
+
   // Target Location Resolver & Marker Placement
   useEffect(() => {
     if (targetCoords && districtsVectorSource.current) {
