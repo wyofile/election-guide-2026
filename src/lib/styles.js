@@ -61,6 +61,16 @@ export const MarkdownExternalLinks = ({ children }) => {
                 {...rest}
               >
                 {linkContent}
+                <img 
+                  src='/election-guide-2026/external.svg' 
+                  alt=""
+                  style={{ 
+                    fill: 'var(--link)', 
+                    display: 'inline-block', 
+                    marginLeft: '4px', 
+                    width: '0.85em' // Scales with the surrounding text size
+                  }} 
+                />
               </button>
             );
           }
