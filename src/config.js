@@ -9,8 +9,4 @@ export const metaData = {
 
   // SEO
   siteSeoTitle: '2026 WyoFile Election Guide',
-  robots: {
-        index: false,
-        follow: false,
-  },
 }
