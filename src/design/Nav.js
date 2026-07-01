@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, Fragment } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { useDistrict } from '@/lib/DistrictContext'
 
 const PAGE_LINKS = [
   {
@@ -36,6 +37,7 @@ const ALL_ANCHORS = PAGE_LINKS.flatMap(link => [
 
 const Nav = ({ candidateName }) => {
   const router = useRouter()
+  const { chamber, activeHouseDistrict, activeSenateDistrict } = useDistrict()
   const [activeSection, setActiveSection] = useState('top')
   const [activeAnchor, setActiveAnchor] = useState(null)
   const [isOpen, setIsOpen] = useState(false)
@@ -150,11 +152,18 @@ const Nav = ({ candidateName }) => {
 
   const activeMobileId = isHomePage ? (activeSection || 'top') : null
 
+  const activeDistrict = chamber === 'house' ? activeHouseDistrict : activeSenateDistrict
+  const activeDistrictLabel = activeDistrict
+    ? `${chamber === 'house' ? 'HD' : 'SD'} ${parseInt(activeDistrict.substring(1))}`
+    : null
+
   const currentLabel = isCandidatePage
     ? (candidateName || 'Candidate')
-    : activeAnchor?.raceLabel
-      ? `${activeAnchor.label}: ${activeAnchor.raceLabel}`
-      : (activeAnchor?.label ?? mobileItems[0].label)
+    : activeSection === 'legislature' && activeDistrictLabel
+      ? `Legislature: ${activeDistrictLabel}`
+      : activeAnchor?.raceLabel
+        ? `${activeAnchor.label}: ${activeAnchor.raceLabel}`
+        : (activeAnchor?.label ?? mobileItems[0].label)
 
   return (
     <nav className="smart-nav-container" ref={navRef}>

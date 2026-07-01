@@ -47,7 +47,7 @@ const DistrictMap = ({
   const districtsVectorSource = useRef(new VectorSource({ format: new GeoJSON(), url: usePath(`/wyo-${chamber}-districts.json`) }))
   const mapView = useRef(new View({ center: MAP_CENTER, extent: CONSTRAINTS, zoom: 0 }))
   const [isLoadingFeatures, setIsLoadingFeatures] = useState(true)
-  const [searchOpen, setSearchOpen] = useState(false)
+  const [searchOpen, setSearchOpen] = useState(true)
 
   useEffect(() => {   
     districtsVectorSource.current.on('featuresloadend', (e) => {
