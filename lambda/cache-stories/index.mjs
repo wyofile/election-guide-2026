@@ -1,4 +1,4 @@
-import { S3Client, GetObjectCommand, PutObjectCommand } from '@aws-sdk/client-s3'
+import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3'
 import { CloudFrontClient, CreateInvalidationCommand } from '@aws-sdk/client-cloudfront'
 
 // Real WordPress REST API — not the Cloudflare worker the front end hits.
@@ -12,15 +12,13 @@ const ELECTION_CATEGORY_ID = '14113'
 const CANDIDATE_STORY_COUNT = 12
 const ELECTION_STORY_COUNT = 6
 
+const CANDIDATE_DATA_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSPmJVB9NgM-rrPq34eowXldtaMyWZa-a0NqjBaBiWvTtDa5nZxPqYUtWNLev6UCRUtiUsR48bXlpG5/pub?gid=121135908&single=true&output=csv'
+
 const BUCKET = 'projects.wyofile.com'
 const REGION = 'us-east-2'
-const CANDIDATE_DATA_KEY = 'data/election-guide-2026/candidate-data.json'
 const STORIES_PREFIX = 'data/election-guide-2026/stories'
 const DISTRIBUTION_ID = 'E1LSUP0GLMODKL'
 const INVALIDATION_PATH = '/data/election-guide-2026/stories/*'
-
-// Paced to match the rest of the pipeline's WP request throttling (inputs/fetch-ids.mjs)
-const REQUEST_DELAY_MS = 350
 
 const s3 = new S3Client({ region: REGION })
 const cloudfront = new CloudFrontClient({ region: REGION })
@@ -37,12 +35,50 @@ const cleanNameForSearch = (name) =>
     .replace(/\s{2,}/g, ' ')
     .trim()
 
-const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+// Minimal RFC-4180 CSV parser — handles Google Sheets quoted fields (e.g. "123,456")
+function parseCSVLine(line) {
+  const fields = []
+  let i = 0
+  while (i <= line.length) {
+    if (line[i] === '"') {
+      let field = ''
+      i++
+      while (i < line.length) {
+        if (line[i] === '"' && line[i + 1] === '"') { field += '"'; i += 2 }
+        else if (line[i] === '"') { i++; break }
+        else { field += line[i++] }
+      }
+      fields.push(field)
+      if (line[i] === ',') i++
+    } else {
+      const end = line.indexOf(',', i)
+      if (end === -1) { fields.push(line.slice(i)); break }
+      fields.push(line.slice(i, end))
+      i = end + 1
+    }
+  }
+  return fields
+}
+
+function parseCSV(text) {
+  const lines = text.trim().split('\n')
+  const headers = parseCSVLine(lines[0]).map(h => h.trim())
+  return lines.slice(1).map(line => {
+    const values = parseCSVLine(line)
+    return Object.fromEntries(headers.map((h, i) => [h, (values[i] ?? '').trim()]))
+  })
+}
 
 // Mirrors useSearchStories (no category filter — that's also true of the live hook)
-const buildCandidateSearchUrl = (ballotName) => {
+const buildCandidateSearchUrl = (ballotName, excludedPostIds) => {
   const cleanedName = cleanNameForSearch(ballotName)
-  return `${WP_API_BASE}/posts?search=${encodeURIComponent(cleanedName)}&per_page=${CANDIDATE_STORY_COUNT}&categories_exclude=${EXCLUDED_CATEGORY_IDS}&tags_exclude=${EXCLUDED_TAG_IDS}&after=${AFTER_DATE}&_fields=${REQUEST_FIELDS}`
+  const excludeParam = excludedPostIds?.length ? `&exclude=${excludedPostIds.join(',')}` : ''
+  return `${WP_API_BASE}/posts?search=${encodeURIComponent(`"${cleanedName}"`)}&per_page=${CANDIDATE_STORY_COUNT}&categories_exclude=${EXCLUDED_CATEGORY_IDS}&tags_exclude=${EXCLUDED_TAG_IDS}&after=${AFTER_DATE}&_fields=${REQUEST_FIELDS}${excludeParam}`
+}
+
+const buildCandidateTagUrl = (tagId, excludedPostIds) => {
+  const excludeParam = excludedPostIds?.length ? `&exclude=${excludedPostIds.join(',')}` : ''
+  return `${WP_API_BASE}/posts?tags=${tagId}&per_page=${CANDIDATE_STORY_COUNT}&categories_exclude=${EXCLUDED_CATEGORY_IDS}&tags_exclude=${EXCLUDED_TAG_IDS}&after=${AFTER_DATE}&_fields=${REQUEST_FIELDS}${excludeParam}`
 }
 
 // Mirrors useElectionStories
@@ -58,9 +94,9 @@ async function fetchStories(url) {
 }
 
 async function getCandidates() {
-  const result = await s3.send(new GetObjectCommand({ Bucket: BUCKET, Key: CANDIDATE_DATA_KEY }))
-  const body = await result.Body.transformToString()
-  return JSON.parse(body)
+  const response = await fetch(CANDIDATE_DATA_URL)
+  if (!response.ok) throw new Error(`Failed to fetch candidate CSV (${response.status})`)
+  return parseCSV(await response.text())
 }
 
 async function putJson(key, data) {
@@ -82,20 +118,39 @@ async function invalidateCache() {
   }))
 }
 
+const BATCH_SIZE = 30
+
+async function processCandidate(candidate) {
+  const { slug, ballotName, tagId, excludedPostIds: rawExcluded } = candidate
+  if (!slug || !ballotName) return
+
+  const excludedPostIds = rawExcluded
+    ? rawExcluded.split(',').map(id => id.trim()).filter(Boolean)
+    : []
+
+  const fetches = [fetchStories(buildCandidateSearchUrl(ballotName, excludedPostIds))]
+  if (tagId) fetches.push(fetchStories(buildCandidateTagUrl(tagId, excludedPostIds)))
+
+  const seen = new Map()
+  const results = await Promise.all(fetches)
+  results.flat().forEach(story => {
+    if (!seen.has(story.id)) seen.set(story.id, story)
+  })
+  const stories = [...seen.values()]
+
+  await putJson(`${STORIES_PREFIX}/${slug}.json`, { count: stories.length, stories })
+  console.log(`[OK] ${slug}: ${stories.length} stories`)
+}
+
 async function cacheCandidateStories(candidates) {
-  for (const candidate of candidates) {
-    const { slug, ballotName } = candidate
-    if (!slug || !ballotName) continue
-
-    try {
-      const stories = await fetchStories(buildCandidateSearchUrl(ballotName))
-      await putJson(`${STORIES_PREFIX}/${slug}.json`, { count: stories.length, stories })
-      console.log(`[OK] ${slug}: ${stories.length} stories`)
-    } catch (err) {
-      console.error(`[FAIL] ${slug}:`, err.message)
-    }
-
-    await sleep(REQUEST_DELAY_MS)
+  for (let i = 0; i < candidates.length; i += BATCH_SIZE) {
+    const batch = candidates.slice(i, i + BATCH_SIZE)
+    const results = await Promise.allSettled(batch.map(processCandidate))
+    results.forEach((result, j) => {
+      if (result.status === 'rejected') {
+        console.error(`[FAIL] ${batch[j].slug}:`, result.reason?.message)
+      }
+    })
   }
 }
 
