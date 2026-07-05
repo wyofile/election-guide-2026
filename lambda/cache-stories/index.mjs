@@ -128,15 +128,16 @@ async function processCandidate(candidate) {
     ? rawExcluded.split(',').map(id => id.trim()).filter(Boolean)
     : []
 
-  const fetches = [fetchStories(buildCandidateSearchUrl(ballotName, excludedPostIds))]
-  if (tagId) fetches.push(fetchStories(buildCandidateTagUrl(tagId, excludedPostIds)))
+  const [searchStories, tagStories] = await Promise.all([
+    fetchStories(buildCandidateSearchUrl(ballotName, excludedPostIds)),
+    tagId ? fetchStories(buildCandidateTagUrl(tagId, excludedPostIds)) : Promise.resolve([])
+  ])
 
   const seen = new Map()
-  const results = await Promise.all(fetches)
-  results.flat().forEach(story => {
+  ;[...tagStories, ...searchStories].forEach(story => {
     if (!seen.has(story.id)) seen.set(story.id, story)
   })
-  const stories = [...seen.values()]
+  const stories = [...seen.values()].sort((a, b) => new Date(b.date) - new Date(a.date))
 
   await putJson(`${STORIES_PREFIX}/${slug}.json`, { count: stories.length, stories })
   console.log(`[OK] ${slug}: ${stories.length} stories`)
