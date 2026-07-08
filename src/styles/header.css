@@ -265,10 +265,6 @@ h1 h2 {
 .election-guide-title {
   text-align: center;
   margin: 0;
-}
-
-.election-guide-title a {
-  text-align: center;
   text-decoration: none;
   color: white;
   font-family: "Roboto Slab", serif;

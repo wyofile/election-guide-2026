@@ -19,7 +19,10 @@ const Header = () => {
           <div className="eyebrow-brand">
             <Link href="https://wyofile.com" className="eyebrow-wordmark-link" aria-label="Return to WyoFile main site">
               <span className="eyebrow-wordmark">WyoFile</span>
-              <span className="eyebrow-wordmark-arrow" aria-hidden="true">↗</span>
+              <svg className="eyebrow-wordmark-arrow" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" width="10" height="10" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="1.5" y1="8.5" x2="8" y2="2" />
+                <polyline points="2.5,2 8,2 8,7.5" />
+              </svg>
             </Link>
             <span className="eyebrow-pipe" aria-hidden="true" />
             <span className="eyebrow-project">Election Guide</span>
@@ -27,7 +30,10 @@ const Header = () => {
 
           <div className="eyebrow-actions">
             <Link href="https://wyofile.com" className="eyebrow-site-link">
-              wyofile.com&nbsp;↗
+              wyofile.com&nbsp;<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" width="10" height="10" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{display:'inline-block', verticalAlign:'middle'}}>
+                <line x1="1.5" y1="8.5" x2="8" y2="2" />
+                <polyline points="2.5,2 8,2 8,7.5" />
+              </svg>
             </Link>
             <Link href={DONATE_LINK} target="_blank" rel="noopener noreferrer" className="eyebrow-btn-donate">
               <span className="donate-label-full">Support this work ❤️</span>
@@ -47,7 +53,7 @@ const Header = () => {
             <h1 className="site-title">WyoFile</h1>
             
             <h1 className="election-guide-title">
-              <Link href="/">ELECTION GUIDE 2026</Link>
+              ELECTION GUIDE 2026
             </h1>
             <h2 className="subtitle">{webSubtitle}</h2>
           </div>
