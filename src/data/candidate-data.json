@@ -1,6 +1,6 @@
 [
   {
-    "ballotName": "Jill M Edwards",
+    "bl": "Jill M Edwards",
     "slug": "edwards-jill",
     "office": "us-sen",
     "lastName": "EDWARDS",
@@ -34,7 +34,7 @@
     ]
   },
   {
-    "ballotName": "Harriet Hageman",
+    "bl": "Harriet Hageman",
     "slug": "hageman-harriet",
     "office": "us-sen",
     "lastName": "HAGEMAN",
@@ -68,7 +68,7 @@
     ]
   },
   {
-    "ballotName": "John Holtz",
+    "bl": "John Holtz",
     "slug": "holtz-john",
     "office": "us-sen",
     "lastName": "HOLTZ",
@@ -102,7 +102,7 @@
     ]
   },
   {
-    "ballotName": "Sam Mead",
+    "bl": "Sam Mead",
     "slug": "mead-sam",
     "office": "us-sen",
     "lastName": "MEAD",
@@ -136,7 +136,7 @@
     ]
   },
   {
-    "ballotName": "Jimmy Skovgard",
+    "bl": "Jimmy Skovgard",
     "slug": "skovgard-jimmy",
     "office": "us-sen",
     "lastName": "SKOVGARD",
@@ -170,7 +170,7 @@
     ]
   },
   {
-    "ballotName": "Billy Benavidez",
+    "bl": "Billy Benavidez",
     "slug": "benavidez-billy",
     "office": "us-sen",
     "lastName": "BENAVIDEZ",
@@ -204,7 +204,7 @@
     ]
   },
   {
-    "ballotName": "James Byrd",
+    "bl": "James Byrd",
     "slug": "byrd-james",
     "office": "us-sen",
     "lastName": "BYRD",
@@ -238,7 +238,7 @@
     ]
   },
   {
-    "ballotName": "Jillian Balow",
+    "bl": "Jillian Balow",
     "slug": "balow-jillian",
     "office": "us-house",
     "lastName": "BALOW",
@@ -271,7 +271,7 @@
     ]
   },
   {
-    "ballotName": "Bo Biteman",
+    "bl": "Bo Biteman",
     "slug": "biteman-bo",
     "office": "us-house",
     "lastName": "BITEMAN",
@@ -304,7 +304,7 @@
     ]
   },
   {
-    "ballotName": "Frank Chapman",
+    "bl": "Frank Chapman",
     "slug": "chapman-frank",
     "office": "us-house",
     "lastName": "CHAPMAN",
@@ -337,7 +337,7 @@
     ]
   },
   {
-    "ballotName": "Kevin Christensen",
+    "bl": "Kevin Christensen",
     "slug": "christensen-kevin",
     "office": "us-house",
     "lastName": "CHRISTENSEN",
@@ -370,7 +370,7 @@
     ]
   },
   {
-    "ballotName": "Richard Dodson",
+    "bl": "Richard Dodson",
     "slug": "dodson-richard",
     "office": "us-house",
     "lastName": "DODSON",
@@ -403,7 +403,7 @@
     ]
   },
   {
-    "ballotName": "Steve Friess",
+    "bl": "Steve Friess",
     "slug": "friess-steve",
     "office": "us-house",
     "lastName": "FRIESS",
@@ -436,7 +436,7 @@
     ]
   },
   {
-    "ballotName": "David Giralt",
+    "bl": "David Giralt",
     "slug": "giralt-david",
     "office": "us-house",
     "lastName": "GIRALT",
@@ -469,7 +469,7 @@
     ]
   },
   {
-    "ballotName": "Keith B. Goodenough",
+    "bl": "Keith B. Goodenough",
     "slug": "goodenough-keith",
     "office": "us-house",
     "lastName": "GOODENOUGH",
@@ -502,7 +502,7 @@
     ]
   },
   {
-    "ballotName": "Chuck Gray",
+    "bl": "Chuck Gray",
     "slug": "gray-chuck",
     "office": "us-house",
     "lastName": "GRAY",
@@ -535,7 +535,7 @@
     ]
   },
   {
-    "ballotName": "Reid Rasner",
+    "bl": "Reid Rasner",
     "slug": "rasner-reid",
     "office": "us-house",
     "lastName": "RASNER",
@@ -568,7 +568,7 @@
     ]
   },
   {
-    "ballotName": "Elena Del Real",
+    "bl": "Elena Del Real",
     "slug": "delreal-elena",
     "office": "us-house",
     "lastName": "DEL REAL",
@@ -590,7 +590,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Lisa Kinney",
+    "bl": "Lisa Kinney",
     "slug": "kinney-lisa",
     "office": "us-house",
     "lastName": "KINNEY",
@@ -623,7 +623,7 @@
     ]
   },
   {
-    "ballotName": "Eric Barlow",
+    "bl": "Eric Barlow",
     "slug": "barlow-eric",
     "office": "gov",
     "lastName": "BARLOW",
@@ -657,7 +657,7 @@
     ]
   },
   {
-    "ballotName": "Brent Bien",
+    "bl": "Brent Bien",
     "slug": "bien-brent",
     "office": "gov",
     "lastName": "BIEN",
@@ -691,7 +691,7 @@
     ]
   },
   {
-    "ballotName": "Curt Blake",
+    "bl": "Curt Blake",
     "slug": "blake-curt",
     "office": "gov",
     "lastName": "BLAKE",
@@ -713,7 +713,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Megan Degenfelder",
+    "bl": "Megan Degenfelder",
     "slug": "degenfelder-megan",
     "office": "gov",
     "lastName": "DEGENFELDER",
@@ -747,7 +747,7 @@
     ]
   },
   {
-    "ballotName": "Kenneth R. Casner",
+    "bl": "Kenneth R. Casner",
     "slug": "casner-kenneth",
     "office": "gov",
     "lastName": "CASNER",
@@ -769,7 +769,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Qwenton Eagle Oviatt",
+    "bl": "Qwenton Eagle Oviatt",
     "slug": "oviatt-qwenton",
     "office": "sos",
     "lastName": "OVIATT",
@@ -802,7 +802,7 @@
     ]
   },
   {
-    "ballotName": "Rachel Williams",
+    "bl": "Rachel Williams",
     "slug": "rodriguezwilliams-rachel",
     "office": "sos",
     "lastName": "RODRIGUEZ-WILLIAMS",
@@ -824,7 +824,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Robert Short",
+    "bl": "Robert Short",
     "slug": "short-robert",
     "office": "sos",
     "lastName": "SHORT",
@@ -857,7 +857,7 @@
     ]
   },
   {
-    "ballotName": "CJ Young",
+    "bl": "CJ Young",
     "slug": "young-cj",
     "office": "sos",
     "lastName": "YOUNG",
@@ -890,7 +890,7 @@
     ]
   },
   {
-    "ballotName": "Bryan McCarty",
+    "bl": "Bryan McCarty",
     "slug": "mccarty-bryan",
     "office": "sos",
     "lastName": "MCCARTY",
@@ -923,7 +923,7 @@
     ]
   },
   {
-    "ballotName": "Kristi Racines",
+    "bl": "Kristi Racines",
     "slug": "racines-kristi",
     "office": "aud",
     "lastName": "RACINES",
@@ -954,7 +954,7 @@
     ]
   },
   {
-    "ballotName": "Curt Meier",
+    "bl": "Curt Meier",
     "slug": "meier-curt",
     "office": "treas",
     "lastName": "MEIER",
@@ -986,7 +986,7 @@
     ]
   },
   {
-    "ballotName": "Scott Smith",
+    "bl": "Scott Smith",
     "slug": "smith-scott",
     "office": "treas",
     "lastName": "SMITH",
@@ -1008,7 +1008,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Chad Auer",
+    "bl": "Chad Auer",
     "slug": "auer-chad",
     "office": "sup",
     "lastName": "AUER",
@@ -1041,7 +1041,7 @@
     ]
   },
   {
-    "ballotName": "Steve Harshman",
+    "bl": "Steve Harshman",
     "slug": "harshman-steve",
     "office": "sup",
     "lastName": "HARSHMAN",
@@ -1074,7 +1074,7 @@
     ]
   },
   {
-    "ballotName": "Tom Kelly",
+    "bl": "Tom Kelly",
     "slug": "kelly-tom",
     "office": "sup",
     "lastName": "KELLY",
@@ -1107,7 +1107,7 @@
     ]
   },
   {
-    "ballotName": "Ana Cordova",
+    "bl": "Ana Cordova",
     "slug": "cordova-ana",
     "office": "sup",
     "lastName": "CORDOVA",
@@ -1140,7 +1140,7 @@
     ]
   },
   {
-    "ballotName": "Sergio A. Maldonado, Sr.",
+    "bl": "Sergio A. Maldonado, Sr.",
     "slug": "maldonado-sergio",
     "office": "sup",
     "lastName": "MALDONADO",
@@ -1173,7 +1173,7 @@
     ]
   },
   {
-    "ballotName": "Ogden Driskill",
+    "bl": "Ogden Driskill",
     "slug": "driskill-ogden",
     "office": "S01",
     "lastName": "DRISKILL",
@@ -1206,7 +1206,7 @@
     ]
   },
   {
-    "ballotName": "Chip Neiman",
+    "bl": "Chip Neiman",
     "slug": "neiman-chip",
     "office": "S01",
     "lastName": "NEIMAN",
@@ -1228,7 +1228,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Cheri E Steinmetz",
+    "bl": "Cheri E Steinmetz",
     "slug": "steinmetz-cheri",
     "office": "S03",
     "lastName": "STEINMETZ",
@@ -1250,7 +1250,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Meagan Herrington",
+    "bl": "Meagan Herrington",
     "slug": "herrington-meagan",
     "office": "S05",
     "lastName": "HERRINGTON",
@@ -1272,7 +1272,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Ben Hornok",
+    "bl": "Ben Hornok",
     "slug": "hornok-ben",
     "office": "S05",
     "lastName": "HORNOK",
@@ -1294,7 +1294,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Ronald D. McCleary",
+    "bl": "Ronald D. McCleary",
     "slug": "mccleary-ronald",
     "office": "S05",
     "lastName": "MCCLEARY",
@@ -1327,7 +1327,7 @@
     ]
   },
   {
-    "ballotName": "Lauren Schoenfeld",
+    "bl": "Lauren Schoenfeld",
     "slug": "schoenfeld-lauren",
     "office": "S05",
     "lastName": "SCHOENFELD",
@@ -1360,7 +1360,7 @@
     ]
   },
   {
-    "ballotName": "Ted Hanlon",
+    "bl": "Ted Hanlon",
     "slug": "hanlon-ted",
     "office": "S05",
     "lastName": "HANLON",
@@ -1393,7 +1393,7 @@
     ]
   },
   {
-    "ballotName": "Roy Birt",
+    "bl": "Roy Birt",
     "slug": "birt-roy",
     "office": "S06",
     "lastName": "BIRT",
@@ -1415,7 +1415,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Taft Love",
+    "bl": "Taft Love",
     "slug": "love-taft",
     "office": "S06",
     "lastName": "LOVE",
@@ -1437,7 +1437,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Mark Rinne",
+    "bl": "Mark Rinne",
     "slug": "rinne-mark",
     "office": "S07",
     "lastName": "RINNE",
@@ -1459,7 +1459,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Jim Lee",
+    "bl": "Jim Lee",
     "slug": "lee-jim",
     "office": "S07",
     "lastName": "LEE",
@@ -1481,7 +1481,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Chris Rothfuss",
+    "bl": "Chris Rothfuss",
     "slug": "rothfuss-chris",
     "office": "S09",
     "lastName": "ROTHFUSS",
@@ -1514,7 +1514,7 @@
     ]
   },
   {
-    "ballotName": "Bob Davis",
+    "bl": "Bob Davis",
     "slug": "davis-robert",
     "office": "S11",
     "lastName": "DAVIS",
@@ -1536,7 +1536,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Jim Wilson",
+    "bl": "Jim Wilson",
     "slug": "wilson-jim",
     "office": "S11",
     "lastName": "WILSON",
@@ -1558,7 +1558,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Stacy Jones",
+    "bl": "Stacy Jones",
     "slug": "jones-stacy",
     "office": "S13",
     "lastName": "JONES",
@@ -1580,7 +1580,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Jen Hegeman",
+    "bl": "Jen Hegeman",
     "slug": "hegeman-jen",
     "office": "S15",
     "lastName": "HEGEMAN",
@@ -1602,7 +1602,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Tina Johnson",
+    "bl": "Tina Johnson",
     "slug": "johnson-tina",
     "office": "S15",
     "lastName": "JOHNSON",
@@ -1635,7 +1635,7 @@
     ]
   },
   {
-    "ballotName": "Chris Katzl",
+    "bl": "Chris Katzl",
     "slug": "katzl-chris",
     "office": "S15",
     "lastName": "KATZL",
@@ -1668,7 +1668,7 @@
     ]
   },
   {
-    "ballotName": "Wendy Davis Schuler",
+    "bl": "Wendy Davis Schuler",
     "slug": "schuler-wendy",
     "office": "S15",
     "lastName": "SCHULER",
@@ -1701,7 +1701,7 @@
     ]
   },
   {
-    "ballotName": "Mike Gierau",
+    "bl": "Mike Gierau",
     "slug": "gierau-mike",
     "office": "S17",
     "lastName": "GIERAU",
@@ -1734,7 +1734,7 @@
     ]
   },
   {
-    "ballotName": "Paul Hoeft",
+    "bl": "Paul Hoeft",
     "slug": "hoeft-paul",
     "office": "S19",
     "lastName": "HOEFT",
@@ -1756,7 +1756,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "R. J. Kost",
+    "bl": "R. J. Kost",
     "slug": "kost-rj",
     "office": "S19",
     "lastName": "KOST",
@@ -1789,7 +1789,7 @@
     ]
   },
   {
-    "ballotName": "Melissa Butcher",
+    "bl": "Melissa Butcher",
     "slug": "butcher-melissa",
     "office": "S21",
     "lastName": "BUTCHER",
@@ -1822,7 +1822,7 @@
     ]
   },
   {
-    "ballotName": "Ken Pendergraft",
+    "bl": "Ken Pendergraft",
     "slug": "pendergraft-ken",
     "office": "S21",
     "lastName": "PENDERGRAFT",
@@ -1844,7 +1844,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Abby Angelos",
+    "bl": "Abby Angelos",
     "slug": "angelos-abby",
     "office": "S23",
     "lastName": "ANGELOS",
@@ -1877,7 +1877,7 @@
     ]
   },
   {
-    "ballotName": "Dwayne Dillinger",
+    "bl": "Dwayne Dillinger",
     "slug": "dillinger-dwayne",
     "office": "S23",
     "lastName": "DILLINGER",
@@ -1899,7 +1899,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Cale Case",
+    "bl": "Cale Case",
     "slug": "case-cale",
     "office": "S25",
     "lastName": "CASE",
@@ -1932,7 +1932,7 @@
     ]
   },
   {
-    "ballotName": "Lisa Wilson",
+    "bl": "Lisa Wilson",
     "slug": "wilson-lisa",
     "office": "S25",
     "lastName": "WILSON",
@@ -1954,7 +1954,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Jim Corkery",
+    "bl": "Jim Corkery",
     "slug": "corkery-jim",
     "office": "S27",
     "lastName": "CORKERY",
@@ -1987,7 +1987,7 @@
     ]
   },
   {
-    "ballotName": "Kevin Helling",
+    "bl": "Kevin Helling",
     "slug": "helling-kevin",
     "office": "S27",
     "lastName": "HELLING",
@@ -2020,7 +2020,7 @@
     ]
   },
   {
-    "ballotName": "Marcia Neumiller",
+    "bl": "Marcia Neumiller",
     "slug": "neumiller-marcia",
     "office": "S27",
     "lastName": "NEUMILLER",
@@ -2053,7 +2053,7 @@
     ]
   },
   {
-    "ballotName": "Lisa Engebretsen",
+    "bl": "Lisa Engebretsen",
     "slug": "engebretsen-lisa",
     "office": "S29",
     "lastName": "ENGEBRETSEN",
@@ -2086,7 +2086,7 @@
     ]
   },
   {
-    "ballotName": "Bob Ide",
+    "bl": "Bob Ide",
     "slug": "ide-bob",
     "office": "S29",
     "lastName": "IDE",
@@ -2108,7 +2108,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Evie Brennan",
+    "bl": "Evie Brennan",
     "slug": "brennan-evie",
     "office": "S31",
     "lastName": "BRENNAN",
@@ -2141,7 +2141,7 @@
     ]
   },
   {
-    "ballotName": "Daniel J. Singh",
+    "bl": "Daniel J. Singh",
     "slug": "singh-daniel",
     "office": "S31",
     "lastName": "SINGH",
@@ -2163,7 +2163,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Shifa Hamid",
+    "bl": "Shifa Hamid",
     "slug": "hamid-shifa",
     "office": "S31",
     "lastName": "HAMID",
@@ -2185,7 +2185,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Troy Claycomb",
+    "bl": "Troy Claycomb",
     "slug": "claycomb-troy",
     "office": "H01",
     "lastName": "CLAYCOMB",
@@ -2207,7 +2207,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Zeta Nuckolls Anderson",
+    "bl": "Zeta Nuckolls Anderson",
     "slug": "nuckollsanderson-zeta",
     "office": "H01",
     "lastName": "NUCKOLLS ANDERSON",
@@ -2229,7 +2229,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "JD Williams",
+    "bl": "JD Williams",
     "slug": "williams-jd",
     "office": "H02",
     "lastName": "WILLIAMS",
@@ -2251,7 +2251,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Earl Collier",
+    "bl": "Earl Collier",
     "slug": "collier-earl",
     "office": "H03",
     "lastName": "COLLIER",
@@ -2273,7 +2273,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Anne Ziegenhorn",
+    "bl": "Anne Ziegenhorn",
     "slug": "ziegenhorn-anne",
     "office": "H03",
     "lastName": "ZIEGENHORN",
@@ -2306,7 +2306,7 @@
     ]
   },
   {
-    "ballotName": "Jeremy Haroldson",
+    "bl": "Jeremy Haroldson",
     "slug": "haroldson-jeremy",
     "office": "H04",
     "lastName": "HAROLDSON",
@@ -2339,7 +2339,7 @@
     ]
   },
   {
-    "ballotName": "Joe Speckner",
+    "bl": "Joe Speckner",
     "slug": "speckner-joe",
     "office": "H05",
     "lastName": "SPECKNER",
@@ -2372,7 +2372,7 @@
     ]
   },
   {
-    "ballotName": "Karen Weber",
+    "bl": "Karen Weber",
     "slug": "weber-karen",
     "office": "H05",
     "lastName": "WEBER",
@@ -2394,7 +2394,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Tomi Strock",
+    "bl": "Tomi Strock",
     "slug": "strock-tomi",
     "office": "H06",
     "lastName": "STROCK",
@@ -2416,7 +2416,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Jim Willox",
+    "bl": "Jim Willox",
     "slug": "willox-jim",
     "office": "H06",
     "lastName": "WILLOX",
@@ -2449,7 +2449,7 @@
     ]
   },
   {
-    "ballotName": "Deb Mutter Shamley",
+    "bl": "Deb Mutter Shamley",
     "slug": "muttershamley-deb",
     "office": "H07",
     "lastName": "MUTTER-SHAMLEY",
@@ -2471,7 +2471,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Bob Nicholas",
+    "bl": "Bob Nicholas",
     "slug": "nicholas-bob",
     "office": "H07",
     "lastName": "NICHOLAS",
@@ -2504,7 +2504,7 @@
     ]
   },
   {
-    "ballotName": "Gavin Lobmeyer",
+    "bl": "Gavin Lobmeyer",
     "slug": "lobmeyer-gavin",
     "office": "H07",
     "lastName": "LOBMEYER",
@@ -2537,7 +2537,7 @@
     ]
   },
   {
-    "ballotName": "Steve Johnson",
+    "bl": "Steve Johnson",
     "slug": "johnson-steve",
     "office": "H08",
     "lastName": "JOHNSON",
@@ -2559,7 +2559,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Luke Reiner",
+    "bl": "Luke Reiner",
     "slug": "reiner-luke",
     "office": "H08",
     "lastName": "REINER",
@@ -2592,7 +2592,7 @@
     ]
   },
   {
-    "ballotName": "Brenda J Lyttle",
+    "bl": "Brenda J Lyttle",
     "slug": "lyttle-brenda",
     "office": "H08",
     "lastName": "LYTTLE",
@@ -2625,7 +2625,7 @@
     ]
   },
   {
-    "ballotName": "Exie R. Brown, Jr.",
+    "bl": "Exie R. Brown, Jr.",
     "slug": "brown-exie",
     "office": "H09",
     "lastName": "BROWN",
@@ -2647,7 +2647,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Boyd O. Wiggam",
+    "bl": "Boyd O. Wiggam",
     "slug": "wiggam-boyd",
     "office": "H09",
     "lastName": "Wiggam",
@@ -2669,7 +2669,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Stephen D. Latham",
+    "bl": "Stephen D. Latham",
     "slug": "latham-stephen",
     "office": "H09",
     "lastName": "LATHAM",
@@ -2691,7 +2691,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Justin Fornstrom",
+    "bl": "Justin Fornstrom",
     "slug": "fornstrom-justin",
     "office": "H10",
     "lastName": "FORNSTROM",
@@ -2724,7 +2724,7 @@
     ]
   },
   {
-    "ballotName": "Dan McIntosh",
+    "bl": "Dan McIntosh",
     "slug": "mcintosh-dan",
     "office": "H11",
     "lastName": "MCINTOSH",
@@ -2757,7 +2757,7 @@
     ]
   },
   {
-    "ballotName": "Paul Wing",
+    "bl": "Paul Wing",
     "slug": "wing-paul",
     "office": "H11",
     "lastName": "WING",
@@ -2779,7 +2779,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Britney Tennant",
+    "bl": "Britney Tennant",
     "slug": "tennant-britney",
     "office": "H11",
     "lastName": "TENNANT",
@@ -2812,7 +2812,7 @@
     ]
   },
   {
-    "ballotName": "Clarence Styvar",
+    "bl": "Clarence Styvar",
     "slug": "styvar-clarence",
     "office": "H12",
     "lastName": "STYVAR",
@@ -2834,7 +2834,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Shane Swett",
+    "bl": "Shane Swett",
     "slug": "swett-shane",
     "office": "H13",
     "lastName": "SWETT",
@@ -2856,7 +2856,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Ken Chestek",
+    "bl": "Ken Chestek",
     "slug": "chestek-ken",
     "office": "H13",
     "lastName": "CHESTEK",
@@ -2889,7 +2889,7 @@
     ]
   },
   {
-    "ballotName": "Emily Study",
+    "bl": "Emily Study",
     "slug": "study-emily",
     "office": "H14",
     "lastName": "STUDY",
@@ -2911,7 +2911,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Trey Sherwood",
+    "bl": "Trey Sherwood",
     "slug": "sherwood-trey",
     "office": "H14",
     "lastName": "SHERWOOD",
@@ -2944,7 +2944,7 @@
     ]
   },
   {
-    "ballotName": "Pamela Thayer",
+    "bl": "Pamela Thayer",
     "slug": "thayer-pamela",
     "office": "H15",
     "lastName": "THAYER",
@@ -2966,7 +2966,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Mike Yin",
+    "bl": "Mike Yin",
     "slug": "yin-mike",
     "office": "H16",
     "lastName": "YIN",
@@ -2999,7 +2999,7 @@
     ]
   },
   {
-    "ballotName": "Elizabeth Bingham",
+    "bl": "Elizabeth Bingham",
     "slug": "bingham-elizabeth",
     "office": "H17",
     "lastName": "BINGHAM",
@@ -3032,7 +3032,7 @@
     ]
   },
   {
-    "ballotName": "Rah Reinholz",
+    "bl": "Rah Reinholz",
     "slug": "reinholz-rah",
     "office": "H17",
     "lastName": "REINHOLZ",
@@ -3065,7 +3065,7 @@
     ]
   },
   {
-    "ballotName": "Scott Heiner",
+    "bl": "Scott Heiner",
     "slug": "heiner-scott",
     "office": "H18",
     "lastName": "HEINER",
@@ -3098,7 +3098,7 @@
     ]
   },
   {
-    "ballotName": "Kenneth D Roberts",
+    "bl": "Kenneth D Roberts",
     "slug": "roberts-kenneth",
     "office": "H18",
     "lastName": "ROBERTS",
@@ -3131,7 +3131,7 @@
     ]
   },
   {
-    "ballotName": "Chad Stephens",
+    "bl": "Chad Stephens",
     "slug": "stephens-chad",
     "office": "H19",
     "lastName": "STEPHENS",
@@ -3153,7 +3153,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Joe Webb",
+    "bl": "Joe Webb",
     "slug": "webb-joe",
     "office": "H19",
     "lastName": "WEBB",
@@ -3175,7 +3175,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Matt McGinnis",
+    "bl": "Matt McGinnis",
     "slug": "mcginnis-matt",
     "office": "H20",
     "lastName": "MCGINNIS",
@@ -3197,7 +3197,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Albert Sommers",
+    "bl": "Albert Sommers",
     "slug": "sommers-albert",
     "office": "H20",
     "lastName": "SOMMERS",
@@ -3230,7 +3230,7 @@
     ]
   },
   {
-    "ballotName": "Bill Winney",
+    "bl": "Bill Winney",
     "slug": "winney-bill",
     "office": "H20",
     "lastName": "WINNEY",
@@ -3263,7 +3263,7 @@
     ]
   },
   {
-    "ballotName": "McKay L. Erickson",
+    "bl": "McKay L. Erickson",
     "slug": "erickson-mckay",
     "office": "H21",
     "lastName": "ERICKSON",
@@ -3296,7 +3296,7 @@
     ]
   },
   {
-    "ballotName": "Andrew Byron",
+    "bl": "Andrew Byron",
     "slug": "byron-andrew",
     "office": "H22",
     "lastName": "BYRON",
@@ -3318,7 +3318,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Shannon A. Brennan",
+    "bl": "Shannon A. Brennan",
     "slug": "brennan-shannon",
     "office": "H23",
     "lastName": "BRENNAN",
@@ -3340,7 +3340,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Liz Storer",
+    "bl": "Liz Storer",
     "slug": "storer-liz",
     "office": "H23",
     "lastName": "STORER",
@@ -3373,7 +3373,7 @@
     ]
   },
   {
-    "ballotName": "Quin Blair",
+    "bl": "Quin Blair",
     "slug": "blair-quin",
     "office": "H24",
     "lastName": "BLAIR",
@@ -3406,7 +3406,7 @@
     ]
   },
   {
-    "ballotName": "Nina Webber",
+    "bl": "Nina Webber",
     "slug": "webber-nina",
     "office": "H24",
     "lastName": "WEBBER",
@@ -3428,7 +3428,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Matthew R Legler",
+    "bl": "Matthew R Legler",
     "slug": "legler-matthew",
     "office": "H25",
     "lastName": "LEGLER",
@@ -3461,7 +3461,7 @@
     ]
   },
   {
-    "ballotName": "John Wetzel",
+    "bl": "John Wetzel",
     "slug": "wetzel-john",
     "office": "H25",
     "lastName": "WETZEL",
@@ -3494,7 +3494,7 @@
     ]
   },
   {
-    "ballotName": "J. Addison Aagard",
+    "bl": "J. Addison Aagard",
     "slug": "aagard-addison",
     "office": "H26",
     "lastName": "AAGARD",
@@ -3527,7 +3527,7 @@
     ]
   },
   {
-    "ballotName": "Dalton Banks",
+    "bl": "Dalton Banks",
     "slug": "banks-dalton",
     "office": "H26",
     "lastName": "BANKS",
@@ -3549,7 +3549,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Martha Lawley",
+    "bl": "Martha Lawley",
     "slug": "lawley-martha",
     "office": "H27",
     "lastName": "LAWLEY",
@@ -3582,7 +3582,7 @@
     ]
   },
   {
-    "ballotName": "Theresa Livingston",
+    "bl": "Theresa Livingston",
     "slug": "livingston-theresa",
     "office": "H27",
     "lastName": "LIVINGSTON",
@@ -3604,7 +3604,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Allen Hogg",
+    "bl": "Allen Hogg",
     "slug": "hogg-allen",
     "office": "H28",
     "lastName": "HOGG",
@@ -3637,7 +3637,7 @@
     ]
   },
   {
-    "ballotName": "Carlin Jones",
+    "bl": "Carlin Jones",
     "slug": "jones-carlin",
     "office": "H28",
     "lastName": "JONES",
@@ -3670,7 +3670,7 @@
     ]
   },
   {
-    "ballotName": "Marshall Keller",
+    "bl": "Marshall Keller",
     "slug": "keller-marshall",
     "office": "H28",
     "lastName": "KELLER",
@@ -3703,7 +3703,7 @@
     ]
   },
   {
-    "ballotName": "Roland Luehne",
+    "bl": "Roland Luehne",
     "slug": "luehne-roland",
     "office": "H28",
     "lastName": "LUEHNE",
@@ -3725,7 +3725,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Noll Roberts",
+    "bl": "Noll Roberts",
     "slug": "roberts-noll",
     "office": "H29",
     "lastName": "ROBERTS",
@@ -3747,7 +3747,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Myca Sturtevant",
+    "bl": "Myca Sturtevant",
     "slug": "sturtevant-myca",
     "office": "H29",
     "lastName": "STURTEVANT",
@@ -3780,7 +3780,7 @@
     ]
   },
   {
-    "ballotName": "James Temple",
+    "bl": "James Temple",
     "slug": "temple-james",
     "office": "H29",
     "lastName": "TEMPLE",
@@ -3802,7 +3802,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Mark Jennings",
+    "bl": "Mark Jennings",
     "slug": "jennings-mark",
     "office": "H30",
     "lastName": "JENNINGS",
@@ -3824,7 +3824,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Ryan Koltiska",
+    "bl": "Ryan Koltiska",
     "slug": "koltiska-ryan",
     "office": "H30",
     "lastName": "KOLTISKA",
@@ -3857,7 +3857,7 @@
     ]
   },
   {
-    "ballotName": "John W. Bear",
+    "bl": "John W. Bear",
     "slug": "bear-john",
     "office": "H31",
     "lastName": "BEAR",
@@ -3890,7 +3890,7 @@
     ]
   },
   {
-    "ballotName": "Douglas Moore",
+    "bl": "Douglas Moore",
     "slug": "moore-douglas",
     "office": "H31",
     "lastName": "MOORE",
@@ -3923,7 +3923,7 @@
     ]
   },
   {
-    "ballotName": "Ken Clouston",
+    "bl": "Ken Clouston",
     "slug": "clouston-ken",
     "office": "H32",
     "lastName": "CLOUSTON",
@@ -3956,7 +3956,7 @@
     ]
   },
   {
-    "ballotName": "Ivan D. Posey",
+    "bl": "Ivan D. Posey",
     "slug": "posey-ivan",
     "office": "H33",
     "lastName": "POSEY",
@@ -3989,7 +3989,7 @@
     ]
   },
   {
-    "ballotName": "Pepper L Ottman",
+    "bl": "Pepper L Ottman",
     "slug": "ottman-pepper",
     "office": "H34",
     "lastName": "OTTMAN",
@@ -4011,7 +4011,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Christopher Dresang",
+    "bl": "Christopher Dresang",
     "slug": "dresang-christopher",
     "office": "H35",
     "lastName": "DRESANG",
@@ -4044,7 +4044,7 @@
     ]
   },
   {
-    "ballotName": "Tony Locke",
+    "bl": "Tony Locke",
     "slug": "locke-tony",
     "office": "H35",
     "lastName": "LOCKE",
@@ -4066,7 +4066,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Art Washut",
+    "bl": "Art Washut",
     "slug": "washut-art",
     "office": "H36",
     "lastName": "WASHUT",
@@ -4099,7 +4099,7 @@
     ]
   },
   {
-    "ballotName": "Stewart McAdoo",
+    "bl": "Stewart McAdoo",
     "slug": "mcadoo-stewart",
     "office": "H36",
     "lastName": "MCADOO",
@@ -4121,7 +4121,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Brian Costello",
+    "bl": "Brian Costello",
     "slug": "costello-brian",
     "office": "H37",
     "lastName": "COSTELLO",
@@ -4154,7 +4154,7 @@
     ]
   },
   {
-    "ballotName": "Donna Rice",
+    "bl": "Donna Rice",
     "slug": "rice-donna",
     "office": "H37",
     "lastName": "RICE",
@@ -4176,7 +4176,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Ross Schriftman",
+    "bl": "Ross Schriftman",
     "slug": "schriftman-ross",
     "office": "H37",
     "lastName": "SCHRIFTMAN",
@@ -4209,7 +4209,7 @@
     ]
   },
   {
-    "ballotName": "Betsy Erickson",
+    "bl": "Betsy Erickson",
     "slug": "erickson-betsy",
     "office": "H37",
     "lastName": "ERICKSON",
@@ -4242,7 +4242,7 @@
     ]
   },
   {
-    "ballotName": "Robert L. Hendry",
+    "bl": "Robert L. Hendry",
     "slug": "hendry-robert",
     "office": "H38",
     "lastName": "HENDRY",
@@ -4275,7 +4275,7 @@
     ]
   },
   {
-    "ballotName": "Jayme Lien",
+    "bl": "Jayme Lien",
     "slug": "lien-jayme",
     "office": "H38",
     "lastName": "LIEN",
@@ -4308,7 +4308,7 @@
     ]
   },
   {
-    "ballotName": "Catherine McQueen",
+    "bl": "Catherine McQueen",
     "slug": "mcqueen-catherine",
     "office": "H38",
     "lastName": "MCQUEEN",
@@ -4341,7 +4341,7 @@
     ]
   },
   {
-    "ballotName": "Cody Wylie",
+    "bl": "Cody Wylie",
     "slug": "wylie-cody",
     "office": "H39",
     "lastName": "WYLIE",
@@ -4374,7 +4374,7 @@
     ]
   },
   {
-    "ballotName": "Marilyn Connolly",
+    "bl": "Marilyn Connolly",
     "slug": "connolly-marilyn",
     "office": "H40",
     "lastName": "CONNOLLY",
@@ -4407,7 +4407,7 @@
     ]
   },
   {
-    "ballotName": "Mark Jones",
+    "bl": "Mark Jones",
     "slug": "jones-mark",
     "office": "H40",
     "lastName": "JONES",
@@ -4440,7 +4440,7 @@
     ]
   },
   {
-    "ballotName": "Gary Brown",
+    "bl": "Gary Brown",
     "slug": "brown-gary",
     "office": "H41",
     "lastName": "BROWN",
@@ -4462,7 +4462,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Erin Edwards",
+    "bl": "Erin Edwards",
     "slug": "edwards-erin",
     "office": "H41",
     "lastName": "EDWARDS",
@@ -4484,7 +4484,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Stacy Becker",
+    "bl": "Stacy Becker",
     "slug": "becker-stacy",
     "office": "H41",
     "lastName": "BECKER",
@@ -4517,7 +4517,7 @@
     ]
   },
   {
-    "ballotName": "Rob Geringer",
+    "bl": "Rob Geringer",
     "slug": "geringer-rob",
     "office": "H42",
     "lastName": "GERINGER",
@@ -4539,7 +4539,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Jim VanDyke",
+    "bl": "Jim VanDyke",
     "slug": "vandyke-jim",
     "office": "H42",
     "lastName": "VANDYKE",
@@ -4572,7 +4572,7 @@
     ]
   },
   {
-    "ballotName": "Jessica Crowder",
+    "bl": "Jessica Crowder",
     "slug": "crowder-jessica",
     "office": "H43",
     "lastName": "CROWDER",
@@ -4605,7 +4605,7 @@
     ]
   },
   {
-    "ballotName": "Ann Lucas",
+    "bl": "Ann Lucas",
     "slug": "lucas-ann",
     "office": "H43",
     "lastName": "LUCAS",
@@ -4638,7 +4638,7 @@
     ]
   },
   {
-    "ballotName": "Lee Filer",
+    "bl": "Lee Filer",
     "slug": "filer-lee",
     "office": "H44",
     "lastName": "FILER",
@@ -4660,7 +4660,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Ross Davenport",
+    "bl": "Ross Davenport",
     "slug": "davenport-ross",
     "office": "H45",
     "lastName": "DAVENPORT",
@@ -4693,7 +4693,7 @@
     ]
   },
   {
-    "ballotName": "Karlee Provenza",
+    "bl": "Karlee Provenza",
     "slug": "provenza-karlee",
     "office": "H45",
     "lastName": "PROVENZA",
@@ -4726,7 +4726,7 @@
     ]
   },
   {
-    "ballotName": "Ocean Andrew",
+    "bl": "Ocean Andrew",
     "slug": "andrew-ocean",
     "office": "H46",
     "lastName": "ANDREW",
@@ -4748,7 +4748,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Cam Wright",
+    "bl": "Cam Wright",
     "slug": "wright-cam",
     "office": "H46",
     "lastName": "WRIGHT",
@@ -4781,7 +4781,7 @@
     ]
   },
   {
-    "ballotName": "Gary Wilken",
+    "bl": "Gary Wilken",
     "slug": "wilken-gary",
     "office": "H46",
     "lastName": "WILKEN",
@@ -4814,7 +4814,7 @@
     ]
   },
   {
-    "ballotName": "Eamon O'Toole",
+    "bl": "Eamon O'Toole",
     "slug": "o'toole-eamon",
     "office": "H47",
     "lastName": "O'TOOLE",
@@ -4836,7 +4836,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Darin McCann",
+    "bl": "Darin McCann",
     "slug": "mccann-darin",
     "office": "H48",
     "lastName": "MCCANN",
@@ -4869,7 +4869,7 @@
     ]
   },
   {
-    "ballotName": "James Wamsley",
+    "bl": "James Wamsley",
     "slug": "wamsley-james",
     "office": "H48",
     "lastName": "WAMSLEY",
@@ -4902,7 +4902,7 @@
     ]
   },
   {
-    "ballotName": "David Walton",
+    "bl": "David Walton",
     "slug": "walton-david",
     "office": "H49",
     "lastName": "WALTON",
@@ -4924,7 +4924,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Robert Wharff",
+    "bl": "Robert Wharff",
     "slug": "wharff-robert",
     "office": "H49",
     "lastName": "WHARFF",
@@ -4946,7 +4946,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Levi Asay",
+    "bl": "Levi Asay",
     "slug": "asay-levi",
     "office": "H50",
     "lastName": "ASAY",
@@ -4968,7 +4968,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "David Hill",
+    "bl": "David Hill",
     "slug": "hill-david",
     "office": "H50",
     "lastName": "HILL",
@@ -5001,7 +5001,7 @@
     ]
   },
   {
-    "ballotName": "Susan Bigelow",
+    "bl": "Susan Bigelow",
     "slug": "bigelow-susan",
     "office": "H51",
     "lastName": "BIGELOW",
@@ -5034,7 +5034,7 @@
     ]
   },
   {
-    "ballotName": "Laurie Bratten",
+    "bl": "Laurie Bratten",
     "slug": "schierlohbratten-laurie",
     "office": "H51",
     "lastName": "SCHIERLOH-BRATTEN",
@@ -5056,7 +5056,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Ronda Boller",
+    "bl": "Ronda Boller",
     "slug": "boller-ronda",
     "office": "H52",
     "lastName": "BOLLER",
@@ -5078,7 +5078,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Bill Fortner",
+    "bl": "Bill Fortner",
     "slug": "fortner-bill",
     "office": "H52",
     "lastName": "FORTNER",
@@ -5111,7 +5111,7 @@
     ]
   },
   {
-    "ballotName": "Christopher R Knapp",
+    "bl": "Christopher R Knapp",
     "slug": "knapp-christopher",
     "office": "H53",
     "lastName": "KNAPP",
@@ -5144,7 +5144,7 @@
     ]
   },
   {
-    "ballotName": "Greg Schreurs",
+    "bl": "Greg Schreurs",
     "slug": "schreurs-greg",
     "office": "H53",
     "lastName": "SCHREURS",
@@ -5166,7 +5166,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Lloyd Charles Larsen",
+    "bl": "Lloyd Charles Larsen",
     "slug": "larsen-lloyd",
     "office": "H54",
     "lastName": "LARSEN",
@@ -5199,7 +5199,7 @@
     ]
   },
   {
-    "ballotName": "Jeff Martin",
+    "bl": "Jeff Martin",
     "slug": "martin-jeff",
     "office": "H54",
     "lastName": "MARTIN",
@@ -5221,7 +5221,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Carl Manning",
+    "bl": "Carl Manning",
     "slug": "manning-carl",
     "office": "H55",
     "lastName": "MANNING",
@@ -5254,7 +5254,7 @@
     ]
   },
   {
-    "ballotName": "Elissa Campbell",
+    "bl": "Elissa Campbell",
     "slug": "campbell-elissa",
     "office": "H56",
     "lastName": "CAMPBELL",
@@ -5287,7 +5287,7 @@
     ]
   },
   {
-    "ballotName": "Pete Fox",
+    "bl": "Pete Fox",
     "slug": "fox-pete",
     "office": "H56",
     "lastName": "FOX",
@@ -5320,7 +5320,7 @@
     ]
   },
   {
-    "ballotName": "Julie Jarvis",
+    "bl": "Julie Jarvis",
     "slug": "jarvis-julie",
     "office": "H57",
     "lastName": "JARVIS",
@@ -5353,7 +5353,7 @@
     ]
   },
   {
-    "ballotName": "Jeanette Ward",
+    "bl": "Jeanette Ward",
     "slug": "ward-jeanette",
     "office": "H57",
     "lastName": "WARD",
@@ -5375,7 +5375,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Luc Colgrove",
+    "bl": "Luc Colgrove",
     "slug": "colgrove-luc",
     "office": "H57",
     "lastName": "COLGROVE",
@@ -5408,7 +5408,7 @@
     ]
   },
   {
-    "ballotName": "Bill Allemand",
+    "bl": "Bill Allemand",
     "slug": "allemand-bill",
     "office": "H58",
     "lastName": "ALLEMAND",
@@ -5430,7 +5430,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Peter Boyer",
+    "bl": "Peter Boyer",
     "slug": "boyer-peter",
     "office": "H58",
     "lastName": "BOYER",
@@ -5463,7 +5463,7 @@
     ]
   },
   {
-    "ballotName": "Keenan Morgan",
+    "bl": "Keenan Morgan",
     "slug": "morgan-keenan",
     "office": "H58",
     "lastName": "MORGAN",
@@ -5496,7 +5496,7 @@
     ]
   },
   {
-    "ballotName": "Neil Jeske",
+    "bl": "Neil Jeske",
     "slug": "jeske-neil",
     "office": "H59",
     "lastName": "JESKE",
@@ -5529,7 +5529,7 @@
     ]
   },
   {
-    "ballotName": "J.R. Riggins",
+    "bl": "J.R. Riggins",
     "slug": "riggins-jr",
     "office": "H59",
     "lastName": "RIGGINS",
@@ -5562,7 +5562,7 @@
     ]
   },
   {
-    "ballotName": "Laurie Longtine",
+    "bl": "Laurie Longtine",
     "slug": "longtine-laurie",
     "office": "H59",
     "lastName": "LONGTINE",
@@ -5573,7 +5573,7 @@
     "tag2024": "",
     "tagId": "15574",
     "caucus": "dem",
-    "hasPhoto": false,
+    "hasPhoto": true,
     "hasResponses": true,
     "isIncumbent": false,
     "committeeName": "",
@@ -5595,7 +5595,7 @@
     ]
   },
   {
-    "ballotName": "Marlene Brady",
+    "bl": "Marlene Brady",
     "slug": "brady-marlene",
     "office": "H60",
     "lastName": "BRADY",
@@ -5617,7 +5617,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Tony Niemiec",
+    "bl": "Tony Niemiec",
     "slug": "niemiec-tony",
     "office": "H60",
     "lastName": "NIEMIEC",
@@ -5650,7 +5650,7 @@
     ]
   },
   {
-    "ballotName": "Seth Bard",
+    "bl": "Seth Bard",
     "slug": "bard-seth",
     "office": "H61",
     "lastName": "BARD",
@@ -5672,7 +5672,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Andrew Server",
+    "bl": "Andrew Server",
     "slug": "server-andrew",
     "office": "H61",
     "lastName": "SERVER",
@@ -5705,7 +5705,7 @@
     ]
   },
   {
-    "ballotName": "Kristen-Erin Balderaz",
+    "bl": "Kristen-Erin Balderaz",
     "slug": "balderaz-kristenerin",
     "office": "H61",
     "lastName": "BALDERAZ",
@@ -5727,7 +5727,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Edis Allen",
+    "bl": "Edis Allen",
     "slug": "allen-edis",
     "office": "H62",
     "lastName": "ALLEN",
@@ -5749,7 +5749,7 @@
     "excludedPostIds": ""
   },
   {
-    "ballotName": "Kevin J. Campbell",
+    "bl": "Kevin J. Campbell",
     "slug": "campbell-kevin",
     "office": "H62",
     "lastName": "CAMPBELL",
