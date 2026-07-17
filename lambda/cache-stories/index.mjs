@@ -83,7 +83,7 @@ const buildCandidateTagUrl = (tagId, excludedPostIds) => {
 
 // Mirrors useElectionStories
 const buildElectionStoriesUrl = () =>
-  `${WP_API_BASE}/posts?categories=${ELECTION_CATEGORY_ID}&per_page=${ELECTION_STORY_COUNT}&categories_exclude=${EXCLUDED_CATEGORY_IDS}&after=${AFTER_DATE}&_fields=${REQUEST_FIELDS}`
+  `${WP_API_BASE}/posts?categories=${ELECTION_CATEGORY_ID}&per_page=${ELECTION_STORY_COUNT}&categories_exclude=${EXCLUDED_CATEGORY_IDS}&tags_exclude=${EXCLUDED_TAG_IDS}&after=${AFTER_DATE}&_fields=${REQUEST_FIELDS}`
 
 async function fetchStories(url) {
   const response = await fetch(url)
@@ -104,7 +104,8 @@ async function putJson(key, data) {
     Bucket: BUCKET,
     Key: key,
     Body: JSON.stringify(data),
-    ContentType: 'application/json'
+    ContentType: 'application/json',
+    CacheControl: 'public, max-age=300, must-revalidate'
   }))
 }
 
