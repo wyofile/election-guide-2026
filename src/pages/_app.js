@@ -23,6 +23,7 @@ import '@/styles/components/race-results.css'
 import '@/styles/components/judge-list.css'
 import '@/styles/components/candidate-stories.css'
 import '@/styles/components/county-locator.css'
+import '@/styles/components/donate-button.css'
 
 export default function App({ Component, pageProps }) {
     return (

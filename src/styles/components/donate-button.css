@@ -1,0 +1,115 @@
+/* Shared donate CTA — see src/design/DonateButton.js for the variants that
+   consume these classes (eyebrow bar, hero header, About-this-Project sections). */
+
+.donate-btn {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  background-color: var(--goldenrod, #d29a30);
+  color: #000000;
+  font-family: "Roboto", sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-radius: .6rem;
+  text-decoration: none !important;
+  white-space: nowrap;
+  transition: background-color 0.15s;
+}
+.donate-btn:hover {
+  background-color: #b8841c;
+  color: #000000;
+  text-decoration: none !important;
+}
+
+.donate-btn--eyebrow {
+  font-size: 0.75rem;
+  padding: 0.45rem 0.9rem;
+  margin: 0.4rem 0;
+}
+
+.donate-btn--hero {
+  font-size: 0.8rem;
+  padding: 0.55rem 1.1rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.donate-btn--section {
+  font-size: 0.9rem;
+  padding: 0.7rem 1.6rem;
+  border-radius: 0.75rem;
+}
+
+/* Soft light sweep across the button to draw the eye without being distracting —
+   eyebrow variant only, the other placements don't shimmer */
+.donate-btn--eyebrow::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 0.22) 50%,
+    rgba(255, 255, 255, 0) 60%
+  );
+  background-size: 200% 100%;
+  animation: donate-shimmer 5s linear infinite;
+  pointer-events: none;
+}
+@keyframes donate-shimmer {
+  0% { background-position: 200% 0; opacity: 0; }
+  4% { opacity: 1; }
+  24% { opacity: 1; }
+  30% { background-position: -200% 0; opacity: 0; }
+  100% { background-position: -200% 0; opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .donate-btn--eyebrow::after { animation: none; }
+}
+
+/* Heart emoji does a quick double-thump, then rests, like a real pulse */
+.donate-heart {
+  display: inline-block;
+  transform-origin: center;
+  animation: donate-heartbeat 5s ease-in-out infinite;
+}
+@keyframes donate-heartbeat {
+  0%, 30%, 100% { transform: scale(1); }
+  10% { transform: scale(1.22); }
+  16% { transform: scale(1); }
+  22% { transform: scale(1.15); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .donate-heart { animation: none; }
+}
+
+/* Centered wrapper used for the hero and About-this-Project placements */
+.donate-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  text-align: center;
+}
+
+.donate-cta--hero {
+  position: relative;
+  z-index: 2;
+  margin-top: 1rem;
+}
+
+.donate-cta--section {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(210, 154, 48, 0.35);
+}
+
+.donate-cta__lead {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1e293b;
+}

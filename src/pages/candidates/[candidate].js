@@ -20,6 +20,7 @@ import Link from 'next/link'
 import CandidateLinks from '@/components/CandidateLinks'
 // import RaceResults from '@/components/RaceResults'
 import Layout from '@/design/Layout'
+import DonateButton from '@/design/DonateButton'
 import { formatRace } from '@/lib/utils'
 
 import Markdown from 'react-markdown'
@@ -143,6 +144,7 @@ export default function CandidatePage({candidate, questions, questionnaireIntro,
         <h2 className="section-header__title">About this Project</h2>
       </div>
       <Markdown>{aboutProject}</Markdown>
+      <DonateButton variant="section" />
     </section>
 
     </Layout>

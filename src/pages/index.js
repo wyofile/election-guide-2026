@@ -2,6 +2,7 @@ import Markdown from 'react-markdown'
 import { MarkdownExternalLinks } from '@/lib/styles'
 
 import Layout from '@/design/Layout'
+import DonateButton from '@/design/DonateButton'
 import CandidateSearch from '@/components/CandidateSearch'
 import StateRaces from '@/components/StateRaces'
 import RaceCandidates from '@/components/RaceCandidates'
@@ -201,6 +202,7 @@ const Home = ({candidates, textContent, ballotPropositionResults}) => {
     <section>
       <h2 className='section-header-prominent'>About this Project</h2>
       <Markdown>{textContent.aboutProject}</Markdown>
+      <DonateButton variant="section" />
     </section>
 
     </Layout>

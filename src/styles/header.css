@@ -115,39 +115,6 @@
 }
 .eyebrow-site-link:hover { color: #ffffff; text-decoration: none; }
 
-/* Donate button — goldenrod, dark text, uppercase, compact */
-.eyebrow-btn-donate {
-  display: inline-flex;
-  align-items: center;
-  line-height: 1;
-  background-color: var(--goldenrod, #d29a30);
-  color: #000000;
-  font-family: "Roboto", sans-serif;
-  font-size: 0.75rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  padding: 0.45rem 0.9rem;
-  margin: 0.4rem 0;
-  border-radius: .6rem;
-  text-decoration: none !important;
-  white-space: nowrap;
-  transition: background-color 0.15s;
-}
-.eyebrow-btn-donate:hover {
-  background-color: #b8841c;
-  color: #000000;
-  text-decoration: none !important;
-}
-
-/* Donate label length variants */
-.donate-label-short { display: none; }
-
-@media screen and (max-width: 600px) {
-  .donate-label-full { display: none; }
-  .donate-label-short { display: inline; }
-}
-
 /* ---- Desktop ---- */
 @media screen and (min-width: 875px) {
   .eyebrow-bar { padding: 0 2rem; }

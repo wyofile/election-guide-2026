@@ -3,8 +3,7 @@ import updateTime from '../data/update-time.json'
 import { formatDateTime } from '../lib/utils'
 import { metaData } from '../config'
 import Script from 'next/script'
-
-const DONATE_LINK = 'https://wyofile.fundjournalism.org/donate/?campaign=701Pl00001eHzE2IAK'
+import DonateButton from './DonateButton'
 
 const Header = () => {
   const { webSubtitle } = metaData
@@ -35,10 +34,7 @@ const Header = () => {
                 <polyline points="2.5,2 8,2 8,7.5" />
               </svg>
             </Link>
-            <Link href={DONATE_LINK} target="_blank" rel="noopener noreferrer" className="eyebrow-btn-donate">
-              <span className="donate-label-full">Support this work ❤️</span>
-              <span className="donate-label-short">Donate ❤️</span>
-            </Link>
+            <DonateButton variant="eyebrow" />
           </div>
 
         </div>
@@ -115,6 +111,8 @@ const Header = () => {
               </a>
             </div>
           </div>
+
+          <DonateButton variant="hero" />
       </header>
     </>
   )
