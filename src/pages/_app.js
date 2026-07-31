@@ -24,6 +24,7 @@ import '@/styles/components/judge-list.css'
 import '@/styles/components/candidate-stories.css'
 import '@/styles/components/county-locator.css'
 import '@/styles/components/donate-button.css'
+import '@/styles/components/toaster.css'
 
 export default function App({ Component, pageProps }) {
     return (

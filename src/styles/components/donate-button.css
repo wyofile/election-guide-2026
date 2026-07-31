@@ -42,6 +42,14 @@
   border-radius: 0.75rem;
 }
 
+.donate-btn--toaster {
+  box-sizing: border-box;
+  font-size: 0.95rem;
+  padding: 0.7rem 1.3rem;
+  width: 100%;
+  justify-content: center;
+}
+
 /* Soft light sweep across the button to draw the eye without being distracting —
    eyebrow variant only, the other placements don't shimmer */
 .donate-btn--eyebrow::after {

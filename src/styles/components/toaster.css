@@ -1,0 +1,84 @@
+/* Centered donate prompt overlay — see src/design/Toaster.js for the
+   90s-into-visit / 7-day-dismiss timing logic. */
+
+.toaster-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  background-color: rgba(15, 23, 42, 0.55);
+  animation: toaster-backdrop-in 0.25s ease-out;
+  box-sizing: border-box;
+}
+
+.toaster {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 420px;
+  background-color: #111111;
+  color: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+  padding: 2rem 2rem 2.25rem;
+  text-align: center;
+  animation: toaster-in 0.3s ease-out;
+}
+
+@keyframes toaster-backdrop-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes toaster-in {
+  from { transform: scale(0.94); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .toaster-backdrop,
+  .toaster {
+    animation: none;
+  }
+}
+
+.toaster__close {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: #9ca3af;
+  cursor: pointer;
+  padding: 0.25rem;
+}
+.toaster__close:hover {
+  color: #ffffff;
+}
+
+.toaster__wordmark {
+  margin: 0 0 1rem;
+  font-family: "Roboto Slab", serif;
+  font-weight: 400;
+  font-size: 1.75rem;
+  color: #ffffff;
+}
+
+.toaster__heading {
+  margin: 0.5rem 0 0.6rem;
+  font-family: "Roboto Slab", serif;
+  font-weight: 700;
+  font-size: 1.35rem;
+  color: #ffffff;
+}
+
+.toaster__body {
+  margin: 0 0 1.4rem;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #d1d5db;
+}

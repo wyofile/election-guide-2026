@@ -4,6 +4,7 @@ import Script from 'next/script';
 import Header from './Header'
 import Nav from './Nav'
 import Footer from './Footer'
+import Toaster from './Toaster'
 
 import { metaData } from "@/config";
 
@@ -67,6 +68,7 @@ const Layout = ({
       <Nav candidateName={candidateName} />
       <main>{children}</main>
       <Footer />
+      <Toaster />
     </>
   );
 }
