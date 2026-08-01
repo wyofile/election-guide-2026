@@ -61,6 +61,7 @@ export async function getStaticProps({ params }) {
 
   const questionnaireIntro = textData.questionnaireIntro
   const aboutProject = textData.aboutProject
+  const correction = (textData.corrections || []).find(c => c.slug === candidate.slug)?.correction || null
 
   return {
       props: {
@@ -70,12 +71,13 @@ export async function getStaticProps({ params }) {
         candidatesInDistrict,
         questions,
         questionnaireIntro,
-        aboutProject
+        aboutProject,
+        correction
       }
   }
 }
 
-export default function CandidatePage({candidate, questions, questionnaireIntro, aboutProject, candidatesInDistrict}) {
+export default function CandidatePage({candidate, questions, questionnaireIntro, aboutProject, candidatesInDistrict, correction}) {
   const pageDescription = `${candidate.ballotName} (${candidate.party}) is running as a candidate for ${formatRace(candidate.office)} in Wyoming's 2026 election. See biographic details, issue positions and information on how to vote.`
   
   return (
@@ -100,7 +102,8 @@ export default function CandidatePage({candidate, questions, questionnaireIntro,
       <div className="section-header">
         <h2 className="section-header__title">On the Issues</h2>
       </div>
-      <Markdown className='questionnaire-intro'>{questionnaireIntro}</Markdown>
+      <Markdown className={correction ? 'questionnaire-intro no-margin' : 'questionnaire-intro'}>{questionnaireIntro}</Markdown>
+      {correction && <Markdown className='questionnaire-intro questionnaire-correction'>{correction}</Markdown>}
       <div className="on-the-issues">
         {questions.map((q, i) => {
           const answer = candidate.responses ? candidate.responses[i] : '_No candidate response._'

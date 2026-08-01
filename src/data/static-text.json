@@ -46,5 +46,15 @@
       "answer": "The first step to voting in person is locating your polling place. Contact your county clerk or look it up on the [Wyoming Secretary of State's website](https://myelectionday.sos.wyo.gov/WYVOTES/Pages/VOSearch.aspx). The polls are open from 7 a.m. to 7 p.m. on Election Day, or until the last person in line at 7 p.m. has voted.\n\nMore questions? Contact your county clerk or check out the Wyoming Secretary of State's [frequently asked election questions](https://sos.wyo.gov/faqs.aspx?root=ELEC)."
     }
   ],
-  "aboutProject": "WyoFile produced this guide with coding and web development by Thomas Musselman, editing by Tennessee Watson and production assistance by Calla Shosh. Contact Tennessee Watson with questions, corrections or suggestions at <tennessee@wyofile.com>.\n\nWyoFile is a Wyoming 501(c)3 nonprofit, independent, member-supported, public-interest news service reporting on the people, places and policy of Wyoming. WyoFile's [donor base](https://wyofile.com/supporters/) is politically diverse, including some donors who are candidates in this year's election. We maintain separation between sources of revenue and editorial direction, decisions and oversight. Acceptance of financial support does not constitute implied or actual endorsement of donors or their products, services or opinions, and does not confer editorial influence, nor does donor support imply any endorsement of WyoFile's reporting, commentary or editorial position.\n\nThis material is available for republication by select media outlets. Contact Collaborations Editor Rebecca Huntington at <rebecca@wyofile.com> to learn how."
+  "aboutProject": "WyoFile produced this guide with coding and web development by Thomas Musselman, editing by Tennessee Watson and production assistance by Calla Shosh. Contact Tennessee Watson with questions, corrections or suggestions at <tennessee@wyofile.com>.\n\nWyoFile is a Wyoming 501(c)3 nonprofit, independent, member-supported, public-interest news service reporting on the people, places and policy of Wyoming. WyoFile's [donor base](https://wyofile.com/supporters/) is politically diverse, including some donors who are candidates in this year's election. We maintain separation between sources of revenue and editorial direction, decisions and oversight. Acceptance of financial support does not constitute implied or actual endorsement of donors or their products, services or opinions, and does not confer editorial influence, nor does donor support imply any endorsement of WyoFile's reporting, commentary or editorial position.\n\nThis material is available for republication by select media outlets. Contact Collaborations Editor Rebecca Huntington at <rebecca@wyofile.com> to learn how.",
+  "corrections": [
+    {
+      "slug": "johnson-steve",
+      "correction": "Correction: Due to a technical error, an earlier version of this page lacked this candidate’s responses because they were posted to another candidate’s page with the same last name. —Ed."
+    },
+    {
+      "slug": "johnson-tina",
+      "correction": "Correction: Due to a technical error, an earlier version of this page  displayed responses from a different candidate with the same last name. —Ed."
+    }
+  ]
 }

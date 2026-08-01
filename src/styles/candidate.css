@@ -7,6 +7,14 @@
   padding: 0 0.5em;
 }
 
+.questionnaire-intro.no-margin {
+  margin-bottom: 0;
+}
+
+.questionnaire-correction {
+  font-style: italic;
+}
+
 .on-the-issues {
   display: flex;
   flex-direction: column;
