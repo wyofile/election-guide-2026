@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react'
 import DonateButton from './DonateButton'
 
+// Flip to true to turn the popup back on.
+const ENABLED = false
+
 const DISMISS_KEY = 'wf-toaster-dismissed-at'
 const SESSION_START_KEY = 'wf-toaster-session-start'
 const SESSION_SHOWN_KEY = 'wf-toaster-shown'
@@ -15,6 +18,9 @@ const Toaster = () => {
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
+    if (!ENABLED) {
+      return
+    }
     let dismissedAt
     try {
       dismissedAt = parseInt(window.localStorage.getItem(DISMISS_KEY), 10)
