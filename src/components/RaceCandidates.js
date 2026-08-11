@@ -77,22 +77,31 @@ const RaceCandidates = ({district, candidates, chamber}) => {
 
       {/* Reusable Accordion Function for Dropouts/Lost */}
       {[
-        { condition: lostPrimaryCandidates.length > 0, title: "Candidates defeated in Aug 20 primary", data: lostPrimaryCandidates },
-        { condition: withdrawnCandidates.length > 0, title: "Withdrawn Candidates", data: withdrawnCandidates }
+        { condition: lostPrimaryCandidates.length > 0, title: "Candidates defeated in Aug 20 primary", data: lostPrimaryCandidates, compact: false },
+        { condition: withdrawnCandidates.length > 0, title: "Withdrawn Candidates", data: withdrawnCandidates, compact: true }
       ].map((section, idx) => section.condition && (
         <details className="modern-details-accordion" key={idx}>
-          <summary>{section.title}</summary>
-          <div className="modern-party-buckets accordion-inner">
+          <summary>
+            <span className="accordion-title">{section.title} <span className="accordion-count">({section.data.length})</span></span>
+            <span className="accordion-toggle">
+              <span className="toggle-label toggle-label-closed">Show</span>
+              <span className="toggle-label toggle-label-open">Hide</span>
+              <span className="toggle-icon">▾</span>
+            </span>
+          </summary>
+          <div className={`modern-party-buckets accordion-inner ${section.compact ? 'compact' : ''}`}>
             {PARTIES.map(party => {
               const candidatesInBucket = section.data.filter(c => c.party === party.key)
               if (candidatesInBucket.length === 0) return null
               return(
                 <div className="party-bucket-col" key={party.key}>
-                  <h4 className="party-bucket-title" style={{ color: party.color, borderBottomColor: party.color }}>
-                    {pluralize(party.noun, candidatesInBucket.length)}
-                  </h4>
+                  {!section.compact && (
+                    <h4 className="party-bucket-title" style={{ color: party.color, borderBottomColor: party.color }}>
+                      {pluralize(party.noun, candidatesInBucket.length)}
+                    </h4>
+                  )}
                   <div className="candidate-grid">
-                    {candidatesInBucket.map(candidate => <Candidate key={candidate.slug} color={party.color} {...candidate} />)}
+                    {candidatesInBucket.map(candidate => <Candidate key={candidate.slug} color={party.color} compact={section.compact} {...candidate} />)}
                   </div>
                 </div>
               )

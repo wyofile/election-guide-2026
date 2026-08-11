@@ -319,16 +319,26 @@
 
 /* --- DETAILS / ACCORDION UI --- */
 .modern-details-accordion {
-  margin-top: 3rem;
+  margin-top: 1rem;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
   background-color: #ffffff;
   border: 1px solid #e2e8f0;
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
+  box-shadow: none;
+}
+
+@media screen and (min-width: 850px) {
+  .modern-details-accordion {
+    margin-top: 1rem;
+  }
 }
 
 .modern-details-accordion summary {
-  padding: 1rem 1.5rem;
-  font-size: 1.05rem;
+  padding: 0.6rem 1rem;
+  font-size: 0.9rem;
   font-weight: 700;
   color: #1e293b;
   background-color: #f8fafc;
@@ -337,24 +347,118 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 0.75rem;
+  user-select: none;
+}
+
+.modern-details-accordion summary:hover {
+  background-color: #f1f5f9;
 }
 
 .modern-details-accordion summary::-webkit-details-marker {
   display: none;
 }
 
-.modern-details-accordion summary::after {
-  content: "▼";
-  font-size: 0.8rem;
+.accordion-count {
+  font-weight: 500;
   color: #64748b;
+}
+
+.accordion-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex: 0 0 auto;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--link);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.toggle-label-open {
+  display: none;
+}
+
+.modern-details-accordion[open] .toggle-label-open {
+  display: inline;
+}
+
+.modern-details-accordion[open] .toggle-label-closed {
+  display: none;
+}
+
+.toggle-icon {
+  font-size: 0.7rem;
   transition: transform 0.2s;
 }
 
-.modern-details-accordion[open] summary::after {
+.modern-details-accordion[open] .toggle-icon {
   transform: rotate(180deg);
 }
 
 .accordion-inner {
-  padding: 1.5rem;
+  padding: 1.25rem 1rem;
   border-top: 1px solid #e2e8f0;
+}
+
+.accordion-inner.compact .candidate-grid {
+  gap: 0.4rem;
+}
+
+/* --- COMPACT (WITHDRAWN) CANDIDATE ROW --- */
+.modern-candidate-card.compact {
+  border-radius: 6px;
+  box-shadow: none;
+  border-top: 1px solid #e2e8f0;
+  border-right: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+  background-color: #f8fafc;
+}
+
+.modern-candidate-card.compact:hover {
+  transform: none;
+  background-color: #f1f5f9;
+  box-shadow: none;
+}
+
+.modern-candidate-card.compact .candidate-card-inner {
+  padding: 0.5rem 0.85rem;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.modern-candidate-card.compact .avatar-rounded {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  flex: 0 0 32px;
+  filter: grayscale(60%);
+}
+
+.modern-candidate-card.compact .candidate-header {
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 0;
+  min-width: 0;
+}
+
+.modern-candidate-card.compact .candidate-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #475569;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.modern-candidate-card.compact .withdrawn-tag {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #94a3b8;
+  white-space: nowrap;
 }
