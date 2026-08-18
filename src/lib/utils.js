@@ -36,6 +36,23 @@ export const formatRace = office => {
   
 }
 
+// Scrolls an element into view flush beneath the sticky eyebrow bar + nav,
+// measuring their actual current height rather than assuming a fixed value
+// (their combined height isn't constant — the nav in particular differs
+// between the mobile dropdown and desktop menu).
+export const scrollPastStickyHeader = (id) => (e) => {
+  e.preventDefault()
+  const target = document.getElementById(id)
+  if (!target) {
+    return
+  }
+  const eyebrow = document.querySelector('.eyebrow-bar')
+  const nav = document.querySelector('.smart-nav-container')
+  const stickyHeight = (eyebrow?.offsetHeight || 0) + (nav?.offsetHeight || 0)
+  const targetY = target.getBoundingClientRect().top + window.scrollY - stickyHeight
+  window.scrollTo({ top: targetY, behavior: 'smooth' })
+}
+
 export const getPortraitPath = (hasPhoto, party, slug) => {
   if (hasPhoto) {
     return usePath(`/portraits-t/${slug}.webp`)

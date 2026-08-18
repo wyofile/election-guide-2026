@@ -81,7 +81,19 @@ section {
   margin: 3rem 0 2rem;
 }
 
+/* Keeps the right-side link(s) on the same row as the title, even when a
+   long title needs to wrap onto two lines — without this, the title's
+   default min-content width claims the whole row first and pushes the
+   link down onto its own line underneath instead of beside it. */
+.section-header > .back-to-top,
+.section-header > .section-header__actions {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
 .section-header__title {
+  flex: 1 1 0%;
+  min-width: 0;
   font-family: 'Roboto', sans-serif;
   font-size: clamp(1.35rem, 5vw, 2.25rem);
   font-weight: 800;
@@ -136,6 +148,16 @@ section {
   margin-bottom: 1.5rem;
 }
 
+/* Groups a section-header's right-side links together (e.g. an external
+   link plus a back-to-top) without imposing link styling of its own —
+   each child keeps whatever class/color it already has. */
+.section-header__actions {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+}
+
 /* --- SUBTLE BACK TO TOP --- */
 .back-to-top {
   flex-shrink: 0;        /* NEW: Prevents the link from being crushed */
@@ -160,6 +182,10 @@ section {
 @media (max-width: 874px) {
   .back-to-top { display: none; }
   .section-header__links { display: none; }
+  /* Candidate page's "back to top" links stay visible on mobile — unlike the
+     homepage's mid-page section jump links, there's no desktop-only nav to
+     fall back on there. */
+  .back-to-top.back-to-top--persist { display: inline; }
 }
 
 /* --- RACE INTRO TEXT (first <p> after a race header) --- */
@@ -309,6 +335,13 @@ h4 {
     display: block;
     position: relative;
     top: -8rem;
+    visibility: hidden;
+}
+
+/* For anchors scrolled to via scrollPastStickyHeader(), which computes the
+   sticky-bar offset itself — no fixed top offset needed here. */
+.scroll-anchor {
+    display: block;
     visibility: hidden;
 }
 

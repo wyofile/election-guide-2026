@@ -9,7 +9,7 @@ const smoothScroll = (id) => (e) => {
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 }
 
-const CandidateLinks = ({ wyoleg, website, email }) => {
+const CandidateLinks = ({ wyoleg, website, email, hasCampaignFinance }) => {
   return (
     <nav className="cand-links-bar" aria-label="Page sections">
 
@@ -18,6 +18,11 @@ const CandidateLinks = ({ wyoleg, website, email }) => {
         <a href="#questionnaire" onClick={smoothScroll('questionnaire')} className="cand-link-anchor">
           ↓ On the Issues
         </a>
+        {hasCampaignFinance && (
+          <a href="#campaign-finance" onClick={smoothScroll('campaign-finance')} className="cand-link-anchor">
+            ↓ Campaign Finance
+          </a>
+        )}
         <a href="#coverage" onClick={smoothScroll('coverage')} className="cand-link-anchor">
           ↓ WyoFile Coverage
         </a>

@@ -16,12 +16,13 @@ import legQs from '@/data/leg-qs.json'
 import CandidateOpponents from '@/components/CandidateOpponents'
 import CandidatePageSummary from '@/components/CandidatePageSummary'
 import CandidateStories, { ELECTION_COVERAGE, ExternalArrow } from '@/components/CandidateStories'
+import CandidateCampaignFinance from '@/components/CandidateCampaignFinance'
 import Link from 'next/link'
 import CandidateLinks from '@/components/CandidateLinks'
 // import RaceResults from '@/components/RaceResults'
 import Layout from '@/design/Layout'
 import DonateButton from '@/design/DonateButton'
-import { formatRace } from '@/lib/utils'
+import { formatRace, scrollPastStickyHeader } from '@/lib/utils'
 
 import Markdown from 'react-markdown'
 
@@ -37,6 +38,23 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const candidate = candidateData.find(c => c.slug === params.candidate)
   const candidatesInDistrict = candidateData.filter(c => (c.office === candidate.office))
+
+  // A minimal slice for the campaign finance "shown relative to the top
+  // fundraiser" comparison — computed here (server-side, at build time) and
+  // passed as a prop rather than having the client component import the
+  // full multi-MB candidate-data.json itself, which would ship the entire
+  // dataset (every candidate's full donor list) into this page's JS bundle.
+  const isHouse = /^H\d{2}$/.test(candidate.office)
+  const isSenate = /^S\d{2}$/.test(candidate.office)
+  const financeComparisonPool = (
+    isHouse
+      ? candidateData.filter(c => /^H\d{2}$/.test(c.office))
+      : isSenate
+        ? candidateData.filter(c => /^S\d{2}$/.test(c.office))
+        : candidatesInDistrict
+  )
+    .filter(c => c.campaignFinance)
+    .map(c => ({ slug: c.slug, ballotName: c.ballotName, totalContributions: c.campaignFinance.totalContributions }))
   // const primaryRaceResults = primaryResults.find(r => r.district === candidate.district && r.party === candidate.party) || null
   // const generalRaceResults = generalResults.find(r => r.district === candidate.district && (candidate.status === 'active' || candidate.status === 'won-general' || candidate.status ==='lost-general')) || null
   // const questions = (candidate.office[0] === 'u' ? federalQs : wyoLegQs)
@@ -69,6 +87,7 @@ export async function getStaticProps({ params }) {
         // primaryRaceResults,
         // generalRaceResults,
         candidatesInDistrict,
+        financeComparisonPool,
         questions,
         questionnaireIntro,
         aboutProject,
@@ -77,7 +96,7 @@ export async function getStaticProps({ params }) {
   }
 }
 
-export default function CandidatePage({candidate, questions, questionnaireIntro, aboutProject, candidatesInDistrict, correction}) {
+export default function CandidatePage({candidate, questions, questionnaireIntro, aboutProject, candidatesInDistrict, financeComparisonPool, correction}) {
   const pageDescription = `${candidate.ballotName} (${candidate.party}) is running as a candidate for ${formatRace(candidate.office)} in Wyoming's 2026 election. See biographic details, issue positions and information on how to vote.`
   
   return (
@@ -91,9 +110,10 @@ export default function CandidatePage({candidate, questions, questionnaireIntro,
       socialDescription={`Candidate for ${formatRace(candidate.office)}`}
       candidateName={candidate.ballotName}
     >
+    <a className="scroll-anchor" id="page-top"></a>
     <CandidatePageSummary candidate={candidate} />
 
-    <CandidateLinks wyoleg={candidate.wyoleg} website={candidate.website} email={candidate.email}/>
+    <CandidateLinks wyoleg={candidate.wyoleg} website={candidate.website} email={candidate.email} hasCampaignFinance={!!candidate.campaignFinance || candidate.office === 'us-sen' || candidate.office === 'us-house'}/>
 
     <CandidateOpponents candidatesInDistrict={candidatesInDistrict} currentSlug={candidate.slug} race={formatRace(candidate.office)} />
 
@@ -101,6 +121,7 @@ export default function CandidatePage({candidate, questions, questionnaireIntro,
       <a className="link-anchor" id="questionnaire"></a>
       <div className="section-header">
         <h2 className="section-header__title">On the Issues</h2>
+        <a href="#page-top" className="back-to-top back-to-top--persist" onClick={scrollPastStickyHeader('page-top')}>↑ Top</a>
       </div>
       <Markdown className={correction ? 'questionnaire-intro no-margin' : 'questionnaire-intro'}>{questionnaireIntro}</Markdown>
       {correction && <Markdown className='questionnaire-intro questionnaire-correction'>{correction}</Markdown>}
@@ -131,13 +152,18 @@ export default function CandidatePage({candidate, questions, questionnaireIntro,
       <div className="results-source">Election results provided by the Associated Press. Last updated {formatDateTime(new Date(updateTime.updateTime))}</div>
     </section> */}
 
+    <CandidateCampaignFinance campaignFinance={candidate.campaignFinance} candidateSlug={candidate.slug} office={candidate.office} fecCandidateId={candidate.fecCandidateId} comparisonPool={financeComparisonPool} />
+
     <section>
       <a className="link-anchor" id="coverage"></a>
       <div className="section-header">
         <h2 className="section-header__title">WyoFile Coverage of {candidate.lastName}</h2>
-        <Link href={ELECTION_COVERAGE} target="_blank" rel="noopener noreferrer" className="stories-teaser-all">
-          All election coverage <ExternalArrow />
-        </Link>
+        <div className="section-header__actions">
+          <Link href={ELECTION_COVERAGE} target="_blank" rel="noopener noreferrer" className="stories-teaser-all">
+            All election coverage <ExternalArrow />
+          </Link>
+          <a href="#page-top" className="back-to-top back-to-top--persist" onClick={scrollPastStickyHeader('page-top')}>↑ Top</a>
+        </div>
       </div>
       <CandidateStories tagId={candidate.tagId} slug={candidate.slug} ballotName={candidate.ballotName} />
     </section>
@@ -145,6 +171,7 @@ export default function CandidatePage({candidate, questions, questionnaireIntro,
     <section>
       <div className="section-header">
         <h2 className="section-header__title">About this Project</h2>
+        <a href="#page-top" className="back-to-top back-to-top--persist" onClick={scrollPastStickyHeader('page-top')}>↑ Top</a>
       </div>
       <Markdown>{aboutProject}</Markdown>
       <DonateButton variant="section" />

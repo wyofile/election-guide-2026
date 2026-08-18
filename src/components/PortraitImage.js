@@ -1,5 +1,10 @@
 import Image from 'next/image'
-import { useLayoutEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+
+// useLayoutEffect fires before paint (avoiding a flash of the shimmer on
+// cached images) but errors during server rendering, where there's no paint
+// to fire before — fall back to useEffect there.
+const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect
 
 // Shared candidate-portrait <Image>: shows an animated shimmer over the
 // existing gradient frame until the photo loads, then fades it in.
@@ -9,7 +14,7 @@ const PortraitImage = ({ alt, src, width, height, className, style, priority }) 
 
   // onLoad alone misses images that finish loading (e.g. from cache) before
   // hydration attaches the handler — check the already-loaded state on mount.
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (imgRef.current?.complete) setLoaded(true)
   }, [])
 

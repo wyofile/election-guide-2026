@@ -1,0 +1,213 @@
+.finance-as-of {
+  margin: 0 0 1.5rem;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: #64748b;
+}
+
+.finance-unavailable {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.95rem;
+  color: #64748b;
+}
+
+/* --- Total raised / total spent bars --- */
+.finance-totals {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.finance-total-row__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 0.35rem;
+}
+
+.finance-total-label {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #1e293b;
+}
+
+.finance-total-value {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 1.35rem;
+  color: #1e293b;
+  font-variant-numeric: proportional-nums;
+}
+
+.finance-bar-track {
+  height: 20px;
+  background-color: rgba(210, 154, 48, 0.15);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.finance-bar-fill {
+  height: 100%;
+  min-width: 4px;
+  background-color: var(--goldenrod, #d29a30);
+  border-radius: 0 4px 4px 0;
+}
+
+.finance-race-context {
+  margin: 0.75rem 0 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.8rem;
+  font-style: italic;
+  color: #64748b;
+}
+
+/* --- Top contributors --- */
+.finance-donors__title {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #1e293b;
+  margin: 0 0 0.85rem;
+}
+
+.finance-donor-asterisk {
+  font-size: 1.4em;
+  font-weight: 700;
+  color: var(--goldenrod, #d29a30);
+  vertical-align: middle;
+  margin-left: 0.15em;
+}
+.finance-donor-disclosure .finance-donor-asterisk {
+  margin-left: 0;
+  margin-right: 0.15em;
+}
+
+.finance-donor-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.finance-donor-toggle-row {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin: 0.85rem 0 0;
+}
+
+.finance-donor-show-more {
+  display: block;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--link, #237bcf);
+  cursor: pointer;
+}
+.finance-donor-show-more:hover {
+  text-decoration: underline;
+}
+
+.finance-donor-search-link {
+  margin: 0.85rem 0 0;
+}
+.finance-donor-search-link a {
+  font-family: "Roboto", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--link, #237bcf);
+  text-decoration: none;
+}
+.finance-donor-search-link a:hover {
+  text-decoration: underline;
+}
+
+.finance-donor-row {
+  display: grid;
+  /* Amount column is a fixed width (not auto) so the bar column lines up
+     across rows regardless of how many digits each amount has. */
+  grid-template-columns: minmax(0, 1fr) minmax(60px, 25%) 5.5rem;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.finance-donor-name {
+  font-family: "Roboto", sans-serif;
+  font-size: 0.85rem;
+  color: #334155;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.finance-donor-bar-track {
+  display: block;
+  height: 10px;
+  background-color: rgba(210, 154, 48, 0.15);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.finance-donor-bar-fill {
+  display: block;
+  height: 100%;
+  min-width: 3px;
+  background-color: var(--goldenrod, #d29a30);
+  border-radius: 0 3px 3px 0;
+}
+
+.finance-donor-amount {
+  font-family: "Roboto", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: #1e293b;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.finance-donor-disclosure {
+  margin: 0.9rem 0 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.78rem;
+  font-style: italic;
+  color: #64748b;
+}
+
+.finance-source {
+  margin: 2rem 0 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.8rem;
+  color: #64748b;
+}
+.finance-source a {
+  color: var(--link, #237bcf);
+}
+
+@media screen and (max-width: 480px) {
+  .finance-donor-row {
+    grid-template-columns: minmax(0, 1fr) 5.5rem;
+    grid-template-areas:
+      "name amount"
+      "bar bar";
+    row-gap: 0.25rem;
+  }
+  .finance-donor-name { grid-area: name; }
+  .finance-donor-amount { grid-area: amount; }
+  .finance-donor-bar-track { grid-area: bar; }
+}
