@@ -5,6 +5,7 @@ import Header from './Header'
 import Nav from './Nav'
 import Footer from './Footer'
 import Toaster from './Toaster'
+import ElectionDayBanner from '@/components/ElectionDayBanner'
 
 import { metaData } from "@/config";
 
@@ -69,6 +70,7 @@ const Layout = ({
       <main>{children}</main>
       <Footer />
       <Toaster />
+      <ElectionDayBanner />
     </>
   );
 }
