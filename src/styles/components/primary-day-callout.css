@@ -1,0 +1,105 @@
+.primary-day-callout {
+  padding: 0 0.5em 1.5rem;
+  margin-bottom: 1.5rem;
+  /* Cancel the global section{} border-bottom from base.css — omitting the
+     property isn't enough, it just leaves that rule unopposed. */
+  border-bottom: none;
+}
+
+/* Anchored to the same "important section" language already used elsewhere
+   on the site (see .section-header in base.css: a bold goldenrod top rule
+   + a bold headline) rather than inventing a new card/banner style. */
+.primary-day-callout__link {
+  display: block;
+  padding: 1.4rem 0 1.1rem;
+  border-top: 4px solid var(--goldenrod, #d29a30);
+  border-bottom: 2px solid rgba(210, 154, 48, 0.25);
+  text-decoration: none !important;
+}
+
+.primary-day-callout__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.7rem;
+  color: var(--goldenrod, #d29a30);
+  font-family: "Roboto", sans-serif;
+  font-weight: 800;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+/* The one place red shows up — everything else stays on-brand goldenrod. */
+.live-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: #dc2626;
+  box-shadow: 0 0 5px rgba(220, 38, 38, 0.6);
+  animation: live-dot-blink 1.2s steps(1, end) infinite;
+  flex-shrink: 0;
+}
+@keyframes live-dot-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0.15; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .live-dot { animation: none; }
+}
+
+.primary-day-callout__headline {
+  display: block;
+  font-family: "Roboto Slab", serif;
+  font-weight: 700;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  line-height: 1.25;
+  color: var(--deep-charcoal, #242423);
+  margin-bottom: 0.6rem;
+  transition: color 0.15s ease;
+}
+.primary-day-callout__link:hover .primary-day-callout__headline {
+  color: var(--goldenrod, #d29a30);
+}
+
+.primary-day-callout__cta {
+  position: relative;
+  display: inline-block;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--goldenrod, #d29a30);
+}
+.primary-day-callout__cta::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -3px;
+  height: 2px;
+  background-color: var(--goldenrod, #d29a30);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+.primary-day-callout__link:hover .primary-day-callout__cta::after {
+  transform: scaleX(1);
+}
+
+.primary-day-callout__note {
+  display: block;
+  margin-top: 0.65rem;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: #7a6f5e;
+}
+
+@media screen and (max-width: 480px) {
+  .primary-day-callout__headline {
+    font-size: 1.3rem;
+  }
+  .primary-day-callout__cta {
+    font-size: 0.9rem;
+  }
+}

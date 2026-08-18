@@ -4,6 +4,7 @@ import { MarkdownExternalLinks } from '@/lib/styles'
 import Layout from '@/design/Layout'
 import DonateButton from '@/design/DonateButton'
 import CandidateSearch from '@/components/CandidateSearch'
+import PrimaryDayCallout from '@/components/PrimaryDayCallout'
 import StateRaces from '@/components/StateRaces'
 import RaceCandidates from '@/components/RaceCandidates'
 import ElectionStories, { ElectionStoriesTeaser } from '@/components/ElectionStories';
@@ -56,6 +57,8 @@ const Home = ({candidates, textContent, ballotPropositionResults}) => {
       {/* <div className="election-day-note"><img src='/election-guide-2026/info.svg' /><span>For live general election results <a href="https://wyofile.com/wyoming-general-election-results-2026/">go here</a>. The election guide will be periodically updated with results after the polls close.</span></div> */}
       <MarkdownExternalLinks>{textContent.guideIntro}</MarkdownExternalLinks>
     </section>
+
+    <PrimaryDayCallout />
 
     <CandidateSearch candidates={candidates} />
 

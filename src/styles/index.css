@@ -1,6 +1,9 @@
 .guide-intro {
   padding-top: 1rem;
   font-size: 1.2rem;
+  /* No divider before the primary-day banner right below it — it should
+     read as part of the same flow, not a boxed-in section. */
+  border-bottom: none;
 }
 
 .guide-intro p {
