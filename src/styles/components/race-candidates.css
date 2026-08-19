@@ -1,14 +1,23 @@
 /* --- PARTY BUCKETS LAYOUT --- */
+.race-candidates-wrapper {
+  --stack-gap: 2rem;
+}
+
+@media screen and (min-width: 850px) {
+  .race-candidates-wrapper {
+    --stack-gap: 3rem;
+  }
+}
+
 .modern-party-buckets {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
+  gap: var(--stack-gap);
 }
 
 @media screen and (min-width: 850px) {
   .modern-party-buckets {
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 3rem;
   }
 }
 
@@ -319,7 +328,7 @@
 
 /* --- DETAILS / ACCORDION UI --- */
 .modern-details-accordion {
-  margin-top: 1rem;
+  margin-top: var(--stack-gap, 2rem);
   margin-left: 0;
   margin-right: 0;
   padding: 0;
@@ -328,12 +337,6 @@
   border-radius: 6px;
   overflow: hidden;
   box-shadow: none;
-}
-
-@media screen and (min-width: 850px) {
-  .modern-details-accordion {
-    margin-top: 1rem;
-  }
 }
 
 .modern-details-accordion summary {
