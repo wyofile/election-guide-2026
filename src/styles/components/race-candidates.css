@@ -411,6 +411,8 @@
 
 /* --- COMPACT (WITHDRAWN) CANDIDATE ROW --- */
 .modern-candidate-card.compact {
+  min-width: 0;
+  max-width: 100%;
   border-radius: 6px;
   box-shadow: none;
   border-top: 1px solid #e2e8f0;
@@ -429,6 +431,7 @@
   padding: 0.5rem 0.85rem;
   align-items: center;
   gap: 0.65rem;
+  min-width: 0;
 }
 
 .modern-candidate-card.compact .avatar-rounded {
@@ -452,12 +455,19 @@
   font-size: 0.9rem;
   font-weight: 600;
   color: #475569;
+  min-width: 0;
+  flex-shrink: 1;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
+.modern-candidate-card.compact .incumbent-pill {
+  flex-shrink: 0;
+}
+
 .modern-candidate-card.compact .withdrawn-tag {
+  flex-shrink: 0;
   font-size: 0.7rem;
   font-weight: 600;
   text-transform: uppercase;
