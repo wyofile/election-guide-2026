@@ -4,7 +4,7 @@ import { pluralize } from '../lib/utils'
 import { PARTIES } from '../lib/styles'
 import Candidate from './Candidate'
 
-const ELECTION_CYCLE = 'primary'
+const ELECTION_CYCLE = 'general'
 
 const OutOfCycleBox = ({holdover}) => {
   const holdoverPartyInfo = PARTIES.find(party => party.key === holdover.party)
