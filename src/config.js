@@ -10,3 +10,5 @@ export const metaData = {
   // SEO
   siteSeoTitle: '2026 WyoFile Election Guide',
 }
+
+export const PRIMARY_ELECTION_DATE = 'Aug. 18'

@@ -32,8 +32,7 @@ const OutOfCycleBox = ({holdover}) => {
 
 const RaceCandidates = ({district, candidates, chamber}) => {
   const activeCandidates = candidates.filter(c => c.status === 'active' || c.status === 'won-general' || c.status === 'lost-general' )
-  const lostPrimaryCandidates = candidates.filter(c => c.status === 'lost-primary' )
-  const withdrawnCandidates = candidates.filter(c => c.status === 'dropout' )
+  const inactiveCandidates = candidates.filter(c => c.status === 'lost-primary' || c.status === 'dropout' )
 
   return (
     <div className="race-candidates-wrapper">
@@ -75,40 +74,32 @@ const RaceCandidates = ({district, candidates, chamber}) => {
         <OutOfCycleBox holdover={senateHoldovers.find((holdover) => holdover.office === `S${district.substring(1)}`)} />
       }
 
-      {/* Reusable Accordion Function for Dropouts/Lost */}
-      {[
-        { condition: lostPrimaryCandidates.length > 0, title: "Candidates defeated in Aug 20 primary", data: lostPrimaryCandidates, compact: false },
-        { condition: withdrawnCandidates.length > 0, title: "Withdrawn Candidates", data: withdrawnCandidates, compact: true }
-      ].map((section, idx) => section.condition && (
-        <details className="modern-details-accordion" key={idx}>
+      {/* Accordion for candidates no longer in the running */}
+      {inactiveCandidates.length > 0 && (
+        <details className="modern-details-accordion">
           <summary>
-            <span className="accordion-title">{section.title} <span className="accordion-count">({section.data.length})</span></span>
+            <span className="accordion-title">Inactive Candidates <span className="accordion-count">({inactiveCandidates.length})</span></span>
             <span className="accordion-toggle">
               <span className="toggle-label toggle-label-closed">Show</span>
               <span className="toggle-label toggle-label-open">Hide</span>
               <span className="toggle-icon">▾</span>
             </span>
           </summary>
-          <div className={`modern-party-buckets accordion-inner ${section.compact ? 'compact' : ''}`}>
+          <div className="modern-party-buckets accordion-inner compact">
             {PARTIES.map(party => {
-              const candidatesInBucket = section.data.filter(c => c.party === party.key)
+              const candidatesInBucket = inactiveCandidates.filter(c => c.party === party.key)
               if (candidatesInBucket.length === 0) return null
               return(
                 <div className="party-bucket-col" key={party.key}>
-                  {!section.compact && (
-                    <h4 className="party-bucket-title" style={{ color: party.color, borderBottomColor: party.color }}>
-                      {pluralize(party.noun, candidatesInBucket.length)}
-                    </h4>
-                  )}
                   <div className="candidate-grid">
-                    {candidatesInBucket.map(candidate => <Candidate key={candidate.slug} color={party.color} compact={section.compact} {...candidate} />)}
+                    {candidatesInBucket.map(candidate => <Candidate key={candidate.slug} color={party.color} compact {...candidate} />)}
                   </div>
                 </div>
               )
             })}
           </div>
         </details>
-      ))}
+      )}
     </div>
   )
 }

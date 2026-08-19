@@ -25,7 +25,7 @@ const Candidate = ({ slug, ballotName, status, party, color, hasPhoto, hasRespon
             <h4 className="candidate-name">{ballotName}</h4>
             {isIncumbent && <span className="incumbent-pill">Incumbent</span>}
           </div>
-          <span className="withdrawn-tag">Withdrew</span>
+          <span className="withdrawn-tag">{status === 'lost-primary' ? 'Lost Primary' : 'Withdrew'}</span>
         </div>
       </Link>
     )
