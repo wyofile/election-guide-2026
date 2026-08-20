@@ -53,6 +53,11 @@ const Home = ({candidates, textContent, ballotPropositionResults}) => {
       socialDescription={"Federal and state candidates seeking Wyoming office in 2026."}
     >
 
+    <div className="construction-note">
+      <span className="construction-note__icon" aria-hidden="true">🚧</span>
+      <p className="construction-note__text">{textContent.constructionNote}</p>
+    </div>
+
     <section className="guide-intro">
       {/* <div className="election-day-note"><img src='/election-guide-2026/info.svg' /><span>For live general election results <a href="https://wyofile.com/wyoming-general-election-results-2026/">go here</a>. The election guide will be periodically updated with results after the polls close.</span></div> */}
       <MarkdownExternalLinks>{textContent.guideIntro}</MarkdownExternalLinks>

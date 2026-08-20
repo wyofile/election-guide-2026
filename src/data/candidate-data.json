@@ -1705,7 +1705,7 @@
       "topContributors": [
         {
           "name": "RASNER, REID",
-          "amount": 1717572.52
+          "amount": 1877572.52
         },
         {
           "name": "Unitemized contributions under $200",
@@ -1713,11 +1713,15 @@
         },
         {
           "name": "WINRED",
-          "amount": 33242.7
+          "amount": 41153.05
         },
         {
           "name": "FIX, WILLIAM R.",
           "amount": 11000
+        },
+        {
+          "name": "CAPERS, STANLEY",
+          "amount": 9800
         },
         {
           "name": "NELSON, SHELLEY",
@@ -1744,6 +1748,10 @@
           "amount": 1662.5
         },
         {
+          "name": "OLSON, SUSAN OLSON",
+          "amount": 1335
+        },
+        {
           "name": "SANDUSKY, JOHN",
           "amount": 1002.25
         },
@@ -1760,8 +1768,8 @@
           "amount": 725
         },
         {
-          "name": "KENT, MELVIN",
-          "amount": 712.5
+          "name": "DEVOS, MIREILLE",
+          "amount": 700
         },
         {
           "name": "SMOLIRA, JOE",
@@ -1800,11 +1808,11 @@
           "amount": 475
         },
         {
-          "name": "MANUEL, ANITA",
+          "name": "SHEKELL, LAWRENCE",
           "amount": 475
         },
         {
-          "name": "BARRON, DENNIS",
+          "name": "MANUEL, ANITA",
           "amount": 475
         }
       ]

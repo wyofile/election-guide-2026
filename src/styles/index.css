@@ -33,6 +33,31 @@
   justify-content: center;
 }
 
+.construction-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  background-color: var(--soft-wheat-bg);
+  border-left: 4px solid var(--goldenrod);
+  border-radius: 8px;
+  padding: 1rem 1.15rem;
+  margin: 1.75rem 0.5em 0.25rem;
+}
+
+.construction-note__icon {
+  font-size: 1.75rem;
+  line-height: 1.55;
+  flex: 0 0 auto;
+}
+
+.construction-note__text {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--deep-charcoal);
+}
+
 
 
 
