@@ -78,12 +78,16 @@
           "amount": 598314.71
         },
         {
-          "name": "KEEP THE SENATE RED 2026",
-          "amount": 64229.83
+          "name": "HAGEMAN VICTORY FUND",
+          "amount": 263096.3
         },
         {
-          "name": "HAGEMAN VICTORY FUND",
-          "amount": 63221.15
+          "name": "HAGEMAN SENATE FUND",
+          "amount": 96008.01
+        },
+        {
+          "name": "KEEP THE SENATE RED 2026",
+          "amount": 64229.83
         },
         {
           "name": "NRSC",
@@ -98,8 +102,8 @@
           "amount": 31618.07
         },
         {
-          "name": "SENATE CONSERVATIVES FUND",
-          "amount": 30608.17
+          "name": "GOP WINNING WOMEN 2026",
+          "amount": 30926.28
         },
         {
           "name": "2026 SENATORS CLASSIC COMMITTEE",
@@ -107,18 +111,42 @@
         },
         {
           "name": "WINRED",
-          "amount": 20485.12
+          "amount": 27867.43
+        },
+        {
+          "name": "SENATE CONSERVATIVES FUND",
+          "amount": 25608.17
         },
         {
           "name": "SIMINOFF, ELLEN FRIEDMAN",
           "amount": 14000
         },
         {
-          "name": "GOP WINNING WOMEN 2026",
-          "amount": 13780.99
+          "name": "CHROMAN FAMILY LIMITED PARTNERSHIP",
+          "amount": 10000
         },
         {
-          "name": "CHROMAN FAMILY LIMITED PARTNERSHIP",
+          "name": "FREEDOM FUND",
+          "amount": 10000
+        },
+        {
+          "name": "STEER PAC",
+          "amount": 10000
+        },
+        {
+          "name": "AMERICAN EXCELLENCE PAC",
+          "amount": 10000
+        },
+        {
+          "name": "OORAH! POLITICAL ACTION COMMITTEE",
+          "amount": 10000
+        },
+        {
+          "name": "WILD AND WONDERFUL PAC",
+          "amount": 10000
+        },
+        {
+          "name": "NATIONAL AUTOMOBILE DEALERS ASSOCIATION POLITICAL ACTION COMMITTEE",
           "amount": 10000
         },
         {
@@ -147,34 +175,6 @@
         },
         {
           "name": "ALABAMA FIRST PAC",
-          "amount": 10000
-        },
-        {
-          "name": "TRUE NORTH PAC",
-          "amount": 10000
-        },
-        {
-          "name": "HEARTLAND VALUES PAC",
-          "amount": 10000
-        },
-        {
-          "name": "FIGHT ON PAC",
-          "amount": 10000
-        },
-        {
-          "name": "DIRIGO PAC",
-          "amount": 10000
-        },
-        {
-          "name": "COMMON VALUES PAC",
-          "amount": 10000
-        },
-        {
-          "name": "BOOTS POLITICAL ACTION COMMITTEE",
-          "amount": 10000
-        },
-        {
-          "name": "ARKANSAS FOR LEADERSHIP POLITICAL ACTION COMMITTEE (ARKPAC)",
           "amount": 10000
         }
       ]
@@ -256,11 +256,11 @@
       "topContributors": [
         {
           "name": "MEAD, SAMUEL",
-          "amount": 108997.25
+          "amount": 114093.25
         },
         {
           "name": "WINRED",
-          "amount": 50634.24
+          "amount": 49213.73
         },
         {
           "name": "Unitemized contributions under $200",
@@ -279,8 +279,20 @@
           "amount": 5000
         },
         {
+          "name": "MENDELSON, BEN",
+          "amount": 3746.55
+        },
+        {
           "name": "CHIDSEY, CAROL",
           "amount": 3643.56
+        },
+        {
+          "name": "TRUE-WELLS, THEA J.",
+          "amount": 3500
+        },
+        {
+          "name": "TRUE, DAVID L",
+          "amount": 3500
         },
         {
           "name": "OLIVER, HENRY",
@@ -327,12 +339,8 @@
           "amount": 3500
         },
         {
-          "name": "MENDELSON, BEN",
-          "amount": 3137.68
-        },
-        {
-          "name": "MASTERSON, JOHN",
-          "amount": 2880.51
+          "name": "PENDERGAST, M. ANNE",
+          "amount": 2500
         },
         {
           "name": "REA, DANIEL B",
@@ -349,14 +357,6 @@
         {
           "name": "CORKERY, DARA L",
           "amount": 2500
-        },
-        {
-          "name": "TOP OF THE CLASS RENTALS LLC",
-          "amount": 2000
-        },
-        {
-          "name": "BOOTH, VERENA",
-          "amount": 2000
         }
       ]
     }
@@ -400,12 +400,12 @@
       "totalExpenditures": 8064.56,
       "topContributors": [
         {
-          "name": "SKOVGARD, JIMMY",
-          "amount": 2015
+          "name": "SKOVGARD, JIMMY MR",
+          "amount": 5388
         },
         {
-          "name": "SKOVGARD, JIMMY MR",
-          "amount": 2000
+          "name": "SKOVGARD, JIMMY",
+          "amount": 2015
         },
         {
           "name": "HUTCHINS, ERIC",
@@ -1177,19 +1177,43 @@
       "topContributors": [
         {
           "name": "FRIESS, STEPHEN",
-          "amount": 2000000
+          "amount": 3000000
         },
         {
           "name": "FRIESS WYOMING VICTORY FUND",
-          "amount": 81135.25
+          "amount": 177529.94
         },
         {
           "name": "WINRED",
-          "amount": 47780.78
+          "amount": 31493.65
         },
         {
           "name": "RICKETTS, J PETER",
           "amount": 12000
+        },
+        {
+          "name": "MULVIHILL, JAMES",
+          "amount": 7000
+        },
+        {
+          "name": "MULVIHILL, HEATHER",
+          "amount": 7000
+        },
+        {
+          "name": "FRANKLIN, LARRY",
+          "amount": 7000
+        },
+        {
+          "name": "BEAMAN, JULIE",
+          "amount": 7000
+        },
+        {
+          "name": "BEAMAN, LEE",
+          "amount": 7000
+        },
+        {
+          "name": "BOLLINGER, DONALD",
+          "amount": 7000
         },
         {
           "name": "KUYPER, CHRISTINE",
@@ -1224,8 +1248,96 @@
           "amount": 5000
         },
         {
-          "name": "SEAY, GEORGE",
-          "amount": 4000
+          "name": "DONOVAN, NANCY",
+          "amount": 3500
+        },
+        {
+          "name": "CROSSLAND, IVAN",
+          "amount": 3500
+        },
+        {
+          "name": "FISHER, CYNTHIA",
+          "amount": 3500
+        },
+        {
+          "name": "TESSLER, ALLAN",
+          "amount": 3500
+        },
+        {
+          "name": "PICKREL, CLINTON",
+          "amount": 3500
+        },
+        {
+          "name": "PICKREL, REBECCA",
+          "amount": 3500
+        },
+        {
+          "name": "SPENCER, RICHARD F.",
+          "amount": 3500
+        },
+        {
+          "name": "HUDDLESTON, ALBERT",
+          "amount": 3500
+        },
+        {
+          "name": "KENDRICK, KEN",
+          "amount": 3500
+        },
+        {
+          "name": "GIANFORTE, SUSAN",
+          "amount": 3500
+        },
+        {
+          "name": "CARLSON, SUSIE",
+          "amount": 3500
+        },
+        {
+          "name": "CLINE, CARYL L.",
+          "amount": 3500
+        },
+        {
+          "name": "CLINE, ROY",
+          "amount": 3500
+        },
+        {
+          "name": "GIANFORTE, GREG R.",
+          "amount": 3500
+        },
+        {
+          "name": "CARLSON, TUCKER",
+          "amount": 3500
+        },
+        {
+          "name": "KENDRICK, RANDY",
+          "amount": 3500
+        },
+        {
+          "name": "DONOVAN, DAVID",
+          "amount": 3500
+        },
+        {
+          "name": "HUDDLESTON, MARY",
+          "amount": 3500
+        },
+        {
+          "name": "SPENCER, KAREN A.",
+          "amount": 3500
+        },
+        {
+          "name": "WASHBURNE, RAY",
+          "amount": 3500
+        },
+        {
+          "name": "PEROT, ROSS JR.",
+          "amount": 3500
+        },
+        {
+          "name": "SHELTON, JOHN",
+          "amount": 3500
+        },
+        {
+          "name": "CROSSLAND, BETTY LOU",
+          "amount": 3500
         },
         {
           "name": "DE GROOTE, DOUG",
@@ -1256,6 +1368,10 @@
           "amount": 3500
         },
         {
+          "name": "SEAY, GEORGE",
+          "amount": 3500
+        },
+        {
           "name": "BYRNE, DEAN",
           "amount": 3500
         },
@@ -1273,10 +1389,6 @@
         },
         {
           "name": "HANNA III, FRANK J. III",
-          "amount": 3500
-        },
-        {
-          "name": "BOLLINGER, DONALD",
           "amount": 3500
         },
         {
@@ -16923,7 +17035,7 @@
     "lastName": "BROWN",
     "firstName": "GARY",
     "suffix": "",
-    "status": "active",
+    "status": "lost-primary",
     "party": "REP",
     "tag2024": "gary-brown",
     "tagId": "14329",
@@ -17072,7 +17184,7 @@
     "lastName": "EDWARDS",
     "firstName": "ERIN",
     "suffix": "",
-    "status": "lost-primary",
+    "status": "active",
     "party": "REP",
     "tag2024": "",
     "tagId": "15553",
