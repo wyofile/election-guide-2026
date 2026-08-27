@@ -509,6 +509,14 @@
           "amount": 1500
         },
         {
+          "name": "BYRD, JAMES W",
+          "amount": 1000
+        },
+        {
+          "name": "ADACHI, FUJI",
+          "amount": 1000
+        },
+        {
           "name": "HANLON, THEODORE",
           "amount": 1000
         },
@@ -573,6 +581,10 @@
           "amount": 300
         },
         {
+          "name": "SEWELL, MARGARET",
+          "amount": 250
+        },
+        {
           "name": "SIMMER, CINDY",
           "amount": 250
         },
@@ -595,14 +607,6 @@
         {
           "name": "EBERTZ, KARIN",
           "amount": 250
-        },
-        {
-          "name": "SCHWARTZ, ANDREW",
-          "amount": 200
-        },
-        {
-          "name": "CULVER, JUDY",
-          "amount": 200
         }
       ]
     }
@@ -650,7 +654,7 @@
         },
         {
           "name": "WINRED",
-          "amount": 13730.67
+          "amount": 15812.71
         },
         {
           "name": "SCARLETT, WILLIAM R.",
@@ -659,6 +663,10 @@
         {
           "name": "SCARLETT, WILLIAM R.",
           "amount": 7000
+        },
+        {
+          "name": "PALMERLEE, SUSAN J.",
+          "amount": 3500
         },
         {
           "name": "TRUE, DAVID L.",
@@ -681,6 +689,10 @@
           "amount": 2840.63
         },
         {
+          "name": "PALMERLEE, DAVID F.",
+          "amount": 2500
+        },
+        {
           "name": "PETROFF, RUTH ANN",
           "amount": 2082.04
         },
@@ -695,6 +707,10 @@
         {
           "name": "MURRAY, RYAN",
           "amount": 1250
+        },
+        {
+          "name": "MAHIEU, TIM",
+          "amount": 1041.02
         },
         {
           "name": "HECOX, DOUG",
@@ -717,8 +733,20 @@
           "amount": 1000
         },
         {
+          "name": "PEARSON, JOHN D.",
+          "amount": 750
+        },
+        {
           "name": "FISCHER, ASHLEE",
           "amount": 728.71
+        },
+        {
+          "name": "LANTTA, KEN D. CDR. USN (RET.)",
+          "amount": 520.51
+        },
+        {
+          "name": "LIGHTNER, EARL",
+          "amount": 520.51
         },
         {
           "name": "MACY, SHELLEY",
@@ -731,18 +759,6 @@
         {
           "name": "MILLS, ROBERT",
           "amount": 520.51
-        },
-        {
-          "name": "ZURA, DAVID",
-          "amount": 500
-        },
-        {
-          "name": "WASSERBURGER, JEFF",
-          "amount": 500
-        },
-        {
-          "name": "GEIS, KEITH H.",
-          "amount": 500
         }
       ]
     }
@@ -786,7 +802,7 @@
       "topContributors": [
         {
           "name": "WINRED",
-          "amount": 75142.23
+          "amount": 81513.9
         },
         {
           "name": "Unitemized contributions under $200",
@@ -806,11 +822,19 @@
         },
         {
           "name": "LOUGHNEY, ROBERT",
-          "amount": 4552
+          "amount": 4500
         },
         {
           "name": "MICHELI, MATT",
-          "amount": 3615.7
+          "amount": 3731.4
+        },
+        {
+          "name": "MCCOOL, MARTHA",
+          "amount": 3500
+        },
+        {
+          "name": "BEBOUT, ELI",
+          "amount": 3500
         },
         {
           "name": "BITEMAN, DENNIS D SR.",
@@ -825,6 +849,10 @@
           "amount": 3066.12
         },
         {
+          "name": "POLEY, APRIL",
+          "amount": 2082.04
+        },
+        {
           "name": "NAVARRO, JIM",
           "amount": 2066.12
         },
@@ -833,12 +861,16 @@
           "amount": 2066.12
         },
         {
-          "name": "SMITH, THOMAS",
-          "amount": 1670.84
+          "name": "RUFER, CHRIS",
+          "amount": 2000
         },
         {
           "name": "GRANGE, FRED",
           "amount": 1633
+        },
+        {
+          "name": "SMITH, THOMAS",
+          "amount": 1561.53
         },
         {
           "name": "BELISLE, HELENE",
@@ -849,48 +881,24 @@
           "amount": 1500
         },
         {
+          "name": "SWANSON, TRACY",
+          "amount": 1283.06
+        },
+        {
+          "name": "OBERMUELLER, JERRY",
+          "amount": 1041.02
+        },
+        {
+          "name": "GEORGE, LESLIE A",
+          "amount": 1041.02
+        },
+        {
           "name": "HALE, BETSEY",
           "amount": 1041.02
         },
         {
           "name": "BERNARD, CHRIS",
           "amount": 1041.02
-        },
-        {
-          "name": "POLEY, APRIL",
-          "amount": 1041.02
-        },
-        {
-          "name": "SWANSON, TRACY",
-          "amount": 1033.06
-        },
-        {
-          "name": "SCHULZ, SHANE",
-          "amount": 1033.06
-        },
-        {
-          "name": "ELLIS, AFFIE B",
-          "amount": 1000
-        },
-        {
-          "name": "BALLANCE, J TYLER",
-          "amount": 1000
-        },
-        {
-          "name": "SHANOR, RICHARD",
-          "amount": 750
-        },
-        {
-          "name": "JUDY, RANDALL",
-          "amount": 520.51
-        },
-        {
-          "name": "HOWE, RYAN",
-          "amount": 520.51
-        },
-        {
-          "name": "AGOPIAN, NICK",
-          "amount": 520.51
         }
       ]
     }
@@ -938,7 +946,7 @@
         },
         {
           "name": "WINRED",
-          "amount": 27014.16
+          "amount": 27514.16
         },
         {
           "name": "GRIFFIN, KENNETH",
@@ -991,6 +999,10 @@
         {
           "name": "BONNIE SR, JOSEPH",
           "amount": 520.51
+        },
+        {
+          "name": "BONNIE, JOSEPH",
+          "amount": 500
         },
         {
           "name": "STERN, SAM",
@@ -1053,16 +1065,20 @@
       "totalExpenditures": 26219.23,
       "topContributors": [
         {
+          "name": "CHRISTENSEN, KEVIN",
+          "amount": 18000
+        },
+        {
           "name": "Unitemized contributions under $200",
           "amount": 4677.86
         },
         {
-          "name": "CHRISTENSEN, KEVIN",
-          "amount": 3000
-        },
-        {
           "name": "HENNING, CRAIG",
           "amount": 2000
+        },
+        {
+          "name": "REA, DANIEL",
+          "amount": 1750
         },
         {
           "name": "HALBERT, BRIAN",
@@ -1081,6 +1097,22 @@
           "amount": 1000
         },
         {
+          "name": "EVERS, MICHAEL",
+          "amount": 1000
+        },
+        {
+          "name": "PETERSON, TODD",
+          "amount": 520.51
+        },
+        {
+          "name": "URBIGKIT, CAT",
+          "amount": 500
+        },
+        {
+          "name": "BORIL, RONNA",
+          "amount": 500
+        },
+        {
           "name": "ZADEH, TEFFANI",
           "amount": 500
         },
@@ -1089,12 +1121,24 @@
           "amount": 500
         },
         {
-          "name": "EVERS, MICHAEL",
-          "amount": 500
+          "name": "MASTERSON, JOHN",
+          "amount": 260.25
+        },
+        {
+          "name": "KENNEY, MICHAEL",
+          "amount": 260.25
+        },
+        {
+          "name": "GUTMAN, JOSEPH",
+          "amount": 260.25
         },
         {
           "name": "CHANDLER, JOHN",
           "amount": 260.25
+        },
+        {
+          "name": "STOTT, JULIE",
+          "amount": 250
         },
         {
           "name": "FLITNER, STAN",
@@ -1473,11 +1517,11 @@
       "topContributors": [
         {
           "name": "WINRED",
-          "amount": 78057.52
+          "amount": 83650.83
         },
         {
           "name": "GIRALT, DAVID A",
-          "amount": 56931.32
+          "amount": 56413.61
         },
         {
           "name": "GIRALT, JUANA",
@@ -1500,7 +1544,19 @@
           "amount": 5492.2
         },
         {
+          "name": "RANGER PAC",
+          "amount": 5000
+        },
+        {
+          "name": "FREEDOM'S DEFENSE FUND",
+          "amount": 5000
+        },
+        {
           "name": "SEAL PAC SUPPORTING ELECTING AMERICAN LEADERS PAC",
+          "amount": 5000
+        },
+        {
+          "name": "THE ROOSEVELT INITIATIVE",
           "amount": 5000
         },
         {
@@ -1540,11 +1596,15 @@
           "amount": 3500
         },
         {
+          "name": "CROSSPARTISAN PAC II",
+          "amount": 3500
+        },
+        {
           "name": "DUDGEON, STEVEN",
           "amount": 2602.54
         },
         {
-          "name": "CROSSPARTISAN PAC II",
+          "name": "JOHNSON, JENNIFER",
           "amount": 2500
         },
         {
@@ -1552,24 +1612,8 @@
           "amount": 2500
         },
         {
-          "name": "GRAY, JORDAN",
-          "amount": 2500
-        },
-        {
           "name": "ERICKSON, BRENT",
           "amount": 2082.03
-        },
-        {
-          "name": "31 DAYS PAC",
-          "amount": 2000
-        },
-        {
-          "name": "KIME, CARL",
-          "amount": 2000
-        },
-        {
-          "name": "CUMMINGS, COLLIN",
-          "amount": 1750
         }
       ]
     }
@@ -1611,6 +1655,18 @@
       "totalContributions": 2034.69,
       "totalExpenditures": 750,
       "topContributors": [
+        {
+          "name": "GOODENOUGH, KEITH BRIAN MR. BRIAN MR.",
+          "amount": 750
+        },
+        {
+          "name": "BUDENSKE, MARY ANN",
+          "amount": 520.51
+        },
+        {
+          "name": "BARBOUR, DAIL",
+          "amount": 404.41
+        },
         {
           "name": "Unitemized contributions under $200",
           "amount": 359.77
@@ -1657,7 +1713,7 @@
       "topContributors": [
         {
           "name": "GRAY, CHUCK",
-          "amount": 1150500
+          "amount": 1380500
         },
         {
           "name": "Unitemized contributions under $200",
@@ -1740,6 +1796,14 @@
           "amount": 5000
         },
         {
+          "name": "KEMMERER, KAREN",
+          "amount": 3500
+        },
+        {
+          "name": "KEMMERER, JOHN L",
+          "amount": 3500
+        },
+        {
           "name": "MICHAEL, VICTOR",
           "amount": 3500
         },
@@ -1750,30 +1814,6 @@
         {
           "name": "BOOK, NEIL",
           "amount": 3500
-        },
-        {
-          "name": "POFFENBARGER, JEFF",
-          "amount": 3000
-        },
-        {
-          "name": "MINSHALL, WERNER",
-          "amount": 3000
-        },
-        {
-          "name": "KASPERBAUER, VINCE",
-          "amount": 3000
-        },
-        {
-          "name": "SAUVE, RICHARD R DR. II",
-          "amount": 3000
-        },
-        {
-          "name": "RYDIN, MIKE",
-          "amount": 3000
-        },
-        {
-          "name": "LAROWE, JUDD",
-          "amount": 3000
         }
       ]
     }
@@ -1811,124 +1851,7 @@
       "\nReid Rasner has proposed a bold, common-sense policy to increase Wyoming’s share of federal mineral royalty revenues from Bureau of Land Management lands, ensuring more of the money generated from our own natural resources stays right here in Wyoming. The additional revenue would be directed toward vital public services that matter most to our communities—including strengthening education, building critical infrastructure, supporting local governments, and enhancing public safety. Supporters rightly argue this reform delivers a fairer deal for Wyoming by retaining more resource revenue in-state, putting local control first and investing in our schools, roads, counties, and families instead of sending Wyoming’s wealth to Washington bureaucrats. ",
       "\n47/10. Reid Rasner strongly believes Congress must fully fund ICE and DHS to secure our borders and enforce our immigration laws. He will fight tirelessly in Washington to protect our dedicated immigration law enforcement officers and continue ending the reign of harmful open-border policies that have strained communities, overwhelmed services, and compromised public safety. Reid is committed to restoring law and order, prioritizing American workers and Wyoming values, and ensuring strong, effective border security for our nation."
     ],
-    "campaignFinance": {
-      "totalContributions": 2327645.6,
-      "totalExpenditures": 2260946.52,
-      "topContributors": [
-        {
-          "name": "RASNER, REID",
-          "amount": 1877572.52
-        },
-        {
-          "name": "Unitemized contributions under $200",
-          "amount": 267911.13
-        },
-        {
-          "name": "WINRED",
-          "amount": 41153.05
-        },
-        {
-          "name": "FIX, WILLIAM R.",
-          "amount": 11000
-        },
-        {
-          "name": "CAPERS, STANLEY",
-          "amount": 9800
-        },
-        {
-          "name": "NELSON, SHELLEY",
-          "amount": 9800
-        },
-        {
-          "name": "MATTHEWS, JOHN",
-          "amount": 6910.16
-        },
-        {
-          "name": "WINRED TECHNICAL SERVICES LLC",
-          "amount": 5968.68
-        },
-        {
-          "name": "DATH, GEORGE",
-          "amount": 5468
-        },
-        {
-          "name": "STREETS, DICK",
-          "amount": 3325
-        },
-        {
-          "name": "HARLESS, KAY",
-          "amount": 1662.5
-        },
-        {
-          "name": "OLSON, SUSAN OLSON",
-          "amount": 1335
-        },
-        {
-          "name": "SANDUSKY, JOHN",
-          "amount": 1002.25
-        },
-        {
-          "name": "RAINE, ALYSSA",
-          "amount": 1000
-        },
-        {
-          "name": "SCHREIBER, SHERIDAN",
-          "amount": 1000
-        },
-        {
-          "name": "HILL, VERNON",
-          "amount": 725
-        },
-        {
-          "name": "DEVOS, MIREILLE",
-          "amount": 700
-        },
-        {
-          "name": "SMOLIRA, JOE",
-          "amount": 520.51
-        },
-        {
-          "name": "CSIK, KYLE",
-          "amount": 520.51
-        },
-        {
-          "name": "HAWKINS, FRANCES KAY",
-          "amount": 500
-        },
-        {
-          "name": "FIX, BLAIR",
-          "amount": 500
-        },
-        {
-          "name": "NATIONS, SANDRA",
-          "amount": 500
-        },
-        {
-          "name": "VAN BOMMEL, VERA",
-          "amount": 484.5
-        },
-        {
-          "name": "SNYDER, SANDRA",
-          "amount": 475
-        },
-        {
-          "name": "JACKSON, KAYE B.",
-          "amount": 475
-        },
-        {
-          "name": "BURNS, KATHERYNE",
-          "amount": 475
-        },
-        {
-          "name": "SHEKELL, LAWRENCE",
-          "amount": 475
-        },
-        {
-          "name": "MANUEL, ANITA",
-          "amount": 475
-        }
-      ]
-    }
+    "campaignFinance": null
   },
   {
     "ballotName": "Elena Del Real",
@@ -1993,7 +1916,7 @@
       "topContributors": [
         {
           "name": "ACTBLUE",
-          "amount": 10325
+          "amount": 11665
         },
         {
           "name": "Unitemized contributions under $200",
@@ -2002,6 +1925,14 @@
         {
           "name": "SCHUSTER, ROBERT P.",
           "amount": 1500
+        },
+        {
+          "name": "WARREN, SHERRY ADMI",
+          "amount": 1000
+        },
+        {
+          "name": "MCBRIDE, JUDITH",
+          "amount": 1000
         },
         {
           "name": "HANLON, THEODORE",
@@ -2032,12 +1963,28 @@
           "amount": 390
         },
         {
+          "name": "FORREST, BARBARA",
+          "amount": 300
+        },
+        {
           "name": "LOWE, SUE",
           "amount": 300
         },
         {
           "name": "CABOT, BARBARA L",
           "amount": 275
+        },
+        {
+          "name": "HEALY, MICHAEL",
+          "amount": 250
+        },
+        {
+          "name": "BOUGHTON, LESLEY",
+          "amount": 250
+        },
+        {
+          "name": "BIEBER-ROBERTS, PEGGY",
+          "amount": 250
         },
         {
           "name": "STORER, ELIZABETH",
@@ -2058,6 +2005,10 @@
         {
           "name": "ALDRICH, CATHLEEN",
           "amount": 250
+        },
+        {
+          "name": "BROWN, BERNAE",
+          "amount": 100
         }
       ]
     }
@@ -21037,7 +20988,7 @@
     "lastName": "BRADY",
     "firstName": "MARLENE",
     "suffix": "",
-    "status": "active",
+    "status": "lost-primary",
     "party": "REP",
     "tag2024": "marlene-brady",
     "tagId": "14312",
@@ -21122,7 +21073,7 @@
     "lastName": "NIEMIEC",
     "firstName": "ANTHONY",
     "suffix": "",
-    "status": "lost-primary",
+    "status": "active",
     "party": "REP",
     "tag2024": "anthony-niemiec",
     "tagId": "14311",
