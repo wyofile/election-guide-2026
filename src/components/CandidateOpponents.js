@@ -68,7 +68,7 @@ const CandidateOpponents = ({ candidatesInDistrict, race, currentSlug }) => {
       {renderPartyGroups(activeCandidates)}
 
       {inactiveCandidates.length > 0 && (
-        <details className="modern-details-accordion">
+        <details className="modern-details-accordion" open={inactiveCandidates.some(c => c.slug === currentSlug)}>
           <summary>
             <span className="accordion-title">Inactive Candidates <span className="accordion-count">({inactiveCandidates.length})</span></span>
             <span className="accordion-toggle">

@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import Link from 'next/link'
 import Markdown from 'react-markdown'
 import { MarkdownExternalLinks } from '@/lib/styles'
@@ -43,6 +44,19 @@ export async function getStaticProps() {
 const Home = ({candidates, textContent, ballotPropositionResults}) => {
 
   const pageDescription = textContent.pageDescription
+
+  // Arriving here from another page (e.g. a candidate page's nav link) lands
+  // on a URL like /#judge-retention. Once that's scrolled into view, strip
+  // the hash so it doesn't linger in the address bar — replaceState doesn't
+  // touch scroll position, so this is safe to run shortly after mount
+  // without racing Next's own hash-scroll-into-view behavior.
+  useEffect(() => {
+    if (!window.location.hash) return
+    const timeout = setTimeout(() => {
+      window.history.replaceState(null, '', window.location.pathname + window.location.search)
+    }, 150)
+    return () => clearTimeout(timeout)
+  }, [])
 
   return (
     <Layout 
@@ -201,16 +215,6 @@ const Home = ({candidates, textContent, ballotPropositionResults}) => {
       </div>
     </section>
 
-    <ElectionStories />
-    
-    {/* <section>
-      <a className="link-anchor" id="ballot-proposition"></a>
-      <h2 className='section-header'>Ballot Proposition</h2>
-      <MarkdownExternalLinks>{textContent.ballotProposition}</MarkdownExternalLinks>
-      <RaceResults results={ballotPropositionResults} raceTitle="Results - Constitutional Amendment A" isUncontested={false} voteType='Position'/>
-      <div className="results-source">Election results provided by the Associated Press. Last updated {formatDateTime(new Date(updateTime.updateTime))}</div>
-    </section> */}
-
     <section>
       <a className="link-anchor" id="judge-retention"></a>
       <div className="section-header">
@@ -223,6 +227,8 @@ const Home = ({candidates, textContent, ballotPropositionResults}) => {
       </div>
       <JudgeList/>
     </section>
+
+    <ElectionStories />
 
     <section>
       <a className="link-anchor" id="voter-faq"></a>
