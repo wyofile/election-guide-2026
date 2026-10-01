@@ -23,7 +23,7 @@ const PAGE_LINKS = [
   },
   { id: 'legislature', label: 'Legislature', path: '/#legislature' },
   { id: 'ballot-initiative', label: 'Ballot Proposition', path: '/#ballot-initiative' },
-  // { id: 'judge-retention', label: 'Judge Retention', path: '/#judge-retention' },
+  { id: 'judge-retention', label: 'Judge Retention', path: '/#judge-retention' },
   { id: 'voter-faq', label: 'Voting Info', path: '/#voter-faq' }
 ]
 

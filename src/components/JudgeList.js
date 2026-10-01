@@ -83,18 +83,22 @@ const customSelectStyles = {
 const JudgeLinkList = ({ title, judges, prefix }) => {
   if (!judges.length) return null
   return (
-    <>
+    <div className="jd-judge-group">
       <h4 className="jd-section-label">{title}</h4>
       <ul className="jd-judge-list">
         {judges.map((judge, i) => (
           <li key={`${title}-${i}`} className="jd-judge-row">
-            <a href={judge.link} target="_blank" rel="noopener noreferrer" className="jd-judge-link">
-              {prefix}{judge.name} <ExternalArrow />
-            </a>
+            {judge.link ? (
+              <a href={judge.link} target="_blank" rel="noopener noreferrer" className="jd-judge-link">
+                {prefix}{judge.name} <ExternalArrow />
+              </a>
+            ) : (
+              <span className="jd-judge-name">{prefix}{judge.name}</span>
+            )}
           </li>
         ))}
       </ul>
-    </>
+    </div>
   )
 }
 

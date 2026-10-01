@@ -84,10 +84,18 @@
 
 .jd-district-label {
   margin-bottom: 0.85rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px dashed #cbd5e1;
+}
+
+.jd-judge-group + .jd-judge-group {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px dashed #cbd5e1;
 }
 
 .jd-section-label {
-  margin: 1rem 0 0.4rem;
+  margin: 0 0 0.5rem;
   font-family: 'Roboto', sans-serif;
   font-size: 0.75rem;
   font-weight: 700;
@@ -113,6 +121,13 @@
   font-size: 0.95rem;
   font-weight: 600;
   color: var(--link);
+}
+
+.jd-judge-name {
+  display: inline-block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #0f172a;
 }
 
 .jd-judge-link:hover {

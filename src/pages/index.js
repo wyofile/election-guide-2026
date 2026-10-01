@@ -10,7 +10,7 @@ import StateRaces from '@/components/StateRaces'
 import RaceCandidates from '@/components/RaceCandidates'
 import CandidateStories, { ELECTION_COVERAGE, ExternalArrow } from '@/components/CandidateStories'
 import ElectionStories, { ElectionStoriesTeaser } from '@/components/ElectionStories';
-// import JudgeList from '@/components/JudgeList'
+import JudgeList from '@/components/JudgeList'
 // import RaceResults from '@/components/RaceResults'
 import CountyClerkLocator from '@/components/CountyClerkLocator';
 
@@ -211,14 +211,14 @@ const Home = ({candidates, textContent, ballotPropositionResults}) => {
       <div className="results-source">Election results provided by the Associated Press. Last updated {formatDateTime(new Date(updateTime.updateTime))}</div>
     </section> */}
 
-    {/* <section>
+    <section>
       <a className="link-anchor" id="judge-retention"></a>
       <div className="section-header">
         <h2 className="section-header__title">Judge Retention</h2>
       </div>
       <MarkdownExternalLinks>{textContent.judgeRetentionIntro}</MarkdownExternalLinks>
       <JudgeList/>
-    </section> */}
+    </section>
 
     <section>
       <a className="link-anchor" id="voter-faq"></a>
