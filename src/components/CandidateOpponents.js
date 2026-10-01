@@ -68,10 +68,19 @@ const CandidateOpponents = ({ candidatesInDistrict, race, currentSlug }) => {
       {renderPartyGroups(activeCandidates)}
 
       {inactiveCandidates.length > 0 && (
-        <div className="opp-inactive-zone">
-          <p className="opp-meta-title">Inactive candidates</p>
-          {renderPartyGroups(inactiveCandidates)}
-        </div>
+        <details className="modern-details-accordion">
+          <summary>
+            <span className="accordion-title">Inactive Candidates <span className="accordion-count">({inactiveCandidates.length})</span></span>
+            <span className="accordion-toggle">
+              <span className="toggle-label toggle-label-closed">Show</span>
+              <span className="toggle-label toggle-label-open">Hide</span>
+              <span className="toggle-icon">▾</span>
+            </span>
+          </summary>
+          <div className="accordion-inner">
+            {renderPartyGroups(inactiveCandidates)}
+          </div>
+        </details>
       )}
     </div>
   )
