@@ -8,6 +8,7 @@ import Feature from 'ol/Feature.js'
 import Point from 'ol/geom/Point.js'
 
 import Select from 'ol/interaction/Select.js'
+import { defaults as defaultInteractions } from 'ol/interaction.js'
 import { click, noModifierKeys } from 'ol/events/condition.js'
 import { Attribution, Control, defaults as defaultControls } from 'ol/control.js'
 import { fromLonLat, transformExtent } from 'ol/proj.js'
@@ -110,6 +111,7 @@ const DistrictMap = ({
         new Attribution({ collapsible: true, collapsed: true }),
         new ResetControl()
       ]),
+      interactions: defaultInteractions({ altShiftDragRotate: false, pinchRotate: false }),
       layers: [osmLayer, districtsLayer, markerLayer],
       view: mapView.current
     })
