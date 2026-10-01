@@ -1,74 +1,171 @@
-
-.judge-districts {
-  display: grid;
-  /* grid-template-rows: 1fr;
-  grid-auto-rows: 1fr; */
-  grid-template-columns: repeat(auto-fit, minmax(256px, 1fr));
-  gap: 10px;
-  margin-top: 10px;
-  margin-bottom: 20px;
-}
-
-.judge-district-card {
-  border: 1px solid black;
+.jd-wrapper {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 0.5em;
-
-  border: 1px solid #666;
-  padding: 20px;
-  box-shadow: 2px 2px 3px #aaa;
+  gap: 1.25rem;
 }
 
-.jd-img {
-  width: 70%;
+/* ---- Combined panel — straight top accent, rounded bottom only, same as
+   .race-group / .legislature-dashboard elsewhere on the site ---- */
+.jd-panel {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-top: 3px solid var(--darker-sea-green);
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.06);
+  padding: 1.25rem;
 }
 
-.sup-judges {
+.jd-panel-header {
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+
+.jd-panel-body {
   display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.jd-panel-results {
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+}
+
+/* ---- Interactive map ---- */
+.jd-interactive-map-frame {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+}
+
+.jd-interactive-map-loading {
+  width: 100%;
+  aspect-ratio: 2480 / 1928;
+  background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 37%, #f1f5f9 63%);
+  background-size: 400% 100%;
+  animation: jd-map-pulse 1.4s ease infinite;
+  border-radius: 8px;
+}
+
+@keyframes jd-map-pulse {
+  0% { background-position: 100% 50%; }
+  100% { background-position: 0 50%; }
+}
+
+.jd-interactive-map svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.jd-interactive-map path {
+  transition: fill 0.15s ease;
+}
+
+.jd-card-title {
+  margin: 0 0 0.15rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.jd-card-title--sm {
+  font-size: 1rem;
+}
+
+.jd-card-subtitle {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+.jd-district-label {
+  margin-bottom: 0.85rem;
+}
+
+.jd-section-label {
+  margin: 1rem 0 0.4rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #475569;
+}
+
+.jd-judge-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.jd-judge-row + .jd-judge-row {
+  margin-top: 0.35rem;
+}
+
+.jd-judge-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--link);
+}
+
+.jd-judge-link:hover {
+  text-decoration: underline;
+}
+
+/* ---- County picker ---- */
+.jd-picker-select {
+  max-width: 320px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border: 1px solid #94a3b8;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Whatever follows the picker — the chosen district's details, or the
+   empty-state prompt — gets a divider separating it from the picker.
+   A min-height sized to a typical district's content keeps the panel from
+   visibly growing when a county is picked. */
+.jd-card-picker-result {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e2e8f0;
+  min-height: 320px;
+}
+
+.jd-card-picker-empty {
+  height: 100%;
+  min-height: 290px;
+  display: flex;
+  align-items: center;
   justify-content: center;
 }
 
-.sup-judge-card {
-  border: 1px solid black;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0.5em;
-
-  border: 1px solid #666;
-  padding: 20px;
-  box-shadow: 2px 2px 3px #aaa;
-  max-width: 350px;
-}
-
-.jd-title {
-  font-family: "Roboto", sans-serif;
+.jd-empty-text {
   margin: 0;
-  font-weight: bold;
+  font-size: 0.95rem;
+  color: #64748b;
+  line-height: 1.65;
 }
 
-.jd-counties {
-  font-family: "Roboto", sans-serif;
-  margin: 0;
-  font-size: 0.8rem;
-  font-style: italic;
-}
+/* Map and picker side by side once there's room */
+@media (min-width: 700px) {
+  .jd-panel-body {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+  }
 
-.sup-judge-list {
-  font-size: 0.9rem;
-  list-style:none;
-  margin: 0;  
-  padding: 0;
-  text-align:center;
-}
-
-.court-title {
-  background-color: var(--wheat);
-  font-weight: bold;
-  text-transform: uppercase;
-  width: 100%;
-  padding-top: 3px;
-  padding-bottom: 3px;
+  .jd-interactive-map-frame,
+  .jd-panel-results {
+    flex: 1 1 0%;
+    min-width: 0;
+  }
 }

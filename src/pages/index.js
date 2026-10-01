@@ -213,7 +213,9 @@ const Home = ({candidates, textContent, ballotPropositionResults}) => {
 
     {/* <section>
       <a className="link-anchor" id="judge-retention"></a>
-      <h2 className='section-header'>Judge Retention</h2>
+      <div className="section-header">
+        <h2 className="section-header__title">Judge Retention</h2>
+      </div>
       <MarkdownExternalLinks>{textContent.judgeRetentionIntro}</MarkdownExternalLinks>
       <JudgeList/>
     </section> */}
