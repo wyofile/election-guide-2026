@@ -217,6 +217,10 @@ const Home = ({candidates, textContent, ballotPropositionResults}) => {
         <h2 className="section-header__title">Judge Retention</h2>
       </div>
       <MarkdownExternalLinks>{textContent.judgeRetentionIntro}</MarkdownExternalLinks>
+      <div className="jd-link-notice">
+        <span className="jd-link-notice-icon" aria-hidden="true">🔗</span>
+        <p className="jd-link-notice-text">Links to each judge&rsquo;s Wyoming Bar Association performance survey will be added as they&rsquo;re published, expected in mid-October.</p>
+      </div>
       <JudgeList/>
     </section>
 

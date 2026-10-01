@@ -147,12 +147,13 @@ const JudgeList = () => {
                     <p className="jd-card-subtitle">{district.counties}</p>
                   </div>
                   <JudgeLinkList title="Supreme Court Justices (Statewide)" judges={judgeData.supremeCourt.judges} prefix="Justice " />
+                  <JudgeLinkList title="Chancery Court Judges (Statewide)" judges={judgeData.chanceryCourt.judges} prefix="Judge " />
                   <JudgeLinkList title="District Judges" judges={district.districtJudges} prefix="" />
                   <JudgeLinkList title="Circuit Judges" judges={district.circuitJudges} prefix="Judge " />
                 </>
               ) : (
                 <div className="jd-card-picker-empty">
-                  <p className="jd-empty-text">Select your county above to see the Supreme Court, district and circuit court judges up for retention.</p>
+                  <p className="jd-empty-text">Select your county above to see the Supreme Court, Chancery Court, district and circuit court judges up for retention.</p>
                 </div>
               )}
             </div>
