@@ -17,7 +17,10 @@
 
 @media screen and (min-width: 850px) {
   .modern-party-buckets {
-    grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+    /* Capped at 2 columns per row (previously fit 3 at this container width,
+       which left a lone 4th bucket stranded on its own row) — still wraps
+       responsively below that, it just never exceeds 2 per row now. */
+    grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr));
   }
 }
 

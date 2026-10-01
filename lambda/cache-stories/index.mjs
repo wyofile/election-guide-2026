@@ -14,6 +14,12 @@ const ELECTION_STORY_COUNT = 6
 
 const CANDIDATE_DATA_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSPmJVB9NgM-rrPq34eowXldtaMyWZa-a0NqjBaBiWvTtDa5nZxPqYUtWNLev6UCRUtiUsR48bXlpG5/pub?gid=121135908&single=true&output=csv'
 
+// Ballot propositions have no name to search by — they're matched purely by
+// the WP tag created for them, mirroring a candidate's tagId-only lookup.
+const PROPOSITIONS = [
+  { slug: 'ballot-initiative', tagId: '15123' }
+]
+
 const BUCKET = 'projects.wyofile.com'
 const REGION = 'us-east-2'
 const STORIES_PREFIX = 'data/election-guide-2026/stories'
@@ -156,6 +162,23 @@ async function cacheCandidateStories(candidates) {
   }
 }
 
+async function processProposition({ slug, tagId }) {
+  const stories = await fetchStories(buildCandidateTagUrl(tagId, []))
+  const sorted = [...stories].sort((a, b) => new Date(b.date) - new Date(a.date))
+
+  await putJson(`${STORIES_PREFIX}/${slug}.json`, { count: sorted.length, stories: sorted })
+  console.log(`[OK] ${slug}: ${sorted.length} stories`)
+}
+
+async function cachePropositionStories() {
+  const results = await Promise.allSettled(PROPOSITIONS.map(processProposition))
+  results.forEach((result, i) => {
+    if (result.status === 'rejected') {
+      console.error(`[FAIL] ${PROPOSITIONS[i].slug}:`, result.reason?.message)
+    }
+  })
+}
+
 async function cacheElectionStories() {
   const stories = await fetchStories(buildElectionStoriesUrl())
   await putJson(`${STORIES_PREFIX}/election-stories.json`, { stories })
@@ -167,6 +190,7 @@ export const handler = async () => {
   console.log(`Loaded ${candidates.length} candidates`)
 
   await cacheCandidateStories(candidates)
+  await cachePropositionStories()
   await cacheElectionStories()
   await invalidateCache()
 

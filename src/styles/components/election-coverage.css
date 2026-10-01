@@ -128,6 +128,12 @@
   }
 }
 
+/* Forces the preview-limited grid's "load more" to stay visible at every
+   width, for usages that cap stories at `previewCount` regardless of screen size. */
+.stories-load-more--persist {
+  display: block !important;
+}
+
 /* ---- Individual story card ---- */
 .story-card {
   display: flex;

@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import Markdown from 'react-markdown'
 import { MarkdownExternalLinks } from '@/lib/styles'
 
@@ -7,6 +8,7 @@ import CandidateSearch from '@/components/CandidateSearch'
 import PrimaryDayCallout from '@/components/PrimaryDayCallout'
 import StateRaces from '@/components/StateRaces'
 import RaceCandidates from '@/components/RaceCandidates'
+import CandidateStories, { ELECTION_COVERAGE, ExternalArrow } from '@/components/CandidateStories'
 import ElectionStories, { ElectionStoriesTeaser } from '@/components/ElectionStories';
 // import JudgeList from '@/components/JudgeList'
 // import RaceResults from '@/components/RaceResults'
@@ -53,10 +55,10 @@ const Home = ({candidates, textContent, ballotPropositionResults}) => {
       socialDescription={"Federal and state candidates seeking Wyoming office in 2026."}
     >
 
-    <div className="construction-note">
+    {/* <div className="construction-note">
       <span className="construction-note__icon" aria-hidden="true">🚧</span>
       <p className="construction-note__text">{textContent.constructionNote}</p>
-    </div>
+    </div> */}
 
     <section className="guide-intro">
       {/* <div className="election-day-note"><img src='/election-guide-2026/info.svg' /><span>For live general election results <a href="https://wyofile.com/wyoming-general-election-results-2026/">go here</a>. The election guide will be periodically updated with results after the polls close.</span></div> */}
@@ -171,6 +173,32 @@ const Home = ({candidates, textContent, ballotPropositionResults}) => {
       </div>
 
       <StateRaces intro={textContent.wyomingLegislatureIntro} candidates={candidates.filter(candidate => candidate.office[0] != 'u' )}/>
+    </section>
+
+    <section>
+      <a className="link-anchor" id="ballot-initiative"></a>
+      <div className="section-header">
+        <h2 className="section-header__title">Ballot Proposition</h2>
+      </div>
+      <div className="legislature-dashboard">
+        <h3 className="race-header">
+          <span className="race-header__title-group">
+            <span>Proposition One</span>
+            <span className="race-header__subtitle">Ballot initiative to limit Wyoming property taxes</span>
+          </span>
+        </h3>
+        <MarkdownExternalLinks>{textContent.ballotInitiativeIntro}</MarkdownExternalLinks>
+
+        <div className="section-header section-header--compact">
+          <h2 className="section-header__title">WyoFile Coverage of Proposition One</h2>
+          <div className="section-header__actions">
+            <Link href={ELECTION_COVERAGE} target="_blank" rel="noopener noreferrer" className="stories-teaser-all">
+              All election coverage <ExternalArrow />
+            </Link>
+          </div>
+        </div>
+        <CandidateStories slug="ballot-initiative" ballotName="Proposition One" forceLimit />
+      </div>
     </section>
 
     <ElectionStories />

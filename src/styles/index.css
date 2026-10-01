@@ -58,6 +58,29 @@
   color: var(--deep-charcoal);
 }
 
+.legislature-dashboard .race-header {
+  margin-top: 0;
+}
+
+.race-header__title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.section-header--compact .section-header__title {
+  font-size: clamp(1rem, 3vw, 1.4rem);
+}
+
+.race-header__subtitle {
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: normal;
+  color: #64748b;
+}
+
+
 
 
 

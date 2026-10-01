@@ -13,7 +13,7 @@ export const ExternalArrow = () => (
   </svg>
 )
 
-const CandidateStories = ({ slug, ballotName }) => {
+const CandidateStories = ({ slug, ballotName, forceLimit = false, previewCount = 3 }) => {
   const { stories, isLoading, error } = useCachedStories(slug)
   const [expanded, setExpanded] = useState(false)
 
@@ -50,7 +50,7 @@ const CandidateStories = ({ slug, ballotName }) => {
             /* Story grid — reuses shared story-card styles from election-coverage.css */
             <>
               <div className={`stories-grid ${expanded ? 'is-expanded' : ''}`}>
-                {stories.stories.map(story => (
+                {(forceLimit && !expanded ? stories.stories.slice(0, previewCount) : stories.stories).map(story => (
                   <Link
                     key={`story-${story.id}`}
                     href={story.link}
@@ -72,10 +72,10 @@ const CandidateStories = ({ slug, ballotName }) => {
                 ))}
               </div>
 
-              {!expanded && stories.count > 3 && (
+              {!expanded && stories.count > previewCount && (
                 <button
                   type="button"
-                  className="stories-load-more"
+                  className={`stories-load-more ${forceLimit ? 'stories-load-more--persist' : ''}`}
                   onClick={() => setExpanded(true)}
                 >
                   Load more stories…

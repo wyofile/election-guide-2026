@@ -26,7 +26,7 @@ const CandidateChip = ({ slug, ballotName, party, hasPhoto, isCurrentPage }) => 
 }
 
 const CandidateOpponents = ({ candidatesInDistrict, race, currentSlug }) => {
-  const order = { REP: 1, DEM: 2, LBR: 3, CTR: 4, IND: 5 }
+  const order = { REP: 1, DEM: 2, LBR: 3, CT: 4, IND: 5 }
 
   const sortCandidates = (list) =>
     [...list]
