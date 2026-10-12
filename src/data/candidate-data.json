@@ -645,8 +645,8 @@
       "President Trump promised to secure our borders and deport illegal immigrants. Thankfully, he has delivered on that promise. In 2025, net immigration was negative for the first time since the 1970s. He also promised to deport dangerous criminals, end asylum for illegal immigrants, and end taxpayer benefits for people in the U.S. illegally. Trump has executed these promises and regrouped efforts when needed. This should have been the standard all along.\n\nWyoming’s Congressional delegation maintains a strict stance on border security and illegal immigration. I will do the same. Congresswoman Hageman’s work to ensure our roads are safe from illegal truck drivers is commendable, and I will continue the work.\nWyoming and America are strengthened by immigrants who came here legally. Our heritage is worth protecting. It begins with a secure border and an immigration system that is fair and enforced. "
     ],
     "campaignFinance": {
-      "totalContributions": 180501.21,
-      "totalExpenditures": 75538.31,
+      "totalContributions": 184153.26,
+      "totalExpenditures": 184153.26,
       "topContributors": [
         {
           "name": "BALOW, JILLIAN",
@@ -655,10 +655,6 @@
         {
           "name": "WINRED",
           "amount": 15812.71
-        },
-        {
-          "name": "SCARLETT, WILLIAM R.",
-          "amount": 7000
         },
         {
           "name": "SCARLETT, WILLIAM R.",
@@ -686,7 +682,7 @@
         },
         {
           "name": "Unitemized contributions under $200",
-          "amount": 2840.63
+          "amount": 3492.68
         },
         {
           "name": "PALMERLEE, DAVID F.",
@@ -709,11 +705,11 @@
           "amount": 1250
         },
         {
-          "name": "MAHIEU, TIM",
+          "name": "HECOX, DOUG",
           "amount": 1041.02
         },
         {
-          "name": "HECOX, DOUG",
+          "name": "MAHIEU, TIM",
           "amount": 1041.02
         },
         {
@@ -741,15 +737,15 @@
           "amount": 728.71
         },
         {
+          "name": "MACY, SHELLEY",
+          "amount": 520.51
+        },
+        {
           "name": "LANTTA, KEN D. CDR. USN (RET.)",
           "amount": 520.51
         },
         {
           "name": "LIGHTNER, EARL",
-          "amount": 520.51
-        },
-        {
-          "name": "MACY, SHELLEY",
           "amount": 520.51
         },
         {
@@ -15796,7 +15792,7 @@
     "tag2024": "",
     "tagId": "15696",
     "caucus": "",
-    "hasPhoto": false,
+    "hasPhoto": true,
     "hasResponses": true,
     "isIncumbent": false,
     "committeeName": "JUSTIN MORGAN",
